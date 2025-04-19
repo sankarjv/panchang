@@ -8,6 +8,7 @@
 <p>
  Sun Rise
 </p>
+<script>
 //Sunset tonight at the Triggertrap office
 var sunset = new Date().sunset(51.4541, -2.5920);
 
@@ -19,6 +20,10 @@ var sunrise = new Date("2025-04-19").sunrise(51.1788, -1.8262);
 
 navigator.geolocation.getCurrentPosition(function(position) {
    	var sunset = new Date().sunset(position.coords.latitude, position.coords.longitude);
+    console.log("Date (new:"+new);
+    console.log("Rise (sunrise:"+sunrise);
+    console.log("Set (sunset:"+sunset);
 });
+</script>
 </body>
 </html>
