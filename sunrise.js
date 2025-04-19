@@ -35,7 +35,7 @@
 *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-function suntimes(lat, lng, tz) {
+function sunrise(lat, lng, tz) {
     var d = new Date();
     var radians = Math.PI / 180.0;
     var degrees = 180.0 / Math.PI;
