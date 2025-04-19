@@ -15,10 +15,10 @@ var sunrise = new Date().sunrise(51.1788, -1.8262);
 
 //Combine it with geolocation. Sunset tonight at your location.
 navigator.geolocation.getCurrentPosition(function(position) {
-   	var sunrise = sunrise(position.coords.latitude, position.coords.longitude);
-   	var sunset = sunset(position.coords.latitude, position.coords.longitude);
-    console.log("Rise: " + sunrise);
-    console.log("Set: " + sunset);
+   	var srise = sunrise(position.coords.latitude, position.coords.longitude);
+   	var sset = sunset(position.coords.latitude, position.coords.longitude);
+    console.log("Rise: " + srise);
+    console.log("Set: " + sset);
 });
 </script>
 </body>
