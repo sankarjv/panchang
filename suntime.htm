@@ -20,7 +20,7 @@ var sunrise = new Date("2025-04-19").sunrise(51.1788, -1.8262);
 
 navigator.geolocation.getCurrentPosition(function(position) {
    	var sunset = new Date().sunset(position.coords.latitude, position.coords.longitude);
-    console.log("Date (new:"+new);
+//    console.log("Date (new:"+new);
     console.log("Rise (sunrise:"+sunrise);
     console.log("Set (sunset:"+sunset);
 });
