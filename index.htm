@@ -73,7 +73,7 @@
 <div class="alignL">Ayanamsa: </div><div id=ayanamsa class="alignR"></div>
 </div>
 <script>
-  var t= new Date("25-03-2015T12:00");
+  var t= new Date();
   panchang.calculate(t, function() {
     document.getElementById("day").innerHTML=panchang.Day.name;
     document.getElementById("tithi").innerHTML=panchang.Tithi.name;
