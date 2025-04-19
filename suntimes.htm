@@ -5,5 +5,10 @@
 </head>
 <body>
 <h1>Sun Rise/Set</h1>
+<script>
+navigator.geolocation.getCurrentPosition(function(position) {
+   	var sun = suntimes(position.coords.latitude, position.coords.longitude);  
+    console.log("sun: " + sun);
+</script>
 </body>
 </html>
