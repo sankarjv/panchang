@@ -77,5 +77,7 @@ function suntimes(lat, lng, tz) {
     var tz_offset = tz === undefined ? -1 * d.getTimezoneOffset() / 60 : tz;
     var local_rise = (utc_time_rise + tz_offset) % 24;
     var local_set = (utc_time_set + tz_offset) % 24;
+    console.log("Rise: " + local_rise);
+    console.log("Set: " + local_set);
     return [local_rise, local_set];
 }
