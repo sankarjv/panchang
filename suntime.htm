@@ -7,8 +7,8 @@
 <h1>Sun Rise/Set</h1>
 <script>
   navigator.geolocation.getCurrentPosition(function(position) {
-   	var sunrise = new Date().sunrise(position.coords.latitude, position.coords.longitude, -5.5);
-    console.log("Sun: " + sunrise);
+   	var rise = new Date().sunrise(position.coords.latitude, position.coords.longitude, -5.5);
+    console.log("Sun: " + rise);
 });
 </script>
 </body>
