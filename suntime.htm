@@ -1,0 +1,24 @@
+
+<html>
+<head>
+<script src="./suntime.js"></script>
+</head>
+<body>
+<h1>Sun Rise/Set</h1>
+<p>
+ Sun Rise
+</p>
+//Sunset tonight at the Triggertrap office
+var sunset = new Date().sunset(51.4541, -2.5920);
+
+//Sunrise at Stonehenge on midsummer's day 2000
+
+var sunrise = new Date("2025-04-19").sunrise(51.1788, -1.8262);
+
+//Combine it with geolocation. Sunset tonight at your location.
+
+navigator.geolocation.getCurrentPosition(function(position) {
+   	var sunset = new Date().sunset(position.coords.latitude, position.coords.longitude);
+});
+</body>
+</html>
