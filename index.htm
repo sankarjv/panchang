@@ -1,7 +1,6 @@
 <html>
 <head>
 <script src="./panchang.js"></script>
-<script src="./sun.js"></script>
 <style>
 .block{
   overflow:hidden;
@@ -92,6 +91,15 @@
     document.getElementById("raasi").innerHTML=panchang.Raasi.name;
     document.getElementById("ayanamsa").innerHTML=panchang.Ayanamsa.name;
   });
+</script>
+<script src="./sun.js"></script>
+<script>
+navigator.geolocation.getCurrentPosition(function(position) {
+   	var srise = new Date().sunrise(position.coords.latitude, position.coords.longitude);
+   	var sset = new Date().sunset(position.coords.latitude, position.coords.longitude);
+    console.log("Rise: " + srise);
+    console.log("Set: " + sset);
+});
 </script>
 </body>
 </html>
