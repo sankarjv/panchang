@@ -115,7 +115,7 @@ navigator.geolocation.getCurrentPosition(function(position) {
    	var srise1 = new Date(srise.getTime() + (24 * 60 * 60 * 1000)).sunrise(position.coords.latitude, position.coords.longitude);
     var daylen = Math.floor(sset - srise);
     var daypart = Math.floor(daylen / 8);
-    var daypart1 = new Date(Math.floor((srise.getTime() + daypart) / 3600000));
+    var daypart1 = new Date(Math.floor((srise.getTime() + daypart)));
     var rks = srise;
     var rkf = daypart1;
     document.getElementById("rise").innerHTML=srise;
