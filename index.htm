@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="./panchang.js"></script>
 <style>
 .block{
   overflow:hidden;
@@ -27,39 +28,6 @@
 <p>
  Panchang as of now
 </p>
-<script src="./sun.js"></script>
-<div class="trow">
-<div class="alignL">Sun Rise: </div><div id="rise" class="alignR"></div>
-</div>
-<div class="trow">
-<div class="alignL">Sun Set: </div><div id="set" class="alignR"></div>
-</div>
-<div class="trow">
-<div class="alignL">Sun Rise Next: </div><div id="rise1" class="alignR"></div>
-</div>
-<script>
-navigator.geolocation.getCurrentPosition(function(position) {
-   	var srise = new Date().sunrise(position.coords.latitude, position.coords.longitude);
-   	var sset = new Date().sunset(position.coords.latitude, position.coords.longitude);
-   	var srise1 = new Date(srise.getTime() + (24 * 60 * 60 * 1000)).sunrise(position.coords.latitude, position.coords.longitude);
-    document.getElementById("rise").innerHTML=srise;
-    document.getElementById("set").innerHTML=sset;
-    document.getElementById("rise1").innerHTML=srise1;
-    console.log("Rise: " + srise);
-    console.log("Set: " + sset);
-});
-</script>
-<script src="./panchang.js"></script>
-<div class="trow">
-<div class="alignL" >Day: </div><div id="day" class="alignR"></div>
-</div>
-<div class="trow">
-<div class="alignL">Day Start: </div><div id="srise" class="alignR"></div>
-</div>
-<div class="trow">
-<div class="alignL">Day End: </div><div id="srise1" class="alignR"></div>
-</div>
-<div class="trow">
 <div class="alignL">Tithi: </div><div id="tithi" class="alignR"></div>
 </div>
 <div class="trow">
@@ -96,11 +64,9 @@ navigator.geolocation.getCurrentPosition(function(position) {
 <div class="alignL">Yoga End: </div><div id="s_yoga_end" class="alignR"></div>
 </div>
 <div class="trow">
-<div class="alignL">Raasi: </div><div id="raasi" class="alignR"></div>
+<div class="alignL" >Day: </div><div id="day" class="alignR"></div>
 </div>
 <div class="trow">
-<div class="alignL">Ayanamsa: </div><div id="ayanamsa" class="alignR"></div>
-</div>
 <script>
   var t= new Date();
   panchang.calculate(t, function() {
@@ -120,6 +86,31 @@ navigator.geolocation.getCurrentPosition(function(position) {
     document.getElementById("raasi").innerHTML=panchang.Raasi.name;
     document.getElementById("ayanamsa").innerHTML=panchang.Ayanamsa.name;
   });
+</script>
+<script src="./sun.js"></script>
+<div class="trow">
+<div class="alignL">Day Start: </div><div id="rise" class="alignR"></div>
+</div>
+<div class="trow">
+<div class="alignL">Day End: </div><div id="rise1" class="alignR"></div>
+</div>
+<div class="trow">
+<div class="alignL">Sun Rise: </div><div id="rise" class="alignR"></div>
+</div>
+<div class="trow">
+<div class="alignL">Sun Set: </div><div id="set" class="alignR"></div>
+</div>
+<script>
+navigator.geolocation.getCurrentPosition(function(position) {
+   	var srise = new Date().sunrise(position.coords.latitude, position.coords.longitude);
+   	var sset = new Date().sunset(position.coords.latitude, position.coords.longitude);
+   	var srise1 = new Date(srise.getTime() + (24 * 60 * 60 * 1000)).sunrise(position.coords.latitude, position.coords.longitude);
+    document.getElementById("rise").innerHTML=srise;
+    document.getElementById("set").innerHTML=sset;
+    document.getElementById("rise1").innerHTML=srise1;
+    console.log("Rise: " + srise);
+    console.log("Set: " + sset);
+});
 </script>
 </body>
 </html>
