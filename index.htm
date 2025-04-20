@@ -70,7 +70,6 @@
 <script>
   var t= new Date();
   panchang.calculate(t, function() {
-    document.getElementById("day").innerHTML=panchang.Day.name;
     document.getElementById("tithi").innerHTML=panchang.Tithi.name;
     document.getElementById("s_tithi_start").innerHTML=panchang.Tithi.start;
     document.getElementById("s_tithi_end").innerHTML=panchang.Tithi.end;
@@ -83,8 +82,7 @@
     document.getElementById("yoga").innerHTML=panchang.Yoga.name;
     document.getElementById("s_yoga_start").innerHTML=panchang.Yoga.start;
     document.getElementById("s_yoga_end").innerHTML=panchang.Yoga.end;
-    document.getElementById("raasi").innerHTML=panchang.Raasi.name;
-    document.getElementById("ayanamsa").innerHTML=panchang.Ayanamsa.name;
+    document.getElementById("day").innerHTML=panchang.Day.name;
   });
 </script>
 <script src="./sun.js"></script>
