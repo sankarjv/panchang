@@ -15,25 +15,16 @@ function suntimes(lat, lng, tz) {
     var j_transit = solar_noon + 0.0053 * Math.sin( M * radians) - 0.0069 * Math.sin( 2 * L * radians );
     var D = Math.asin( Math.sin( L * radians ) * Math.sin( 23.45 * radians ) ) * degrees;
     var cos_omega = ( Math.sin(-0.83 * radians) - Math.sin( lat * radians ) * Math.sin( D * radians ) ) / ( Math.cos( lat * radians ) * Math.cos( D * radians ) );
-    // sun never rises
     if( cos_omega > 1)
       return [null, -1];
-    // sun never sets
     if( cos_omega < -1 )
       return [-1, null];
-    // get Julian dates of sunrise/sunset
     var omega = Math.acos( cos_omega ) * degrees;
     var j_set = j_transit + omega / 360.0;
     var j_rise = j_transit - omega / 360.0;
-    /* get sunrise and sunset times in UTC
-    Check section "Finding Julian date given Julian day number and time of
-    day" on wikipedia for where the extra "+ 12" comes from. */
     var utc_time_set = 24 * (j_set - j_day) + 12;
     var utc_time_rise = 24 * (j_rise - j_day) + 12;
     var tz_offset = tz === undefined ? -1 * d.getTimezoneOffset() / 60 : tz;
     var local_rise = (utc_time_rise + tz_offset) % 24;
     var local_set = (utc_time_set + tz_offset) % 24;
-    console.log("Rise: " + local_rise);
-    console.log("Set: " + local_set);
-    return [local_rise, local_set];
-}
+    return [local_rise, local_set]; }
