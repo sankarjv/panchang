@@ -25,9 +25,7 @@
 </head>
 <body>
 <h1>Present Panchang</h1>
-<p class="alignL">
- Panchang as of now
-</p>
+<h2>Panchang as of now</h2>
 <div class="trow">
 <div class="alignL">Tithi: </div><div id="tithi" class="alignR"></div>
 </div>
@@ -100,15 +98,38 @@
 <div class="trow">
 <div class="alignL">Sun Set: </div><div id="set" class="alignR"></div>
 </div>
+<div class="trow">
+<div class="alignL">Rahukalam: </div>
+</div>
+<div class="trow">
+<div class="alignL">Rahukalam Start: </div><div id="rkst" class="alignR"></div>
+</div>
+<div class="trow">
+<div class="alignL">Rahukalm End: </div><div id="rkft" class="alignR"></div>
+</div>
 <script>
 navigator.geolocation.getCurrentPosition(function(position) {
    	var srise = new Date().sunrise(position.coords.latitude, position.coords.longitude);
    	var sset = new Date().sunset(position.coords.latitude, position.coords.longitude);
    	var srise1 = new Date(srise.getTime() + (24 * 60 * 60 * 1000)).sunrise(position.coords.latitude, position.coords.longitude);
+    let daylen = sset - srise;
+    let daypart = daylen / 8;
+    let daypart1 = srise + daypart;
+    let daypart2 = daypart1 + daypart;
+    let daypart3 = daypart2 + daypart;
+    let daypart4 = daypart3 + daypart;
+    let daypart5 = daypart4 + daypart;
+    let daypart6 = daypart5 + daypart;
+    let daypart7 = daypart6 + daypart;
+    let daypart8 = daypart7 + daypart;
+    let rks = daypart3;
+    let rkf = daypart4;
     document.getElementById("rise").innerHTML=srise;
     document.getElementById("rise1").innerHTML=srise1;
     document.getElementById("riz").innerHTML=srise;
     document.getElementById("set").innerHTML=sset;
+    document.getElementById("rkst").innerHTML=rks;
+    document.getElementById("rkft").innerHTML=rkf;
 });
 </script>
 </body>
