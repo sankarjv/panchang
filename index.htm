@@ -1,7 +1,6 @@
 <html>
 <head>
 <script src="./panchang.js"></script>
-<script src="./sun.js"></script>
 <style>
 .block{
   overflow:hidden;
@@ -25,7 +24,7 @@
 <script>
   var t= new Date();
   panchang.calculate(t, function() {
-//    document.getElementById("day").innerHTML=panchang.Day.name;
+    document.getElementById("day").innerHTML=panchang.Day.name;
     document.getElementById("tithi").innerHTML=panchang.Tithi.name;
     document.getElementById("s_tithi_start").innerHTML=panchang.Tithi.start;
     document.getElementById("s_tithi_end").innerHTML=panchang.Tithi.end;
@@ -42,18 +41,13 @@
     document.getElementById("ayanamsa").innerHTML=panchang.Ayanamsa.name;
   });
 </script>
-<script>
-navigator.geolocation.getCurrentPosition(function(position) {
-   	var srise = new Date().sunrise(position.coords.latitude, position.coords.longitude);
-   	var sset = new Date().sunset(position.coords.latitude, position.coords.longitude);
-    console.log("Rise: " + srise);
-    console.log("Set: " + sset);
-});
-</script>
 <h1>Present Panchang</h1>
 <p>
  Panchang as of now
 </p>
+<div class="trow">
+<div class="alignL" >Day: </div><div id=day class="alignR"></div>
+</div>
 <div class="trow">
 <div class="alignL">Tithi: </div><div id=tithi class="alignR"></div>
 </div>
