@@ -100,10 +100,15 @@
 <div class="trow">
 <div class="alignL">Sun Set: </div><div id="set" class="alignR"></div>
 </div>
+<div class="trow">
+<div class="alignL">Sun Rise Next: </div><div id="rise1" class="alignR"></div>
+</div>
 <script>
 navigator.geolocation.getCurrentPosition(function(position) {
+   	var srise1 = new Date(+1).sunrise(position.coords.latitude, position.coords.longitude);
    	var srise = new Date().sunrise(position.coords.latitude, position.coords.longitude);
    	var sset = new Date().sunset(position.coords.latitude, position.coords.longitude);
+    document.getElementById("rise1").innerHTML=srise1;
     document.getElementById("rise").innerHTML=srise;
     document.getElementById("set").innerHTML=sset;
     console.log("Rise: " + srise);
