@@ -6,12 +6,11 @@
 .block{
   overflow:hidden;
 }
-
 .trow {
       display: table-row;
 }
 .alignL {
-  text: bold;
+    font-weight: bold;
 }
 .alignL, .alignR {
       display: table-cell;
@@ -20,75 +19,25 @@
 .alignR {
     margin: 1px 1px;
 }
-
 </style>
 </head>
 <body>
-<h1>Present Panchang</h1>
-<p>
- Panchang as of now
-</p>
-<div class="trow">
-<div class="alignL" >Day: </div><div id='day' class="alignR"></div>
-</div>
-<div class="trow">
-<div class="alignL">Tithi: </div><div id=tithi class="alignR"></div>
-</div>
-<div class="trow">
-<div class="alignL">Tithi Start: </div><div id=s_tithi.start class="alignR"></div>
-</div>
-<div class="trow">
-<div class="alignL">Tithi End: </div><div id=s_tithi.end class="alignR"></div>
-</div>
-<div class="trow">
-<div class="alignL">Nakshtra: </div><div id=nakshtra class="alignR"></div>
-</div>
-<div class="trow">
-<div class="alignL">Nakshtra Start: </div><div id=s_nakshtra.start class="alignR"></div>
-</div>
-<div class="trow">
-<div class="alignL">Nakshtra End: </div><div id=s_nakshtra.end class="alignR"></div>
-</div>
-<div class="trow">
-<div class="alignL">Karna: </div><div id=karna class="alignR"></div>
-</div>
-<div class="trow">
-<div class="alignL">Karna Start: </div><div id=s_karna.start class="alignR"></div>
-</div>
-<div class="trow">
-<div class="alignL">Karna End: </div><div id=s_karna.end class="alignR"></div>
-</div>
-<div class="trow">
-<div class="alignL">Yoga: </div><div id=yoga class="alignR"></div>
-</div>
-<div class="trow">
-<div class="alignL">Yoga Start: </div><div id=s_yoga.start class="alignR"></div>
-</div>
-<div class="trow">
-<div class="alignL">Yoga End: </div><div id=s_yoga.end class="alignR"></div>
-</div>
-<div class="trow">
-<div class="alignL">Raasi: </div><div id=raasi class="alignR"></div>
-</div>
-<div class="trow">
-<div class="alignL">Ayanamsa: </div><div id=ayanamsa class="alignR"></div>
-</div>
 <script>
   var t= new Date();
   panchang.calculate(t, function() {
     document.getElementById("day").innerHTML=panchang.Day.name;
     document.getElementById("tithi").innerHTML=panchang.Tithi.name;
-    document.getElementById("s_tithi.start").innerHTML=panchang.Tithi.start;
-    document.getElementById("s_tithi.end").innerHTML=panchang.Tithi.end;
+    document.getElementById("s_tithi_start").innerHTML=panchang.Tithi.start;
+    document.getElementById("s_tithi_end").innerHTML=panchang.Tithi.end;
     document.getElementById("nakshtra").innerHTML=panchang.Nakshatra.name;
-    document.getElementById("s_nakshtra.start").innerHTML=panchang.Nakshatra.start;
-    document.getElementById("s_nakshtra.end").innerHTML=panchang.Nakshatra.end;
+    document.getElementById("s_nakshtra_start").innerHTML=panchang.Nakshatra.start;
+    document.getElementById("s_nakshtra_end").innerHTML=panchang.Nakshatra.end;
     document.getElementById("karna").innerHTML=panchang.Karna.name;
-    document.getElementById("s_karna.start").innerHTML=panchang.Karna.start;
-    document.getElementById("s_karna.end").innerHTML=panchang.Karna.end;
+    document.getElementById("s_karna_start").innerHTML=panchang.Karna.start;
+    document.getElementById("s_karna_end").innerHTML=panchang.Karna.end;
     document.getElementById("yoga").innerHTML=panchang.Yoga.name;
-    document.getElementById("s_yoga.start").innerHTML=panchang.Yoga.start;
-    document.getElementById("s_yoga.end").innerHTML=panchang.Yoga.end;
+    document.getElementById("s_yoga_start").innerHTML=panchang.Yoga.start;
+    document.getElementById("s_yoga_end").innerHTML=panchang.Yoga.end;
     document.getElementById("raasi").innerHTML=panchang.Raasi.name;
     document.getElementById("ayanamsa").innerHTML=panchang.Ayanamsa.name;
   });
@@ -101,5 +50,60 @@ navigator.geolocation.getCurrentPosition(function(position) {
     console.log("Set: " + sset);
 });
 </script>
+<h1>Present Panchang</h1>
+<p>
+ Panchang as of now
+</p>
+<div class="trow">
+<div class="alignL" >Day: </div><div id='day' class="alignR"></div>
+</div>
+<div class="trow">
+<div class="alignL">Tithi: </div><div id=tithi class="alignR"></div>
+</div>
+<div class="trow">
+<div class="alignL">Tithi Start: </div><div id=s_tithi_start class="alignR"></div>
+</div>
+<div class="trow">
+<div class="alignL">Tithi End: </div><div id=s_tithi_end class="alignR"></div>
+</div>
+<div class="trow">
+<div class="alignL">Nakshtra: </div><div id=nakshtra class="alignR"></div>
+</div>
+<div class="trow">
+<div class="alignL">Nakshtra Start: </div><div id=s_nakshtra_start class="alignR"></div>
+</div>
+<div class="trow">
+<div class="alignL">Nakshtra End: </div><div id=s_nakshtra_end class="alignR"></div>
+</div>
+<div class="trow">
+<div class="alignL">Karna: </div><div id=karna class="alignR"></div>
+</div>
+<div class="trow">
+<div class="alignL">Karna Start: </div><div id=s_karna_start class="alignR"></div>
+</div>
+<div class="trow">
+<div class="alignL">Karna End: </div><div id=s_karna_end class="alignR"></div>
+</div>
+<div class="trow">
+<div class="alignL">Yoga: </div><div id=yoga class="alignR"></div>
+</div>
+<div class="trow">
+<div class="alignL">Yoga Start: </div><div id=s_yoga_start class="alignR"></div>
+</div>
+<div class="trow">
+<div class="alignL">Yoga End: </div><div id=s_yoga_end class="alignR"></div>
+</div>
+<div class="trow">
+<div class="alignL">Raasi: </div><div id=raasi class="alignR"></div>
+</div>
+<div class="trow">
+<div class="alignL">Ayanamsa: </div><div id=ayanamsa class="alignR"></div>
+</div>
+<div class="trow">
+<div class="alignL">Sun Rise: </div><div id=srise class="alignR"></div>
+</div>
+<div class="trow">
+<div class="alignL">Sun Set: </div><div id=sset class="alignR"></div>
+</div>
 </body>
 </html>
