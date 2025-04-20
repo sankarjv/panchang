@@ -100,13 +100,58 @@
 <div class="alignL">Sun Set: </div><div id="set" class="alignR"></div>
 </div>
 <div class="trow">
-<div class="alignL">Rahukalam: </div>
+<div class="alignL">RahuKalam: </div>
 </div>
 <div class="trow">
-<div class="alignL">Rahukalam Start: </div><div id="rkst" class="alignR"></div>
+<div class="alignL">RahuKalam Start: </div><div id="rkst" class="alignR"></div>
 </div>
 <div class="trow">
-<div class="alignL">Rahukalm End: </div><div id="rkft" class="alignR"></div>
+<div class="alignL">RahuKalam End: </div><div id="rkft" class="alignR"></div>
+</div>
+<div class="trow">
+<div class="alignL">YamaGandam: </div>
+</div>
+<div class="trow">
+<div class="alignL">YamaGandam Start: </div><div id="ygst" class="alignR"></div>
+</div>
+<div class="trow">
+<div class="alignL">YamaGandam End: </div><div id="ygft" class="alignR"></div>
+</div>
+<div class="trow">
+<div class="alignL">GulikaKakam: </div>
+</div>
+<div class="trow">
+<div class="alignL">GulikaKakam Start: </div><div id="gkst" class="alignR"></div>
+</div>
+<div class="trow">
+<div class="alignL">GulikaKakam End: </div><div id="gkft" class="alignR"></div>
+</div>
+<div class="trow">
+<div class="alignL">DurMuhurtam: </div>
+</div>
+<div class="trow">
+<div class="alignL">DurMuhurtam Start: </div><div id="dmst" class="alignR"></div>
+</div>
+<div class="trow">
+<div class="alignL">DurMuhurtam End: </div><div id="dmft" class="alignR"></div>
+</div>
+<div class="trow">
+<div class="alignL">Varjyam: </div>
+</div>
+<div class="trow">
+<div class="alignL">Varjyam Start: </div><div id="vjst" class="alignR"></div>
+</div>
+<div class="trow">
+<div class="alignL">Varjyam End: </div><div id="vjft" class="alignR"></div>
+</div>
+<div class="trow">
+<div class="alignL">AmrutKalam: </div>
+</div>
+<div class="trow">
+<div class="alignL">AmrutKalam Start: </div><div id="akst" class="alignR"></div>
+</div>
+<div class="trow">
+<div class="alignL">AmrutKalam End: </div><div id="akft" class="alignR"></div>
 </div>
 <script>
 navigator.geolocation.getCurrentPosition(function(position) {
@@ -116,14 +161,41 @@ navigator.geolocation.getCurrentPosition(function(position) {
     var daylen = Math.floor(sset - srise);
     var daypart = Math.floor(daylen / 8);
     var daypart1 = new Date(Math.floor((srise.getTime() + daypart)));
-    var rks = srise;
-    var rkf = daypart1;
+    var daypart2 = new Date(Math.floor((daypart1.getTime() + daypart)));
+    var daypart3 = new Date(Math.floor((daypart2.getTime() + daypart)));
+    var daypart4 = new Date(Math.floor((daypart3.getTime() + daypart)));
+    var daypart5 = new Date(Math.floor((daypart4.getTime() + daypart)));
+    var daypart6 = new Date(Math.floor((daypart5.getTime() + daypart)));
+    var daypart7 = new Date(Math.floor((daypart6.getTime() + daypart)));
+    var daypart8 = new Date(Math.floor((daypart7.getTime() + daypart)));
+    var rks = daypart1;
+    var rkf = daypart2;
+    var ygs = daypart3;
+    var ygf = daypart4;
+    var gks = daypart5;
+    var gkf = daypart6;
+    var dms = daypart7;
+    var dmf = daypart8;
+    var vjs = daypart1;
+    var vjf = daypart2;
+    var aks = daypart3;
+    var akf = daypart4;
     document.getElementById("rise").innerHTML=srise;
     document.getElementById("rise1").innerHTML=srise1;
     document.getElementById("riz").innerHTML=srise;
     document.getElementById("set").innerHTML=sset;
     document.getElementById("rkst").innerHTML=rks;
     document.getElementById("rkft").innerHTML=rkf;
+    document.getElementById("ygst").innerHTML=ygs;
+    document.getElementById("ygft").innerHTML=ygf;
+    document.getElementById("gkst").innerHTML=gks;
+    document.getElementById("gkft").innerHTML=gkf;
+    document.getElementById("dmst").innerHTML=dms;
+    document.getElementById("dmft").innerHTML=dmf;
+    document.getElementById("vjst").innerHTML=vjs;
+    document.getElementById("vjft").innerHTML=vjf;
+    document.getElementById("akst").innerHTML=aks;
+    document.getElementById("akft").innerHTML=akf;
 });
 </script>
 </body>
