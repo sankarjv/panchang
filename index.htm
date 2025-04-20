@@ -93,7 +93,7 @@
 <div class="alignL">Day End: </div><div id="rise1" class="alignR"></div>
 </div>
 <div class="trow">
-<div class="alignL">Sun Rise: </div><div id="rise" class="alignR"></div>
+<div class="alignL">Sun Rise: </div><div id="riz" class="alignR"></div>
 </div>
 <div class="trow">
 <div class="alignL">Sun Set: </div><div id="set" class="alignR"></div>
@@ -104,10 +104,9 @@ navigator.geolocation.getCurrentPosition(function(position) {
    	var sset = new Date().sunset(position.coords.latitude, position.coords.longitude);
    	var srise1 = new Date(srise.getTime() + (24 * 60 * 60 * 1000)).sunrise(position.coords.latitude, position.coords.longitude);
     document.getElementById("rise").innerHTML=srise;
-    document.getElementById("set").innerHTML=sset;
     document.getElementById("rise1").innerHTML=srise1;
-    console.log("Rise: " + srise);
-    console.log("Set: " + sset);
+    document.getElementById("riz").innerHTML=srise;
+    document.getElementById("set").innerHTML=sset;
 });
 </script>
 </body>
