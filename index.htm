@@ -93,10 +93,18 @@
   });
 </script>
 <script src="./sun.js"></script>
+<div class="trow">
+<div class="alignL">Sun Rise: </div><div id="srise" class="alignR"></div>
+</div>
+<div class="trow">
+<div class="alignL">Sun Set: </div><div id="sset" class="alignR"></div>
+</div>
 <script>
 navigator.geolocation.getCurrentPosition(function(position) {
    	var srise = new Date().sunrise(position.coords.latitude, position.coords.longitude);
    	var sset = new Date().sunset(position.coords.latitude, position.coords.longitude);
+    document.getElementById("srise").innerHTML=sun.srise;
+    document.getElementById("sset").innerHTML=sun.sset;
     console.log("Rise: " + srise);
     console.log("Set: " + sset);
 });
