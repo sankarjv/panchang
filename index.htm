@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="./panchang.js"></script>
 <style>
 .block{
   overflow:hidden;
@@ -26,9 +25,11 @@
 <body>
 <h1>Present Panchang</h1>
 <h2>Panchang as of now</h2>
+<script src="./panchang.js"></script>
 <div class="trow">
 <div class="alignL">Tithi: </div><div id="tithi" class="alignR"></div>
 </div>
+<div class="trow">
 <div class="alignL">Tithi Start: </div><div id="s_tithi_start" class="alignR"></div>
 </div>
 <div class="trow">
@@ -114,7 +115,7 @@ navigator.geolocation.getCurrentPosition(function(position) {
    	var srise1 = new Date(srise.getTime() + (24 * 60 * 60 * 1000)).sunrise(position.coords.latitude, position.coords.longitude);
     var daylen = Math.floor(sset - srise);
     var daypart = Math.floor(daylen / 8);
-    var daypart1 = Math.floor((srise + daypart) / 3600000);
+    var daypart1 = new Date(Math.floor((srise + daypart) / 3600000));
     var rks = srise;
     var rkf = daypart1;
     document.getElementById("rise").innerHTML=srise;
