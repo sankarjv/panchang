@@ -750,8 +750,8 @@ panchang = {
  Nakshatra: {},
  Karna: {},
  Yoga: {},
- Ayanamsa: {},
- Raasi:{},
+// Ayanamsa: {},
+// Raasi:{},
  version: "0.2",
  calculate: function(d,cb){
    var n_wday, n_tithi=1, n_naksh=1, n_karana, n_yoga;
@@ -829,8 +829,8 @@ with(Math){
 var z = floor(abs(fix360(Lmoon + ayanamsa))/30);
 }
 
-    this.Ayanamsa.name = lon2dms(ayanamsa);
-    this.Raasi.name = zn[z];
+//    this.Ayanamsa.name = lon2dms(ayanamsa);
+//    this.Raasi.name = zn[z];
     this.Nakshatra.name =naks[n_naksh];
     this.Nakshatra.start = s_naksh.start;
     this.Nakshatra.end =s_naksh.end;
