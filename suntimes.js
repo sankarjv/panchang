@@ -2,7 +2,7 @@ function suntimes(lat, lng, tz) {
     var d = new Date();
     var radians = Math.PI / 180.0;
     var degrees = 180.0 / Math.PI;
-    var a = Math.floor((14 - (d.getMonth() + 1.0)) / 12)
+    var a = Math.floor((14 - (d.getMonth() + 1.0)) / 12);
     var y = d.getFullYear() + 4800 - a;
     var m = (d.getMonth() + 1) + 12 * a - 3;
     var j_day = d.getDate() + Math.floor((153 * m + 2)/5) + 365 * y + Math.floor(y/4) - Math.floor(y/100) + Math.floor(y/400) - 32045;
