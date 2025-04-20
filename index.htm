@@ -105,7 +105,7 @@
 </div>
 <script>
 navigator.geolocation.getCurrentPosition(function(position) {
-   	var srise1 = new Date(+1).sunrise(position.coords.latitude, position.coords.longitude);
+   	var srise1 = new Date(today.getTime() + (24 * 60 * 60 * 1000)).sunrise(position.coords.latitude, position.coords.longitude);
    	var srise = new Date().sunrise(position.coords.latitude, position.coords.longitude);
    	var sset = new Date().sunset(position.coords.latitude, position.coords.longitude);
     document.getElementById("rise1").innerHTML=srise1;
