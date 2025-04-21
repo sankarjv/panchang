@@ -155,11 +155,10 @@
 <div class="alignL">AmrutKalam End: </div><div id="akft" class="alignR"></div>
 </div>
 <script>
-    navigator.geolocation.getCurrentPosition(function(position) {
+navigator.geolocation.getCurrentPosition(function(position) {
    	var srise = new Date().sunrise(position.coords.latitude, position.coords.longitude);
    	var sset = new Date().sunset(position.coords.latitude, position.coords.longitude);
    	var srise1 = new Date(srise.getTime() + (24 * 60 * 60 * 1000)).sunrise(position.coords.latitude, position.coords.longitude);
-    })
     var daylen = Math.floor(sset - srise);
     var daypart = Math.floor(daylen / 8);
     var daypart0 = srise;
@@ -210,7 +209,7 @@
     var gks = daypart4;
     var gkf = daypart5;
     break;
-  case 3
+  case 3:
     var rks = daypart4;
     var rkf = daypart5;
     var ygs = daypart1;
@@ -259,6 +258,7 @@
     document.getElementById("vjft").innerHTML=vjf;
     document.getElementById("akst").innerHTML=aks;
     document.getElementById("akft").innerHTML=akf;
+});
 </script>
 </body>
 </html>
