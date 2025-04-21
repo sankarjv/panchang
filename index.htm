@@ -137,6 +137,12 @@
 <div class="alignL">DurMuhurtam End: </div><div id="dmft" class="alignR"></div>
 </div>
 <div class="trow">
+<div class="alignL">DurMuhurtam Start: </div><div id="dmbt" class="alignR"></div>
+</div>
+<div class="trow">
+<div class="alignL">DurMuhurtam End: </div><div id="dmet" class="alignR"></div>
+</div>
+<div class="trow">
 <div class="alignL">Varjyam: </div>
 </div>
 <div class="trow">
@@ -185,7 +191,7 @@ navigator.geolocation.getCurrentPosition(function(position) {
     var ygf = daypart5;
     var gks = daypart6;
     var gkf = daypart7;
-    var dms = new Date(Math.floor(srise.getTime() + (daylen / 10.4)));
+    var dms = new Date(Math.floor(srise.getTime() + (daylen / (10.4 * 60 * 60 * 1000))));
     var dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
     break;
   case 1:
@@ -195,9 +201,9 @@ navigator.geolocation.getCurrentPosition(function(position) {
     var ygf = daypart4;
     var gks = daypart5;
     var gkf = daypart6;
-    var dms = new Date(Math.floor(srise.getTime() + (daylen / 6.4)));
+    var dms = new Date(Math.floor(srise.getTime() + (daylen / (6.4 * 60 * 60 * 1000))));
     var dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
-    var dmb = new Date(Math.floor(srise.getTime() + (daylen / 8.8)));
+    var dmb = new Date(Math.floor(srise.getTime() + (daylen / (8.8 * 60 * 60 * 1000))));
     var dme = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
     break;
   case 2:
