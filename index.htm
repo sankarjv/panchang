@@ -185,7 +185,9 @@ navigator.geolocation.getCurrentPosition(function(position) {
     var ygf = daypart5;
     var gks = daypart6;
     var gkf = daypart7;
-      break;
+    var dms = new Date(Math.floor(srise + daylen / 10.4));
+    var dmf = new Date(Math.floor(dms + (48 * 60 * 1000)));
+    break;
   case 1:
     var rks = daypart1;
     var rkf = daypart2;
@@ -193,6 +195,10 @@ navigator.geolocation.getCurrentPosition(function(position) {
     var ygf = daypart4;
     var gks = daypart5;
     var gkf = daypart6;
+    var dms = new Date(Math.floor(srise + daylen / 6.4));
+    var dmf = new Date(Math.floor(dms + (48 * 60 * 1000)));
+    var dmb = new Date(Math.floor(srise + daylen / 8.8));
+    var dme = new Date(Math.floor(dms + (48 * 60 * 1000)));
     break;
   case 2:
     var rks = daypart6;
@@ -247,6 +253,8 @@ navigator.geolocation.getCurrentPosition(function(position) {
     document.getElementById("gkft").innerHTML=gkf;
     document.getElementById("dmst").innerHTML=dms;
     document.getElementById("dmft").innerHTML=dmf;
+    document.getElementById("dmbt").innerHTML=dmb;
+    document.getElementById("dmet").innerHTML=dme;
     document.getElementById("vjst").innerHTML=vjs;
     document.getElementById("vjft").innerHTML=vjf;
     document.getElementById("akst").innerHTML=aks;
