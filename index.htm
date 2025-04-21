@@ -159,6 +159,7 @@ navigator.geolocation.getCurrentPosition(function(position) {
    	var srise = new Date().sunrise(position.coords.latitude, position.coords.longitude);
    	var sset = new Date().sunset(position.coords.latitude, position.coords.longitude);
    	var srise1 = new Date(srise.getTime() + (24 * 60 * 60 * 1000)).sunrise(position.coords.latitude, position.coords.longitude);
+ });
     var daylen = Math.floor(sset - srise);
     var daypart = Math.floor(daylen / 8);
     var daypart0 = srise;
@@ -170,12 +171,6 @@ navigator.geolocation.getCurrentPosition(function(position) {
     var daypart6 = new Date(Math.floor((daypart5.getTime() + daypart)));
     var daypart7 = new Date(Math.floor((daypart6.getTime() + daypart)));
     var daypart8 = new Date(Math.floor((daypart7.getTime() + daypart)));
-//    var rks = daypart1;
-//    var rkf = daypart2;
-//    var ygs = daypart3;
-//    var ygf = daypart4;
-//    var gks = daypart5;
-//    var gkf = daypart6;
     var dms = daypart7;
     var dmf = daypart8;
     var vjs = daypart1;
@@ -183,7 +178,6 @@ navigator.geolocation.getCurrentPosition(function(position) {
     var aks = daypart3;
     var akf = daypart4;
   var wday = new Date().getDay();
-  console.log("day: "+wday);
   switch(wday) {
   case 0:
     var rks = daypart7;
@@ -258,7 +252,6 @@ navigator.geolocation.getCurrentPosition(function(position) {
     document.getElementById("vjft").innerHTML=vjf;
     document.getElementById("akst").innerHTML=aks;
     document.getElementById("akft").innerHTML=akf;
-});
 </script>
 </body>
 </html>
