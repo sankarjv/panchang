@@ -65,7 +65,6 @@
 <div class="trow">
 <div class="alignL" >Day: </div><div id="day" class="alignR"></div>
 </div>
-var wday = new Date().getDay();
 <script>
   var t= new Date();
   panchang.calculate(t, function() {
@@ -82,9 +81,10 @@ var wday = new Date().getDay();
     document.getElementById("s_yoga_start").innerHTML=panchang.Yoga.start;
     document.getElementById("s_yoga_end").innerHTML=panchang.Yoga.end;
     var wday = document.getElementById("day").innerHTML=panchang.Day.name;
+  console.log("iday: "+wday);
   });
 </script>
-console.log("day: "+wday);
+console.log("oday: "+wday);
 <script src="./sun.js"></script>
 <div class="trow">
 <div class="alignL">Day Start: </div><div id="rise" class="alignR"></div>
