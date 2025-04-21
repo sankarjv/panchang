@@ -80,8 +80,8 @@
     document.getElementById("yoga").innerHTML=panchang.Yoga.name;
     document.getElementById("s_yoga_start").innerHTML=panchang.Yoga.start;
     document.getElementById("s_yoga_end").innerHTML=panchang.Yoga.end;
-    var wday = document.getElementById("day").innerHTML=panchang.Day.name;
-  console.log("iday: "+wday);
+    var wday1 = document.getElementById("day").innerHTML=panchang.Day.name;
+  console.log("day1: "+wday1);
   });
 </script>
 
@@ -156,10 +156,11 @@
 <div class="alignL">AmrutKalam End: </div><div id="akft" class="alignR"></div>
 </div>
 <script>
-console.log("oday: "+wday);
   navigator.geolocation.getCurrentPosition(function(position) {
    	var srise = new Date().sunrise(position.coords.latitude, position.coords.longitude);
    	var sset = new Date().sunset(position.coords.latitude, position.coords.longitude);
+    var wday2 = new Date().getDay();
+    console.log("day2: "+wday2);
    	var srise1 = new Date(srise.getTime() + (24 * 60 * 60 * 1000)).sunrise(position.coords.latitude, position.coords.longitude);
     var daylen = Math.floor(sset - srise);
     var daypart = Math.floor(daylen / 8);
