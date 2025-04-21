@@ -66,8 +66,8 @@
 <div class="alignL" >Day: </div><div id="day" class="alignR"></div>
 </div>
 <script>
-  var t= new Date();
-  panchang.calculate(t, function() {
+    var t= new Date();
+    panchang.calculate(t, function() {
     document.getElementById("tithi").innerHTML=panchang.Tithi.name;
     document.getElementById("s_tithi_start").innerHTML=panchang.Tithi.start;
     document.getElementById("s_tithi_end").innerHTML=panchang.Tithi.end;
@@ -155,11 +155,11 @@
 <div class="alignL">AmrutKalam End: </div><div id="akft" class="alignR"></div>
 </div>
 <script>
-  navigator.geolocation.getCurrentPosition(function(position) {
+    navigator.geolocation.getCurrentPosition(function(position) {
    	var srise = new Date().sunrise(position.coords.latitude, position.coords.longitude);
    	var sset = new Date().sunset(position.coords.latitude, position.coords.longitude);
    	var srise1 = new Date(srise.getTime() + (24 * 60 * 60 * 1000)).sunrise(position.coords.latitude, position.coords.longitude);
-})
+    })
     var daylen = Math.floor(sset - srise);
     var daypart = Math.floor(daylen / 8);
     var daypart0 = srise;
@@ -183,10 +183,10 @@
     var vjf = daypart2;
     var aks = daypart3;
     var akf = daypart4;
-var wday = new Date().getDay();
-    console.log("day: "+wday);
+  var wday = new Date().getDay();
+  console.log("day: "+wday);
   switch(wday) {
-  case "0":
+  case 0:
     var rks = daypart7;
     var rkf = daypart8;
     var ygs = daypart4;
@@ -194,7 +194,7 @@ var wday = new Date().getDay();
     var gks = daypart6;
     var gkf = daypart7;
       break;
-  case "1":
+  case 1:
     var rks = daypart1;
     var rkf = daypart2;
     var ygs = daypart3;
@@ -202,7 +202,7 @@ var wday = new Date().getDay();
     var gks = daypart5;
     var gkf = daypart6;
     break;
-  case "2":
+  case 2:
     var rks = daypart6;
     var rkf = daypart7;
     var ygs = daypart2;
@@ -210,7 +210,7 @@ var wday = new Date().getDay();
     var gks = daypart4;
     var gkf = daypart5;
     break;
-  case "3":
+  case 3
     var rks = daypart4;
     var rkf = daypart5;
     var ygs = daypart1;
@@ -218,7 +218,7 @@ var wday = new Date().getDay();
     var gks = daypart3;
     var gkf = daypart4;
     break;
-  case "4":
+  case 4:
     var rks = daypart5;
     var rkf = daypart6;
     var ygs = daypart0;
@@ -226,7 +226,7 @@ var wday = new Date().getDay();
     var gks = daypart2;
     var gkf = daypart3;
     break;
-  case "5":
+  case 5:
     var rks = daypart3;
     var rkf = daypart4;
     var ygs = daypart6;
@@ -234,7 +234,7 @@ var wday = new Date().getDay();
     var gks = daypart1;
     var gkf = daypart2;
     break;
-  case "6":
+  case 6:
     var rks = daypart2;
     var rkf = daypart3;
     var ygs = daypart5;
@@ -242,7 +242,7 @@ var wday = new Date().getDay();
     var gks = daypart0;
     var gkf = daypart1;
     break;
-}
+  }
     document.getElementById("rise").innerHTML=srise;
     document.getElementById("rise1").innerHTML=srise1;
     document.getElementById("riz").innerHTML=srise;
@@ -259,7 +259,6 @@ var wday = new Date().getDay();
     document.getElementById("vjft").innerHTML=vjf;
     document.getElementById("akst").innerHTML=aks;
     document.getElementById("akft").innerHTML=akf;
-;
 </script>
 </body>
 </html>
