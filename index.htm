@@ -80,9 +80,10 @@
     document.getElementById("yoga").innerHTML=panchang.Yoga.name;
     document.getElementById("s_yoga_start").innerHTML=panchang.Yoga.start;
     document.getElementById("s_yoga_end").innerHTML=panchang.Yoga.end;
-    document.getElementById("day").innerHTML=panchang.Day.name;
+    var wday = document.getElementById("day").innerHTML=panchang.Day.name;
   });
 </script>
+console.log("day: "+wday);
 <script src="./sun.js"></script>
 <div class="trow">
 <div class="alignL">Day Start: </div><div id="rise" class="alignR"></div>
