@@ -80,8 +80,7 @@
     document.getElementById("yoga").innerHTML=panchang.Yoga.name;
     document.getElementById("s_yoga_start").innerHTML=panchang.Yoga.start;
     document.getElementById("s_yoga_end").innerHTML=panchang.Yoga.end;
-    var wday1 = document.getElementById("day").innerHTML=panchang.Day.name;
-  console.log("day1: "+wday1);
+    document.getElementById("day").innerHTML=panchang.Day.name;
   });
 </script>
 
@@ -159,12 +158,12 @@
   navigator.geolocation.getCurrentPosition(function(position) {
    	var srise = new Date().sunrise(position.coords.latitude, position.coords.longitude);
    	var sset = new Date().sunset(position.coords.latitude, position.coords.longitude);
-    var wday2 = new Date().getDay();
-    console.log("day2: "+wday2);
    	var srise1 = new Date(srise.getTime() + (24 * 60 * 60 * 1000)).sunrise(position.coords.latitude, position.coords.longitude);
+})
     var daylen = Math.floor(sset - srise);
     var daypart = Math.floor(daylen / 8);
-    var daypart1 = new Date(Math.floor((srise.getTime() + daypart)));
+    var daypart0 = srise;
+    var daypart1 = new Date(Math.floor((daypart0.getTime() + daypart)));
     var daypart2 = new Date(Math.floor((daypart1.getTime() + daypart)));
     var daypart3 = new Date(Math.floor((daypart2.getTime() + daypart)));
     var daypart4 = new Date(Math.floor((daypart3.getTime() + daypart)));
@@ -172,18 +171,78 @@
     var daypart6 = new Date(Math.floor((daypart5.getTime() + daypart)));
     var daypart7 = new Date(Math.floor((daypart6.getTime() + daypart)));
     var daypart8 = new Date(Math.floor((daypart7.getTime() + daypart)));
-    var rks = daypart1;
-    var rkf = daypart2;
-    var ygs = daypart3;
-    var ygf = daypart4;
-    var gks = daypart5;
-    var gkf = daypart6;
+//    var rks = daypart1;
+//    var rkf = daypart2;
+//    var ygs = daypart3;
+//    var ygf = daypart4;
+//    var gks = daypart5;
+//    var gkf = daypart6;
     var dms = daypart7;
     var dmf = daypart8;
     var vjs = daypart1;
     var vjf = daypart2;
     var aks = daypart3;
     var akf = daypart4;
+var wday = new Date().getDay();
+    console.log("day: "+wday);
+  switch(wday) {
+  case "0":
+    var rks = daypart7;
+    var rkf = daypart8;
+    var ygs = daypart4;
+    var ygf = daypart5;
+    var gks = daypart6;
+    var gkf = daypart7;
+      break;
+  case "1":
+    var rks = daypart1;
+    var rkf = daypart2;
+    var ygs = daypart3;
+    var ygf = daypart4;
+    var gks = daypart5;
+    var gkf = daypart6;
+    break;
+  case "2":
+    var rks = daypart6;
+    var rkf = daypart7;
+    var ygs = daypart2;
+    var ygf = daypart3;
+    var gks = daypart4;
+    var gkf = daypart5;
+    break;
+  case "3":
+    var rks = daypart4;
+    var rkf = daypart5;
+    var ygs = daypart1;
+    var ygf = daypart2;
+    var gks = daypart3;
+    var gkf = daypart4;
+    break;
+  case "4":
+    var rks = daypart5;
+    var rkf = daypart6;
+    var ygs = daypart0;
+    var ygf = daypart1;
+    var gks = daypart2;
+    var gkf = daypart3;
+    break;
+  case "5":
+    var rks = daypart3;
+    var rkf = daypart4;
+    var ygs = daypart6;
+    var ygf = daypart7;
+    var gks = daypart1;
+    var gkf = daypart2;
+    break;
+  case "6":
+    var rks = daypart2;
+    var rkf = daypart3;
+    var ygs = daypart5;
+    var ygf = daypart6;
+    var gks = daypart0;
+    var gkf = daypart1;
+    break;
+}
     document.getElementById("rise").innerHTML=srise;
     document.getElementById("rise1").innerHTML=srise1;
     document.getElementById("riz").innerHTML=srise;
@@ -200,7 +259,7 @@
     document.getElementById("vjft").innerHTML=vjf;
     document.getElementById("akst").innerHTML=aks;
     document.getElementById("akft").innerHTML=akf;
-});
+;
 </script>
 </body>
 </html>
