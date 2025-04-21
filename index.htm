@@ -176,8 +176,8 @@ navigator.geolocation.getCurrentPosition(function(position) {
     var daypart6 = new Date(Math.floor((daypart5.getTime() + daypart)));
     var daypart7 = new Date(Math.floor((daypart6.getTime() + daypart)));
     var daypart8 = new Date(Math.floor((daypart7.getTime() + daypart)));
-    var dms = daypart7;
-    var dmf = daypart8;
+//    var dms = daypart7;
+//    var dmf = daypart8;
     var vjs = daypart1;
     var vjf = daypart2;
     var aks = daypart3;
@@ -191,7 +191,7 @@ navigator.geolocation.getCurrentPosition(function(position) {
     var ygf = daypart5;
     var gks = daypart6;
     var gkf = daypart7;
-    var dms = new Date(Math.floor(srise.getTime() + ((10.4) / daylen)));
+    var dms = new Date(Math.floor(srise.getTime() + ((daylen * 10.4) / 12)));
     var dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
     break;
   case 1:
@@ -201,9 +201,9 @@ navigator.geolocation.getCurrentPosition(function(position) {
     var ygf = daypart4;
     var gks = daypart5;
     var gkf = daypart6;
-    var dms = new Date(Math.floor(srise.getTime() + ((6.4) / daylen)));
+    var dms = new Date(Math.floor(srise.getTime() + ((daylen * 6.4) / 12)));
     var dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
-    var dmb = new Date(Math.floor(srise.getTime() + ((8.8) / daylen)));
+    var dmb = new Date(Math.floor(srise.getTime() + ((daylen * 8.8) / 12)));
     var dme = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
     break;
   case 2:
