@@ -43,7 +43,7 @@
 <div class="alignL">Nakshtra End: </div><div id="s_nakshtra_end" class="alignR"></div>
 </div>
 <div class="trow">
-<div class="alignL">Varjyam End: </div><div id="varf" class="alignR"></div>
+<div class="alignL">Varjyam End: </div><div id="varft" class="alignR"></div>
 </div>
 <div class="trow">
 <div class="alignL">Karna: </div><div id="karna" class="alignR"></div>
@@ -137,7 +137,7 @@ var V27=12;
     document.getElementById("s_yoga_end").innerHTML=panchang.Yoga.end;
     document.getElementById("day").innerHTML=panchang.Day.name;
     var naklen = (nakf - naks);
-    var vars = new Date(Math.floor(naks.getTime() + (naklen * (N22 / 24))));
+    var varf = new Date(Math.floor(naks.getTime() + (naklen * (N22 / 24))));
     document.getElementById("varft").innerHTML=varf;
     });
 </script>
