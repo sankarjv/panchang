@@ -183,12 +183,12 @@ navigator.geolocation.getCurrentPosition(function(position) {
     var dme = new Date(Math.floor(dmb.getTime() + (48 * 60 * 1000)));
     break;
   case 2:
-    var rks = daypart6.toLocaleString("en-IN");
-    var rkf = daypart7.toLocaleString("en-IN");
-    var ygs = daypart2.toLocaleString("en-IN");
-    var ygf = daypart3.toLocaleString("en-IN");
-    var gks = daypart4.toLocaleString("en-IN");
-    var gkf = daypart5.toLocaleString("en-IN");
+    var rks = daypart6;
+    var rkf = daypart7;
+    var ygs = daypart2;
+    var ygf = daypart3;
+    var gks = daypart4;
+    var gkf = daypart5;
     var dms = new Date(Math.floor(srise.getTime() + ((daylen * 2.4) / 12)));
     var dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
     var niglen = Math.floor(srise1 - sset);
@@ -240,20 +240,20 @@ navigator.geolocation.getCurrentPosition(function(position) {
     var dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
     break;
   }
-    document.getElementById("rise").innerHTML=srise;
-    document.getElementById("rise1").innerHTML=srise1;
-    document.getElementById("riz").innerHTML=srise;
-    document.getElementById("set").innerHTML=sset;
-    document.getElementById("rkst").innerHTML=rks;
-    document.getElementById("rkft").innerHTML=rkf;
-    document.getElementById("ygst").innerHTML=ygs;
-    document.getElementById("ygft").innerHTML=ygf;
-    document.getElementById("gkst").innerHTML=gks;
-    document.getElementById("gkft").innerHTML=gkf;
-    document.getElementById("dmst").innerHTML=dms;
-    document.getElementById("dmft").innerHTML=dmf;
-    document.getElementById("dmbt").innerHTML=dmb;
-    document.getElementById("dmet").innerHTML=dme;
+    document.getElementById("rise").innerHTML=srise.toLocaleString("en-IN");
+    document.getElementById("rise1").innerHTML=srise1.toLocaleString("en-IN");
+    document.getElementById("riz").innerHTML=srise.toLocaleString("en-IN");
+    document.getElementById("set").innerHTML=sset.toLocaleString("en-IN");
+    document.getElementById("rkst").innerHTML=rks.toLocaleString("en-IN");
+    document.getElementById("rkft").innerHTML=rkf.toLocaleString("en-IN");
+    document.getElementById("ygst").innerHTML=ygs.toLocaleString("en-IN");
+    document.getElementById("ygft").innerHTML=ygf.toLocaleString("en-IN");
+    document.getElementById("gkst").innerHTML=gks.toLocaleString("en-IN");
+    document.getElementById("gkft").innerHTML=gkf.toLocaleString("en-IN");
+    document.getElementById("dmst").innerHTML=dms.toLocaleString("en-IN");
+    document.getElementById("dmft").innerHTML=dmf.toLocaleString("en-IN");
+    document.getElementById("dmbt").innerHTML=dmb.toLocaleString("en-IN");
+    document.getElementById("dmet").innerHTML=dme.toLocaleString("en-IN");
  });
 </script>
 </body>
