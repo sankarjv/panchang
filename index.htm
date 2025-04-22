@@ -65,7 +65,7 @@
 </div>
 <script>
     var t= new Date();
-    var dt=t.toLocaleString("en-IN");
+    var dt=t.toLocaleString("en-IN", { dateStyle: "long" });
     console.log("dt: "+dt);
     panchang.calculate(t, function() {
     document.getElementById("tithi").innerHTML=panchang.Tithi.name;
