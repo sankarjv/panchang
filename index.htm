@@ -64,8 +64,7 @@
 <div class="alignL" >Day: </div><div id="day" class="alignR"></div>
 </div>
 <script>
-    var t= new Date("1914-12-20 08:00");
-    console.log("dt: "+t);
+    var t= new Date();
     panchang.calculate(t, function() {
     document.getElementById("tithi").innerHTML=panchang.Tithi.name;
     document.getElementById("s_tithi_start").innerHTML=panchang.Tithi.start;
