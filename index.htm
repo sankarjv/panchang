@@ -64,8 +64,9 @@
 <div class="alignL" >Day: </div><div id="day" class="alignR"></div>
 </div>
 <script>
-    var t= new Date().toLocaleString("en-IN", { dateStyle: "medium" });
-    console.log("dt: "+t);
+    var t= new Date();
+    var dt=t.toLocaleString("en-IN", { dateStyle: "medium" });
+    console.log("dt: "+dt);
     panchang.calculate(t, function() {
     document.getElementById("tithi").innerHTML=panchang.Tithi.name;
     document.getElementById("s_tithi_start").innerHTML=panchang.Tithi.start;
