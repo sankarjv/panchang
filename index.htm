@@ -69,17 +69,17 @@
     console.log("dt: "+dt);
     panchang.calculate(t, function() {
     document.getElementById("tithi").innerHTML=panchang.Tithi.name;
-    document.getElementById("s_tithi_start").innerHTML=panchang.Tithi.start;
-    document.getElementById("s_tithi_end").innerHTML=panchang.Tithi.end;
+    document.getElementById("s_tithi_start").innerHTML=panchang.Tithi.start.toLocaleString("en-IN");
+    document.getElementById("s_tithi_end").innerHTML=panchang.Tithi.end.toLocaleString("en-IN");
     document.getElementById("nakshtra").innerHTML=panchang.Nakshatra.name;
-    document.getElementById("s_nakshtra_start").innerHTML=panchang.Nakshatra.start;
-    document.getElementById("s_nakshtra_end").innerHTML=panchang.Nakshatra.end;
+    document.getElementById("s_nakshtra_start").innerHTML=panchang.Nakshatra.start.toLocaleString("en-IN");
+    document.getElementById("s_nakshtra_end").innerHTML=panchang.Nakshatra.end.toLocaleString("en-IN");
     document.getElementById("karna").innerHTML=panchang.Karna.name;
-    document.getElementById("s_karna_start").innerHTML=panchang.Karna.start;
-    document.getElementById("s_karna_end").innerHTML=panchang.Karna.end;
+    document.getElementById("s_karna_start").innerHTML=panchang.Karna.start.toLocaleString("en-IN");
+    document.getElementById("s_karna_end").innerHTML=panchang.Karna.end.toLocaleString("en-IN");
     document.getElementById("yoga").innerHTML=panchang.Yoga.name;
-    document.getElementById("s_yoga_start").innerHTML=panchang.Yoga.start;
-    document.getElementById("s_yoga_end").innerHTML=panchang.Yoga.end;
+    document.getElementById("s_yoga_start").innerHTML=panchang.Yoga.start.toLocaleString("en-IN");
+    document.getElementById("s_yoga_end").innerHTML=panchang.Yoga.end.toLocaleString("en-IN");
     document.getElementById("day").innerHTML=panchang.Day.name;
     });
 </script>
