@@ -16,12 +16,11 @@
 }
 .alignL, .alignR {
       display: table-cell;
-      padding-right: 25px;
 }
 .alignC1, .alignC2 {
       display: table-cell;
-      padding-right: 5px;
-      padding-left: 5px;
+      padding-right: 25px;
+      padding-left: 25px;
 }
 </style>
 </head>
@@ -30,41 +29,43 @@
 <h2>Panchang as of now</h2>
 <script src="./panchang.js"></script>
 <div class="trow">
-<div class="alignL">Tithi: </div><div id="tithi" class="alignR"></div>
+<div class="alignL">Tithi: </div><div id="tithi" class="alignC1"></div>
 </div>
 <div class="trow">
 <div class="alignL"></div><div id="s_tithi_start" class="alignC1"></div>
-<div class="alignC2">To</div><div id="s_tithi_end" class="alignR"></div>
+<div class="alignC2">to</div><div id="s_tithi_end" class="alignR"></div>
 </div>
 <div class="trow">
-<div class="alignL">Nakshtra: </div><div id="nakshtra" class="alignR"></div>
 </div>
 <div class="trow">
-<div class="alignL">Nakshtra Start: </div><div id="s_nakshtra_start" class="alignR"></div>
+<div class="alignL">Nakshatra: </div><div id="nakshtra" class="alignC1"></div>
 </div>
 <div class="trow">
-<div class="alignL">Nakshtra End: </div><div id="s_nakshtra_end" class="alignR"></div>
+<div class="alignL"></div><div id="s_nakshtra_start" class="alignC1"></div>
+<div class="alignC2">to</div><div id="s_nakshtra_end" class="alignR"></div>
 </div>
 <div class="trow">
-<div class="alignL">Karna: </div><div id="karna" class="alignR"></div>
 </div>
 <div class="trow">
-<div class="alignL">Karna Start: </div><div id="s_karna_start" class="alignR"></div>
+<div class="alignL">Karana: </div><div id="karna" class="alignC1"></div>
 </div>
 <div class="trow">
-<div class="alignL">Karna End: </div><div id="s_karna_end" class="alignR"></div>
+<div class="alignL"></div><div id="s_karna_start" class="alignC1"></div>
+<div class="alignC2">to</div><div id="s_karna_end" class="alignR"></div>
 </div>
 <div class="trow">
-<div class="alignL">Yoga: </div><div id="yoga" class="alignR"></div>
 </div>
 <div class="trow">
-<div class="alignL">Yoga Start: </div><div id="s_yoga_start" class="alignR"></div>
+<div class="alignL">Yoga: </div><div id="yoga" class="alignC1"></div>
 </div>
 <div class="trow">
-<div class="alignL">Yoga End: </div><div id="s_yoga_end" class="alignR"></div>
+<div class="alignL"></div><div id="s_yoga_start" class="alignC1"></div>
+<div class="alignC2">to</div><div id="s_yoga_end" class="alignR"></div>
 </div>
 <div class="trow">
-<div class="alignL" >Day: </div><div id="day" class="alignR"></div>
+</div>
+<div class="trow">
+<div class="alignL" >Day: </div><div id="day" class="alignC1"></div>
 </div>
 <script>
     var t= new Date();
