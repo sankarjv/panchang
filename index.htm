@@ -1,76 +1,48 @@
 <!DOCTYPE html>
-<html>
-<head>
-<style>
-.block{
-  overflow:hidden;
-}
-.trow {
-      display: table-row;
-}
-.alignL {
-  font-weight: bold;
-}
-.alignR {
-    margin: 1px 1px;
-}
-.alignL, .alignR {
-      display: table-cell;
-}
-.alignC1, .alignC2 {
-      display: table-cell;
-      padding-right: 20px;
-      padding-left: 20px;
-}
-</style>
-</head>
+<html><head><style>
+.block{  overflow:hidden;   }
+.trow {  display: table-row;  }
+.alignL {  font-weight: bold;  }
+.alignR {  margin: 1px 1px;  }
+.alignL, .alignR {  display: table-cell;  }
+.alignC1, .alignC2 {  display: table-cell;
+                      padding-right: 20px;
+                      padding-left: 20px;  }
+</style></head>
 <body>
-<h1>Present Panchang</h1>
+<h1>Panchang Today</h1>
 <h2>By Shankar JV</h2>
 <script src="./panchang.js"></script>
 <div class="trow">
-<div class="alignL">Tithi: </div><div id="tithi" class="alignC1"></div>
-</div>
+<div class="alignL">Tithi: </div><div id="tithi" class="alignC1"></div></div>
 <div class="trow">
 <div class="alignL"></div><div id="s_tithi_start" class="alignC1"></div>
-<div class="alignC2">to</div><div id="s_tithi_end" class="alignR"></div>
-</div>
+<div class="alignC2">to</div><div id="s_tithi_end" class="alignR"></div></div>
 <div class="trow">
-<div class="alignL">&nbsp</div>
-</div>
+<div class="alignL">&nbsp</div></div>
 <div class="trow">
-<div class="alignL">Nakshatra: </div><div id="nakshtra" class="alignC1"></div>
-</div>
+<div class="alignL">Nakshatra: </div><div id="nakshtra" class="alignC1"></div></div>
 <div class="trow">
 <div class="alignL"></div><div id="s_nakshtra_start" class="alignC1"></div>
-<div class="alignC2">to</div><div id="s_nakshtra_end" class="alignR"></div>
-</div>
+<div class="alignC2">to</div><div id="s_nakshtra_end" class="alignR"></div></div>
 <div class="trow">
-<div class="alignL">&nbsp</div>
-</div>
+<div class="alignL">&nbsp</div></div>
 <div class="trow">
-<div class="alignL">Karana: </div><div id="karna" class="alignC1"></div>
-</div>
+<div class="alignL">Karana: </div><div id="karna" class="alignC1"></div></div>
 <div class="trow">
 <div class="alignL"></div><div id="s_karna_start" class="alignC1"></div>
-<div class="alignC2">to</div><div id="s_karna_end" class="alignR"></div>
-</div>
+<div class="alignC2">to</div><div id="s_karna_end" class="alignR"></div></div>
 <div class="trow">
-<div class="alignL">&nbsp</div>
-</div>
+<div class="alignL">&nbsp</div></div>
 <div class="trow">
-<div class="alignL">Yoga: </div><div id="yoga" class="alignC1"></div>
-</div>
+<div class="alignL">Yoga: </div><div id="yoga" class="alignC1"></div></div>
 <div class="trow">
 <div class="alignL"></div><div id="s_yoga_start" class="alignC1"></div>
-<div class="alignC2">to</div><div id="s_yoga_end" class="alignR"></div>
-</div>
+<div class="alignC2">to</div><div id="s_yoga_end" class="alignR"></div></div>
 <div class="trow">
-<div class="alignL">&nbsp</div>
-</div>
+<div class="alignL">&nbsp</div></div>
 <div class="trow">
-<div class="alignL" >Day: </div><div id="day" class="alignC1"></div>
-</div>
+<div class="alignL" >Day: </div><div id="day" class="alignC1"></div></div>
 <script>
     var t= new Date();
     var dt=t.toLocaleString("en-IN");
@@ -88,54 +60,41 @@
     document.getElementById("yoga").innerHTML=panchang.Yoga.name;
     document.getElementById("s_yoga_start").innerHTML=panchang.Yoga.start.toLocaleString("en-IN");
     document.getElementById("s_yoga_end").innerHTML=panchang.Yoga.end.toLocaleString("en-IN");
-    document.getElementById("day").innerHTML=panchang.Day.name;
-    });
+    document.getElementById("day").innerHTML=panchang.Day.name;    });
 </script>
-
 <script src="./sun.js"></script>
 <div class="trow">
 <div class="alignL"></div><div id="rise" class="alignC1"></div>
 <div class="alignC2">to</div><div id="rise1" class="alignR"></div>
 </div>
 <div class="trow">
-<div class="alignL">&nbsp</div>
-</div>
+<div class="alignL">&nbsp</div></div>
 <div class="trow">
 <div class="alignL">Sun Rise & Set: </div><div id="riz" class="alignC1"></div>
-<div class="alignC2"> & </div><div id="set" class="alignR"></div>
-</div>
+<div class="alignC2"> & </div><div id="set" class="alignR"></div></div>
 <div class="trow">
-<div class="alignL">&nbsp</div>
-</div>
+<div class="alignL">&nbsp</div></div>
 <div class="trow">
 <div class="alignL">RahuKalam: </div><div id="rkst" class="alignC1"></div>
-<div class="alignC2">to</div><div id="rkft" class="alignR"></div>
-</div>
+<div class="alignC2">to</div><div id="rkft" class="alignR"></div></div>
 <div class="trow">
-<div class="alignL">&nbsp</div>
-</div>
+<div class="alignL">&nbsp</div></div>
 <div class="trow">
 <div class="alignL">YamaGandam: </div><div id="ygst" class="alignC1"></div>
-<div class="alignC2">to</div><div id="ygft" class="alignR"></div>
-</div>
+<div class="alignC2">to</div><div id="ygft" class="alignR"></div></div>
 <div class="trow">
-<div class="alignL">&nbsp</div>
-</div>
+<div class="alignL">&nbsp</div></div>
 <div class="trow">
 <div class="alignL">GulikaKakam: </div><div id="gkst" class="alignC1"></div>
-<div class="alignC2">to</div><div id="gkft" class="alignR"></div>
-</div>
+<div class="alignC2">to</div><div id="gkft" class="alignR"></div></div>
 <div class="trow">
-<div class="alignL">&nbsp</div>
-</div>
+<div class="alignL">&nbsp</div></div>
 <div class="trow">
 <div class="alignL">DurMuhurtam: </div><div id="dmst" class="alignC1"></div>
-<div class="alignC2">to</div><div id="dmft" class="alignR"></div>
-</div>
+<div class="alignC2">to</div><div id="dmft" class="alignR"></div></div>
 <div class="trow">
 <div class="alignL"></div><div id="dmbt" class="alignC1"></div>
-<div class="alignC2">-</div><div id="dmet" class="alignR"></div>
-</div>
+<div class="alignC2">-</div><div id="dmet" class="alignR"></div></div>
 <script>
 navigator.geolocation.getCurrentPosition(function(position) {
    	var srise = new Date().sunrise(position.coords.latitude, position.coords.longitude);
@@ -232,8 +191,7 @@ navigator.geolocation.getCurrentPosition(function(position) {
     var gkf = daypart1;
     var dms = new Date(Math.floor(srise.getTime() + ((daylen * 1.6) / 12)));
     var dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
-    break;
-  }
+    break;  }
     document.getElementById("rise").innerHTML=srise.toLocaleString("en-IN");
     document.getElementById("rise1").innerHTML=srise1.toLocaleString("en-IN");
     document.getElementById("riz").innerHTML=srise.toLocaleString("en-IN");
@@ -247,8 +205,5 @@ navigator.geolocation.getCurrentPosition(function(position) {
     document.getElementById("dmst").innerHTML=dms.toLocaleString("en-IN");
     document.getElementById("dmft").innerHTML=dmf.toLocaleString("en-IN");
     document.getElementById("dmbt").innerHTML=dmb.toLocaleString("en-IN");
-    document.getElementById("dmet").innerHTML=dme.toLocaleString("en-IN");
- });
-</script>
-</body>
-</html>
+    document.getElementById("dmet").innerHTML=dme.toLocaleString("en-IN");  });
+</script></body></html>
