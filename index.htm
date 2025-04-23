@@ -19,8 +19,8 @@
 }
 .alignC1, .alignC2 {
       display: table-cell;
-      padding-right: 25px;
-      padding-left: 25px;
+      padding-right: 20px;
+      padding-left: 20px;
 }
 </style>
 </head>
@@ -36,6 +36,7 @@
 <div class="alignC2">to</div><div id="s_tithi_end" class="alignR"></div>
 </div>
 <div class="trow">
+<div class="alignL"></div>
 </div>
 <div class="trow">
 <div class="alignL">Nakshatra: </div><div id="nakshtra" class="alignC1"></div>
@@ -45,6 +46,7 @@
 <div class="alignC2">to</div><div id="s_nakshtra_end" class="alignR"></div>
 </div>
 <div class="trow">
+<div class="alignL"></div>
 </div>
 <div class="trow">
 <div class="alignL">Karana: </div><div id="karna" class="alignC1"></div>
@@ -54,6 +56,7 @@
 <div class="alignC2">to</div><div id="s_karna_end" class="alignR"></div>
 </div>
 <div class="trow">
+<div class="alignL"></div>
 </div>
 <div class="trow">
 <div class="alignL">Yoga: </div><div id="yoga" class="alignC1"></div>
@@ -63,6 +66,7 @@
 <div class="alignC2">to</div><div id="s_yoga_end" class="alignR"></div>
 </div>
 <div class="trow">
+<div class="alignL"></div>
 </div>
 <div class="trow">
 <div class="alignL" >Day: </div><div id="day" class="alignC1"></div>
@@ -90,61 +94,47 @@
 
 <script src="./sun.js"></script>
 <div class="trow">
-<div class="alignL">Day Start: </div><div id="rise" class="alignR"></div>
+<div class="alignL"></div><div id="rise" class="alignC1"></div>
+<div class="alignC2">to</div><div id="rise1" class="alignR"></div>
 </div>
 <div class="trow">
-<div class="alignL">Day End: </div><div id="rise1" class="alignR"></div>
+<div class="alignL"></div>
 </div>
 <div class="trow">
-<div class="alignL">Today: </div>
+<div class="alignL">Sun Rise & Set: </div><div id="riz" class="alignC1"></div>
+<div class="alignC2"> & </div><div id="set" class="alignR"></div>
 </div>
 <div class="trow">
-<div class="alignL">Sun Rise: </div><div id="riz" class="alignR"></div>
+<div class="alignL"></div>
 </div>
 <div class="trow">
-<div class="alignL">Sun Set: </div><div id="set" class="alignR"></div>
+<div class="alignL">RahuKalam: </div><div id="rkst" class="alignC1"></div>
+<div class="alignC2">to</div><div id="rkft" class="alignR"></div>
 </div>
 <div class="trow">
-<div class="alignL">RahuKalam: </div>
+<div class="alignL"></div>
 </div>
 <div class="trow">
-<div class="alignL">RahuKalam Start: </div><div id="rkst" class="alignR"></div>
+<div class="alignL">YamaGandam:</div><div id="ygst" class="alignC1"></div>
+<div class="alignC2">to</div><div id="ygft" class="alignR"></div>
 </div>
 <div class="trow">
-<div class="alignL">RahuKalam End: </div><div id="rkft" class="alignR"></div>
+<div class="alignL"></div>
 </div>
 <div class="trow">
-<div class="alignL">YamaGandam: </div>
+<div class="alignL">GulikaKakam</div><div id="gkst" class="alignC1"></div>
+<div class="alignC2">to</div><div id="gkft" class="alignR"></div>
 </div>
 <div class="trow">
-<div class="alignL">YamaGandam Start: </div><div id="ygst" class="alignR"></div>
+<div class="alignL"></div>
 </div>
 <div class="trow">
-<div class="alignL">YamaGandam End: </div><div id="ygft" class="alignR"></div>
+<div class="alignL">DurMuhurtam: </div><div id="dmst" class="alignC1"></div>
+<div class="alignC2">to</div><div id="dmft" class="alignR"></div>
 </div>
 <div class="trow">
-<div class="alignL">GulikaKakam: </div>
-</div>
-<div class="trow">
-<div class="alignL">GulikaKakam Start: </div><div id="gkst" class="alignR"></div>
-</div>
-<div class="trow">
-<div class="alignL">GulikaKakam End: </div><div id="gkft" class="alignR"></div>
-</div>
-<div class="trow">
-<div class="alignL">DurMuhurtam: </div>
-</div>
-<div class="trow">
-<div class="alignL">DurMuhurtam Start: </div><div id="dmst" class="alignR"></div>
-</div>
-<div class="trow">
-<div class="alignL">DurMuhurtam End: </div><div id="dmft" class="alignR"></div>
-</div>
-<div class="trow">
-<div class="alignL">DurMuhurtam Start: </div><div id="dmbt" class="alignR"></div>
-</div>
-<div class="trow">
-<div class="alignL">DurMuhurtam End: </div><div id="dmet" class="alignR"></div>
+<div class="alignL"></div><div id="dmbt" class="alignC1"></div>
+<div class="alignC2">to</div><div id="dmet" class="alignR"></div>
 </div>
 <script>
 navigator.geolocation.getCurrentPosition(function(position) {
