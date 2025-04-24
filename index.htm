@@ -180,6 +180,7 @@ switch(nak) {
     var varf = new Date(Math.floor(vars.getTime() + ((1.6 * naklen)/24)));
     var amrs = new Date(Math.floor((nakb.getTime() + ((Aa * naklen)/24))));
     var amrf = new Date(Math.floor(amrs.getTime() + ((1.6 * naklen)/24)));
+ console.log("nakb:"+nakb+"nake:"+nake+"naklen:"+naklen+"vars:"+vars);
     document.getElementById("karna").innerHTML=panchang.Karna.name;
     document.getElementById("s_karna_start").innerHTML=panchang.Karna.start.toLocaleString("en-IN");
     document.getElementById("s_karna_end").innerHTML=panchang.Karna.end.toLocaleString("en-IN");
