@@ -63,8 +63,6 @@
     document.getElementById("s_tithi_end").innerHTML=panchang.Tithi.end.toLocaleString("en-IN");
 //    var nak = document.getElementById("nakshtra").innerHTML=panchang.Nakshatra.name;
   var nak = "PurvaBhadra";
-    var Va=6.4;
-    var Aa=16;
 switch(nak) {
   case "Aswini":
     var Va=20;
@@ -185,9 +183,11 @@ switch(nak) {
     var naks = document.getElementById("s_nakshtra_start").innerHTML=panchang.Nakshatra.start;
     var nakf = document.getElementById("s_nakshtra_end").innerHTML=panchang.Nakshatra.end;
     var naklen = Math.floor(Date.parse(nakf) - Date.parse(naks));
-    var vars = new Date(Math.floor((naks.getTime() + ((Va * naklen)/24))));
+//    var Va=6.4;
+//    var Aa=16;
+    var vars = new Date(Math.floor((naks.getTime() + ((6.4 * naklen)/24))));
     var varf = new Date(Math.floor(vars.getTime() + ((1.6 * naklen)/24)));
-    var amrs = new Date(Math.floor((naks.getTime() + ((Aa * naklen)/24))));
+    var amrs = new Date(Math.floor((naks.getTime() + ((16 * naklen)/24))));
     var amrf = new Date(Math.floor(amrs.getTime() + ((1.6 * naklen)/24)));
     document.getElementById("s_nakshtra_start").innerHTML=panchang.Nakshatra.start.toLocaleString("en-IN");
     document.getElementById("s_nakshtra_end").innerHTML=panchang.Nakshatra.end.toLocaleString("en-IN");
