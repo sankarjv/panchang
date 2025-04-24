@@ -42,8 +42,8 @@
 <div class="trow">
 <div class="alignL">&nbsp</div></div>
 <div class="trow">
-<div class="alignL">Varjyam: </div><div id="varst" class="alignC1"></div>
-<div class="alignC2">to</div><div id="varft" class="alignR"></div></div>
+<div class="alignL">Varjyam: </div><div id="varbt" class="alignC1"></div>
+<div class="alignC2">to</div><div id="varet" class="alignR"></div></div>
 <div class="trow">
 <div class="alignL">&nbsp</div></div>
 <div class="trow">
@@ -177,11 +177,11 @@ switch(nak) {
     var nakb = document.getElementById("s_nakshtra_start").innerHTML=panchang.Nakshatra.start;
     var nake = document.getElementById("s_nakshtra_end").innerHTML=panchang.Nakshatra.end;
     var naklen = Math.floor(Date.parse(nake) - Date.parse(nakb));
-    var vars = new Date(Math.floor((nakb.getTime() + ((Va * naklen)/24))));
-    var varf = new Date(Math.floor(vars.getTime() + ((1.6 * naklen)/24)));
+    var varb = new Date(Math.floor((nakb.getTime() + ((Va * naklen)/24))));
+    var vare = new Date(Math.floor(varb.getTime() + ((1.6 * naklen)/24)));
     var amrs = new Date(Math.floor((nakb.getTime() + ((Aa * naklen)/24))));
     var amrf = new Date(Math.floor(amrs.getTime() + ((1.6 * naklen)/24)));
- console.log("nakb:"+nakb+"nake:"+nake+"naklen:"+naklen+"vars:"+vars);
+ console.log("nakb:"+nakb+"nake:"+nake+"naklen:"+naklen+"varb:"+varb+"vare:"+vare);
     document.getElementById("karna").innerHTML=panchang.Karna.name;
     document.getElementById("s_karna_start").innerHTML=panchang.Karna.start.toLocaleString("en-IN");
     document.getElementById("s_karna_end").innerHTML=panchang.Karna.end.toLocaleString("en-IN");
@@ -192,8 +192,8 @@ switch(nak) {
     document.getElementById("nakshtra").innerHTML=panchang.Nakshatra.name;
     document.getElementById("s_nakshtra_start").innerHTML=panchang.Nakshatra.start.toLocaleString("en-IN");
     document.getElementById("s_nakshtra_end").innerHTML=panchang.Nakshatra.end.toLocaleString("en-IN");
-    document.getElementById("varst").innerHTML=vars;
-    document.getElementById("varft").innerHTML=varf;
+    document.getElementById("varbt").innerHTML=varb.toLocaleString("en-IN");
+    document.getElementById("varet").innerHTML=vare.toLocaleString("en-IN");
     document.getElementById("amrst").innerHTML=amrs.toLocaleString("en-IN");
     document.getElementById("amrft").innerHTML=amrf.toLocaleString("en-IN");
 </script>
