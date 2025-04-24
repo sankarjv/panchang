@@ -61,8 +61,8 @@
     document.getElementById("tithi").innerHTML=panchang.Tithi.name;
     document.getElementById("s_tithi_start").innerHTML=panchang.Tithi.start.toLocaleString("en-IN");
     document.getElementById("s_tithi_end").innerHTML=panchang.Tithi.end.toLocaleString("en-IN");
-//    var nak = document.getElementById("nakshtra").innerHTML=panchang.Nakshatra.name;
-  var nak = "PurvaBhadra";
+    var nak = document.getElementById("nakshtra").innerHTML=panchang.Nakshatra.name;
+//  var nak = "PurvaBhadra";
 switch(nak) {
   case "Aswini":
     var Va=20;
@@ -172,7 +172,6 @@ switch(nak) {
     var Va=12;
     var Aa=21.6;
     break;  }
-    document.getElementById("nakshtra").innerHTML=panchang.Nakshatra.name;
     document.getElementById("karna").innerHTML=panchang.Karna.name;
     document.getElementById("s_karna_start").innerHTML=panchang.Karna.start.toLocaleString("en-IN");
     document.getElementById("s_karna_end").innerHTML=panchang.Karna.end.toLocaleString("en-IN");
@@ -180,15 +179,15 @@ switch(nak) {
     document.getElementById("s_yoga_start").innerHTML=panchang.Yoga.start.toLocaleString("en-IN");
     document.getElementById("s_yoga_end").innerHTML=panchang.Yoga.end.toLocaleString("en-IN");
     document.getElementById("day").innerHTML=panchang.Day.name;    });
-    var naks = document.getElementById("s_nakshtra_start").innerHTML=panchang.Nakshatra.start;
-    var nakf = document.getElementById("s_nakshtra_end").innerHTML=panchang.Nakshatra.end;
-    var naklen = Math.floor(Date.parse(nakf) - Date.parse(naks));
-//    var Va=6.4;
-//    var Aa=16;
-    var vars = new Date(Math.floor((naks.getTime() + ((6.4 * naklen)/24))));
+    var nakb = document.getElementById("s_nakshtra_start").innerHTML=panchang.Nakshatra.start;
+    var nake = document.getElementById("s_nakshtra_end").innerHTML=panchang.Nakshatra.end;
+    var naklen = Math.floor(Date.parse(nake) - Date.parse(nakb));
+    var vars = new Date(Math.floor((naks.getTime() + ((Va * naklen)/24))));
     var varf = new Date(Math.floor(vars.getTime() + ((1.6 * naklen)/24)));
-    var amrs = new Date(Math.floor((naks.getTime() + ((16 * naklen)/24))));
+    var amrs = new Date(Math.floor((naks.getTime() + ((Aa * naklen)/24))));
     var amrf = new Date(Math.floor(amrs.getTime() + ((1.6 * naklen)/24)));
+console.log("nak:"+nak+"Va:"+Va+"Aa:"+Aa);
+    document.getElementById("nakshtra").innerHTML=panchang.Nakshatra.name;
     document.getElementById("s_nakshtra_start").innerHTML=panchang.Nakshatra.start.toLocaleString("en-IN");
     document.getElementById("s_nakshtra_end").innerHTML=panchang.Nakshatra.end.toLocaleString("en-IN");
     document.getElementById("varst").innerHTML=vars.toLocaleString("en-IN");
