@@ -55,7 +55,7 @@
     document.getElementById("nakshtra").innerHTML=panchang.Nakshatra.name;
     var ns = document.getElementById("s_nakshtra_start").innerHTML=panchang.Nakshatra.start.toLocaleString("en-IN");
     var nf = document.getElementById("s_nakshtra_end").innerHTML=panchang.Nakshatra.end.toLocaleString("en-IN");
-    var naklen = Math.floor(nf - ns);
+    var naklen = Math.floor(Date.parse(nf) - Date.parse(ns));
     console.log("ns: "+ns+", nf: "+nf+", nl:"+naklen);
     document.getElementById("karna").innerHTML=panchang.Karna.name;
     document.getElementById("s_karna_start").innerHTML=panchang.Karna.start.toLocaleString("en-IN");
