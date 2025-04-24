@@ -62,7 +62,8 @@
     document.getElementById("s_tithi_start").innerHTML=panchang.Tithi.start.toLocaleString("en-IN");
     document.getElementById("s_tithi_end").innerHTML=panchang.Tithi.end.toLocaleString("en-IN");
     var nak = document.getElementById("nakshtra").innerHTML=panchang.Nakshatra.name;
-//  var nak = "PurvaBhadra";
+var Va=0;
+var Aa=0;
 switch(nak) {
   case "Aswini":
     var Va=20;
@@ -246,6 +247,14 @@ navigator.geolocation.getCurrentPosition(function(position) {
     var daypart7 = new Date(Math.floor((daypart6.getTime() + daypart)));
     var daypart8 = new Date(Math.floor((daypart7.getTime() + daypart)));
   var wkday = new Date().getDay();
+  var rks=0;
+  var rkf=0;
+  var ygs=0;
+  var ygf=0;
+  var gks=0;
+  var gkf=0;
+  var dms=0;
+  var dmf=0;
   switch(wkday) {
   case 0:
     var rks = daypart7;
