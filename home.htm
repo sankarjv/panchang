@@ -74,6 +74,8 @@ var V19=8.4;var V20=9.6;var V21=8;var V22=4;var V23=4;var V24=7.2;var V25=6.4;va
     var naklen = Math.floor(Date.parse(nf) - Date.parse(ns));
     var vars = new Date(Math.floor((ns.getTime() + ((V25 * naklen)/24))));
     var varf = new Date(Math.floor(vars.getTime() + ((1.6 * naklen)/24)));
+    document.getElementById("varst").innerHTML=vars.toLocaleString("en-IN");
+    document.getElementById("varft").innerHTML=varf.toLocaleString("en-IN");
     console.log("ns: "+ns+", nf: "+nf+", nl:"+naklen+", vars:"+vars+", varf:"+varf);
 </script>
 <script src="./sun.js"></script>
@@ -109,6 +111,11 @@ var V19=8.4;var V20=9.6;var V21=8;var V22=4;var V23=4;var V24=7.2;var V25=6.4;va
 <div class="trow">
 <div class="alignL"></div><div id="dmbt" class="alignC1"></div>
 <div class="alignC2">-</div><div id="dmet" class="alignR"></div></div>
+<div class="trow">
+<div class="alignL">&nbsp</div></div>
+<div class="trow">
+<div class="alignL">Varjyam: </div><div id="varst" class="alignC1"></div>
+<div class="alignC2">to</div><div id="varft" class="alignR"></div></div>
 <script>
 navigator.geolocation.getCurrentPosition(function(position) {
    	var srise = new Date().sunrise(position.coords.latitude, position.coords.longitude);
