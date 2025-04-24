@@ -62,6 +62,8 @@
     document.getElementById("s_tithi_start").innerHTML=panchang.Tithi.start.toLocaleString("en-IN");
     document.getElementById("s_tithi_end").innerHTML=panchang.Tithi.end.toLocaleString("en-IN");
     var nak = document.getElementById("nakshtra").innerHTML=panchang.Nakshatra.name;
+    var V25=6.4;
+    var A25=16;
 switch(nak) {
   case "Aswini":
     var V1=20;
@@ -160,8 +162,6 @@ switch(nak) {
     var A24=16.8;
     break;
   case "PurvaBhadra":
-    var V25=6.4;
-    var A25=16;
     break;
   case "UttaraBhadra":
     var V26=9.6;
