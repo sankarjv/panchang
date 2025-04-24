@@ -10,7 +10,7 @@
                       padding-left: 20px;  }
 </style></head>
 <body>
-<h1>Panchang Today</h1>
+<h1><div id="pdt"></div> Panchang</h1>
 <h2>By Shankar JV</h2>
 <script src="./panchang.js"></script>
 <div class="trow">
@@ -45,8 +45,9 @@
 <div class="alignL" >Day: </div><div id="day" class="alignC1"></div></div>
 <script>
     var t= new Date();
-    var dt=t.toLocaleString("en-IN");
+    var dt=t.toLocaleString("en-IN", { dateStyle: "medium" });
     console.log("dt: "+dt);
+    document.getElementById("pdt").innerHTML=dt;
     panchang.calculate(t, function() {
     document.getElementById("tithi").innerHTML=panchang.Tithi.name;
     document.getElementById("s_tithi_start").innerHTML=panchang.Tithi.start.toLocaleString("en-IN");
