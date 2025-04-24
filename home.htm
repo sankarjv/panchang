@@ -53,8 +53,10 @@
     console.log("ns: "+ns);
     document.getElementById("s_tithi_end").innerHTML=panchang.Tithi.end.toLocaleString("en-IN");
     document.getElementById("nakshtra").innerHTML=panchang.Nakshatra.name;
-    var ns = document.getElementById("s_nakshtra_start").innerHTML=panchang.Nakshatra.start.toLocaleString("en-IN");
-    var nf = document.getElementById("s_nakshtra_end").innerHTML=panchang.Nakshatra.end.toLocaleString("en-IN");
+    document.getElementById("s_nakshtra_start").innerHTML=panchang.Nakshatra.start.toLocaleString("en-IN");
+    document.getElementById("s_nakshtra_end").innerHTML=panchang.Nakshatra.end.toLocaleString("en-IN");
+    var ns = document.getElementById("s_nakshtra_start").innerHTML=panchang.Nakshatra.start;
+    var nf = document.getElementById("s_nakshtra_end").innerHTML=panchang.Nakshatra.end;
     var naklen = Math.floor(Date.parse(nf) - Date.parse(ns));
     console.log("ns: "+ns+", nf: "+nf+", nl:"+naklen);
     document.getElementById("karna").innerHTML=panchang.Karna.name;
