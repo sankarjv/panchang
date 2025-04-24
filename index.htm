@@ -182,6 +182,10 @@ switch(nak) {
     var amrs = new Date(Math.floor((nakb.getTime() + ((Aa * naklen)/24))));
     var amrf = new Date(Math.floor(amrs.getTime() + ((1.6 * naklen)/24)));
  console.log("nakb:"+nakb+"nake:"+nake+"naklen:"+naklen+"varb:"+varb+"vare:"+vare);
+    document.getElementById("varbt").innerHTML=varb.toLocaleString("en-IN");
+    document.getElementById("varet").innerHTML=vare.toLocaleString("en-IN");
+    document.getElementById("amrst").innerHTML=amrs.toLocaleString("en-IN");
+    document.getElementById("amrft").innerHTML=amrf.toLocaleString("en-IN");
     document.getElementById("karna").innerHTML=panchang.Karna.name;
     document.getElementById("s_karna_start").innerHTML=panchang.Karna.start.toLocaleString("en-IN");
     document.getElementById("s_karna_end").innerHTML=panchang.Karna.end.toLocaleString("en-IN");
@@ -192,10 +196,6 @@ switch(nak) {
     document.getElementById("nakshtra").innerHTML=panchang.Nakshatra.name;
     document.getElementById("s_nakshtra_start").innerHTML=panchang.Nakshatra.start.toLocaleString("en-IN");
     document.getElementById("s_nakshtra_end").innerHTML=panchang.Nakshatra.end.toLocaleString("en-IN");
-    document.getElementById("varbt").innerHTML=varb.toLocaleString("en-IN");
-    document.getElementById("varet").innerHTML=vare.toLocaleString("en-IN");
-    document.getElementById("amrst").innerHTML=amrs.toLocaleString("en-IN");
-    document.getElementById("amrft").innerHTML=amrf.toLocaleString("en-IN");
 </script>
 <script src="./sun.js"></script>
 <div class="trow">
