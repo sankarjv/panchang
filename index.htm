@@ -173,13 +173,6 @@ switch(nak) {
     var Aa=21.6;
     break;  }
  console.log("nak:"+nak+"Va:"+Va+"Aa:"+Aa);
-   document.getElementById("karna").innerHTML=panchang.Karna.name;
-    document.getElementById("s_karna_start").innerHTML=panchang.Karna.start.toLocaleString("en-IN");
-    document.getElementById("s_karna_end").innerHTML=panchang.Karna.end.toLocaleString("en-IN");
-    document.getElementById("yoga").innerHTML=panchang.Yoga.name;
-    document.getElementById("s_yoga_start").innerHTML=panchang.Yoga.start.toLocaleString("en-IN");
-    document.getElementById("s_yoga_end").innerHTML=panchang.Yoga.end.toLocaleString("en-IN");
-    document.getElementById("day").innerHTML=panchang.Day.name;    });
     var nakb = document.getElementById("s_nakshtra_start").innerHTML=panchang.Nakshatra.start;
     var nake = document.getElementById("s_nakshtra_end").innerHTML=panchang.Nakshatra.end;
     var naklen = Math.floor(Date.parse(nake) - Date.parse(nakb));
@@ -187,6 +180,13 @@ switch(nak) {
     var varf = new Date(Math.floor(vars.getTime() + ((1.6 * naklen)/24)));
     var amrs = new Date(Math.floor((nakb.getTime() + ((Aa * naklen)/24))));
     var amrf = new Date(Math.floor(amrs.getTime() + ((1.6 * naklen)/24)));
+    document.getElementById("karna").innerHTML=panchang.Karna.name;
+    document.getElementById("s_karna_start").innerHTML=panchang.Karna.start.toLocaleString("en-IN");
+    document.getElementById("s_karna_end").innerHTML=panchang.Karna.end.toLocaleString("en-IN");
+    document.getElementById("yoga").innerHTML=panchang.Yoga.name;
+    document.getElementById("s_yoga_start").innerHTML=panchang.Yoga.start.toLocaleString("en-IN");
+    document.getElementById("s_yoga_end").innerHTML=panchang.Yoga.end.toLocaleString("en-IN");
+    document.getElementById("day").innerHTML=panchang.Day.name;    });
     document.getElementById("nakshtra").innerHTML=panchang.Nakshatra.name;
     document.getElementById("s_nakshtra_start").innerHTML=panchang.Nakshatra.start.toLocaleString("en-IN");
     document.getElementById("s_nakshtra_end").innerHTML=panchang.Nakshatra.end.toLocaleString("en-IN");
