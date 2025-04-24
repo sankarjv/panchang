@@ -11,58 +11,56 @@
 <style>
 .block{  overflow:hidden;   }
 .trow {  display: table-row;  }
-.alignL {  font-weight: bold; }
-.alignL, .alignR {  display: table-cell;
-                      margin: 1px 1px;  }
-.alignC1, .alignC2 {  display: table-cell;
-                      padding-right: 20px;
-                      padding-left: 20px;  }
+.alignL {  display: table-cell;
+           font-weight: bold; }
+.alignC1, .alignC2, .alignR {  display: table-cell;
+                              padding-right: 20px;  }
 </style>
 </head>
 <body>
-<h1><div class="trow"><div class="alignL">Panchangam</div><div id="pdt" class="alignC1"></div></div></h1>
-<h2><div class="trow"><div class="alignL">By Shankar JV</div></div></h2>
+<h1><div class="trow"><div class="alignL"> Panchangam</div><div id="pdt" class="alignC1"></div></div></h1>
+<h2><div class="trow"><div class="alignL"> By Shankar JV</div></div></h2>
 <script src="./panchang.js"></script>
 <div class="trow">
-<div class="alignL">Tithi: </div><div id="tithi" class="alignC1"></div></div>
+<div class="alignL"> Tithi: </div><div id="tithi" class="alignC1"></div></div>
 <div class="trow">
 <div class="alignL"></div><div id="s_tithi_start" class="alignC1"></div>
 <div class="alignC2">to</div><div id="s_tithi_end" class="alignR"></div></div>
 <div class="trow">
 <div class="alignL">&nbsp</div></div>
 <div class="trow">
-<div class="alignL">Nakshatra: </div><div id="nakshtra" class="alignC1"></div></div>
+<div class="alignL"> Nakshatra: </div><div id="nakshtra" class="alignC1"></div></div>
 <div class="trow">
 <div class="alignL"></div><div id="s_nakshtra_start" class="alignC1"></div>
 <div class="alignC2">to</div><div id="s_nakshtra_end" class="alignR"></div></div>
 <div class="trow">
 <div class="alignL">&nbsp</div></div>
 <div class="trow">
-<div class="alignL">Karana: </div><div id="karna" class="alignC1"></div></div>
-<div class="trow">
-<div class="alignL"></div><div id="s_karna_start" class="alignC1"></div>
-<div class="alignC2">to</div><div id="s_karna_end" class="alignR"></div></div>
-<div class="trow">
-<div class="alignL">&nbsp</div></div>
-<div class="trow">
-<div class="alignL">Yoga: </div><div id="yoga" class="alignC1"></div></div>
+<div class="alignL"> Yoga: </div><div id="yoga" class="alignC1"></div></div>
 <div class="trow">
 <div class="alignL"></div><div id="s_yoga_start" class="alignC1"></div>
 <div class="alignC2">to</div><div id="s_yoga_end" class="alignR"></div></div>
 <div class="trow">
 <div class="alignL">&nbsp</div></div>
 <div class="trow">
-<div class="alignL">Varjyam: </div><div id="varbt" class="alignC1"></div>
-<div class="alignC2">to</div><div id="varet" class="alignR"></div></div>
+<div class="alignL"> Karana: </div><div id="karna" class="alignC1"></div></div>
+<div class="trow">
+<div class="alignL"></div><div id="s_karna_start" class="alignC1"></div>
+<div class="alignC2">to</div><div id="s_karna_end" class="alignR"></div></div>
 <div class="trow">
 <div class="alignL">&nbsp</div></div>
 <div class="trow">
-<div class="alignL">Amruta: </div><div id="amrst" class="alignC1"></div>
+<div class="alignL"> Amruta: </div><div id="amrst" class="alignC1"></div>
 <div class="alignC2">to</div><div id="amrft" class="alignR"></div></div>
 <div class="trow">
 <div class="alignL">&nbsp</div></div>
 <div class="trow">
-<div class="alignL" >Day: </div><div id="day" class="alignC1"></div></div>
+<div class="alignL"> Varjyam: </div><div id="varbt" class="alignC1"></div>
+<div class="alignC2">to</div><div id="varet" class="alignR"></div></div>
+<div class="trow">
+<div class="alignL">&nbsp</div></div>
+<div class="trow">
+<div class="alignL" > WeekDay: </div><div id="day" class="alignC1"></div></div>
 <script>
 var t= new Date();
   var dt=t.toLocaleString("en-IN", { dateStyle: "medium" });
@@ -133,27 +131,27 @@ var t= new Date();
 <div class="trow">
 <div class="alignL">&nbsp</div></div>
 <div class="trow">
-<div class="alignL">Sun Rise & Set: </div><div id="riz" class="alignC1"></div>
+<div class="alignL"> SunRise&Set: </div><div id="riz" class="alignC1"></div>
 <div class="alignC2"> & </div><div id="set" class="alignR"></div></div>
 <div class="trow">
 <div class="alignL">&nbsp</div></div>
 <div class="trow">
-<div class="alignL">RahuKalam: </div><div id="rkst" class="alignC1"></div>
+<div class="alignL"> RahuKala: </div><div id="rkst" class="alignC1"></div>
 <div class="alignC2">to</div><div id="rkft" class="alignR"></div></div>
 <div class="trow">
 <div class="alignL">&nbsp</div></div>
 <div class="trow">
-<div class="alignL">YamaGandam: </div><div id="ygst" class="alignC1"></div>
+<div class="alignL"> YamaGanda: </div><div id="ygst" class="alignC1"></div>
 <div class="alignC2">to</div><div id="ygft" class="alignR"></div></div>
 <div class="trow">
 <div class="alignL">&nbsp</div></div>
 <div class="trow">
-<div class="alignL">GulikaKakam: </div><div id="gkst" class="alignC1"></div>
+<div class="alignL"> Gulika: </div><div id="gkst" class="alignC1"></div>
 <div class="alignC2">to</div><div id="gkft" class="alignR"></div></div>
 <div class="trow">
 <div class="alignL">&nbsp</div></div>
 <div class="trow">
-<div class="alignL">DurMuhurtam: </div><div id="dmst" class="alignC1"></div>
+<div class="alignL"> DurMuhurat: </div><div id="dmst" class="alignC1"></div>
 <div class="alignC2">to</div><div id="dmft" class="alignR"></div></div>
 <div class="trow">
 <div class="alignL"></div><div id="dmbt" class="alignC1"></div>
