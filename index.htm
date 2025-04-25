@@ -215,9 +215,9 @@ navigator.geolocation.getCurrentPosition(function(position) {
     break;
   case 5:
     rks = daypart3; rkf = daypart4; ygs = daypart6; ygf = daypart7; gks = daypart1; gkf = daypart2;
-    dms = new Date(Math.floor(datepart0.getTime() + ((daylen * 2.4) / 12)));
+    dms = new Date(Math.floor((daypart0.getTime() + ((daylen * 2.4) / 12)));
     dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
-    dmb = new Date(Math.floor(datepart0.getTime() + ((daylen * 6.4) / 12)));
+    dmb = new Date(Math.floor(daypart0.getTime() + ((daylen * 6.4) / 12)));
     dme = new Date(Math.floor(dmb.getTime() + (48 * 60 * 1000)));
     break;
   case 6:
