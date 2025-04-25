@@ -163,12 +163,13 @@ navigator.geolocation.getCurrentPosition(function(position) {
   srise1 = new Date(srise.getTime() + (24 * 60 * 60 * 1000)).sunrise(position.coords.latitude, position.coords.longitude);
         console.log("Latitude:", position.coords.latitude);
         console.log("Longitude:", position.coords.longitude); 
-        console.log("srise: " + srise+" sset "+sset);  },
+ },
     function (error) {
   srise = new Date().sunrise(17.3637632, 78.56128);
   sset = new Date().sunset(17.3637632, 78.56128);
   srise1 = new Date(srise.getTime() + (24 * 60 * 60 * 1000)).sunrise(17.3637632, 78.56128); });
-  var daylen = Math.floor(Date.parse(sset) - Date.parse(srise));
+        console.log("srise: " + srise+" sset "+sset); 
+           var daylen = Math.floor(Date.parse(sset) - Date.parse(srise));
   var daypart = Math.floor(daylen / 8);
   var niglen = Math.floor(Date.parse(srise1) - Date.parse(sset));
   var daypart0 = srise;
