@@ -156,7 +156,7 @@ panchang.calculate(t, function() {
 <div class="alignL"></div><div id="dmbt" class="alignC1"></div>
 <div class="alignC2">-</div><div id="dmet" class="alignR"></div></div>
 <script>
-//var srise=""; var sset=""; var srise1="";
+var srise=""; var sset=""; var srise1="";
 navigator.geolocation.getCurrentPosition(function(position) {
   srise = new Date().sunrise(position.coords.latitude, position.coords.longitude);
   sset = new Date().sunset(position.coords.latitude, position.coords.longitude);
