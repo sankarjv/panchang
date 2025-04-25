@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Panchangam Today</title>
+<title>Panchangam Daily by Shankar JV</title>
 <meta charset="UTF-8">
 <meta content="text">
 <meta name="author" content="Shankar JV">
-<meta name="description" content="Panchangam Today by Shankar JV">
+<meta name="description" content="Panchangam Daily by Shankar JV">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="keywords" content="Panchangam, Panchang, Shankar, Telugu, Hyderabad, Telangana, Andhra, India, Tithi, Vaara, Nakshatra, Yoga, Karana, RahuKalam, GulikaKalam, YamaGandam, DurMuhurtam, Varjyam, Amruta, SunRise, SunSet, Day, Star">
 <style>
@@ -100,7 +100,6 @@ var t= new Date();
   case "PurvaBhadra":    var Va=6.4;    var Aa=16;    break;
   case "UttaraBhadra":    var Va=9.6;    var Aa=19.2;    break;
   case "Revati":    var Va=12;    var Aa=21.6;    break;  }
-   console.log("nak:"+nak+"Va:"+Va+"Aa:"+Aa);
     var nakb = document.getElementById("s_nakshtra_start").innerHTML=panchang.Nakshatra.start;
     var nake = document.getElementById("s_nakshtra_end").innerHTML=panchang.Nakshatra.end;
     var naklen = Math.floor(Date.parse(nake) - Date.parse(nakb));
@@ -108,7 +107,6 @@ var t= new Date();
     var vare = new Date(Math.floor(varb.getTime() + ((1.6 * naklen)/24)));
     var amrs = new Date(Math.floor((nakb.getTime() + ((Aa * naklen)/24))));
     var amrf = new Date(Math.floor(amrs.getTime() + ((1.6 * naklen)/24)));
-   console.log("nakb:"+nakb+"nake:"+nake+"naklen:"+naklen+"varb:"+varb+"vare:"+vare);
     document.getElementById("varbt").innerHTML=varb.toLocaleString("en-IN");
     document.getElementById("varet").innerHTML=vare.toLocaleString("en-IN");
     document.getElementById("amrst").innerHTML=amrs.toLocaleString("en-IN");
@@ -159,64 +157,64 @@ var t= new Date();
 <div class="alignC2">-</div><div id="dmet" class="alignR"></div></div>
 <script>
 navigator.geolocation.getCurrentPosition(function(position) {
-   	var srise = new Date().sunrise(position.coords.latitude, position.coords.longitude);
-   	var sset = new Date().sunset(position.coords.latitude, position.coords.longitude);
-   	var srise1 = new Date(srise.getTime() + (24 * 60 * 60 * 1000)).sunrise(position.coords.latitude, position.coords.longitude);
-    var daylen = Math.floor(sset - srise);
-    var daypart = Math.floor(daylen / 8);
-    var niglen = Math.floor(srise1 - sset);
-    var daypart0 = srise;
-    var daypart1 = new Date(Math.floor((daypart0.getTime() + daypart)));
-    var daypart2 = new Date(Math.floor((daypart1.getTime() + daypart)));
-    var daypart3 = new Date(Math.floor((daypart2.getTime() + daypart)));
-    var daypart4 = new Date(Math.floor((daypart3.getTime() + daypart)));
-    var daypart5 = new Date(Math.floor((daypart4.getTime() + daypart)));
-    var daypart6 = new Date(Math.floor((daypart5.getTime() + daypart)));
-    var daypart7 = new Date(Math.floor((daypart6.getTime() + daypart)));
-    var daypart8 = new Date(Math.floor((daypart7.getTime() + daypart)));
+  var srise = new Date().sunrise(position.coords.latitude, position.coords.longitude);
+  var sset = new Date().sunset(position.coords.latitude, position.coords.longitude);
+  var srise1 = new Date(srise.getTime() + (24 * 60 * 60 * 1000)).sunrise(position.coords.latitude, position.coords.longitude);
+  var daylen = Math.floor(sset - srise);
+  var daypart = Math.floor(daylen / 8);
+  var niglen = Math.floor(srise1 - sset);
+  var daypart0 = srise;
+  var daypart1 = new Date(Math.floor((daypart0.getTime() + daypart)));
+  var daypart2 = new Date(Math.floor((daypart1.getTime() + daypart)));
+  var daypart3 = new Date(Math.floor((daypart2.getTime() + daypart)));
+  var daypart4 = new Date(Math.floor((daypart3.getTime() + daypart)));
+  var daypart5 = new Date(Math.floor((daypart4.getTime() + daypart)));
+  var daypart6 = new Date(Math.floor((daypart5.getTime() + daypart)));
+  var daypart7 = new Date(Math.floor((daypart6.getTime() + daypart)));
+  var daypart8 = new Date(Math.floor((daypart7.getTime() + daypart)));
   var rks=0;  var rkf=0;  var ygs=0;  var ygf=0;  var gks=0;  var gkf=0;  var dms=0;  var dmf=0;
   var wkday = new Date().getDay();
   switch(wkday) {
   case 0:
-    var rks = daypart7;    var rkf = daypart8;    var ygs = daypart4;    var ygf = daypart5;    var gks = daypart6;    var gkf = daypart7;
+    var rks = daypart7; var rkf = daypart8; var ygs = daypart4; var ygf = daypart5; var gks = daypart6; var gkf = daypart7;
     var dms = new Date(Math.floor(srise.getTime() + ((daylen * 10.4) / 12)));
     var dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
     break;
   case 1:
-    var rks = daypart1;    var rkf = daypart2;    var ygs = daypart3;    var ygf = daypart4;    var gks = daypart5;    var gkf = daypart6;
+    var rks = daypart1; var rkf = daypart2; var ygs = daypart3; var ygf = daypart4; var gks = daypart5; var gkf = daypart6;
     var dms = new Date(Math.floor(srise.getTime() + ((daylen * 6.4) / 12)));
     var dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
     var dmb = new Date(Math.floor(srise.getTime() + ((daylen * 8.8) / 12)));
     var dme = new Date(Math.floor(dmb.getTime() + (48 * 60 * 1000)));
     break;
   case 2:
-    var rks = daypart6;    var rkf = daypart7;    var ygs = daypart2;    var ygf = daypart3;    var gks = daypart4;    var gkf = daypart5;
+    var rks = daypart6; var rkf = daypart7; var ygs = daypart2; var ygf = daypart3; var gks = daypart4; var gkf = daypart5;
     var dms = new Date(Math.floor(srise.getTime() + ((daylen * 2.4) / 12)));
     var dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
     var dmb = new Date(Math.floor(sset.getTime() + ((niglen * 4.8) / 12)));
     var dme = new Date(Math.floor(dmb.getTime() + (48 * 60 * 1000)));
     break;
   case 3:
-    var rks = daypart4;    var rkf = daypart5;    var ygs = daypart1;    var ygf = daypart2;    var gks = daypart3;    var gkf = daypart4;
+    var rks = daypart4; var rkf = daypart5; var ygs = daypart1; var ygf = daypart2; var gks = daypart3; var gkf = daypart4;
     var dms = new Date(Math.floor(srise.getTime() + ((daylen * 5.6) / 12)));
     var dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
     break;
   case 4:
-    var rks = daypart5;    var rkf = daypart6;    var ygs = daypart0;    var ygf = daypart1;    var gks = daypart2;    var gkf = daypart3;
+    var rks = daypart5; var rkf = daypart6; var ygs = daypart0; var ygf = daypart1; var gks = daypart2; var gkf = daypart3;
     var dms = new Date(Math.floor(srise.getTime() + ((daylen * 4) / 12)));
     var dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
     var dmb = new Date(Math.floor(srise.getTime() + ((daylen * 8.8) / 12)));
     var dme = new Date(Math.floor(dmb.getTime() + (48 * 60 * 1000)));
     break;
   case 5:
-    var rks = daypart3;    var rkf = daypart4;    var ygs = daypart6;    var ygf = daypart7;    var gks = daypart1;    var gkf = daypart2;
+    var rks = daypart3; var rkf = daypart4; var ygs = daypart6; var ygf = daypart7; var gks = daypart1; var gkf = daypart2;
     var dms = new Date(Math.floor(srise.getTime() + ((daylen * 2.4) / 12)));
     var dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
     var dmb = new Date(Math.floor(srise.getTime() + ((daylen * 6.4) / 12)));
     var dme = new Date(Math.floor(dmb.getTime() + (48 * 60 * 1000)));
     break;
   case 6:
-    var rks = daypart2;    var rkf = daypart3;    var ygs = daypart5;    var ygf = daypart6;    var gks = daypart0;    var gkf = daypart1;
+    var rks = daypart2; var rkf = daypart3; var ygs = daypart5; var ygf = daypart6; var gks = daypart0; var gkf = daypart1;
     var dms = new Date(Math.floor(srise.getTime() + ((daylen * 1.6) / 12)));
     var dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
     break;  }
