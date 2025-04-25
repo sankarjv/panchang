@@ -171,6 +171,7 @@ navigator.geolocation.getCurrentPosition(function(position) {
   var daypart = Math.floor(daylen / 8);
   var niglen = Math.floor(srise1 - sset);
   var daypart0 = new Date(srise);
+        console.log("srise: " + srise+" sset "+sset+" dl "+daylen);
   var daypart1 = new Date(Math.floor((daypart0.getTime() + daypart)));
   var daypart2 = new Date(Math.floor((daypart1.getTime() + daypart)));
   var daypart3 = new Date(Math.floor((daypart2.getTime() + daypart)));
