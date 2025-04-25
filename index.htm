@@ -162,8 +162,8 @@ navigator.geolocation.getCurrentPosition(function(position) {
   var sset = new Date().sunset(position.coords.latitude, position.coords.longitude);
   var srise1 = new Date(srise.getTime() + (24 * 60 * 60 * 1000)).sunrise(position.coords.latitude, position.coords.longitude);
         console.log("Latitude:", position.coords.latitude);
-        console.log("Longitude:", position.coords.longitude); },
-        console.log("srise: " + srise+" sset "+sset);
+        console.log("Longitude:", position.coords.longitude); 
+        console.log("srise: " + srise+" sset "+sset);  },
     function (error) {
   srise = new Date().sunrise(17.3637632, 78.56128);
   sset = new Date().sunset(17.3637632, 78.56128);
