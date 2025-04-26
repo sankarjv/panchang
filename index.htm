@@ -68,9 +68,8 @@ var dt=t.toLocaleString("en-IN", { dateStyle: "medium" });
 document.getElementById("pdt").innerHTML=dt;
 panchang.calculate(t, function() {
   document.getElementById("tithi").innerHTML=panchang.Tithi.name;
-  var tsdt = document.getElementById("s_tithi_start").innerHTML=panchang.Tithi.start.toISOString();
-  var tedt = document.getElementById("s_tithi_end").innerHTML=panchang.Tithi.end.toLocaleString("en-IN");
-  console.log("tsdt "+tsdt+"tedt "+tedt);
+  document.getElementById("s_tithi_start").innerHTML=panchang.Tithi.start.toLocaleString("en-IN");
+  document.getElementById("s_tithi_end").innerHTML=panchang.Tithi.end.toLocaleString("en-IN");
   var nak = document.getElementById("nakshtra").innerHTML=panchang.Nakshatra.name;
   var Va=0;  var Aa=0;panchang.Tithi.
   switch(nak) {
