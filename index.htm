@@ -68,7 +68,7 @@ var dt=t.toLocaleString("en-IN", { dateStyle: "medium" });
 document.getElementById("pdt").innerHTML=dt;
 panchang.calculate(t, function() {
   document.getElementById("tithi").innerHTML=panchang.Tithi.name;
-  document.getElementById("s_tithi_start").innerHTML=`panchang.Tithi.getFullYear()-pad(panchang.Tithi.getMonth() + 1)}-pad(panchang.Tithi.getDate()) pad(panchang.Tithi.getHours()):pad(panchang.Tithi.getMinutes())`;
+  document.getElementById("s_tithi_start").innerHTML=panchang.Tithi.getFullYear(),panchang.Tithi.getMonth() + 1),panchang.Tithi.getDate()), panchang.Tithi.getHours()),panchang.Tithi.getMinutes());
   document.getElementById("s_tithi_end").innerHTML=panchang.Tithi.end.toLocaleString("en-IN");
   console.log("dt "+s_tithi_start);
   var nak = document.getElementById("nakshtra").innerHTML=panchang.Nakshatra.name;
