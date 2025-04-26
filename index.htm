@@ -161,18 +161,10 @@ navigator.geolocation.getCurrentPosition(function(position) {
   var srise = new Date().sunrise(position.coords.latitude, position.coords.longitude);
   var sset = new Date().sunset(position.coords.latitude, position.coords.longitude);
   var srise1 = new Date(srise.getTime() + (24 * 60 * 60 * 1000)).sunrise(position.coords.latitude, position.coords.longitude);
-        console.log("Latitude:", position.coords.latitude);
-        console.log("Longitude:", position.coords.longitude);  
-//},    function (error) {
-//  var srise = new Date().sunrise(17.3637632, 78.56128);
-//  var sset = new Date().sunset(17.3637632, 78.56128);
-//  var srise1 = new Date(srise.getTime() + (24 * 60 * 60 * 1000)).sunrise(17.3637632, 78.56128); }
-        console.log("srise: " + srise+" sset "+sset); 
-           var daylen = Math.floor(Date.parse(sset) - Date.parse(srise));
+  var daylen = Math.floor(Date.parse(sset) - Date.parse(srise));
   var daypart = Math.floor(daylen / 8);
   var niglen = Math.floor(Date.parse(srise1) - Date.parse(sset));
   var daypart0 = srise;
-        console.log("dp0" + daypart0 +" dl "+daylen);
   var daypart1 = new Date(Math.floor((srise.getTime() + daypart)));
   var daypart2 = new Date(Math.floor((daypart1.getTime() + daypart)));
   var daypart3 = new Date(Math.floor((daypart2.getTime() + daypart)));
@@ -181,7 +173,7 @@ navigator.geolocation.getCurrentPosition(function(position) {
   var daypart6 = new Date(Math.floor((daypart5.getTime() + daypart)));
   var daypart7 = new Date(Math.floor((daypart6.getTime() + daypart)));
   var daypart8 = new Date(Math.floor((daypart7.getTime() + daypart)));
-  var rks=0;  var rkf=0;  var ygs=0;  var ygf=0;  var gks=0;  var gkf=0;  var dms=0;  var dmf=0;
+  var rks=0;  var rkf=0;  var ygs=0;  var ygf=0;  var gks=0;  var gkf=0;  var dms=0;  var dmf=0;  var dmb=0;  var dme=0;
   var wkday = new Date().getDay();
   switch(wkday) {
   case 0:
