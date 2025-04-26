@@ -68,10 +68,10 @@ var dt=t.toLocaleString("en-IN", { dateStyle: "medium" });
 document.getElementById("pdt").innerHTML=dt;
 panchang.calculate(t, function() {
   document.getElementById("tithi").innerHTML=panchang.Tithi.name;
-  document.getElementById("s_tithi_start").innerHTML=panchang.Tithi.start.toLocaleString("en-IN");
+  document.getElementById("s_tithi_start").innerHTML=panchang.Tithi.start.toISOString();
   document.getElementById("s_tithi_end").innerHTML=panchang.Tithi.end.toLocaleString("en-IN");
   var nak = document.getElementById("nakshtra").innerHTML=panchang.Nakshatra.name;
-  var Va=0;  var Aa=0;panchang.Tithi.
+  var Va=0;  var Aa=0;
   switch(nak) {
     case "Aswini":    var Va=20;    var Aa=16.8;    break;
     case "Bharani":    var Va=9.6;    var Aa=19.2;    break;
