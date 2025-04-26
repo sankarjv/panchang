@@ -68,8 +68,8 @@ var dt=t.toLocaleString("en-IN", { dateStyle: "medium" });
 document.getElementById("pdt").innerHTML=dt;
 panchang.calculate(t, function() {
   document.getElementById("tithi").innerHTML=panchang.Tithi.name;
-  document.getElementById("s_tithi_start").innerHTML=panchang.Tithi.start.toISOString().substring(0, 19);
-  document.getElementById("s_tithi_end").innerHTML=panchang.Tithi.end.toISOString().substring(0, 19);
+  document.getElementById("s_tithi_start").innerHTML=panchang.Tithi.start.toLocaleString("en-IN");
+  document.getElementById("s_tithi_end").innerHTML=panchang.Tithi.end.toLocaleString("en-IN");
   var nak = document.getElementById("nakshtra").innerHTML=panchang.Nakshatra.name;
   var Va=0;  var Aa=0;
   switch(nak) {
@@ -112,15 +112,15 @@ panchang.calculate(t, function() {
   document.getElementById("amrst").innerHTML=amrs.toLocaleString("en-IN");
   document.getElementById("amrft").innerHTML=amrf.toLocaleString("en-IN");
   document.getElementById("karna").innerHTML=panchang.Karna.name;
-  document.getElementById("s_karna_start").innerHTML=panchang.Karna.start.toISOString().substring(0, 19);
-  document.getElementById("s_karna_end").innerHTML=panchang.Karna.end.toISOString().substring(0, 19);
+  document.getElementById("s_karna_start").innerHTML=panchang.Karna.start.toLocaleString("en-IN");
+  document.getElementById("s_karna_end").innerHTML=panchang.Karna.end.toLocaleString("en-IN");
   document.getElementById("yoga").innerHTML=panchang.Yoga.name;
-  document.getElementById("s_yoga_start").innerHTML=panchang.Yoga.start.toISOString().substring(0, 19);
-  document.getElementById("s_yoga_end").innerHTML=panchang.Yoga.end.toISOString().substring(0, 19);
+  document.getElementById("s_yoga_start").innerHTML=panchang.Yoga.start.toLocaleString("en-IN");
+  document.getElementById("s_yoga_end").innerHTML=panchang.Yoga.end.toLocaleString("en-IN");
   document.getElementById("day").innerHTML=panchang.Day.name;    
   document.getElementById("nakshtra").innerHTML=panchang.Nakshatra.name;
-  document.getElementById("s_nakshtra_start").innerHTML=panchang.Nakshatra.start.toISOString().substring(0, 19);
-  document.getElementById("s_nakshtra_end").innerHTML=panchang.Nakshatra.end.toISOString().substring(0, 19);           });
+  document.getElementById("s_nakshtra_start").innerHTML=panchang.Nakshatra.start.toLocaleString("en-IN");
+  document.getElementById("s_nakshtra_end").innerHTML=panchang.Nakshatra.end.toLocaleString("en-IN");           });
 </script>
 <script src="sun.js"></script>
 <div class="trow">
@@ -227,18 +227,18 @@ navigator.geolocation.getCurrentPosition(function(position) {
     dms = new Date(Math.floor(srise.getTime() + ((daylen * 1.6) / 12)));
     dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
     break;  }
-  document.getElementById("rise").innerHTML=srise.toISOString().substring(0, 19);
-  document.getElementById("rise1").innerHTML=srise1.toISOString().substring(0, 19);
-  document.getElementById("riz").innerHTML=srise.toISOString().substring(0, 19);
-  document.getElementById("set").innerHTML=sset.toISOString().substring(0, 19);
-  document.getElementById("rkst").innerHTML=rks.toISOString().substring(0, 19);
-  document.getElementById("rkft").innerHTML=rkf.toISOString().substring(0, 19);
-  document.getElementById("ygst").innerHTML=ygs.toISOString().substring(0, 19);
-  document.getElementById("ygft").innerHTML=ygf.toISOString().substring(0, 19);
-  document.getElementById("gkst").innerHTML=gks.toISOString().substring(0, 19);
-  document.getElementById("gkft").innerHTML=gkf.toISOString().substring(0, 19);
-  document.getElementById("dmst").innerHTML=dms.toISOString().substring(0, 19);
-  document.getElementById("dmft").innerHTML=dmf.toISOString().substring(0, 19);
-  document.getElementById("dmbt").innerHTML=dmb.toISOString().substring(0, 19);
-  document.getElementById("dmet").innerHTML=dme.toISOString().substring(0, 19);  });
+  document.getElementById("rise").innerHTML=srise.toLocaleString("en-IN");
+  document.getElementById("rise1").innerHTML=srise1.toLocaleString("en-IN");
+  document.getElementById("riz").innerHTML=srise.toLocaleString("en-IN");
+  document.getElementById("set").innerHTML=sset.toLocaleString("en-IN");
+  document.getElementById("rkst").innerHTML=rks.toLocaleString("en-IN");
+  document.getElementById("rkft").innerHTML=rkf.toLocaleString("en-IN");
+  document.getElementById("ygst").innerHTML=ygs.toLocaleString("en-IN");
+  document.getElementById("ygft").innerHTML=ygf.toLocaleString("en-IN");
+  document.getElementById("gkst").innerHTML=gks.toLocaleString("en-IN");
+  document.getElementById("gkft").innerHTML=gkf.toLocaleString("en-IN");
+  document.getElementById("dmst").innerHTML=dms.toLocaleString("en-IN");
+  document.getElementById("dmft").innerHTML=dmf.toLocaleString("en-IN");
+  document.getElementById("dmbt").innerHTML=dmb.toLocaleString("en-IN");
+  document.getElementById("dmet").innerHTML=dme.toLocaleString("en-IN");  });
 </script></body></html>
