@@ -393,6 +393,7 @@ return ls;
 //----------------------------------------------------------------------------
 // cal start and end of tithi (len = 12)and karana (len = 6)
 //----------------------------------------------------------------------------
+console.log("jd "+jd+" n1 "+n1+" len "+len);
 function tithi(jd, n1, tzone, len)
 {
 var s_t = {};
@@ -419,7 +420,8 @@ if (Math.abs(asp1) > 0.001) {jdt += (asp1 / (skor - 1)); flag = 0;}
 if (itit == n1) s_t.start = calData(jdt + (tzone - dt)/24);
 if (itit == (n1 + 1)) s_t.end=calData(jdt + (tzone - dt)/24);
 }
-return s_t;
+console.log("st "+s_t);
+ return s_t;
 }
 
 
