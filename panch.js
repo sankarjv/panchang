@@ -422,7 +422,7 @@ if (itit == (n1 + 1)) s_t.end=calData(jdt + (tzone - dt)/24);
 console.log("jd "+jd+" n1 "+n1+" len "+len);
 console.log("jdt "+jdt+" knv "+knv+" itit "+itit);
 console.log("st "+s_t.start+" se "+s_t.end);
-console.log("a "+a+" asp "+asp+" asp1 "+asp1," skor "+skor+" aspect "+aspect);
+console.log("a "+a+" asp1 "+asp1," skor "+skor+" aspect "+aspect);
  return s_t;
 }
 
