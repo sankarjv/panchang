@@ -678,9 +678,9 @@ ksek = kmin*60;
 kmin = floor(ksek);
 ksek = floor((ksek - kmin)*60);
 s = new Date(kyear,kmon-1,kday,khr,kmin,ksek,0);
+console.log(" s "+s+" km "+kmon+" kd "+kday);
 }
 return s;
-console.log(" s "+s+" km "+kmon+" kd "+kday);
 }
 
 //------------------------------------------------------------------------------------------
