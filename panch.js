@@ -420,7 +420,7 @@ if (itit == n1) s_t.start = calData(jdt + (tzone - dt)/24);
 if (itit == (n1 + 1)) s_t.end=calData(jdt + (tzone - dt)/24);
 }
 console.log("jd "+jd+" n1 "+n1+" len "+len);
-console.log("st "+s_t);
+console.log("st "+s_t.start+" se "+s_t.end);
  return s_t;
 }
 
