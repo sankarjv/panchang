@@ -419,7 +419,7 @@ if (Math.abs(asp1) > 0.001) {jdt += (asp1 / (skor - 1)); flag = 0;}
 if (itit == n1) s_t.start = calData(jdt + (tzone - dt)/24);
 if (itit == (n1 + 1)) s_t.end=calData(jdt + (tzone - dt)/24);
 }
-console.log("jd "+jd+"jdt "+jdt);
+console.log("ijd "+jd+"jdt "+jdt);
 console.log(" n1 "+n1+" len "+len+" knv "+knv+" itit "+itit);
 console.log("st "+s_t.start+" se "+s_t.end);
 console.log("a "+a+" asp1 "+asp1," skor "+skor+" aspect "+aspect);
@@ -681,7 +681,7 @@ ksek = kmin*60;
 kmin = floor(ksek);
 ksek = floor((ksek - kmin)*60);
 s = new Date(kyear,kmon-1,kday,khr,kmin,ksek,0);
-console.log(" s "+s+" km "+kmon+" kd "+kday+" days "+days);
+console.log(" s "+s+" jd "+jd+" km "+kmon+" kd "+kday+" days "+days);
 console.log(" a "+a+" b "+b+" c "+c+" d "+d+" e "+e+" f "+f+" alf "+alf);
 }
 return s;
