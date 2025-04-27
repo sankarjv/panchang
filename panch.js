@@ -663,8 +663,7 @@ d = floor(365.25*c);
 e = floor((b - d)/30.6001);
 
 days = b - d - floor(30.6001*e) + f;
-//kday = floor(days);
-kday = (days);
+kday = floor(days);
 
 //if(e < 13.5)kmon = e - 1;
 if(e < 14)kmon = e - 1;
@@ -682,7 +681,7 @@ ksek = kmin*60;
 kmin = floor(ksek);
 ksek = floor((ksek - kmin)*60);
 s = new Date(kyear,kmon-1,kday,khr,kmin,ksek,0);
-console.log(" s "+s+" km "+kmon+" kd "+kday);
+console.log(" s "+s+" km "+kmon+" kd "+kday+" days "+days);
 console.log(" a "+a+" b "+b+" c "+c+" d "+d+" e "+e+" f "+f+" alf "+alf);
 }
 return s;
