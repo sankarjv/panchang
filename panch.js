@@ -680,7 +680,7 @@ ksek = floor((ksek - kmin)*60);
 s = new Date(kyear,kmon-1,kday,khr,kmin,ksek,0);
 }
 return s;
-console.log(" s "+s" km "+kmon+" kd "+kday);
+console.log(" s "+s+" km "+kmon+" kd "+kday);
 }
 
 //------------------------------------------------------------------------------------------
