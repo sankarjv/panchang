@@ -679,6 +679,7 @@ kmin = floor(ksek);
 ksek = floor((ksek - kmin)*60);
 s = new Date(kyear,kmon-1,kday,khr,kmin,ksek,0);
 console.log(" s "+s+" km "+kmon+" kd "+kday);
+console.log(" a "+a+" b "+b+" c "+c+" d "+d+" e "+e);
 }
 return s;
 }
