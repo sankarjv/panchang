@@ -404,7 +404,8 @@ for (itit = n1; itit < (n1 + 2); ++itit) {
 aspect = len * itit; // sun n moon in the early tithi
 flag = 0;
 if (aspect == 0) {jdt = novolun(jd, knv); flag = 1;}
-if (aspect == 360) {jdt = novolun(jd, (knv+1)); flag = 1;}
+if (aspect == 360) {jdt = novolun(jd, (knv)); flag = 1;}
+//if (aspect == 360) {jdt = novolun(jd, (knv+1)); flag = 1;}
 while (flag < 1) {
 Lsun0 = sun(jdt);
 Lmoon0 = moon(jdt);
