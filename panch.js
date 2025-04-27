@@ -665,11 +665,14 @@ e = floor((b - d)/30.6001);
 days = b - d - floor(30.6001*e) + f;
 kday = floor(days);
 
-if(e < 13.5)kmon = e - 1;
+//if(e < 13.5)kmon = e - 1;
+if(e < 14)kmon = e - 1;
 else kmon = e - 13;
 
-if(kmon > 2.5)kyear = c - 4716;
-if(kmon < 2.5)kyear = c - 4715;
+//if(kmon > 2.5)kyear = c - 4716;
+//if(kmon < 2.5)kyear = c - 4715;
+if(kmon > 2)kyear = c - 4716;
+else kyear = c - 4715;
 
 hh1 = (days - kday)*24;
 khr = floor(hh1);
