@@ -398,9 +398,11 @@ function tithi(jd, n1, tzone, len)
 var s_t = {};
 var flag;
 jdt = jd;
+
 knv = Math.floor(((jd - 2415020) / 365.25) * 12.3685);
 
-for (itit = n1; itit < (n1 + 2); ++itit) {
+//for (itit = n1; itit < (n1 + 2); ++itit) {
+for (itit = n1; n1 + 2; ++itit) {
 aspect = len * itit; // sun n moon in the early tithi
 flag = 0;
 if (aspect == 0) {jdt = novolun(jd, knv); flag = 1;}
@@ -414,6 +416,7 @@ if (asp1 > 180) asp1 -= 360;
 if (asp1 < -180) asp1 += 360;
 flag = 1;
 
+//if (Math.abs(asp1) > 0.00001) {jdt += (asp1 / ((math.abs(moonlon[1]) - 1)); flag = 0;}
 if (Math.abs(asp1) > 0.001) {jdt += (asp1 / (skor - 1)); flag = 0;}
 }
 if (itit == n1) s_t.start = calData(jdt + (tzone - dt)/24);
