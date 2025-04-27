@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html><head>
+<title>Panchangam by Shankar JV</title>
+<!link rel="stylesheet" href="styles.css">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<meta name="author" content="Shankar JV">
+<meta name="description" content="Panchangam by Shankar JV">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<!meta http-equiv="Content-Security-Policy" content="default-src 'self'">
+<meta name="keywords" content="Panchangam, Panchang, Shankar, Telugu, Hyderabad, Telangana, Andhra, India, Tithi, Vaara, Nakshatra, Yoga, Karana, RahuKalam, GulikaKalam, YamaGandam, DurMuhurtam, Varjyam, Amruta, SunRise, SunSet, Day, Star">
+<style>
+.block{  overflow:hidden;   }
+.trow {  display: table-row;  }
+.alignL {  display: table-cell;
+           font-weight: bold; }
+.alignC1, .alignC2, .alignR {  display: table-cell;
+                              padding-left: 10px;  }
+</style>
+</head><body>
+<h2><div class="trow"><div id="pdt" class="alignL"></div>
+<div class="alignC1"> Panchangam  by</div>
+<div class="alignR"><a href="http://astrolog.er.in">Shankar JV</a></div></div></h2>
+<script src="panch.js"></script>
+<div class="trow">
+<div class="alignL"> Tithi: </div><div id="tithi" class="alignC1"></div></div>
+<div class="trow">
+<div class="alignL"></div><div id="s_tithi_start" class="alignC1"></div>
+<div class="alignC2">to</div><div id="s_tithi_end" class="alignR"></div></div>
+<div class="trow">
+<div class="alignL">&nbsp</div></div>
+<div class="trow">
+<div class="alignL"> Nakshatra: </div><div id="nakshtra" class="alignC1"></div></div>
+<div class="trow">
+<div class="alignL"></div><div id="s_nakshtra_start" class="alignC1"></div>
+<div class="alignC2">to</div><div id="s_nakshtra_end" class="alignR"></div></div>
+<div class="trow">
+<div class="alignL">&nbsp</div></div>
+<div class="trow">
+<div class="alignL"> Yoga: </div><div id="yoga" class="alignC1"></div></div>
+<div class="trow">
+<div class="alignL"></div><div id="s_yoga_start" class="alignC1"></div>
+<div class="alignC2">to</div><div id="s_yoga_end" class="alignR"></div></div>
+<div class="trow">
+<div class="alignL">&nbsp</div></div>
+<div class="trow">
+<div class="alignL"> Karana: </div><div id="karna" class="alignC1"></div></div>
+<div class="trow">
+<div class="alignL"></div><div id="s_karna_start" class="alignC1"></div>
+<div class="alignC2">to</div><div id="s_karna_end" class="alignR"></div></div>
+<div class="trow">
+<div class="alignL">&nbsp</div></div>
+<div class="trow">
+<div class="alignL"> Amruta: </div><div id="amrst" class="alignC1"></div>
+<div class="alignC2">to</div><div id="amrft" class="alignR"></div></div>
+<div class="trow">
+<div class="alignL">&nbsp</div></div>
+<div class="trow">
+<div class="alignL"> Varjyam: </div><div id="varbt" class="alignC1"></div>
+<div class="alignC2">to</div><div id="varet" class="alignR"></div></div>
+<div class="trow">
+<div class="alignL">&nbsp</div></div>
+<div class="trow">
+<div class="alignL" > Vaara: </div><div id="day" class="alignC1"></div></div>
+<script>
+var t= new Date();
+var dt=t.toLocaleString("en-IN", { dateStyle: "medium" });
+document.getElementById("pdt").innerHTML=dt;
+panchang.calculate(t, function() {
+  document.getElementById("tithi").innerHTML=panchang.Tithi.name;
+  document.getElementById("s_tithi_start").innerHTML=panchang.Tithi.start.toLocaleString("en-IN");
+  document.getElementById("s_tithi_end").innerHTML=panchang.Tithi.end.toLocaleString("en-IN");
+  var nak = document.getElementById("nakshtra").innerHTML=panchang.Nakshatra.name;
+  var Va=0;  var Aa=0;
+  switch(nak) {
+    case "Aswini":    var Va=20;    var Aa=16.8;    break;
+    case "Bharani":    var Va=9.6;    var Aa=19.2;    break;
+    case "Krittika":    var Va=12;    var Aa=21.6;    break;
+    case "Rohini":    var Va=16;    var Aa=20.8;    break;
+    case "Mrigasira":    var Va=5.6;    var Aa=15.2;    break;
+    case "Aardra":    var Va=8.4;    var Aa=14;    break;
+    case "Punarvasu":    var Va=12;    var Aa=21.6;    break;
+    case "Pushyami":    var Va=8;    var Aa=17.6;    break;
+    case "Aslesha":    var Va=12.8;    var Aa=22.4;    break;
+    case "Makha":    var Va=12;    var Aa=21.6;    break;
+    case "Pubha":    var Va=8;    var Aa=17.6;    break;
+    case "Uttara":    var Va=7.2;    var Aa=16.8;    break;
+    case "Hasta":    var Va=8.4;    var Aa=18;    break;
+    case "Chitta":    var Va=8;    var Aa=17.6;    break;
+    case "Swati":    var Va=5.6;    var Aa=15.2;    break;
+    case "Visakha":    var Va=5.6;    var Aa=15.2;    break;
+    case "Anuradha":    var Va=4;    var Aa=13.6;    break;
+    case "Jyesta":    var Va=5.6;    var Aa=15.2;    break;
+    case "Moola":    var Va=8.4;    var Aa=17.6;    break;
+    case "PurvAshada":    var Va=9.6;    var Aa=19.2;    break;
+    case "UttarAshada":    var Va=8;    var Aa=17.6;    break;
+    case "Sravanam":    var Va=4;    var Aa=13.6;    break;
+    case "Dhanista":    var Va=4;    var Aa=13.6;    break;
+    case "Satabhisha":    var Va=7.2;    var Aa=16.8;    break;
+    case "PurvaBhadra":    var Va=6.4;    var Aa=16;    break;
+    case "UttaraBhadra":    var Va=9.6;    var Aa=19.2;    break;
+    case "Revati":    var Va=12;    var Aa=21.6;    break;  }
+  var nakb = document.getElementById("s_nakshtra_start").innerHTML=panchang.Nakshatra.start;
+  var nake = document.getElementById("s_nakshtra_end").innerHTML=panchang.Nakshatra.end;
+  var naklen = Math.floor(Date.parse(nake) - Date.parse(nakb));
+  var varb = new Date(Math.floor((nakb.getTime() + ((Va * naklen)/24))));
+  var vare = new Date(Math.floor(varb.getTime() + ((1.6 * naklen)/24)));
+  var amrs = new Date(Math.floor((nakb.getTime() + ((Aa * naklen)/24))));
+  var amrf = new Date(Math.floor(amrs.getTime() + ((1.6 * naklen)/24)));
+  document.getElementById("varbt").innerHTML=varb.toLocaleString("en-IN");
+  document.getElementById("varet").innerHTML=vare.toLocaleString("en-IN");
+  document.getElementById("amrst").innerHTML=amrs.toLocaleString("en-IN");
+  document.getElementById("amrft").innerHTML=amrf.toLocaleString("en-IN");
+  document.getElementById("karna").innerHTML=panchang.Karna.name;
+  document.getElementById("s_karna_start").innerHTML=panchang.Karna.start.toLocaleString("en-IN");
+  document.getElementById("s_karna_end").innerHTML=panchang.Karna.end.toLocaleString("en-IN");
+  document.getElementById("yoga").innerHTML=panchang.Yoga.name;
+  document.getElementById("s_yoga_start").innerHTML=panchang.Yoga.start.toLocaleString("en-IN");
+  document.getElementById("s_yoga_end").innerHTML=panchang.Yoga.end.toLocaleString("en-IN");
+  document.getElementById("day").innerHTML=panchang.Day.name;    
+  document.getElementById("nakshtra").innerHTML=panchang.Nakshatra.name;
+  document.getElementById("s_nakshtra_start").innerHTML=panchang.Nakshatra.start.toLocaleString("en-IN");
+  document.getElementById("s_nakshtra_end").innerHTML=panchang.Nakshatra.end.toLocaleString("en-IN");           });
+</script>
+<script src="sun.js"></script>
+<div class="trow">
+<div class="alignL"></div><div id="rise" class="alignC1"></div>
+<div class="alignC2">to</div><div id="rise1" class="alignR"></div>
+</div>
+<div class="trow">
+<div class="alignL">&nbsp</div></div>
+<div class="trow">
+<div class="alignL"> SunRise&Set: </div><div id="riz" class="alignC1"></div>
+<div class="alignC2"> & </div><div id="set" class="alignR"></div></div>
+<div class="trow">
+<div class="alignL">&nbsp</div></div>
+<div class="trow">
+<div class="alignL"> RahuKaal: </div><div id="rkst" class="alignC1"></div>
+<div class="alignC2">to</div><div id="rkft" class="alignR"></div></div>
+<div class="trow">
+<div class="alignL">&nbsp</div></div>
+<div class="trow">
+<div class="alignL"> YamaGand: </div><div id="ygst" class="alignC1"></div>
+<div class="alignC2">to</div><div id="ygft" class="alignR"></div></div>
+<div class="trow">
+<div class="alignL">&nbsp</div></div>
+<div class="trow">
+<div class="alignL"> Gulika: </div><div id="gkst" class="alignC1"></div>
+<div class="alignC2">to</div><div id="gkft" class="alignR"></div></div>
+<div class="trow">
+<div class="alignL">&nbsp</div></div>
+<div class="trow">
+<div class="alignL"> DurMuhurat: </div><div id="dmst" class="alignC1"></div>
+<div class="alignC2">to</div><div id="dmft" class="alignR"></div></div>
+<div class="trow">
+<div class="alignL"></div><div id="dmbt" class="alignC1"></div>
+<div class="alignC2">-</div><div id="dmet" class="alignR"></div></div>
+<script>
+//var srise=""; var sset=""; var srise1="";
+navigator.geolocation.getCurrentPosition(function(position) {
+  var srise = new Date().sunrise(position.coords.latitude, position.coords.longitude);
+  var sset = new Date().sunset(position.coords.latitude, position.coords.longitude);
+  var srise1 = new Date(srise.getTime() + (24 * 60 * 60 * 1000)).sunrise(position.coords.latitude, position.coords.longitude);
+  var daylen = Math.floor(Date.parse(sset) - Date.parse(srise));
+  var daypart = Math.floor(daylen / 8);
+  var niglen = Math.floor(Date.parse(srise1) - Date.parse(sset));
+  var daypart0 = srise;
+  var daypart1 = new Date(Math.floor((srise.getTime() + daypart)));
+  var daypart2 = new Date(Math.floor((daypart1.getTime() + daypart)));
+  var daypart3 = new Date(Math.floor((daypart2.getTime() + daypart)));
+  var daypart4 = new Date(Math.floor((daypart3.getTime() + daypart)));
+  var daypart5 = new Date(Math.floor((daypart4.getTime() + daypart)));
+  var daypart6 = new Date(Math.floor((daypart5.getTime() + daypart)));
+  var daypart7 = new Date(Math.floor((daypart6.getTime() + daypart)));
+  var daypart8 = new Date(Math.floor((daypart7.getTime() + daypart)));
+  var rks=0;  var rkf=0;  var ygs=0;  var ygf=0;  var gks=0;  var gkf=0;  var dms;  var dmf;  var dmb;  var dme;
+  var wkday = new Date().getDay();
+  switch(wkday) {
+  case 0:
+    rks = daypart7; rkf = daypart8; ygs = daypart4; ygf = daypart5; gks = daypart6; gkf = daypart7;
+    dms = new Date(Math.floor(srise.getTime() + ((daylen * 10.4) / 12)));
+    dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
+    break;
+  case 1:
+    rks = daypart1; rkf = daypart2; ygs = daypart3; ygf = daypart4; gks = daypart5; gkf = daypart6;
+    dms = new Date(Math.floor(srise.getTime() + ((daylen * 6.4) / 12)));
+    dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
+    dmb = new Date(Math.floor(srise.getTime() + ((daylen * 8.8) / 12)));
+    dme = new Date(Math.floor(dmb.getTime() + (48 * 60 * 1000)));
+    break;
+  case 2:
+    rks = daypart6; rkf = daypart7; ygs = daypart2; ygf = daypart3; gks = daypart4; gkf = daypart5;
+    dms = new Date(Math.floor(srise.getTime() + ((daylen * 2.4) / 12)));
+    dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
+    dmb = new Date(Math.floor(sset.getTime() + ((niglen * 4.8) / 12)));
+    dme = new Date(Math.floor(dmb.getTime() + (48 * 60 * 1000)));
+    break;
+  case 3:
+    rks = daypart4; rkf = daypart5; ygs = daypart1; ygf = daypart2; gks = daypart3; gkf = daypart4;
+    dms = new Date(Math.floor(srise.getTime() + ((daylen * 5.6) / 12)));
+    dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
+    break;
+  case 4:
+    rks = daypart5; rkf = daypart6; ygs = daypart0; ygf = daypart1; gks = daypart2; gkf = daypart3;
+    dms = new Date(Math.floor(srise.getTime() + ((daylen * 4) / 12)));
+    dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
+    dmb = new Date(Math.floor(srise.getTime() + ((daylen * 8.8) / 12)));
+    dme = new Date(Math.floor(dmb.getTime() + (48 * 60 * 1000)));
+    break;
+  case 5:
+    rks = daypart3; rkf = daypart4; ygs = daypart6; ygf = daypart7; gks = daypart1; gkf = daypart2;
+    dms = new Date(Math.floor(srise.getTime() + ((daylen * 2.4) / 12)));
+    dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
+    dmb = new Date(Math.floor(srise.getTime() + ((daylen * 6.4) / 12)));
+    dme = new Date(Math.floor(dmb.getTime() + (48 * 60 * 1000)));
+    break;
+  case 6:
+    rks = daypart2; rkf = daypart3; ygs = daypart5; ygf = daypart6; gks = daypart0; gkf = daypart1;
+    dms = new Date(Math.floor(srise.getTime() + ((daylen * 1.6) / 12)));
+    dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
+    break;  }
+  document.getElementById("rise").innerHTML=srise.toLocaleString("en-IN");
+  document.getElementById("rise1").innerHTML=srise1.toLocaleString("en-IN");
+  document.getElementById("riz").innerHTML=srise.toLocaleString("en-IN");
+  document.getElementById("set").innerHTML=sset.toLocaleString("en-IN");
+  document.getElementById("rkst").innerHTML=rks.toLocaleString("en-IN");
+  document.getElementById("rkft").innerHTML=rkf.toLocaleString("en-IN");
+  document.getElementById("ygst").innerHTML=ygs.toLocaleString("en-IN");
+  document.getElementById("ygft").innerHTML=ygf.toLocaleString("en-IN");
+  document.getElementById("gkst").innerHTML=gks.toLocaleString("en-IN");
+  document.getElementById("gkft").innerHTML=gkf.toLocaleString("en-IN");
+  document.getElementById("dmst").innerHTML=dms.toLocaleString("en-IN");
+  document.getElementById("dmft").innerHTML=dmf.toLocaleString("en-IN");
+  document.getElementById("dmbt").innerHTML=dmb.toLocaleString("en-IN");
+  document.getElementById("dmet").innerHTML=dme.toLocaleString("en-IN");  });
+</script></body></html>
