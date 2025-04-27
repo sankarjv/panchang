@@ -663,7 +663,8 @@ d = floor(365.25*c);
 e = floor((b - d)/30.6001);
 
 days = b - d - floor(30.6001*e) + f;
-kday = floor(days);
+//kday = floor(days);
+kday = (days);
 
 //if(e < 13.5)kmon = e - 1;
 if(e < 14)kmon = e - 1;
