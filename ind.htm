@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html><head>
 <title>Panchangam by Shankar JV</title>
-<!link rel="stylesheet" href="styles.css">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <meta name="author" content="Shankar JV">
 <meta name="description" content="Panchangam by Shankar JV">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<!meta http-equiv="Content-Security-Policy" content="default-src 'self'">
 <meta name="keywords" content="Panchangam, Panchang, Shankar, Telugu, Hyderabad, Telangana, Andhra, India, Tithi, Vaara, Nakshatra, Yoga, Karana, RahuKalam, GulikaKalam, YamaGandam, DurMuhurtam, Varjyam, Amruta, SunRise, SunSet, Day, Star">
 <style>
 .block{  overflow:hidden;   }
@@ -25,28 +23,28 @@
 <div class="trow">
 <div class="alignL"> Tithi: </div><div id="tithi" class="alignC1"></div></div>
 <div class="trow">
-<div class="alignL"></div><div id="s_tithi_start" class="alignC1"></div>
+<div class="alignL">&nbsp</div><div id="s_tithi_start" class="alignC1"></div>
 <div class="alignC2">to</div><div id="s_tithi_end" class="alignR"></div></div>
 <div class="trow">
 <div class="alignL">&nbsp</div></div>
 <div class="trow">
 <div class="alignL"> Nakshatra: </div><div id="nakshtra" class="alignC1"></div></div>
 <div class="trow">
-<div class="alignL"></div><div id="s_nakshtra_start" class="alignC1"></div>
+<div class="alignL">&nbsp</div><div id="s_nakshtra_start" class="alignC1"></div>
 <div class="alignC2">to</div><div id="s_nakshtra_end" class="alignR"></div></div>
 <div class="trow">
 <div class="alignL">&nbsp</div></div>
 <div class="trow">
 <div class="alignL"> Yoga: </div><div id="yoga" class="alignC1"></div></div>
 <div class="trow">
-<div class="alignL"></div><div id="s_yoga_start" class="alignC1"></div>
+<div class="alignL">&nbsp</div><div id="s_yoga_start" class="alignC1"></div>
 <div class="alignC2">to</div><div id="s_yoga_end" class="alignR"></div></div>
 <div class="trow">
 <div class="alignL">&nbsp</div></div>
 <div class="trow">
 <div class="alignL"> Karana: </div><div id="karna" class="alignC1"></div></div>
 <div class="trow">
-<div class="alignL"></div><div id="s_karna_start" class="alignC1"></div>
+<div class="alignL">&nbsp</div><div id="s_karna_start" class="alignC1"></div>
 <div class="alignC2">to</div><div id="s_karna_end" class="alignR"></div></div>
 <div class="trow">
 <div class="alignL">&nbsp</div></div>
@@ -125,7 +123,7 @@ panchang.calculate(t, function() {
 </script>
 <script src="sun.js"></script>
 <div class="trow">
-<div class="alignL"></div><div id="rise" class="alignC1"></div>
+<div class="alignL">&nbsp</div><div id="rise" class="alignC1"></div>
 <div class="alignC2">to</div><div id="rise1" class="alignR"></div>
 </div>
 <div class="trow">
@@ -133,7 +131,7 @@ panchang.calculate(t, function() {
 <div class="trow">
 <div class="alignL" > Hora: </div><div id="hnm" class="alignC1"></div></div>
 <div class="trow">
-<div class="alignL"></div><div id="hst" class="alignC1"></div>
+<div class="alignL">&nbsp</div><div id="hst" class="alignC1"></div>
 <div class="alignC2"> to </div><div id="hft" class="alignR"></div></div>
 <div class="trow">
 <div class="alignL">&nbsp</div></div>
@@ -177,10 +175,8 @@ navigator.geolocation.getCurrentPosition(function(position) {
   var srtm = srise.getTime();
   var dtd = tm - srtm;
   var hi = Math.floor(dtd / dhora);
-console.log("dh "+dhora+" tm "+tm+" srtm "+srtm+" dtd "+dtd+" hi "+hi);
   var hs = new Date(Math.floor(srise.getTime() + ((hi)*dhora)));
   var hf = new Date(Math.floor(srise.getTime() + ((hi+1)* dhora)));
-console.log("hs "+hs+" hf "+hf);
   var daypart0 = srise;
   var daypart1 = new Date(Math.floor((srise.getTime() + daypart)));
   var daypart2 = new Date(Math.floor((daypart1.getTime() + daypart)));
@@ -190,33 +186,6 @@ console.log("hs "+hs+" hf "+hf);
   var daypart6 = new Date(Math.floor((daypart5.getTime() + daypart)));
   var daypart7 = new Date(Math.floor((daypart6.getTime() + daypart)));
   var daypart8 = new Date(Math.floor((daypart7.getTime() + daypart)));
-  var dhora0 = srise;
-  var dhora1 = new Date(Math.floor((dhora0.getTime() + dhora)));
-  var dhora2 = new Date(Math.floor((dhora1.getTime() + dhora)));
-  var dhora3 = new Date(Math.floor((dhora2.getTime() + dhora)));
-  var dhora4 = new Date(Math.floor((dhora3.getTime() + dhora)));
-  var dhora5 = new Date(Math.floor((dhora4.getTime() + dhora)));
-  var dhora6 = new Date(Math.floor((dhora5.getTime() + dhora)));
-  var dhora7 = new Date(Math.floor((dhora6.getTime() + dhora)));
-  var dhora8 = new Date(Math.floor((dhora7.getTime() + dhora)));
-  var dhora9 = new Date(Math.floor((dhora8.getTime() + dhora)));
-  var dhora10 = new Date(Math.floor((dhora9.getTime() + dhora)));
-  var dhora11 = new Date(Math.floor((dhora10.getTime() + dhora)));
-  var dhora12 = new Date(Math.floor((dhora11.getTime() + dhora)));
-  var nhora0 = sset;
-  var nhora1 = new Date(Math.floor((nhora0.getTime() + nhora)));
-  var nhora2 = new Date(Math.floor((nhora1.getTime() + nhora)));
-  var nhora3 = new Date(Math.floor((nhora2.getTime() + nhora)));
-  var nhora4 = new Date(Math.floor((nhora3.getTime() + nhora)));
-  var nhora5 = new Date(Math.floor((nhora4.getTime() + nhora)));
-  var nhora6 = new Date(Math.floor((nhora5.getTime() + nhora)));
-  var nhora7 = new Date(Math.floor((nhora6.getTime() + nhora)));
-  var nhora8 = new Date(Math.floor((nhora7.getTime() + nhora)));
-  var nhora9 = new Date(Math.floor((nhora8.getTime() + nhora)));
-  var nhora10 = new Date(Math.floor((nhora9.getTime() + nhora)));
-  var nhora11 = new Date(Math.floor((nhora10.getTime() + nhora)));
-  var nhora12 = new Date(Math.floor((nhora11.getTime() + nhora)));
-
   var rks=0;  var rkf=0;  var ygs=0;  var ygf=0;  var gks=0;  var gkf=0;  var dms;  var dmf;  var dmb;  var dme;  var hn;
   var wkday = new Date().getDay();
   switch(wkday) {
@@ -224,7 +193,6 @@ console.log("hs "+hs+" hf "+hf);
     rks = daypart7; rkf = daypart8; ygs = daypart4; ygf = daypart5; gks = daypart6; gkf = daypart7;
     dms = new Date(Math.floor(srise.getTime() + ((daylen * 10.4) / 12)));
     dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
-    break;
     switch(hi) {
     case 0: hn="Ravi"; break;
     case 1: hn="Sukra"; break; 
@@ -238,6 +206,7 @@ console.log("hs "+hs+" hf "+hf);
     case 9: hn="Budh"; break; 
     case 10: hn="Chandra"; break; 
     case 11: hn="Sani"; break; }
+    break;
   case 1:
     rks = daypart1; rkf = daypart2; ygs = daypart3; ygf = daypart4; gks = daypart5; gkf = daypart6;
     dms = new Date(Math.floor(srise.getTime() + ((daylen * 6.4) / 12)));
@@ -257,13 +226,13 @@ console.log("hs "+hs+" hf "+hf);
     case 9: hn="Guru"; break; 
     case 10: hn="Kuja"; break; 
     case 11: hn="Ravi"; break; }
+    break;
   case 2:
     rks = daypart6; rkf = daypart7; ygs = daypart2; ygf = daypart3; gks = daypart4; gkf = daypart5;
     dms = new Date(Math.floor(srise.getTime() + ((daylen * 2.4) / 12)));
     dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
     dmb = new Date(Math.floor(sset.getTime() + ((niglen * 4.8) / 12)));
     dme = new Date(Math.floor(dmb.getTime() + (48 * 60 * 1000)));
-    break;
     switch(hi) {
     case 1: hn="Kuja"; break; 
     case 2: hn="Ravi"; break; 
@@ -277,11 +246,11 @@ console.log("hs "+hs+" hf "+hf);
     case 10: hn="Sukra"; break; 
     case 11: hn="Budh"; break; 
     case 5: hn="Chandra"; break; }
+    break;
   case 3:
     rks = daypart4; rkf = daypart5; ygs = daypart1; ygf = daypart2; gks = daypart3; gkf = daypart4;
     dms = new Date(Math.floor(srise.getTime() + ((daylen * 5.6) / 12)));
     dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
-    break;
     switch(hi) {
     case 0: hn="Budh"; break; 
     case 1: hn="Chandra"; break; 
@@ -295,13 +264,13 @@ console.log("hs "+hs+" hf "+hf);
     case 9: hn="Sani"; break; 
     case 10: hn="Guru"; break; 
     case 11: hn="Kuja"; break; }
+    break;
   case 4:
     rks = daypart5; rkf = daypart6; ygs = daypart0; ygf = daypart1; gks = daypart2; gkf = daypart3;
     dms = new Date(Math.floor(srise.getTime() + ((daylen * 4) / 12)));
     dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
     dmb = new Date(Math.floor(srise.getTime() + ((daylen * 8.8) / 12)));
     dme = new Date(Math.floor(dmb.getTime() + (48 * 60 * 1000)));
-    break;
     switch(hi) {
     case 0: hn="Guru"; break; 
     case 1: hn="Kuja"; break; 
@@ -315,13 +284,13 @@ console.log("hs "+hs+" hf "+hf);
     case 9: hn="Ravi"; break; 
     case 10: hn="Sukra"; break; 
     case 11: hn="Budh"; break; }
+    break;
   case 5:
     rks = daypart3; rkf = daypart4; ygs = daypart6; ygf = daypart7; gks = daypart1; gkf = daypart2;
     dms = new Date(Math.floor(srise.getTime() + ((daylen * 2.4) / 12)));
     dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
     dmb = new Date(Math.floor(srise.getTime() + ((daylen * 6.4) / 12)));
     dme = new Date(Math.floor(dmb.getTime() + (48 * 60 * 1000)));
-    break;
     switch(hi) {
     case 0: hn="Sukra"; break; 
     case 1: hn="Budh"; break; 
@@ -335,11 +304,11 @@ console.log("hs "+hs+" hf "+hf);
     case 9: hn="Chandra"; break; 
     case 10: hn="Sani"; break; 
     case 11: hn="Guru"; break; }
+    break;
   case 6:
     rks = daypart2; rkf = daypart3; ygs = daypart5; ygf = daypart6; gks = daypart0; gkf = daypart1;
     dms = new Date(Math.floor(srise.getTime() + ((daylen * 1.6) / 12)));
     dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
-    break;  
     switch(hi) {
     case 0: hn="Sani"; break; 
     case 1: hn="Guru"; break; 
@@ -352,7 +321,8 @@ console.log("hs "+hs+" hf "+hf);
     case 8: hn="Guru"; break; 
     case 9: hn="Kuja"; break; 
     case 10: hn="Ravi"; break; 
-    case 11: hn="Sukra"; break; } }
+    case 11: hn="Sukra"; break; } 
+    break;  }
   document.getElementById("rise").innerHTML=srise.toLocaleString("en-IN");
   document.getElementById("rise1").innerHTML=srise1.toLocaleString("en-IN");
   document.getElementById("riz").innerHTML=srise.toLocaleString("en-IN");
