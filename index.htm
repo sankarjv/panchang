@@ -141,6 +141,16 @@ panchang.calculate(t, function() {
 <div class="trow">
 <div class="alignL">&nbsp</div></div>
 <div class="trow">
+<div class="alignL"> Abhijit: </div><div id="ajst" class="alignC1"></div>
+<div class="alignC2">to</div><div id="ajft" class="alignR"></div></div>
+<div class="trow">
+<div class="alignL">&nbsp</div></div>
+<div class="trow">
+<div class="alignL"> Brahma: </div><div id="bhst" class="alignC1"></div>
+<div class="alignC2">to</div><div id="bhft" class="alignR"></div></div>
+<div class="trow">
+<div class="alignL">&nbsp</div></div>
+<div class="trow">
 <div class="alignL"> RahuKaal: </div><div id="rkst" class="alignC1"></div>
 <div class="alignC2">to</div><div id="rkft" class="alignR"></div></div>
 <div class="trow">
@@ -172,22 +182,24 @@ navigator.geolocation.getCurrentPosition(function(position) {
   var niglen = Math.floor(Date.parse(srise1) - Date.parse(sset));
   var srtm = srise.getTime();
   var sstm = sset.getTime();
+  var dmuh = Math.floor(daylen / 15);
+  var nmuh = Math.floor(niglen / 15);
+  var ajs = new Date(Math.floor(srise.getTime() + (7 * dmuh)));
+  var ajf = new Date(Math.floor(srise.getTime() + (8 * dmuh))); 
+  var bhs = new Date(Math.floor(sset.getTime() + (13 * nmuh)));
+  var bhf = new Date(Math.floor(sset.getTime() + (14 * nmuh))); 
   if (tm < sstm) {
   var dhora = Math.floor(daylen / 12);
   var dtd = tm - srtm;
   var dhi = Math.floor(dtd / dhora);
   var hs = new Date(Math.floor(srise.getTime() + ((dhi) * dhora)));
   var hf = new Date(Math.floor(srise.getTime() + ((dhi+1) * dhora))); }
-//  var hs = new Date(Math.floor(dhs.getTime()));
-//  var hf = new Date(Math.floor(dhf.getTime())); }
   if (tm > sstm) {
   var nhora = Math.floor(niglen / 12);
   var ntd = tm - sstm;
   var nhi = Math.floor(ntd / nhora);
   var hs = new Date(Math.floor(sset.getTime() + ((nhi) * nhora)));
   var hf = new Date(Math.floor(sset.getTime() + ((nhi+1) * nhora))); }
-//  var hs = new Date(Math.floor(nhs.getTime()));
-//  var hf = new Date(Math.floor(nhf.getTime())); }
   var daypart0 = srise;
   var daypart1 = new Date(Math.floor((srise.getTime() + daypart)));
   var daypart2 = new Date(Math.floor((daypart1.getTime() + daypart)));
@@ -430,6 +442,10 @@ navigator.geolocation.getCurrentPosition(function(position) {
   document.getElementById("riz").innerHTML=srise.toLocaleString("en-IN");
   document.getElementById("set").innerHTML=sset.toLocaleString("en-IN");
   document.getElementById("hnm").innerHTML=hn;
+  document.getElementById("ajst").innerHTML=ajs.toLocaleString("en-IN");
+  document.getElementById("ajft").innerHTML=ajf.toLocaleString("en-IN");
+  document.getElementById("bhst").innerHTML=bhs.toLocaleString("en-IN");
+  document.getElementById("bhft").innerHTML=bhf.toLocaleString("en-IN");
   document.getElementById("hst").innerHTML=hs.toLocaleString("en-IN");
   document.getElementById("hft").innerHTML=hf.toLocaleString("en-IN");
   document.getElementById("rkst").innerHTML=rks.toLocaleString("en-IN");
