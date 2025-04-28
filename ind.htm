@@ -21,7 +21,7 @@
 <h2><div class="trow"><div id="pdt" class="alignL"></div>
 <div class="alignC1"> Panchangam  by</div>
 <div class="alignR"><a href="http://astrolog.er.in">Shankar JV</a></div></div></h2>
-<script src="panch.js"></script>
+<script src="panchang.js"></script>
 <div class="trow">
 <div class="alignL"> Tithi: </div><div id="tithi" class="alignC1"></div></div>
 <div class="trow">
@@ -65,6 +65,7 @@
 <script>
 var t= new Date();
 var dt=t.toLocaleString("en-IN", { dateStyle: "medium" });
+var tm=t.getTime();
 document.getElementById("pdt").innerHTML=dt;
 panchang.calculate(t, function() {
   document.getElementById("tithi").innerHTML=panchang.Tithi.name;
@@ -122,7 +123,7 @@ panchang.calculate(t, function() {
   document.getElementById("s_nakshtra_start").innerHTML=panchang.Nakshatra.start.toLocaleString("en-IN");
   document.getElementById("s_nakshtra_end").innerHTML=panchang.Nakshatra.end.toLocaleString("en-IN");           });
 </script>
-<script src="s.js"></script>
+<script src="sun.js"></script>
 <div class="trow">
 <div class="alignL"></div><div id="rise" class="alignC1"></div>
 <div class="alignC2">to</div><div id="rise1" class="alignR"></div>
@@ -132,6 +133,11 @@ panchang.calculate(t, function() {
 <div class="trow">
 <div class="alignL"> SunRise&Set: </div><div id="riz" class="alignC1"></div>
 <div class="alignC2"> & </div><div id="set" class="alignR"></div></div>
+<div class="trow">
+<div class="alignL">&nbsp</div></div>
+<div class="trow">
+<div class="alignL"> Hora: </div><div id="hst" class="alignC1"></div>
+<div class="alignC2"> & </div><div id="hft" class="alignR"></div></div>
 <div class="trow">
 <div class="alignL">&nbsp</div></div>
 <div class="trow">
@@ -164,6 +170,12 @@ navigator.geolocation.getCurrentPosition(function(position) {
   var daylen = Math.floor(Date.parse(sset) - Date.parse(srise));
   var daypart = Math.floor(daylen / 8);
   var niglen = Math.floor(Date.parse(srise1) - Date.parse(sset));
+  var dhora = Math.floor(daylen / 12);
+  var nhora = Math.floor(niglen / 12);
+  var srtm = srise.getTime();
+  var dtd = tm - srtm;
+  var hs = new Date(Math.Floor(srise.getTime() + ((dtd / dhora)-1)*dhora));
+  var hf = new Date(Math.Floor(srise.getTime() + ((dtd / dhora))*dhora));
   var daypart0 = srise;
   var daypart1 = new Date(Math.floor((srise.getTime() + daypart)));
   var daypart2 = new Date(Math.floor((daypart1.getTime() + daypart)));
@@ -173,6 +185,33 @@ navigator.geolocation.getCurrentPosition(function(position) {
   var daypart6 = new Date(Math.floor((daypart5.getTime() + daypart)));
   var daypart7 = new Date(Math.floor((daypart6.getTime() + daypart)));
   var daypart8 = new Date(Math.floor((daypart7.getTime() + daypart)));
+  var dhora0 = srise;
+  var dhora1 = new Date(Math.floor((dhora0.getTime() + dhora)));
+  var dhora2 = new Date(Math.floor((dhora1.getTime() + dhora)));
+  var dhora3 = new Date(Math.floor((dhora2.getTime() + dhora)));
+  var dhora4 = new Date(Math.floor((dhora3.getTime() + dhora)));
+  var dhora5 = new Date(Math.floor((dhora4.getTime() + dhora)));
+  var dhora6 = new Date(Math.floor((dhora5.getTime() + dhora)));
+  var dhora7 = new Date(Math.floor((dhora6.getTime() + dhora)));
+  var dhora8 = new Date(Math.floor((dhora7.getTime() + dhora)));
+  var dhora9 = new Date(Math.floor((dhora8.getTime() + dhora)));
+  var dhora10 = new Date(Math.floor((dhora9.getTime() + dhora)));
+  var dhora11 = new Date(Math.floor((dhora10.getTime() + dhora)));
+  var dhora12 = new Date(Math.floor((dhora11.getTime() + dhora)));
+  var nhora0 = sset;
+  var nhora1 = new Date(Math.floor((nhora0.getTime() + nhora)));
+  var nhora2 = new Date(Math.floor((nhora1.getTime() + nhora)));
+  var nhora3 = new Date(Math.floor((nhora2.getTime() + nhora)));
+  var nhora4 = new Date(Math.floor((nhora3.getTime() + nhora)));
+  var nhora5 = new Date(Math.floor((nhora4.getTime() + nhora)));
+  var nhora6 = new Date(Math.floor((nhora5.getTime() + nhora)));
+  var nhora7 = new Date(Math.floor((nhora6.getTime() + nhora)));
+  var nhora8 = new Date(Math.floor((nhora7.getTime() + nhora)));
+  var nhora9 = new Date(Math.floor((nhora8.getTime() + nhora)));
+  var nhora10 = new Date(Math.floor((nhora9.getTime() + nhora)));
+  var nhora11 = new Date(Math.floor((nhora10.getTime() + nhora)));
+  var nhora12 = new Date(Math.floor((nhora11.getTime() + nhora)));
+
   var rks=0;  var rkf=0;  var ygs=0;  var ygf=0;  var gks=0;  var gkf=0;  var dms;  var dmf;  var dmb;  var dme;
   var wkday = new Date().getDay();
   switch(wkday) {
@@ -223,6 +262,8 @@ navigator.geolocation.getCurrentPosition(function(position) {
   document.getElementById("rise1").innerHTML=srise1.toLocaleString("en-IN");
   document.getElementById("riz").innerHTML=srise.toLocaleString("en-IN");
   document.getElementById("set").innerHTML=sset.toLocaleString("en-IN");
+  document.getElementById("hst").innerHTML=hs.toLocaleString("en-IN");
+  document.getElementById("hft").innerHTML=hf.toLocaleString("en-IN");
   document.getElementById("rkst").innerHTML=rks.toLocaleString("en-IN");
   document.getElementById("rkft").innerHTML=rkf.toLocaleString("en-IN");
   document.getElementById("ygst").innerHTML=ygs.toLocaleString("en-IN");
