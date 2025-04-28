@@ -66,7 +66,7 @@ var dt=t.toLocaleString("en-IN", { dateStyle: "medium" });
 var tm=t.getTime();
 document.getElementById("pdt").innerHTML=dt;
 panchang.calculate(t, function() {
-var options = {year:"2-digit", month:"2-digit", day:"2-digit", hour:"2-digit", hour12:false, minute:"2-digit",};
+var options = {year:"2-digit", month:"2-digit", day:"2-digit", hour:"2-digit", hour12:false, minute:"2-digit", second:"2-digit"};
   document.getElementById("tithi").innerHTML=panchang.Tithi.name;
   document.getElementById("s_tithi_start").innerHTML=panchang.Tithi.start.toLocaleString("en-IN", options);
   document.getElementById("s_tithi_end").innerHTML=panchang.Tithi.end.toLocaleString("en-IN", options);
@@ -438,6 +438,20 @@ navigator.geolocation.getCurrentPosition(function(position) {
     case 10: hn="Guru"; break; 
     case 11: hn="Kuja"; break; }
     break;  }
+  document.getElementById("rkst").innerHTML=rks.toLocaleString("en-IN", options);
+  document.getElementById("rkft").innerHTML=rkf.toLocaleString("en-IN", options);
+  document.getElementById("ygst").innerHTML=ygs.toLocaleString("en-IN", options);
+  document.getElementById("ygft").innerHTML=ygf.toLocaleString("en-IN", options);
+  document.getElementById("gkst").innerHTML=gks.toLocaleString("en-IN", options);
+  document.getElementById("gkft").innerHTML=gkf.toLocaleString("en-IN", options);
+  document.getElementById("dmst").innerHTML=dms.toLocaleString("en-IN", options);
+  document.getElementById("dmft").innerHTML=dmf.toLocaleString("en-IN", options);
+  document.getElementById("dmbt").innerHTML=dmb.toLocaleString("en-IN"), options;
+  document.getElementById("dmet").innerHTML=dme.toLocaleString("en-IN", options); 
+  document.getElementById("rise").innerHTML=srise.toLocaleString("en-IN", options);
+  document.getElementById("rise1").innerHTML=srise1.toLocaleString("en-IN", options);
+  document.getElementById("riz").innerHTML=srise.toLocaleString("en-IN", options);
+  document.getElementById("set").innerHTML=sset.toLocaleString("en-IN", options);
   document.getElementById("rise").innerHTML=srise.toLocaleString("en-IN", options);
   document.getElementById("rise1").innerHTML=srise1.toLocaleString("en-IN", options);
   document.getElementById("riz").innerHTML=srise.toLocaleString("en-IN", options);
@@ -448,15 +462,5 @@ navigator.geolocation.getCurrentPosition(function(position) {
   document.getElementById("bhst").innerHTML=bhs.toLocaleString("en-IN", options);
   document.getElementById("bhft").innerHTML=bhf.toLocaleString("en-IN", options);
   document.getElementById("hst").innerHTML=hs.toLocaleString("en-IN", options);
-  document.getElementById("hft").innerHTML=hf.toLocaleString("en-IN", options);
-  document.getElementById("rkst").innerHTML=rks.toLocaleString("en-IN", options);
-  document.getElementById("rkft").innerHTML=rkf.toLocaleString("en-IN", options);
-  document.getElementById("ygst").innerHTML=ygs.toLocaleString("en-IN", options);
-  document.getElementById("ygft").innerHTML=ygf.toLocaleString("en-IN", options);
-  document.getElementById("gkst").innerHTML=gks.toLocaleString("en-IN", options);
-  document.getElementById("gkft").innerHTML=gkf.toLocaleString("en-IN", options);
-  document.getElementById("dmst").innerHTML=dms.toLocaleString("en-IN", options);
-  document.getElementById("dmft").innerHTML=dmf.toLocaleString("en-IN", options);
-  document.getElementById("dmbt").innerHTML=dmb.toLocaleString("en-IN"), options;
-  document.getElementById("dmet").innerHTML=dme.toLocaleString("en-IN", options);  });
+  document.getElementById("hft").innerHTML=hf.toLocaleString("en-IN", options);  });
 </script></body></html>
