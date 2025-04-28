@@ -131,15 +131,15 @@ panchang.calculate(t, function() {
 <div class="trow">
 <div class="alignL">&nbsp</div></div>
 <div class="trow">
-<div class="alignL"> SunRise&Set: </div><div id="riz" class="alignC1"></div>
-<div class="alignC2"> & </div><div id="set" class="alignR"></div></div>
-<div class="trow">
-<div class="alignL">&nbsp</div></div>
-<div class="trow">
 <div class="alignL" > Hora: </div><div id="hnm" class="alignC1"></div></div>
 <div class="trow">
 <div class="alignL"></div><div id="hst" class="alignC1"></div>
 <div class="alignC2"> to </div><div id="hft" class="alignR"></div></div>
+<div class="trow">
+<div class="alignL">&nbsp</div></div>
+<div class="trow">
+<div class="alignL"> SunRise&Set: </div><div id="riz" class="alignC1"></div>
+<div class="alignC2"> & </div><div id="set" class="alignR"></div></div>
 <div class="trow">
 <div class="alignL">&nbsp</div></div>
 <div class="trow">
@@ -225,6 +225,19 @@ console.log("hs "+hs+" hf "+hf);
     dms = new Date(Math.floor(srise.getTime() + ((daylen * 10.4) / 12)));
     dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
     break;
+    switch(hi) {
+    case 0: hn="Ravi"; break;
+    case 1: hn="Sukra"; break; 
+    case 2: hn="Budh"; break; 
+    case 3: hn="Chandra"; break; 
+    case 4: hn="Sani"; break; 
+    case 5: hn="Guru"; break; 
+    case 6: hn="Kuja"; break; 
+    case 7: hn="Ravi"; break; 
+    case 8: hn="Sukra"; break; 
+    case 9: hn="Budh"; break; 
+    case 10: hn="Chandra"; break; 
+    case 11: hn="Sani"; break; }
   case 1:
     rks = daypart1; rkf = daypart2; ygs = daypart3; ygf = daypart4; gks = daypart5; gkf = daypart6;
     dms = new Date(Math.floor(srise.getTime() + ((daylen * 6.4) / 12)));
@@ -243,8 +256,7 @@ console.log("hs "+hs+" hf "+hf);
     case 8: hn="Sani"; break; 
     case 9: hn="Guru"; break; 
     case 10: hn="Kuja"; break; 
-    case 11: hn="Ravi"; break; 
-    break;  }
+    case 11: hn="Ravi"; break; }
   case 2:
     rks = daypart6; rkf = daypart7; ygs = daypart2; ygf = daypart3; gks = daypart4; gkf = daypart5;
     dms = new Date(Math.floor(srise.getTime() + ((daylen * 2.4) / 12)));
@@ -252,11 +264,37 @@ console.log("hs "+hs+" hf "+hf);
     dmb = new Date(Math.floor(sset.getTime() + ((niglen * 4.8) / 12)));
     dme = new Date(Math.floor(dmb.getTime() + (48 * 60 * 1000)));
     break;
+    switch(hi) {
+    case 1: hn="Kuja"; break; 
+    case 2: hn="Ravi"; break; 
+    case 3: hn="Sukra"; break; 
+    case 4: hn="Budh"; break; 
+    case 5: hn="Chandra"; break; 
+    case 6: hn="Sani"; break; 
+    case 7: hn="Guru"; break; 
+    case 8: hn="Kuja"; break; 
+    case 9: hn="Ravi"; break; 
+    case 10: hn="Sukra"; break; 
+    case 11: hn="Budh"; break; 
+    case 5: hn="Chandra"; break; }
   case 3:
     rks = daypart4; rkf = daypart5; ygs = daypart1; ygf = daypart2; gks = daypart3; gkf = daypart4;
     dms = new Date(Math.floor(srise.getTime() + ((daylen * 5.6) / 12)));
     dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
     break;
+    switch(hi) {
+    case 0: hn="Budh"; break; 
+    case 1: hn="Chandra"; break; 
+    case 2: hn="Sani"; break; 
+    case 3: hn="Guru"; break; 
+    case 4: hn="Kuja"; break; 
+    case 5: hn="Ravi"; break; 
+    case 6: hn="Sukra"; break; 
+    case 7: hn="Budh"; break; 
+    case 8: hn="Chandra"; break; 
+    case 9: hn="Sani"; break; 
+    case 10: hn="Guru"; break; 
+    case 11: hn="Kuja"; break; }
   case 4:
     rks = daypart5; rkf = daypart6; ygs = daypart0; ygf = daypart1; gks = daypart2; gkf = daypart3;
     dms = new Date(Math.floor(srise.getTime() + ((daylen * 4) / 12)));
@@ -264,6 +302,19 @@ console.log("hs "+hs+" hf "+hf);
     dmb = new Date(Math.floor(srise.getTime() + ((daylen * 8.8) / 12)));
     dme = new Date(Math.floor(dmb.getTime() + (48 * 60 * 1000)));
     break;
+    switch(hi) {
+    case 0: hn="Guru"; break; 
+    case 1: hn="Kuja"; break; 
+    case 2: hn="Ravi"; break; 
+    case 3: hn="Sukra"; break; 
+    case 4: hn="Budh"; break; 
+    case 5: hn="Chandra"; break; 
+    case 6: hn="Sani"; break; 
+    case 7: hn="Guru"; break; 
+    case 8: hn="Kuja"; break; 
+    case 9: hn="Ravi"; break; 
+    case 10: hn="Sukra"; break; 
+    case 11: hn="Budh"; break; }
   case 5:
     rks = daypart3; rkf = daypart4; ygs = daypart6; ygf = daypart7; gks = daypart1; gkf = daypart2;
     dms = new Date(Math.floor(srise.getTime() + ((daylen * 2.4) / 12)));
@@ -271,11 +322,37 @@ console.log("hs "+hs+" hf "+hf);
     dmb = new Date(Math.floor(srise.getTime() + ((daylen * 6.4) / 12)));
     dme = new Date(Math.floor(dmb.getTime() + (48 * 60 * 1000)));
     break;
+    switch(hi) {
+    case 0: hn="Sukra"; break; 
+    case 1: hn="Budh"; break; 
+    case 2: hn="Chandra"; break; 
+    case 3: hn="Sani"; break; 
+    case 4: hn="Guru"; break; 
+    case 5: hn="Kuja"; break; 
+    case 6: hn="Ravi"; break; 
+    case 7: hn="Sukra"; break; 
+    case 8: hn="Budh"; break; 
+    case 9: hn="Chandra"; break; 
+    case 10: hn="Sani"; break; 
+    case 11: hn="Guru"; break; }
   case 6:
     rks = daypart2; rkf = daypart3; ygs = daypart5; ygf = daypart6; gks = daypart0; gkf = daypart1;
     dms = new Date(Math.floor(srise.getTime() + ((daylen * 1.6) / 12)));
     dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
-    break;  }
+    break;  
+    switch(hi) {
+    case 0: hn="Sani"; break; 
+    case 1: hn="Guru"; break; 
+    case 2: hn="Kuja"; break; 
+    case 3: hn="Ravi"; break; 
+    case 4: hn="Sukra"; break; 
+    case 5: hn="Budh"; break; 
+    case 6: hn="Chandra"; break; 
+    case 7: hn="Sani"; break; 
+    case 8: hn="Guru"; break; 
+    case 9: hn="Kuja"; break; 
+    case 10: hn="Ravi"; break; 
+    case 11: hn="Sukra"; break; } }
   document.getElementById("rise").innerHTML=srise.toLocaleString("en-IN");
   document.getElementById("rise1").innerHTML=srise1.toLocaleString("en-IN");
   document.getElementById("riz").innerHTML=srise.toLocaleString("en-IN");
