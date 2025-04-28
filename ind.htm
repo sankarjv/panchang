@@ -177,6 +177,7 @@ navigator.geolocation.getCurrentPosition(function(position) {
 console.log("dh "+dhora+" tm "+tm+" srtm "+srtm+" dtd "+dtd);
   var hs = new Date(Math.Floor(srise.getTime() + ((dtd / dhora)-1)*dhora));
   var hf = new Date(Math.Floor(srise.getTime() + ((dtd / dhora))*dhora));
+console.log("hs "+hs+" hf "+hf);
   var daypart0 = srise;
   var daypart1 = new Date(Math.floor((srise.getTime() + daypart)));
   var daypart2 = new Date(Math.floor((daypart1.getTime() + daypart)));
