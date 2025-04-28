@@ -4,7 +4,7 @@
 d2r = Math.PI/180;
 r2d = 180/Math.PI;
 var zn = ["Mesha","Vrushabha","Mithuna","Karkataka","Simha","Kanya","Tula","Vrushchika","Dhanu","Makara","Kumbha","Meena"];
-var wd = ["Aadi","Soma","Mangal","Budh","Guru","Sukra","Sani"];
+var wd = ["Ravi","Soma","Mangal","Budh","Guru","Sukra","Sani"];
 var range = [1,31,0,0,-3000,4000,0,23,0,59,-12,12,0,59];
 var naks = ["Aswini","Bharani","Krittika","Rohini","Mrigasira","Aardra","Punarvasu","Pushyami","Aslesha","Makha","Pubha","Uttara","Hasta","Chitta","Swati","Visakha","Anuradha","Jyesta","Moola","PurvAshada","UttarAshada","Sravanam","Dhanista","Satabhisha","PurvaBhadra","UttaraBhadra","Revati"];
 var tith =["S-Padyami","S-Vidiya","S-Tadiya","S-Chaviti","S-Panchami","S-Shasti","S-Saptami","S-Ashtami","S-Navami","S-Dasami","S-Ekadasi","S-Dwadasi","S-Trayodasi","S-Chaturdasi","Poornima","B-Padyami","B-Vidiya","B-Tadiya","B-Chaviti","B-Panchami","B-Shasti","B-Saptami","B-Ashtami","B-Navami","B-Dasami","B-Ekadasi","B-Dwadasi","B-Trayodasi","B-Chaturdasi","Amavasya"];
