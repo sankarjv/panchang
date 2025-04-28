@@ -136,8 +136,10 @@ panchang.calculate(t, function() {
 <div class="trow">
 <div class="alignL">&nbsp</div></div>
 <div class="trow">
-<div class="alignL"> Hora: </div><div id="hst" class="alignC1"></div>
-<div class="alignC2"> & </div><div id="hft" class="alignR"></div></div>
+<div class="trow">
+<div class="alignL" > Hora: </div><div id="hnm" class="alignC1"></div></div>
+<div class="alignL"></div><div id="hst" class="alignC1"></div>
+<div class="alignC2"> to </div><div id="hft" class="alignR"></div></div>
 <div class="trow">
 <div class="alignL">&nbsp</div></div>
 <div class="trow">
@@ -174,10 +176,10 @@ navigator.geolocation.getCurrentPosition(function(position) {
   var nhora = Math.floor(niglen / 12);
   var srtm = srise.getTime();
   var dtd = tm - srtm;
-  var hn = Math.floor(dtd / dhora);
-console.log("dh "+dhora+" tm "+tm+" srtm "+srtm+" dtd "+dtd+" hn "+hn);
-  var hs = new Date(Math.floor(srise.getTime() + ((hn)*dhora)));
-  var hf = new Date(Math.floor(srise.getTime() + ((hn+1)* dhora)));
+  var hi = Math.floor(dtd / dhora);
+console.log("dh "+dhora+" tm "+tm+" srtm "+srtm+" dtd "+dtd+" hi "+hi);
+  var hs = new Date(Math.floor(srise.getTime() + ((hi)*dhora)));
+  var hf = new Date(Math.floor(srise.getTime() + ((hi+1)* dhora)));
 console.log("hs "+hs+" hf "+hf);
   var daypart0 = srise;
   var daypart1 = new Date(Math.floor((srise.getTime() + daypart)));
@@ -215,7 +217,7 @@ console.log("hs "+hs+" hf "+hf);
   var nhora11 = new Date(Math.floor((nhora10.getTime() + nhora)));
   var nhora12 = new Date(Math.floor((nhora11.getTime() + nhora)));
 
-  var rks=0;  var rkf=0;  var ygs=0;  var ygf=0;  var gks=0;  var gkf=0;  var dms;  var dmf;  var dmb;  var dme;
+  var rks=0;  var rkf=0;  var ygs=0;  var ygf=0;  var gks=0;  var gkf=0;  var dms;  var dmf;  var dmb;  var dme;  var hn;
   var wkday = new Date().getDay();
   switch(wkday) {
   case 0:
@@ -229,7 +231,20 @@ console.log("hs "+hs+" hf "+hf);
     dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
     dmb = new Date(Math.floor(srise.getTime() + ((daylen * 8.8) / 12)));
     dme = new Date(Math.floor(dmb.getTime() + (48 * 60 * 1000)));
-    break;
+    switch(hi) {
+    case 0: hn="Chandra"; break; 
+    case 1: hn="Sani"; break; 
+    case 2: hn="Guru"; break; 
+    case 3: hn="Kuja"; break; 
+    case 4: hn="Ravi"; break; 
+    case 5: hn="Sukra"; break; 
+    case 6: hn="Budh"; break; 
+    case 7: hn="Chandra"; break; 
+    case 8: hn="Sani"; break; 
+    case 9: hn="Guru"; break; 
+    case 10: hn="Kuja"; break; 
+    case 11: hn="Ravi"; break; 
+    break;  }
   case 2:
     rks = daypart6; rkf = daypart7; ygs = daypart2; ygf = daypart3; gks = daypart4; gkf = daypart5;
     dms = new Date(Math.floor(srise.getTime() + ((daylen * 2.4) / 12)));
@@ -265,6 +280,7 @@ console.log("hs "+hs+" hf "+hf);
   document.getElementById("rise1").innerHTML=srise1.toLocaleString("en-IN");
   document.getElementById("riz").innerHTML=srise.toLocaleString("en-IN");
   document.getElementById("set").innerHTML=sset.toLocaleString("en-IN");
+  document.getElementById("hnm").innerHTML=hn;
   document.getElementById("hst").innerHTML=hs.toLocaleString("en-IN");
   document.getElementById("hft").innerHTML=hf.toLocaleString("en-IN");
   document.getElementById("rkst").innerHTML=rks.toLocaleString("en-IN");
