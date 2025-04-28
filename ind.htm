@@ -67,7 +67,7 @@ var tm=t.getTime();
 document.getElementById("pdt").innerHTML=dt;
 panchang.calculate(t, function() {
   document.getElementById("tithi").innerHTML=panchang.Tithi.name;
-  document.getElementById("s_tithi_start").innerHTML=panchang.Tithi.start.date.toISOString().substring(0, 16);
+  document.getElementById("s_tithi_start").innerHTML=panchang.Tithi.start.date.toISOString();
   document.getElementById("s_tithi_end").innerHTML=panchang.Tithi.end.toLocaleString("en-IN");
   var nak = document.getElementById("nakshtra").innerHTML=panchang.Nakshatra.name;
   var Va=0;  var Aa=0;
