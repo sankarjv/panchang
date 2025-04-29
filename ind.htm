@@ -206,20 +206,24 @@ var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
   var nmuh = Math.floor(niglen / 15);
   var ajs = new Date(Math.floor(srise.getTime() + (7 * dmuh)));
   var ajf = new Date(Math.floor(srise.getTime() + (8 * dmuh))); 
+  var ajsm = ajs.getTime();
+  var ajfm = ajf.getTime();
+  if (tm > ajsm && tm < ajfm) {
+    document.getElementById("abj").style.color = cgre; }
   var bhs = new Date(Math.floor(sset.getTime() + (13 * nmuh)));
   var bhf = new Date(Math.floor(sset.getTime() + (14 * nmuh))); 
   if (tm < sstm) {
-  var dhora = Math.floor(daylen / 12);
-  var dtd = tm - srtm;
-  var dhi = Math.floor(dtd / dhora);
-  var hs = new Date(Math.floor(srise.getTime() + ((dhi) * dhora)));
-  var hf = new Date(Math.floor(srise.getTime() + ((dhi+1) * dhora))); }
+    var dhora = Math.floor(daylen / 12);
+    var dtd = tm - srtm;
+    var dhi = Math.floor(dtd / dhora);
+    var hs = new Date(Math.floor(srise.getTime() + ((dhi) * dhora)));
+    var hf = new Date(Math.floor(srise.getTime() + ((dhi+1) * dhora))); }
   if (tm > sstm) {
-  var nhora = Math.floor(niglen / 12);
-  var ntd = tm - sstm;
-  var nhi = Math.floor(ntd / nhora);
-  var hs = new Date(Math.floor(sset.getTime() + ((nhi) * nhora)));
-  var hf = new Date(Math.floor(sset.getTime() + ((nhi+1) * nhora))); }
+    var nhora = Math.floor(niglen / 12);
+    var ntd = tm - sstm;
+    var nhi = Math.floor(ntd / nhora);
+    var hs = new Date(Math.floor(sset.getTime() + ((nhi) * nhora)));
+    var hf = new Date(Math.floor(sset.getTime() + ((nhi+1) * nhora))); }
   var daypart0 = srise;
   var daypart1 = new Date(Math.floor((srise.getTime() + daypart)));
   var daypart2 = new Date(Math.floor((daypart1.getTime() + daypart)));
@@ -351,8 +355,6 @@ var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
   document.getElementById("riz").innerHTML=srise.toLocaleString("en-IN", options);
   document.getElementById("set").innerHTML=sset.toLocaleString("en-IN", options);
   document.getElementById("abj").innerHTML=" Abhijit: ";
-//  document.getElementById("abj").style.color = cabj;
-  document.getElementById("hnm").innerHTML=hn;
   document.getElementById("ajst").innerHTML=ajs.toLocaleString("en-IN", options);
   document.getElementById("ajft").innerHTML=ajf.toLocaleString("en-IN", options);
   document.getElementById("bhm").innerHTML=" Brahma: ";
@@ -361,6 +363,7 @@ var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
   document.getElementById("bhft").innerHTML=bhf.toLocaleString("en-IN", options);
   document.getElementById("hra").innerHTML=" Hora: ";
 //  document.getElementById("hra").style.color = chra;
+  document.getElementById("hnm").innerHTML=hn;
   document.getElementById("hst").innerHTML=hs.toLocaleString("en-IN", options);
   document.getElementById("hft").innerHTML=hf.toLocaleString("en-IN", options);  });
 </script></body></html>
