@@ -69,7 +69,7 @@ var t= new Date();
 var dt=t.toLocaleString("en-IN", { dateStyle: "medium" });
 var tm=t.getTime();
 document.getElementById("pdt").innerHTML=dt;
-var tit; var ctit; var nkt; var cnkt; var yog; var cyog; var krn; var ckrn; var vra; var cvra; var vjy; var cvjy; var art; var cart;
+var vra; var tit; var ctit; var nkt; var cnkt; var yog; var cyog; var krn; var ckrn; var vjy; var cvjy; var art; var cart;
 var options = {year:"2-digit", month:"2-digit", day:"2-digit", hour:"2-digit", hour12:false, minute:"2-digit", second:"2-digit"};
 panchang.calculate(t, function() {
   document.getElementById("tit").innerHTML=" Tithi: ";
@@ -82,9 +82,9 @@ panchang.calculate(t, function() {
   var nak = document.getElementById("nakshtra").innerHTML=panchang.Nakshatra.name;
   var Va=0;  var Aa=0;
   switch(nak) {
-    case "Aswini":    Va=20;    Aa=16.8;    break;
-    case "Bharani":    Va=9.6;    Aa=19.2;    break;
-    case "Krittika":    Va=12;    Aa=21.6;    break;
+    case "Aswini":    Va=20;    Aa=16.8;    cnkt="Green"  break;
+    case "Bharani":    Va=9.6;    Aa=19.2;    cnkt="Red"  break;
+    case "Krittika":    Va=12;    Aa=21.6;    cnkt="Red"  break;
     case "Rohini":    Va=16;    Aa=20.8;    break;
     case "Mrigasira":    Va=5.6;    Aa=15.2;    break;
     case "Aardra":    Va=8.4;    Aa=14;    break;
@@ -194,7 +194,7 @@ panchang.calculate(t, function() {
 <script>
 //var srise=""; var sset=""; var srise1="";
 navigator.geolocation.getCurrentPosition(function(position) {
-var hra; var chra; var abj; var cabj; var bhm; var cbhm; var rhk; var crhk; var glk; var cglk; var ygd; var cygd; var dmt; var cdmt; 
+var cvra; var hra; var chra; var abj; var cabj; var bhm; var cbhm; var rhk; var crhk; var glk; var cglk; var ygd; var cygd; var dmt; var cdmt; 
   var srise = new Date().sunrise(position.coords.latitude, position.coords.longitude);
   var sset = new Date().sunset(position.coords.latitude, position.coords.longitude);
   var srise1 = new Date(srise.getTime() + (24 * 60 * 60 * 1000)).sunrise(position.coords.latitude, position.coords.longitude);
@@ -237,6 +237,7 @@ var hra; var chra; var abj; var cabj; var bhm; var cbhm; var rhk; var crhk; var 
     rks = daypart7; rkf = daypart8; ygs = daypart4; ygf = daypart5; gks = daypart6; gkf = daypart7;
     dms = new Date(Math.floor(srise.getTime() + ((daylen * 10.4) / 12)));
     dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
+    cvra = "Red";
     switch(dhi) {
     case 0: hn="Surya"; break;    case 1: hn="Sukra"; break;     case 2: hn="Budh"; break;     case 3: hn="Chandra"; break;     case 4: hn="Sani"; break;     case 5: hn="Guru"; break; 
     case 6: hn="Kuja"; break;    case 7: hn="Surya"; break;     case 8: hn="Sukra"; break;     case 9: hn="Budh"; break;     case 10: hn="Chandra"; break;     case 11: hn="Sani"; break; }
@@ -263,6 +264,7 @@ var hra; var chra; var abj; var cabj; var bhm; var cbhm; var rhk; var crhk; var 
     dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
     dmb = new Date(Math.floor(sset.getTime() + ((niglen * 4.8) / 12)));
     dme = new Date(Math.floor(dmb.getTime() + (48 * 60 * 1000)));
+    cvra = "Red";
     switch(dhi) {
     case 0: hn="Kuja"; break;     case 1: hn="Surya"; break;     case 2: hn="Sukra"; break;     case 3: hn="Budh"; break;     case 4: hn="Chandra"; break;     case 5: hn="Sani"; break;
     case 6: hn="Guru"; break;     case 7: hn="Kuja"; break;     case 8: hn="Surya"; break;     case 9: hn="Sukra"; break;     case 10: hn="Budh"; break;     case 11: hn="Chandra"; break; }
