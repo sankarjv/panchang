@@ -69,7 +69,7 @@ var dt=t.toLocaleString("en-IN", { dateStyle: "medium" });
 var tm=t.getTime();
 document.getElementById("pdt").innerHTML=dt;
 var cred="Red"; var cgre="Green"; var cblu="Blue";
-var vra; var tit; var nkt; var yog; var krn; var vjy; var art;
+var vra; var tit; var nkt; var yga; var krn; var vjy; var art;
 var options = {year:"2-digit", month:"2-digit", day:"2-digit", hour:"2-digit", hour12:false, minute:"2-digit", second:"2-digit"};
 panchang.calculate(t, function() {
   document.getElementById("tit").innerHTML=" Tithi: ";
@@ -125,7 +125,7 @@ panchang.calculate(t, function() {
   document.getElementById("amrft").innerHTML=amrf.toLocaleString("en-IN", options);
   document.getElementById("krn").innerHTML=" Karana: ";
   var kar = document.getElementById("karna").innerHTML=panchang.Karna.name;
-  switch(nak) {
+  switch(kar) {
     case "Bava":    document.getElementById("krn").style.color = cgre;              break;
     case "Balava":    document.getElementById("krn").style.color = cgre;              break;
     case "Kaulava":    document.getElementById("krn").style.color = cgre;              break;
@@ -139,9 +139,10 @@ panchang.calculate(t, function() {
     case "Kimstughna":    document.getElementById("krn").style.color = cred;              break;  }
   document.getElementById("s_karna_start").innerHTML=panchang.Karna.start.toLocaleString("en-IN", options);
   document.getElementById("s_karna_end").innerHTML=panchang.Karna.end.toLocaleString("en-IN", options);
-  document.getElementById("yog").innerHTML=" Yoga: ";
-//  document.getElementById("yog").style.color = cyog;
-  document.getElementById("yoga").innerHTML=panchang.Yoga.name;
+  document.getElementById("yga").innerHTML=" Yoga: ";
+//  document.getElementById("yga").style.color = cyog;
+//["Vishkambha","Preeti","Ayushman","Saubhagya","Sobhana","Atiganda","Sukarman","Dhriti","Shoola","Ganda","Vridhi","Dhruva","Vyaghata","Harshana","Vajra","Siddhi","Vyatipata","Variyan","Parigha","Shiva","Siddha","Sadhya","Subha","Sukla","Brahma","Indra","Vaidhruti"];
+  var yog = document.getElementById("yoga").innerHTML=panchang.Yoga.name;
   document.getElementById("s_yoga_start").innerHTML=panchang.Yoga.start.toLocaleString("en-IN", options);
   document.getElementById("s_yoga_end").innerHTML=panchang.Yoga.end.toLocaleString("en-IN", options);
   document.getElementById("vra").innerHTML=" Vaara: ";
