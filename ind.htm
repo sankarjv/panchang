@@ -32,7 +32,7 @@
 <div class="trow">
 <div class="alignL">&nbsp</div></div>
 <div class="trow">
-<div class="alignL"> Nakshatra: </div><div id="nakshtra" class="alignC1"></div></div>
+<div id = "nkt" class="alignL"></div><div id="nakshtra" class="alignC1"></div></div>
 <div class="trow">
 <div class="alignL">&nbsp</div><div id="s_nakshtra_start" class="alignC1"></div>
 <div class="alignC2">to</div><div id="s_nakshtra_end" class="alignR"></div></div>
@@ -69,7 +69,7 @@ var t= new Date();
 var dt=t.toLocaleString("en-IN", { dateStyle: "medium" });
 var tm=t.getTime();
 document.getElementById("pdt").innerHTML=dt;
-var tit; var ctit="green";
+var tit; var ctit; var nkt; var cnkt;
 var options = {year:"2-digit", month:"2-digit", day:"2-digit", hour:"2-digit", hour12:false, minute:"2-digit", second:"2-digit"};
 panchang.calculate(t, function() {
   document.getElementById("tit").innerHTML=" Tithi: ";
@@ -77,6 +77,8 @@ panchang.calculate(t, function() {
   document.getElementById("tithi").innerHTML=panchang.Tithi.name;
   document.getElementById("s_tithi_start").innerHTML=panchang.Tithi.start.toLocaleString("en-IN", options);
   document.getElementById("s_tithi_end").innerHTML=panchang.Tithi.end.toLocaleString("en-IN", options);
+  document.getElementById("nkt").innerHTML=" Nakshatra: ";
+  document.getElementById("nkt").style.color = cnkt;
   var nak = document.getElementById("nakshtra").innerHTML=panchang.Nakshatra.name;
   var Va=0;  var Aa=0;
   switch(nak) {
