@@ -206,9 +206,7 @@ var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
   var nmuh = Math.floor(niglen / 15);
   var ajs = new Date(Math.floor(srise.getTime() + (7 * dmuh)));
   var ajf = new Date(Math.floor(srise.getTime() + (8 * dmuh))); 
-  var ajsm = ajs.getTime();
-  var ajfm = ajf.getTime();
-  if (tm > ajsm && tm < ajfm) {
+  if (tm > ajs.getTime() && tm < ajf.getTime()) {
     document.getElementById("abj").style.color = cgre; }
   var bhs = new Date(Math.floor(sset.getTime() + (13 * nmuh)));
   var bhf = new Date(Math.floor(sset.getTime() + (14 * nmuh))); 
@@ -337,7 +335,8 @@ var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
   document.getElementById("ygst").innerHTML=ygs.toLocaleString("en-IN", options);
   document.getElementById("ygft").innerHTML=ygf.toLocaleString("en-IN", options);
   document.getElementById("glk").innerHTML=" Gulika: ";
-//  document.getElementById("glk").style.color = cglk;
+  if (tm > gks.getTime() && tm < gkf.getTime()) {
+    document.getElementById("glk").style.color = cred; }
   document.getElementById("gkst").innerHTML=gks.toLocaleString("en-IN", options);
   document.getElementById("gkft").innerHTML=gkf.toLocaleString("en-IN", options);
   document.getElementById("dmst").innerHTML=dms.toLocaleString("en-IN", options);
