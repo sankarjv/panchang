@@ -2,6 +2,7 @@
 <html><head>
 <title>Panchangam by Shankar JV</title>
 <link rel="icon" type="image/x-icon" href="favicon.ico">
+
 <meta name="author" content="Shankar JV">
 <meta name="description" content="Panchangam by Shankar JV">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,8 +11,6 @@
 <style>
 .block { overflow:hidden; }
 .trow {  display: table-row; }
-.green { color: green;  }
-.red { color: red; }
 .alignL {  display: table-cell;
            font-weight: bold;
            color: blue; }
@@ -19,9 +18,9 @@
                               padding-left: 11px;  }
 </style>
 </head><body>
-<h3><div class="trow"><div id="pdt" class="alignL"></div>
-<div class="alignC1"> Panchangam  by</div>
-<div class="alignR"><a href="http://astrolog.er.in">Shankar JV</a></div></div></h3>
+<h3><div class="trow"><div id="pdt" class="alignL" style="color:blue;"></div>
+<div class="alignC1" style="color:blue;"> Panchangam  by</div>
+<div class="alignR" style="color:blue;"><a href="http://astrolog.er.in">Shankar JV</a></div></div></h3>
 <script src="panchang.js"></script>
 <div class="trow">
 <div id="tit" class="alignL"></div><div id="tithi" class="alignC1"></div></div>
@@ -70,7 +69,7 @@ var tm=t.getTime();
 document.getElementById("pdt").innerHTML=dt;
 var cred="Red"; var cgre="Green"; var cblu="Blue";
 var vra; var tit; var nkt; var yga; var krn; var vjy; var art;
-var options = {year:"2-digit", month:"2-digit", day:"2-digit", hour:"2-digit", hour12:false, minute:"2-digit", second:"2-digit"};
+var options = {year:"2-digit", month:"2-digit", day:"2-digit", hour:"2-digit", hour12:false, minute:"2-digit"};
 panchang.calculate(t, function() {
   document.getElementById("tit").innerHTML=" Tithi: ";
   var tit = document.getElementById("tithi").innerHTML=panchang.Tithi.name;
