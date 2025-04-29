@@ -70,7 +70,7 @@ var dt=t.toLocaleString("en-IN", { dateStyle: "medium" });
 var tm=t.getTime();
 document.getElementById("pdt").innerHTML=dt;
 var cred="Red"; var cgre="Green"; var cblu="Blue";
-var vra; var cvra; var tit; var ctit; var nkt; var cnkt; var yog; var cyog; var krn; var ckrn; var vjy; var cvjy; var art; var cart;
+var vra; var tit; var nkt; var yog; var krn; var vjy; var art;
 var options = {year:"2-digit", month:"2-digit", day:"2-digit", hour:"2-digit", hour12:false, minute:"2-digit", second:"2-digit"};
 panchang.calculate(t, function() {
   document.getElementById("tit").innerHTML=" Tithi: ";
@@ -82,33 +82,33 @@ panchang.calculate(t, function() {
   var nak = document.getElementById("nakshtra").innerHTML=panchang.Nakshatra.name;
   var Va=0;  var Aa=0;
   switch(nak) {
-    case "Aswini":    Va=20;    Aa=16.8;    cnkt="Green";  break;
-    case "Bharani":    Va=9.6;    Aa=19.2;    cnkt="Red";  break;
-    case "Krittika":    Va=12;    Aa=21.6;      document.getElementById("nkt").style.color = cred; break;
-    case "Rohini":    Va=16;    Aa=20.8;    break;
-    case "Mrigasira":    Va=5.6;    Aa=15.2;    break;
-    case "Aardra":    Va=8.4;    Aa=14;    break;
-    case "Punarvasu":    Va=12;    Aa=21.6;    break;
-    case "Pushyami":    Va=8;    Aa=17.6;    break;
-    case "Aslesha":    Va=12.8;    Aa=22.4;    break;
-    case "Makha":    Va=12;    Aa=21.6;    break;
-    case "Pubha":    Va=8;    Aa=17.6;    break;
-    case "Uttara":    Va=7.2;    Aa=16.8;    break;
-    case "Hasta":    Va=8.4;    Aa=18;    break;
-    case "Chitta":    Va=8;    Aa=17.6;    break;
-    case "Swati":    Va=5.6;    Aa=15.2;    break;
-    case "Visakha":    Va=5.6;    Aa=15.2;    break;
-    case "Anuradha":    Va=4;    Aa=13.6;    break;
-    case "Jyesta":    Va=5.6;    Aa=15.2;    break;
-    case "Moola":    Va=8.4;    Aa=17.6;    break;
-    case "PurvAshada":    Va=9.6;    Aa=19.2;    break;
-    case "UttarAshada":    Va=8;    Aa=17.6;    break;
-    case "Sravanam":    Va=4;    Aa=13.6;    break;
-    case "Dhanista":    Va=4;    Aa=13.6;    break;
-    case "Satabhisha":    Va=7.2;    Aa=16.8;    break;
-    case "PurvaBhadra":    Va=6.4;    Aa=16;    break;
-    case "UttaraBhadra":    Va=9.6;    Aa=19.2;    break;
-    case "Revati":    Va=12;    Aa=21.6;    break;  }
+    case "Aswini":    Va=20;    Aa=16.8;    document.getElementById("nkt").style.color = cgre;              break;
+    case "Bharani":    Va=9.6;    Aa=19.2;    document.getElementById("nkt").style.color = cred;              break;
+    case "Krittika":    Va=12;    Aa=21.6;      document.getElementById("nkt").style.color = cred;            break;
+    case "Rohini":    Va=16;    Aa=20.8;    document.getElementById("nkt").style.color = cgre;            break;
+    case "Mrigasira":    Va=5.6;    Aa=15.2;    document.getElementById("nkt").style.color = cgre;            break;
+    case "Aardra":    Va=8.4;    Aa=14;    document.getElementById("nkt").style.color = cred;            break;
+    case "Punarvasu":    Va=12;    Aa=21.6;    document.getElementById("nkt").style.color = cgre;            break;
+    case "Pushyami":    Va=8;    Aa=17.6;    document.getElementById("nkt").style.color = cgre;            break;
+    case "Aslesha":    Va=12.8;    Aa=22.4;    document.getElementById("nkt").style.color = cred;            break;
+    case "Makha":    Va=12;    Aa=21.6;    document.getElementById("nkt").style.color = cred;            break;
+    case "Pubha":    Va=8;    Aa=17.6;    document.getElementById("nkt").style.color = cred;            break;
+    case "Uttara":    Va=7.2;    Aa=16.8;    document.getElementById("nkt").style.color = cgre;            break;
+    case "Hasta":    Va=8.4;    Aa=18;    document.getElementById("nkt").style.color = cgre;            break;
+    case "Chitta":    Va=8;    Aa=17.6;    document.getElementById("nkt").style.color = cgre;            break;
+    case "Swati":    Va=5.6;    Aa=15.2;    document.getElementById("nkt").style.color = cgre;            break;
+    case "Visakha":    Va=5.6;    Aa=15.2;    document.getElementById("nkt").style.color = cred;            break;
+    case "Anuradha":    Va=4;    Aa=13.6;    document.getElementById("nkt").style.color = cgre;            break;
+    case "Jyesta":    Va=5.6;    Aa=15.2;    document.getElementById("nkt").style.color = cred;            break;
+    case "Moola":    Va=8.4;    Aa=17.6;    document.getElementById("nkt").style.color = cred;            break;
+    case "PurvAshada":    Va=9.6;    Aa=19.2;    document.getElementById("nkt").style.color = cred;            break;
+    case "UttarAshada":    Va=8;    Aa=17.6;    document.getElementById("nkt").style.color = cgre;            break;
+    case "Sravanam":    Va=4;    Aa=13.6;    document.getElementById("nkt").style.color = cgre;            break;
+    case "Dhanista":    Va=4;    Aa=13.6;    document.getElementById("nkt").style.color = cgre;            break;
+    case "Satabhisha":    Va=7.2;    Aa=16.8;    document.getElementById("nkt").style.color = cgre;            break;
+    case "PurvaBhadra":    Va=6.4;    Aa=16;    document.getElementById("nkt").style.color = cred;            break;
+    case "UttaraBhadra":    Va=9.6;    Aa=19.2;    document.getElementById("nkt").style.color = cgre;            break;
+    case "Revati":    Va=12;    Aa=21.6;    document.getElementById("nkt").style.color = cred;            break;  }
   var nakb = document.getElementById("s_nakshtra_start").innerHTML=panchang.Nakshatra.start;
   var nake = document.getElementById("s_nakshtra_end").innerHTML=panchang.Nakshatra.end;
   var naklen = Math.floor(Date.parse(nake) - Date.parse(nakb));
@@ -193,7 +193,7 @@ panchang.calculate(t, function() {
 <script>
 //var srise=""; var sset=""; var srise1="";
 navigator.geolocation.getCurrentPosition(function(position) {
-var hra; var chra; var abj; var cabj; var bhm; var cbhm; var rhk; var crhk; var glk; var cglk; var ygd; var cygd; var dmt; var cdmt; 
+var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt; 
   var srise = new Date().sunrise(position.coords.latitude, position.coords.longitude);
   var sset = new Date().sunset(position.coords.latitude, position.coords.longitude);
   var srise1 = new Date(srise.getTime() + (24 * 60 * 60 * 1000)).sunrise(position.coords.latitude, position.coords.longitude);
@@ -236,7 +236,7 @@ var hra; var chra; var abj; var cabj; var bhm; var cbhm; var rhk; var crhk; var 
     rks = daypart7; rkf = daypart8; ygs = daypart4; ygf = daypart5; gks = daypart6; gkf = daypart7;
     dms = new Date(Math.floor(srise.getTime() + ((daylen * 10.4) / 12)));
     dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
-    cvra = "Red";
+    document.getElementById("vra").style.color = cred;
     switch(dhi) {
     case 0: hn="Surya"; break;    case 1: hn="Sukra"; break;     case 2: hn="Budh"; break;     case 3: hn="Chandra"; break;     case 4: hn="Sani"; break;     case 5: hn="Guru"; break; 
     case 6: hn="Kuja"; break;    case 7: hn="Surya"; break;     case 8: hn="Sukra"; break;     case 9: hn="Budh"; break;     case 10: hn="Chandra"; break;     case 11: hn="Sani"; break; }
@@ -250,6 +250,7 @@ var hra; var chra; var abj; var cabj; var bhm; var cbhm; var rhk; var crhk; var 
     dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
     dmb = new Date(Math.floor(srise.getTime() + ((daylen * 8.8) / 12)));
     dme = new Date(Math.floor(dmb.getTime() + (48 * 60 * 1000)));
+    document.getElementById("vra").style.color = cgre;
     switch(dhi) {
     case 0: hn="Chandra"; break;     case 1: hn="Sani"; break;     case 2: hn="Guru"; break;     case 3: hn="Kuja"; break;     case 4: hn="Surya"; break;     case 5: hn="Sukra"; break; 
     case 6: hn="Budh"; break;     case 7: hn="Chandra"; break;     case 8: hn="Sani"; break;     case 9: hn="Guru"; break;     case 10: hn="Kuja"; break;     case 11: hn="Surya"; break; }
@@ -263,8 +264,7 @@ var hra; var chra; var abj; var cabj; var bhm; var cbhm; var rhk; var crhk; var 
     dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
     dmb = new Date(Math.floor(sset.getTime() + ((niglen * 4.8) / 12)));
     dme = new Date(Math.floor(dmb.getTime() + (48 * 60 * 1000)));
-    cvra = cred;
-  document.getElementById("vra").style.color = cred;
+    document.getElementById("vra").style.color = cred;
     switch(dhi) {
     case 0: hn="Kuja"; break;     case 1: hn="Surya"; break;     case 2: hn="Sukra"; break;     case 3: hn="Budh"; break;     case 4: hn="Chandra"; break;     case 5: hn="Sani"; break;
     case 6: hn="Guru"; break;     case 7: hn="Kuja"; break;     case 8: hn="Surya"; break;     case 9: hn="Sukra"; break;     case 10: hn="Budh"; break;     case 11: hn="Chandra"; break; }
@@ -276,6 +276,7 @@ var hra; var chra; var abj; var cabj; var bhm; var cbhm; var rhk; var crhk; var 
     rks = daypart4; rkf = daypart5; ygs = daypart1; ygf = daypart2; gks = daypart3; gkf = daypart4;
     dms = new Date(Math.floor(srise.getTime() + ((daylen * 5.6) / 12)));
     dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
+    document.getElementById("vra").style.color = cgre;
     switch(dhi) {
     case 0: hn="Budh"; break;     case 1: hn="Chandra"; break;     case 2: hn="Sani"; break;     case 3: hn="Guru"; break;     case 4: hn="Kuja"; break;     case 5: hn="Surya"; break; 
     case 6: hn="Sukra"; break;     case 7: hn="Budh"; break;     case 8: hn="Chandra"; break;     case 9: hn="Sani"; break;     case 10: hn="Guru"; break;     case 11: hn="Kuja"; break; }
@@ -289,6 +290,7 @@ var hra; var chra; var abj; var cabj; var bhm; var cbhm; var rhk; var crhk; var 
     dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
     dmb = new Date(Math.floor(srise.getTime() + ((daylen * 8.8) / 12)));
     dme = new Date(Math.floor(dmb.getTime() + (48 * 60 * 1000)));
+    document.getElementById("vra").style.color = cgre;
     switch(dhi) {
     case 0: hn="Guru"; break;     case 1: hn="Kuja"; break;     case 2: hn="Surya"; break;     case 3: hn="Sukra"; break;     case 4: hn="Budh"; break;     case 5: hn="Chandra"; break; 
     case 6: hn="Sani"; break;     case 7: hn="Guru"; break;     case 8: hn="Kuja"; break;     case 9: hn="Surya"; break;     case 10: hn="Sukra"; break;     case 11: hn="Budh"; break; }
@@ -302,6 +304,7 @@ var hra; var chra; var abj; var cabj; var bhm; var cbhm; var rhk; var crhk; var 
     dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
     dmb = new Date(Math.floor(srise.getTime() + ((daylen * 6.4) / 12)));
     dme = new Date(Math.floor(dmb.getTime() + (48 * 60 * 1000)));
+    document.getElementById("vra").style.color = cgre;
     switch(dhi) {
     case 0: hn="Sukra"; break;     case 1: hn="Budh"; break;     case 2: hn="Chandra"; break;     case 3: hn="Sani"; break;     case 4: hn="Guru"; break;     case 5: hn="Kuja"; break; 
     case 6: hn="Surya"; break;     case 7: hn="Sukra"; break;     case 8: hn="Budh"; break;     case 9: hn="Chandra"; break;     case 10: hn="Sani"; break;     case 11: hn="Guru"; break; }
@@ -313,6 +316,7 @@ var hra; var chra; var abj; var cabj; var bhm; var cbhm; var rhk; var crhk; var 
     rks = daypart2; rkf = daypart3; ygs = daypart5; ygf = daypart6; gks = daypart0; gkf = daypart1;
     dms = new Date(Math.floor(srise.getTime() + ((daylen * 1.6) / 12)));
     dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
+    document.getElementById("vra").style.color = cred;
     switch(dhi) {
     case 0: hn="Sani"; break;     case 1: hn="Guru"; break;     case 2: hn="Kuja"; break;     case 3: hn="Surya"; break;     case 4: hn="Sukra"; break;     case 5: hn="Budh"; break; 
     case 6: hn="Chandra"; break;     case 7: hn="Sani"; break;     case 8: hn="Guru"; break;     case 9: hn="Kuja"; break;     case 10: hn="Surya"; break;     case 11: hn="Sukra"; break; } 
