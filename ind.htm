@@ -72,8 +72,7 @@ document.getElementById("pdt").innerHTML=dt;
 var tit;
 var options = {year:"2-digit", month:"2-digit", day:"2-digit", hour:"2-digit", hour12:false, minute:"2-digit", second:"2-digit"};
 panchang.calculate(t, function() {
-  document.getElementById("tit").innerHTML=" Tithi: ";
-  tit.style.color="green";
+  document.getElementById("tit").innerHTML=" Tithi: ".tit.style.color="green";
   document.getElementById("tithi").innerHTML=panchang.Tithi.name;
   document.getElementById("s_tithi_start").innerHTML=panchang.Tithi.start.toLocaleString("en-IN", options);
   document.getElementById("s_tithi_end").innerHTML=panchang.Tithi.end.toLocaleString("en-IN", options);
