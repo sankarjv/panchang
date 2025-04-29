@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html><head>
 <title>Panchangam by Shankar JV</title>
@@ -125,8 +124,19 @@ panchang.calculate(t, function() {
   document.getElementById("amrst").innerHTML=amrs.toLocaleString("en-IN", options);
   document.getElementById("amrft").innerHTML=amrf.toLocaleString("en-IN", options);
   document.getElementById("krn").innerHTML=" Karana: ";
-//  document.getElementById("krn").style.color = ckrn;
-  document.getElementById("karna").innerHTML=panchang.Karna.name;
+  var kar = document.getElementById("karna").innerHTML=panchang.Karna.name;
+  switch(nak) {
+    case "Bava":    document.getElementById("krn").style.color = cgre;              break;
+    case "Balava":    document.getElementById("krn").style.color = cgre;              break;
+    case "Kaulava":    document.getElementById("krn").style.color = cgre;              break;
+    case "Taitula":    document.getElementById("krn").style.color = cgre;              break;
+    case "Garaja":    document.getElementById("krn").style.color = cgre;              break;
+    case "Vanija":    document.getElementById("krn").style.color = cgre;              break;
+    case "Vishti":    document.getElementById("krn").style.color = cred;              break;
+    case "Sakuna":    document.getElementById("krn").style.color = cred;              break;
+    case "Chatushpada":    document.getElementById("krn").style.color = cred;              break;
+    case "Nagava":    document.getElementById("krn").style.color = cred;              break;
+    case "Kimstughna":    document.getElementById("krn").style.color = cred;              break;  }
   document.getElementById("s_karna_start").innerHTML=panchang.Karna.start.toLocaleString("en-IN", options);
   document.getElementById("s_karna_end").innerHTML=panchang.Karna.end.toLocaleString("en-IN", options);
   document.getElementById("yog").innerHTML=" Yoga: ";
@@ -327,11 +337,13 @@ var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
     case 6: hn="Sukra"; break;     case 7: hn="Budh"; break;     case 8: hn="Chandra"; break;     case 9: hn="Sani"; break;     case 10: hn="Guru"; break;     case 11: hn="Kuja"; break; }
     break;  }
   document.getElementById("rhk").innerHTML=" RahuKaal: ";
-//  document.getElementById("rhk").style.color = crhk;
+  if (tm > rks.getTime() && tm < rkf.getTime()) {
+    document.getElementById("rhk").style.color = cred; }
   document.getElementById("rkst").innerHTML=rks.toLocaleString("en-IN", options);
   document.getElementById("rkft").innerHTML=rkf.toLocaleString("en-IN", options);
   document.getElementById("ygd").innerHTML=" YamaGanda: ";
-//  document.getElementById("ygd").style.color = cygd;
+  if (tm > ygs.getTime() && tm < ygf.getTime()) {
+    document.getElementById("ygd").style.color = cred; }
   document.getElementById("ygst").innerHTML=ygs.toLocaleString("en-IN", options);
   document.getElementById("ygft").innerHTML=ygf.toLocaleString("en-IN", options);
   document.getElementById("glk").innerHTML=" Gulika: ";
