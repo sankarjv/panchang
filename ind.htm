@@ -140,11 +140,34 @@ panchang.calculate(t, function() {
   document.getElementById("s_karna_start").innerHTML=panchang.Karna.start.toLocaleString("en-IN", options);
   document.getElementById("s_karna_end").innerHTML=panchang.Karna.end.toLocaleString("en-IN", options);
   document.getElementById("yga").innerHTML=" Yoga: ";
-//[,,"Ayushman","Saubhagya","Sobhana","Atiganda","Sukarman","Dhriti","Shoola","Ganda","Vridhi","Dhruva","Vyaghata","Harshana","Vajra","Siddhi","Vyatipata","Variyan","Parigha","Shiva","Siddha","Sadhya","Subha","Sukla","Brahma","Indra","Vaidhruti"];
   var yog = document.getElementById("yoga").innerHTML=panchang.Yoga.name;
   switch(yog) {
     case "Vishkambha":    document.getElementById("yga").style.color = cred;              break;
-    case "Preeti":    document.getElementById("yga").style.color = cgre;              break; }
+    case "Ayushman":    document.getElementById("yga").style.color = cgre;              break; 
+    case "Saubhagya":    document.getElementById("yga").style.color = cgre;              break; 
+    case "Sobhana":    document.getElementById("yga").style.color = cgre;              break; 
+    case "Atiganda":    document.getElementById("yga").style.color = cred;              break; 
+    case "Sukarman":    document.getElementById("yga").style.color = cgre;              break; 
+    case "Dhriti":    document.getElementById("yga").style.color = cgre;              break; 
+    case "Shoola":    document.getElementById("yga").style.color = cred;              break; 
+    case "Ganda":    document.getElementById("yga").style.color = cred;              break; 
+    case "Vridhi":    document.getElementById("yga").style.color = cgre;              break; 
+    case "Dhruva":    document.getElementById("yga").style.color = cgre;              break; 
+    case "Vyaghata":    document.getElementById("yga").style.color = cred;              break; 
+    case "Harshana":    document.getElementById("yga").style.color = cgre;              break; 
+    case "Vajra":    document.getElementById("yga").style.color = cred;              break; 
+    case "Siddhi":    document.getElementById("yga").style.color = cgre;              break; 
+    case "Vyatipata":    document.getElementById("yga").style.color = cred;              break; 
+    case "Variyan":    document.getElementById("yga").style.color = cgre;              break; 
+    case "Parigha":    document.getElementById("yga").style.color = cred;              break; 
+    case "Shiva":    document.getElementById("yga").style.color = cgre;              break; 
+    case "Siddha":    document.getElementById("yga").style.color = cgre;              break; 
+    case "Sadhya":    document.getElementById("yga").style.color = cgre;              break; 
+    case "Subha":    document.getElementById("yga").style.color = cgre;              break; 
+    case "Sukla":    document.getElementById("yga").style.color = cgre;              break; 
+    case "Brahma":    document.getElementById("yga").style.color = cgre;              break; 
+    case "Indra":    document.getElementById("yga").style.color = cgre;              break; 
+    case "Vaidhruti":    document.getElementById("yga").style.color = cred;              break; }
   document.getElementById("s_yoga_start").innerHTML=panchang.Yoga.start.toLocaleString("en-IN", options);
   document.getElementById("s_yoga_end").innerHTML=panchang.Yoga.end.toLocaleString("en-IN", options);
   document.getElementById("vra").innerHTML=" Vaara: ";
@@ -354,9 +377,12 @@ var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
     document.getElementById("glk").style.color = cred; }
   document.getElementById("gkst").innerHTML=gks.toLocaleString("en-IN", options);
   document.getElementById("gkft").innerHTML=gkf.toLocaleString("en-IN", options);
-  document.getElementById("dmst").innerHTML=dms.toLocaleString("en-IN", options);
   document.getElementById("dmt").innerHTML=" DurMahurat: ";
-//  document.getElementById("dmt").style.color = cdmt;
+  if (tm > dms.getTime() && tm < dmf.getTime()) {
+    document.getElementById("dmt").style.color = cred; }
+  if (tm > dmb.getTime() && tm < dme.getTime()) {
+    document.getElementById("dmt").style.color = cred; }
+  document.getElementById("dmst").innerHTML=dms.toLocaleString("en-IN", options);
   document.getElementById("dmft").innerHTML=dmf.toLocaleString("en-IN", options);
   document.getElementById("dmbt").innerHTML=dmb.toLocaleString("en-IN", options);
   document.getElementById("dmet").innerHTML=dme.toLocaleString("en-IN", options); 
