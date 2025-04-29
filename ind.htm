@@ -84,7 +84,7 @@ panchang.calculate(t, function() {
   switch(nak) {
     case "Aswini":    Va=20;    Aa=16.8;    cnkt="Green";  break;
     case "Bharani":    Va=9.6;    Aa=19.2;    cnkt="Red";  break;
-    case "Krittika":    Va=12;    Aa=21.6;    cnkt="Red";  console.log("cnkt "+cnkt); break;
+    case "Krittika":    Va=12;    Aa=21.6;    cnkt='"Red"';  console.log("cnkt "+cnkt); break;
     case "Rohini":    Va=16;    Aa=20.8;    break;
     case "Mrigasira":    Va=5.6;    Aa=15.2;    break;
     case "Aardra":    Va=8.4;    Aa=14;    break;
@@ -264,7 +264,7 @@ var hra; var chra; var abj; var cabj; var bhm; var cbhm; var rhk; var crhk; var 
     dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
     dmb = new Date(Math.floor(sset.getTime() + ((niglen * 4.8) / 12)));
     dme = new Date(Math.floor(dmb.getTime() + (48 * 60 * 1000)));
-    cvra = "Red";
+    cvra = "'Red'";
 console.log("cvra "+cvra); 
     switch(dhi) {
     case 0: hn="Kuja"; break;     case 1: hn="Surya"; break;     case 2: hn="Sukra"; break;     case 3: hn="Budh"; break;     case 4: hn="Chandra"; break;     case 5: hn="Sani"; break;
