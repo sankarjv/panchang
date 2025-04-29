@@ -84,7 +84,7 @@ panchang.calculate(t, function() {
   switch(nak) {
     case "Aswini":    Va=20;    Aa=16.8;    cnkt="Green";  break;
     case "Bharani":    Va=9.6;    Aa=19.2;    cnkt="Red";  break;
-    case "Krittika":    Va=12;    Aa=21.6;    cnkt="Red";  break;
+    case "Krittika":    Va=12;    Aa=21.6;    cnkt="Red";  console.log("cnkt "+cnkt); break;
     case "Rohini":    Va=16;    Aa=20.8;    break;
     case "Mrigasira":    Va=5.6;    Aa=15.2;    break;
     case "Aardra":    Va=8.4;    Aa=14;    break;
@@ -108,8 +108,7 @@ panchang.calculate(t, function() {
     case "Satabhisha":    Va=7.2;    Aa=16.8;    break;
     case "PurvaBhadra":    Va=6.4;    Aa=16;    break;
     case "UttaraBhadra":    Va=9.6;    Aa=19.2;    break;
-    case "Revati":    Va=12;    Aa=21.6;    break;  //}
-console.log("cnkt "+nkt); }
+    case "Revati":    Va=12;    Aa=21.6;    break;  }
   var nakb = document.getElementById("s_nakshtra_start").innerHTML=panchang.Nakshatra.start;
   var nake = document.getElementById("s_nakshtra_end").innerHTML=panchang.Nakshatra.end;
   var naklen = Math.floor(Date.parse(nake) - Date.parse(nakb));
@@ -266,6 +265,7 @@ var hra; var chra; var abj; var cabj; var bhm; var cbhm; var rhk; var crhk; var 
     dmb = new Date(Math.floor(sset.getTime() + ((niglen * 4.8) / 12)));
     dme = new Date(Math.floor(dmb.getTime() + (48 * 60 * 1000)));
     cvra = "Red";
+console.log("cvra "+cvra); 
     switch(dhi) {
     case 0: hn="Kuja"; break;     case 1: hn="Surya"; break;     case 2: hn="Sukra"; break;     case 3: hn="Budh"; break;     case 4: hn="Chandra"; break;     case 5: hn="Sani"; break;
     case 6: hn="Guru"; break;     case 7: hn="Kuja"; break;     case 8: hn="Surya"; break;     case 9: hn="Sukra"; break;     case 10: hn="Budh"; break;     case 11: hn="Chandra"; break; }
@@ -320,8 +320,7 @@ var hra; var chra; var abj; var cabj; var bhm; var cbhm; var rhk; var crhk; var 
     switch(nhi) {
     case 0: hn="Budh"; break;     case 1: hn="Chandra"; break;     case 2: hn="Sani"; break;     case 3: hn="Guru"; break;     case 4: hn="Kuja"; break;     case 5: hn="Surya"; break; 
     case 6: hn="Sukra"; break;     case 7: hn="Budh"; break;     case 8: hn="Chandra"; break;     case 9: hn="Sani"; break;     case 10: hn="Guru"; break;     case 11: hn="Kuja"; break; }
-    break;  //}
-console.log("cvra "+cvra); }
+    break;  }
   document.getElementById("rhk").innerHTML=" RahuKaal: ";
   document.getElementById("rhk").style.color = crhk;
   document.getElementById("rkst").innerHTML=rks.toLocaleString("en-IN", options);
