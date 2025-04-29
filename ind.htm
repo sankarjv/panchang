@@ -69,11 +69,12 @@ var t= new Date();
 var dt=t.toLocaleString("en-IN", { dateStyle: "medium" });
 var tm=t.getTime();
 document.getElementById("pdt").innerHTML=dt;
+var cred="Red"; var cgre="Green"; var cblu="Blue";
 var vra; var cvra; var tit; var ctit; var nkt; var cnkt; var yog; var cyog; var krn; var ckrn; var vjy; var cvjy; var art; var cart;
 var options = {year:"2-digit", month:"2-digit", day:"2-digit", hour:"2-digit", hour12:false, minute:"2-digit", second:"2-digit"};
 panchang.calculate(t, function() {
   document.getElementById("tit").innerHTML=" Tithi: ";
-  document.getElementById("tit").style.color = ctit;
+  document.getElementById("tit").style.color = cgre;
   document.getElementById("tithi").innerHTML=panchang.Tithi.name;
   document.getElementById("s_tithi_start").innerHTML=panchang.Tithi.start.toLocaleString("en-IN", options);
   document.getElementById("s_tithi_end").innerHTML=panchang.Tithi.end.toLocaleString("en-IN", options);
@@ -84,7 +85,7 @@ panchang.calculate(t, function() {
   switch(nak) {
     case "Aswini":    Va=20;    Aa=16.8;    cnkt="Green";  break;
     case "Bharani":    Va=9.6;    Aa=19.2;    cnkt="Red";  break;
-    case "Krittika":    Va=12;    Aa=21.6;    cnkt='"Red"';  console.log("cnkt "+cnkt); break;
+    case "Krittika":    Va=12;    Aa=21.6;    cnkt=cred;  console.log("cnkt "+cnkt); break;
     case "Rohini":    Va=16;    Aa=20.8;    break;
     case "Mrigasira":    Va=5.6;    Aa=15.2;    break;
     case "Aardra":    Va=8.4;    Aa=14;    break;
@@ -264,7 +265,7 @@ var hra; var chra; var abj; var cabj; var bhm; var cbhm; var rhk; var crhk; var 
     dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
     dmb = new Date(Math.floor(sset.getTime() + ((niglen * 4.8) / 12)));
     dme = new Date(Math.floor(dmb.getTime() + (48 * 60 * 1000)));
-    cvra = "'Red'";
+    cvra = cred;
 console.log("cvra "+cvra); 
     switch(dhi) {
     case 0: hn="Kuja"; break;     case 1: hn="Surya"; break;     case 2: hn="Sukra"; break;     case 3: hn="Budh"; break;     case 4: hn="Chandra"; break;     case 5: hn="Sani"; break;
