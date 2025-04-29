@@ -69,11 +69,11 @@ var t= new Date();
 var dt=t.toLocaleString("en-IN", { dateStyle: "medium" });
 var tm=t.getTime();
 document.getElementById("pdt").innerHTML=dt;
-var tit;
+var tit; var ctit="green";
 var options = {year:"2-digit", month:"2-digit", day:"2-digit", hour:"2-digit", hour12:false, minute:"2-digit", second:"2-digit"};
 panchang.calculate(t, function() {
   document.getElementById("tit").innerHTML=" Tithi: ";
-  document.getElementById("tit").style.color = "red";
+  document.getElementById("tit").style.color = ctit;
   document.getElementById("tithi").innerHTML=panchang.Tithi.name;
   document.getElementById("s_tithi_start").innerHTML=panchang.Tithi.start.toLocaleString("en-IN", options);
   document.getElementById("s_tithi_end").innerHTML=panchang.Tithi.end.toLocaleString("en-IN", options);
