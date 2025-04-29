@@ -25,7 +25,7 @@
 <div class="alignR"><a href="http://astrolog.er.in">Shankar JV</a></div></div></h3>
 <script src="panchang.js"></script>
 <div class="trow">
-<div id="tit" class="alignL" style="color:red;">></div><div id="tithi" class="alignC1"></div></div>
+<div id="tit" class="alignL"></div><div id="tithi" class="alignC1"></div></div>
 <div class="trow">
 <div class="alignL">&nbsp</div><div id="s_tithi_start" class="alignC1"></div>
 <div class="alignC2">to</div><div id="s_tithi_end" class="alignR"></div></div>
@@ -72,7 +72,8 @@ document.getElementById("pdt").innerHTML=dt;
 var tit;
 var options = {year:"2-digit", month:"2-digit", day:"2-digit", hour:"2-digit", hour12:false, minute:"2-digit", second:"2-digit"};
 panchang.calculate(t, function() {
-  document.getElementById("tit").innerHTML=" Tithi: ";
+  var itit = document.getElementById("tit").innerHTML=" Tithi: ";
+  itit.style.color = "red";
   document.getElementById("tithi").innerHTML=panchang.Tithi.name;
   document.getElementById("s_tithi_start").innerHTML=panchang.Tithi.start.toLocaleString("en-IN", options);
   document.getElementById("s_tithi_end").innerHTML=panchang.Tithi.end.toLocaleString("en-IN", options);
