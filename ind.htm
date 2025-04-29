@@ -39,37 +39,38 @@
 <div class="trow">
 <div class="alignL">&nbsp</div></div>
 <div class="trow">
-<div class="alignL"> Yoga: </div><div id="yoga" class="alignC1"></div></div>
+<div id = "yog" class="alignL"></div><div id="yoga" class="alignC1"></div></div>
 <div class="trow">
 <div class="alignL">&nbsp</div><div id="s_yoga_start" class="alignC1"></div>
 <div class="alignC2">to</div><div id="s_yoga_end" class="alignR"></div></div>
 <div class="trow">
 <div class="alignL">&nbsp</div></div>
 <div class="trow">
-<div class="alignL"> Karana: </div><div id="karna" class="alignC1"></div></div>
+<div id = "krn" class="alignL"></div><div id="karna" class="alignC1"></div></div>
 <div class="trow">
 <div class="alignL">&nbsp</div><div id="s_karna_start" class="alignC1"></div>
 <div class="alignC2">to</div><div id="s_karna_end" class="alignR"></div></div>
 <div class="trow">
 <div class="alignL">&nbsp</div></div>
 <div class="trow">
-<div class="alignL"> Amruta: </div><div id="amrst" class="alignC1"></div>
+<div id = amt" class="alignL"></div><div id="amrst" class="alignC1"></div>
 <div class="alignC2">to</div><div id="amrft" class="alignR"></div></div>
 <div class="trow">
 <div class="alignL">&nbsp</div></div>
 <div class="trow">
-<div class="alignL"> Varjyam: </div><div id="varbt" class="alignC1"></div>
+<div id = "vjy" class="alignL"></div><div id="varbt" class="alignC1"></div>
 <div class="alignC2">to</div><div id="varet" class="alignR"></div></div>
 <div class="trow">
 <div class="alignL">&nbsp</div></div>
 <div class="trow">
-<div class="alignL" > Vaara: </div><div id="day" class="alignC1"></div></div>
+<div id = "vra" class="alignL" ></div><div id="day" class="alignC1"></div></div>
 <script>
 var t= new Date();
 var dt=t.toLocaleString("en-IN", { dateStyle: "medium" });
 var tm=t.getTime();
 document.getElementById("pdt").innerHTML=dt;
-var tit; var ctit; var nkt; var cnkt;
+var tit; var ctit; var nkt; var cnkt; var yog; var cyog; var krn; var ckrn; var vra; var cvra; var vjy; var cvjy; var art; var cart;
+var hra; var chra; var abj; var cabj; var bhm; var cbhm; var rhk; var crhk; var glk; var cglk; var ygd; var cygd; var dmt; var cdmt; 
 var options = {year:"2-digit", month:"2-digit", day:"2-digit", hour:"2-digit", hour12:false, minute:"2-digit", second:"2-digit"};
 panchang.calculate(t, function() {
   document.getElementById("tit").innerHTML=" Tithi: ";
@@ -116,13 +117,19 @@ panchang.calculate(t, function() {
   var vare = new Date(Math.floor(varb.getTime() + ((1.6 * naklen)/24)));
   var amrs = new Date(Math.floor((nakb.getTime() + ((Aa * naklen)/24))));
   var amrf = new Date(Math.floor(amrs.getTime() + ((1.6 * naklen)/24)));
+  document.getElementById("vra").innerHTML=" Vaara: ";
+  document.getElementById("vra").style.color = cvra;
   document.getElementById("varbt").innerHTML=varb.toLocaleString("en-IN", options);
   document.getElementById("varet").innerHTML=vare.toLocaleString("en-IN", options);
   document.getElementById("amrst").innerHTML=amrs.toLocaleString("en-IN", options);
   document.getElementById("amrft").innerHTML=amrf.toLocaleString("en-IN", options);
+  document.getElementById("krn").innerHTML=" Karana: ";
+  document.getElementById("krn").style.color = ckrn;
   document.getElementById("karna").innerHTML=panchang.Karna.name;
   document.getElementById("s_karna_start").innerHTML=panchang.Karna.start.toLocaleString("en-IN", options);
   document.getElementById("s_karna_end").innerHTML=panchang.Karna.end.toLocaleString("en-IN", options);
+  document.getElementById("yog").innerHTML=" Yoga: ";
+  document.getElementById("yog").style.color = cyog;
   document.getElementById("yoga").innerHTML=panchang.Yoga.name;
   document.getElementById("s_yoga_start").innerHTML=panchang.Yoga.start.toLocaleString("en-IN", options);
   document.getElementById("s_yoga_end").innerHTML=panchang.Yoga.end.toLocaleString("en-IN", options);
