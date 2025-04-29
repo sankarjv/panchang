@@ -436,11 +436,10 @@ var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
   document.getElementById("bhft").innerHTML=bhf.toLocaleString("en-IN", options);
   document.getElementById("hra").innerHTML=" Hora: ";
   document.getElementById("hnm").innerHTML=hn;
-  const good = ["Sukra", "Budh", "Chandra", "Guru"];
-  const bad = ["Surya", "Sani", "Kuja"];
-  if ((tm > hs.getTime() && tm < hf.getTime()) && (hn in bad))    {
+  const good = [];
+  if ((tm > hs.getTime() && tm < hf.getTime()) && (hn == "Surya" || hn ==  "Sani" || hn ==  "Kuja"))    {
     document.getElementById("hra").style.color = cred; }
-  if ((tm > hs.getTime() && tm < hf.getTime()) && (hn in good))    {
+  if ((tm > hs.getTime() && tm < hf.getTime()) && (hn ==  "Sukra" || hn == "Budh" || hn == "Chandra" || hn == "Guru"))    {
     document.getElementById("hra").style.color = cgre; }
   document.getElementById("hst").innerHTML=hs.toLocaleString("en-IN", options);
   document.getElementById("hft").innerHTML=hf.toLocaleString("en-IN", options);  });
