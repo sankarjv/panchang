@@ -69,7 +69,7 @@ var t= new Date();
 var dt=t.toLocaleString("en-IN", { dateStyle: "medium" });
 var tm=t.getTime();
 document.getElementById("pdt").innerHTML=dt;
-var vra; var tit; var ctit; var nkt; var cnkt; var yog; var cyog; var krn; var ckrn; var vjy; var cvjy; var art; var cart;
+var vra; var cvra; var tit; var ctit; var nkt; var cnkt; var yog; var cyog; var krn; var ckrn; var vjy; var cvjy; var art; var cart;
 var options = {year:"2-digit", month:"2-digit", day:"2-digit", hour:"2-digit", hour12:false, minute:"2-digit", second:"2-digit"};
 panchang.calculate(t, function() {
   document.getElementById("tit").innerHTML=" Tithi: ";
@@ -108,7 +108,8 @@ panchang.calculate(t, function() {
     case "Satabhisha":    Va=7.2;    Aa=16.8;    break;
     case "PurvaBhadra":    Va=6.4;    Aa=16;    break;
     case "UttaraBhadra":    Va=9.6;    Aa=19.2;    break;
-    case "Revati":    Va=12;    Aa=21.6;    break;  }
+    case "Revati":    Va=12;    Aa=21.6;    break;  //}
+console.log("cnkt "+nkt); }
   var nakb = document.getElementById("s_nakshtra_start").innerHTML=panchang.Nakshatra.start;
   var nake = document.getElementById("s_nakshtra_end").innerHTML=panchang.Nakshatra.end;
   var naklen = Math.floor(Date.parse(nake) - Date.parse(nakb));
@@ -194,7 +195,7 @@ panchang.calculate(t, function() {
 <script>
 //var srise=""; var sset=""; var srise1="";
 navigator.geolocation.getCurrentPosition(function(position) {
-var cvra; var hra; var chra; var abj; var cabj; var bhm; var cbhm; var rhk; var crhk; var glk; var cglk; var ygd; var cygd; var dmt; var cdmt; 
+var hra; var chra; var abj; var cabj; var bhm; var cbhm; var rhk; var crhk; var glk; var cglk; var ygd; var cygd; var dmt; var cdmt; 
   var srise = new Date().sunrise(position.coords.latitude, position.coords.longitude);
   var sset = new Date().sunset(position.coords.latitude, position.coords.longitude);
   var srise1 = new Date(srise.getTime() + (24 * 60 * 60 * 1000)).sunrise(position.coords.latitude, position.coords.longitude);
@@ -319,7 +320,8 @@ var cvra; var hra; var chra; var abj; var cabj; var bhm; var cbhm; var rhk; var 
     switch(nhi) {
     case 0: hn="Budh"; break;     case 1: hn="Chandra"; break;     case 2: hn="Sani"; break;     case 3: hn="Guru"; break;     case 4: hn="Kuja"; break;     case 5: hn="Surya"; break; 
     case 6: hn="Sukra"; break;     case 7: hn="Budh"; break;     case 8: hn="Chandra"; break;     case 9: hn="Sani"; break;     case 10: hn="Guru"; break;     case 11: hn="Kuja"; break; }
-    break;  }
+    break;  //}
+console.log("cvra "+cvra); }
   document.getElementById("rhk").innerHTML=" RahuKaal: ";
   document.getElementById("rhk").style.color = crhk;
   document.getElementById("rkst").innerHTML=rks.toLocaleString("en-IN", options);
