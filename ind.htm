@@ -73,8 +73,8 @@ var vra; var tit; var nkt; var yga; var krn; var vjy; var art;
 var options = {year:"2-digit", month:"2-digit", day:"2-digit", hour:"2-digit", hour12:false, minute:"2-digit", second:"2-digit"};
 panchang.calculate(t, function() {
   document.getElementById("tit").innerHTML=" Tithi: ";
-  var tith = document.getElementById("tithi").innerHTML=panchang.Tithi.name;
-  switch(nak) {
+  var tit = document.getElementById("tithi").innerHTML=panchang.Tithi.name;
+  switch(tit) {
    case "S-Padyami":    document.getElementById("tit").style.color = cred;              break;
    case "S-Vidiya":    document.getElementById("tit").style.color = cgre;              break;
    case "S-Tadiya":    document.getElementById("tit").style.color = cgre;              break;
@@ -90,7 +90,7 @@ panchang.calculate(t, function() {
    case "S-Trayodasi":    document.getElementById("tit").style.color = cgre;              break;
    case "S-Chaturdasi":    document.getElementById("tit").style.color = cred;              break;
    case "Poornima":    document.getElementById("tit").style.color = cgre;              break;
-   case "B-Padyami":    document.getElementById("tit").style.color = cred;              break;
+   case "B-Padyami":    document.getElementById("tit").style.color = cgre;              break;
    case "B-Vidiya":    document.getElementById("tit").style.color = cgre;              break;
    case "B-Tadiya":    document.getElementById("tit").style.color = cgre;              break;
    case "B-Chaviti":    document.getElementById("tit").style.color = cred;              break;
