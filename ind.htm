@@ -70,7 +70,6 @@ var dt=t.toLocaleString("en-IN", { dateStyle: "medium" });
 var tm=t.getTime();
 document.getElementById("pdt").innerHTML=dt;
 var tit; var ctit; var nkt; var cnkt; var yog; var cyog; var krn; var ckrn; var vra; var cvra; var vjy; var cvjy; var art; var cart;
-var hra; var chra; var abj; var cabj; var bhm; var cbhm; var rhk; var crhk; var glk; var cglk; var ygd; var cygd; var dmt; var cdmt; 
 var options = {year:"2-digit", month:"2-digit", day:"2-digit", hour:"2-digit", hour12:false, minute:"2-digit", second:"2-digit"};
 panchang.calculate(t, function() {
   document.getElementById("tit").innerHTML=" Tithi: ";
@@ -117,10 +116,12 @@ panchang.calculate(t, function() {
   var vare = new Date(Math.floor(varb.getTime() + ((1.6 * naklen)/24)));
   var amrs = new Date(Math.floor((nakb.getTime() + ((Aa * naklen)/24))));
   var amrf = new Date(Math.floor(amrs.getTime() + ((1.6 * naklen)/24)));
-  document.getElementById("vra").innerHTML=" Vaara: ";
-  document.getElementById("vra").style.color = cvra;
+  document.getElementById("vjy").innerHTML=" Varjyam: ";
+  document.getElementById("vjy").style.color = cvjy;
   document.getElementById("varbt").innerHTML=varb.toLocaleString("en-IN", options);
   document.getElementById("varet").innerHTML=vare.toLocaleString("en-IN", options);
+  document.getElementById("amt").innerHTML=" Amruta: ";
+  document.getElementById("amt").style.color = camt;
   document.getElementById("amrst").innerHTML=amrs.toLocaleString("en-IN", options);
   document.getElementById("amrft").innerHTML=amrf.toLocaleString("en-IN", options);
   document.getElementById("krn").innerHTML=" Karana: ";
@@ -133,6 +134,8 @@ panchang.calculate(t, function() {
   document.getElementById("yoga").innerHTML=panchang.Yoga.name;
   document.getElementById("s_yoga_start").innerHTML=panchang.Yoga.start.toLocaleString("en-IN", options);
   document.getElementById("s_yoga_end").innerHTML=panchang.Yoga.end.toLocaleString("en-IN", options);
+  document.getElementById("vra").innerHTML=" Vaara: ";
+  document.getElementById("vra").style.color = cvra;
   document.getElementById("day").innerHTML=panchang.Day.name;    
   document.getElementById("nakshtra").innerHTML=panchang.Nakshatra.name;
   document.getElementById("s_nakshtra_start").innerHTML=panchang.Nakshatra.start.toLocaleString("en-IN", options);
@@ -146,7 +149,7 @@ panchang.calculate(t, function() {
 <div class="trow">
 <div class="alignL">&nbsp</div></div>
 <div class="trow">
-<div class="alignL" > Hora: </div><div id="hnm" class="alignC1"></div></div>
+<div id = "hra" class="alignL" ></div><div id="hnm" class="alignC1"></div></div>
 <div class="trow">
 <div class="alignL">&nbsp</div><div id="hst" class="alignC1"></div>
 <div class="alignC2"> to </div><div id="hft" class="alignR"></div></div>
@@ -158,32 +161,32 @@ panchang.calculate(t, function() {
 <div class="trow">
 <div class="alignL">&nbsp</div></div>
 <div class="trow">
-<div class="alignL"> Abhijit: </div><div id="ajst" class="alignC1"></div>
+<div id = "abj" class="alignL"></div><div id="ajst" class="alignC1"></div>
 <div class="alignC2">to</div><div id="ajft" class="alignR"></div></div>
 <div class="trow">
 <div class="alignL">&nbsp</div></div>
 <div class="trow">
-<div class="alignL"> Brahma: </div><div id="bhst" class="alignC1"></div>
+<div id = "bhm" class="alignL"></div><div id="bhst" class="alignC1"></div>
 <div class="alignC2">to</div><div id="bhft" class="alignR"></div></div>
 <div class="trow">
 <div class="alignL">&nbsp</div></div>
 <div class="trow">
-<div class="alignL"> RahuKaal: </div><div id="rkst" class="alignC1"></div>
+<div id = "rhk" class="alignL"></div><div id="rkst" class="alignC1"></div>
 <div class="alignC2">to</div><div id="rkft" class="alignR"></div></div>
 <div class="trow">
 <div class="alignL">&nbsp</div></div>
 <div class="trow">
-<div class="alignL"> YamaGand: </div><div id="ygst" class="alignC1"></div>
+<div id = "ygd" class="alignL"></div><div id="ygst" class="alignC1"></div>
 <div class="alignC2">to</div><div id="ygft" class="alignR"></div></div>
 <div class="trow">
 <div class="alignL">&nbsp</div></div>
 <div class="trow">
-<div class="alignL"> Gulika: </div><div id="gkst" class="alignC1"></div>
+<div id = "glk" class="alignL"></div><div id="gkst" class="alignC1"></div>
 <div class="alignC2">to</div><div id="gkft" class="alignR"></div></div>
 <div class="trow">
 <div class="alignL">&nbsp</div></div>
 <div class="trow">
-<div class="alignL"> DurMuhurat: </div><div id="dmst" class="alignC1"></div>
+<div id = "dmt" class="alignL"></div><div id="dmst" class="alignC1"></div>
 <div class="alignC2">to</div><div id="dmft" class="alignR"></div></div>
 <div class="trow">
 <div class="alignL"></div><div id="dmbt" class="alignC1"></div>
@@ -191,6 +194,7 @@ panchang.calculate(t, function() {
 <script>
 //var srise=""; var sset=""; var srise1="";
 navigator.geolocation.getCurrentPosition(function(position) {
+var hra; var chra; var abj; var cabj; var bhm; var cbhm; var rhk; var crhk; var glk; var cglk; var ygd; var cygd; var dmt; var cdmt; 
   var srise = new Date().sunrise(position.coords.latitude, position.coords.longitude);
   var sset = new Date().sunset(position.coords.latitude, position.coords.longitude);
   var srise1 = new Date(srise.getTime() + (24 * 60 * 60 * 1000)).sunrise(position.coords.latitude, position.coords.longitude);
@@ -314,13 +318,21 @@ navigator.geolocation.getCurrentPosition(function(position) {
     case 0: hn="Budh"; break;     case 1: hn="Chandra"; break;     case 2: hn="Sani"; break;     case 3: hn="Guru"; break;     case 4: hn="Kuja"; break;     case 5: hn="Surya"; break; 
     case 6: hn="Sukra"; break;     case 7: hn="Budh"; break;     case 8: hn="Chandra"; break;     case 9: hn="Sani"; break;     case 10: hn="Guru"; break;     case 11: hn="Kuja"; break; }
     break;  }
+  document.getElementById("rhk").innerHTML=" RahuKaal: ";
+  document.getElementById("rhk").style.color = crhk;
   document.getElementById("rkst").innerHTML=rks.toLocaleString("en-IN", options);
   document.getElementById("rkft").innerHTML=rkf.toLocaleString("en-IN", options);
+  document.getElementById("ygd").innerHTML=" YamaGanda: ";
+  document.getElementById("ygd").style.color = cygd;
   document.getElementById("ygst").innerHTML=ygs.toLocaleString("en-IN", options);
   document.getElementById("ygft").innerHTML=ygf.toLocaleString("en-IN", options);
+  document.getElementById("glk").innerHTML=" Gulika: ";
+  document.getElementById("glk").style.color = cglk;
   document.getElementById("gkst").innerHTML=gks.toLocaleString("en-IN", options);
   document.getElementById("gkft").innerHTML=gkf.toLocaleString("en-IN", options);
   document.getElementById("dmst").innerHTML=dms.toLocaleString("en-IN", options);
+  document.getElementById("dmt").innerHTML=" DurMahurat: ";
+  document.getElementById("dmt").style.color = cdmt;
   document.getElementById("dmft").innerHTML=dmf.toLocaleString("en-IN", options);
   document.getElementById("dmbt").innerHTML=dmb.toLocaleString("en-IN", options);
   document.getElementById("dmet").innerHTML=dme.toLocaleString("en-IN", options); 
@@ -332,11 +344,17 @@ navigator.geolocation.getCurrentPosition(function(position) {
   document.getElementById("rise1").innerHTML=srise1.toLocaleString("en-IN", options);
   document.getElementById("riz").innerHTML=srise.toLocaleString("en-IN", options);
   document.getElementById("set").innerHTML=sset.toLocaleString("en-IN", options);
+  document.getElementById("abj").innerHTML=" Abhijit: ";
+  document.getElementById("abj").style.color = cabj;
   document.getElementById("hnm").innerHTML=hn;
   document.getElementById("ajst").innerHTML=ajs.toLocaleString("en-IN", options);
   document.getElementById("ajft").innerHTML=ajf.toLocaleString("en-IN", options);
+  document.getElementById("bhm").innerHTML=" Brahma: ";
+  document.getElementById("bhm").style.color = cbhm;
   document.getElementById("bhst").innerHTML=bhs.toLocaleString("en-IN", options);
   document.getElementById("bhft").innerHTML=bhf.toLocaleString("en-IN", options);
+  document.getElementById("hra").innerHTML=" Hora: ";
+  document.getElementById("hra").style.color = chra;
   document.getElementById("hst").innerHTML=hs.toLocaleString("en-IN", options);
   document.getElementById("hft").innerHTML=hf.toLocaleString("en-IN", options);  });
 </script></body></html>
