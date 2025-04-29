@@ -278,6 +278,8 @@ var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
     document.getElementById("abj").style.color = cgre; }
   var bhs = new Date(Math.floor(sset.getTime() + (13 * nmuh)));
   var bhf = new Date(Math.floor(sset.getTime() + (14 * nmuh))); 
+  if (tm > bhs.getTime() && tm < bhf.getTime()) {
+    document.getElementById("bhm").style.color = cgre; }
   if (tm < sstm) {
     var dhora = Math.floor(daylen / 12);
     var dtd = tm - srtm;
@@ -430,12 +432,16 @@ var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
   document.getElementById("ajst").innerHTML=ajs.toLocaleString("en-IN", options);
   document.getElementById("ajft").innerHTML=ajf.toLocaleString("en-IN", options);
   document.getElementById("bhm").innerHTML=" Brahma: ";
-//  document.getElementById("bhm").style.color = cbhm;
   document.getElementById("bhst").innerHTML=bhs.toLocaleString("en-IN", options);
   document.getElementById("bhft").innerHTML=bhf.toLocaleString("en-IN", options);
   document.getElementById("hra").innerHTML=" Hora: ";
-//  document.getElementById("hra").style.color = chra;
   document.getElementById("hnm").innerHTML=hn;
+  const good = ["Sukra", "Budh", "Chandra", "Guru"];
+  const bad = ["Surya", "Sani", "Kuja"];
+  if ((tm > hs.getTime() && tm < hf.getTime()) && (hn in bad))    {
+    document.getElementById("hra").style.color = cred; }
+  if ((tm > hs.getTime() && tm < hf.getTime()) && (hn in good))    {
+    document.getElementById("hra").style.color = cgre; }
   document.getElementById("hst").innerHTML=hs.toLocaleString("en-IN", options);
   document.getElementById("hft").innerHTML=hf.toLocaleString("en-IN", options);  });
 </script></body></html>
