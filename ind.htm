@@ -210,8 +210,7 @@ panchang.calculate(t, function() {
 <script src="sun.js"></script>
 <div class="trow">
 <div class="alignL">&nbsp</div><div id="rise" class="alignC1"></div>
-<div class="alignC2">to</div><div id="rise1" class="alignR"></div>
-</div>
+<div class="alignC2">to</div><div id="rise1" class="alignR"></div></div>
 <div class="trow">
 <div class="alignL">&nbsp</div></div>
 <div class="trow">
@@ -412,8 +411,8 @@ var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
   document.getElementById("dmt").innerHTML="DurMuhurt:";
   if (tm > dms.getTime() && tm < dmf.getTime()) {
     document.getElementById("dmt").style.color = cred; }
-  if (tm > dmb.getTime() && tm < dme.getTime()) {
-    document.getElementById("dmt").style.color = cred; }
+//  if (tm > dmb.getTime() && tm < dme.getTime()) {
+//    document.getElementById("dmt").style.color = cred; }
   document.getElementById("dmst").innerHTML=dms.toLocaleString("en-IN", options);
   document.getElementById("dmft").innerHTML=dmf.toLocaleString("en-IN", options);
   document.getElementById("dmbt").innerHTML=dmb.toLocaleString("en-IN", options);
