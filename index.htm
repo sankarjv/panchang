@@ -316,9 +316,9 @@ var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
   case 1:
     rks = daypart1; rkf = daypart2; ygs = daypart3; ygf = daypart4; gks = daypart5; gkf = daypart6;
     dms = new Date(Math.floor(srise.getTime() + ((daylen * 6.4) / 12)));
-    dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
+    dmf = new Date(Math.floor(dms.getTime() + (daylen / 15)));
     dmb = new Date(Math.floor(srise.getTime() + ((daylen * 8.8) / 12)));
-    dme = new Date(Math.floor(dmb.getTime() + (48 * 60 * 1000)));
+    dme = new Date(Math.floor(dme.getTime() + (daylen / 15)));
     document.getElementById("vra").style.color = cgre;
     switch(dhi) {
     case 0: hn="Chandra"; break;     case 1: hn="Sani"; break;     case 2: hn="Guru"; break;     case 3: hn="Kuja"; break;     case 4: hn="Surya"; break;     case 5: hn="Sukra"; break; 
@@ -330,9 +330,9 @@ var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
   case 2:
     rks = daypart6; rkf = daypart7; ygs = daypart2; ygf = daypart3; gks = daypart4; gkf = daypart5;
     dms = new Date(Math.floor(srise.getTime() + ((daylen * 2.4) / 12)));
-    dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
+    dmf = new Date(Math.floor(dms.getTime() + (daylen / 15)));
     dmb = new Date(Math.floor(sset.getTime() + ((niglen * 4.8) / 12)));
-    dme = new Date(Math.floor(dmb.getTime() + (48 * 60 * 1000)));
+    dme = new Date(Math.floor(dme.getTime() + (daylen / 15)));
     document.getElementById("vra").style.color = cred;
     switch(dhi) {
     case 0: hn="Kuja"; break;     case 1: hn="Surya"; break;     case 2: hn="Sukra"; break;     case 3: hn="Budha"; break;     case 4: hn="Chandra"; break;     case 5: hn="Sani"; break;
@@ -356,9 +356,9 @@ var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
   case 4:
     rks = daypart5; rkf = daypart6; ygs = daypart0; ygf = daypart1; gks = daypart2; gkf = daypart3;
     dms = new Date(Math.floor(srise.getTime() + ((daylen * 4) / 12)));
-    dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
+    dmf = new Date(Math.floor(dms.getTime() + (daylen / 15)));
     dmb = new Date(Math.floor(srise.getTime() + ((daylen * 8.8) / 12)));
-    dme = new Date(Math.floor(dmb.getTime() + (48 * 60 * 1000)));
+    dme = new Date(Math.floor(dme.getTime() + (daylen / 15)));
     document.getElementById("vra").style.color = cgre;
     switch(dhi) {
     case 0: hn="Guru"; break;     case 1: hn="Kuja"; break;     case 2: hn="Surya"; break;     case 3: hn="Sukra"; break;     case 4: hn="Budha"; break;     case 5: hn="Chandra"; break; 
@@ -370,9 +370,9 @@ var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
   case 5:
     rks = daypart3; rkf = daypart4; ygs = daypart6; ygf = daypart7; gks = daypart1; gkf = daypart2;
     dms = new Date(Math.floor(srise.getTime() + ((daylen * 2.4) / 12)));
-    dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
+    dmf = new Date(Math.floor(dms.getTime() + (daylen / 15)));
     dmb = new Date(Math.floor(srise.getTime() + ((daylen * 6.4) / 12)));
-    dme = new Date(Math.floor(dmb.getTime() + (48 * 60 * 1000)));
+    dme = new Date(Math.floor(dme.getTime() + (daylen / 15)));
     document.getElementById("vra").style.color = cgre;
     switch(dhi) {
     case 0: hn="Sukra"; break;     case 1: hn="Budha"; break;     case 2: hn="Chandra"; break;     case 3: hn="Sani"; break;     case 4: hn="Guru"; break;     case 5: hn="Kuja"; break; 
@@ -384,7 +384,7 @@ var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
   case 6:
     rks = daypart2; rkf = daypart3; ygs = daypart5; ygf = daypart6; gks = daypart0; gkf = daypart1;
     dms = new Date(Math.floor(srise.getTime() + ((daylen * 1.6) / 12)));
-    dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
+    dmf = new Date(Math.floor(dms.getTime() + (daylen / 15)));
     document.getElementById("vra").style.color = cred;
     switch(dhi) {
     case 0: hn="Sani"; break;     case 1: hn="Guru"; break;     case 2: hn="Kuja"; break;     case 3: hn="Surya"; break;     case 4: hn="Sukra"; break;     case 5: hn="Budha"; break; 
