@@ -204,7 +204,6 @@ panchang.calculate(t, function() {
   document.getElementById("s_yoga_end").innerHTML=panchang.Yoga.end.toLocaleString("en-IN", options);
   document.getElementById("vra").innerHTML=" Vaara: ";
   document.getElementById("day").innerHTML=panchang.Day.name;    
-//  document.getElementById("nakshtra").innerHTML=panchang.Nakshatra.name;
   document.getElementById("s_nakshtra_start").innerHTML=panchang.Nakshatra.start.toLocaleString("en-IN", options);
   document.getElementById("s_nakshtra_end").innerHTML=panchang.Nakshatra.end.toLocaleString("en-IN", options);           });
 </script>
@@ -411,12 +410,13 @@ var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
   document.getElementById("dmt").innerHTML="DurMuhurt:";
   if (tm > dms.getTime() && tm < dmf.getTime()) {
     document.getElementById("dmt").style.color = cred; }
-//  if (tm > dmb.getTime() && tm < dme.getTime()) {
-//    document.getElementById("dmt").style.color = cred; }
   document.getElementById("dmst").innerHTML=dms.toLocaleString("en-IN", options);
   document.getElementById("dmft").innerHTML=dmf.toLocaleString("en-IN", options);
-//  document.getElementById("dmbt").innerHTML=dmb.toLocaleString("en-IN", options);
-//  document.getElementById("dmet").innerHTML=dme.toLocaleString("en-IN", options); 
+  if (wkday == 01 || wkday == 02 || wkday == 04 || wkday == 05) {
+    if (tm > dmb.getTime() && tm < dme.getTime()) {
+      document.getElementById("dmt").style.color = cred; }
+    document.getElementById("dmbt").innerHTML=dmb.toLocaleString("en-IN", options);
+    document.getElementById("dmet").innerHTML=dme.toLocaleString("en-IN", options); }
   document.getElementById("rise").innerHTML=srise.toLocaleString("en-IN", options);
   document.getElementById("rise1").innerHTML=srise1.toLocaleString("en-IN", options);
   document.getElementById("riz").innerHTML=srise.toLocaleString("en-IN", options);
