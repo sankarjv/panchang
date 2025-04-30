@@ -69,7 +69,7 @@ var tm=t.getTime();
 document.getElementById("pdt").innerHTML=dt;
 var cred="Red"; var cgre="Green"; var cblu="Blue";
 var vra; var tit; var nkt; var yga; var krn; var vjy; var art;
-var options = {dateStyle:"short", timeStyle:"short", hour:"2-digit"};
+var options = {year:"2-digit", month:"2-digit", day:"2-digit", hour12:false, minute:"2-digit" hour:"2-digit"};
 panchang.calculate(t, function() {
   document.getElementById("tit").innerHTML=" Tithi: ";
   var tit = document.getElementById("tithi").innerHTML=panchang.Tithi.name;
