@@ -411,16 +411,12 @@ var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
   document.getElementById("dmt").innerHTML="DurMuhurt:";
   if (tm > dms.getTime() && tm < dmf.getTime()) {
     document.getElementById("dmt").style.color = cred; }
-//  if (tm > dmb.getTime() && tm < dme.getTime()) {
-//    document.getElementById("dmt").style.color = cred; }
+  if (tm > dmb.getTime() && tm < dme.getTime()) {
+    document.getElementById("dmt").style.color = cred; }
   document.getElementById("dmst").innerHTML=dms.toLocaleString("en-IN", options);
   document.getElementById("dmft").innerHTML=dmf.toLocaleString("en-IN", options);
-//  document.getElementById("dmbt").innerHTML=dmb.toLocaleString("en-IN", options);
-//  document.getElementById("dmet").innerHTML=dme.toLocaleString("en-IN", options); 
-//  document.getElementById("rise").innerHTML=srise.toLocaleString("en-IN", options);
-//  document.getElementById("rise1").innerHTML=srise1.toLocaleString("en-IN", options);
-//  document.getElementById("riz").innerHTML=srise.toLocaleString("en-IN", options);
-//  document.getElementById("set").innerHTML=sset.toLocaleString("en-IN", options);
+  document.getElementById("dmbt").innerHTML=dmb.toLocaleString("en-IN", options);
+  document.getElementById("dmet").innerHTML=dme.toLocaleString("en-IN", options); 
   document.getElementById("rise").innerHTML=srise.toLocaleString("en-IN", options);
   document.getElementById("rise1").innerHTML=srise1.toLocaleString("en-IN", options);
   document.getElementById("riz").innerHTML=srise.toLocaleString("en-IN", options);
