@@ -1,10 +1,11 @@
+
 <!DOCTYPE html>
 <html><head>
-<title>Panchang by Shankar JV</title>
+<title>Panchangam by Shankar JV</title>
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <meta http-equiv="refresh" content="300">
 <meta name="author" content="Shankar JV">
-<meta name="description" content="Panchang by Shankar JV">
+<meta name="description" content="Panchangam by Shankar JV">
 <meta name="viewport" content="width=device-width, initial-scale=0.85">
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta name="keywords" content="Panchangam, Panchang, Shankar, Telugu, Hyderabad, Telangana, Andhra, India, Tithi, Vaara, Nakshatra, Yoga, Karana, RahuKalam, GulikaKalam, YamaGandam, DurMuhurtam, Varjyam, Amruta, SunRise, SunSet, Day, Star">
@@ -15,11 +16,11 @@
            font-weight: bold;
            color: blue; }
 .alignC1, .alignC2, .alignR {  display: table-cell;
-                              padding-left: 11px;  }
+                              padding-left: 9px;  }
 </style>
 </head><body>
 <h3><div class="trow"><div id="pdt" class="alignL" style="color:blue;"></div>
-<div class="alignC1" style="color:blue;"> Panchang by </div>
+<div class="alignC1" style="color:blue;">Panchangam by</div>
 <div class="alignR" style="color:blue;"><a href="http://astrolog.er.in">Shankar JV</a></div></div></h3>
 <script src="panchang.js"></script>
 <div class="trow">
@@ -64,7 +65,7 @@
 <div id = "vra" class="alignL" ></div><div id="day" class="alignC1"></div></div>
 <script>
 var t= new Date();
-var dt=t.toLocaleString("en-IN", { dateStyle: "short" });
+var dt=t.toLocaleString("en-IN", { dateStyle: "medium" });
 var tm=t.getTime();
 document.getElementById("pdt").innerHTML=dt;
 var cred="Red"; var cgre="Green"; var cblu="Blue";
@@ -308,11 +309,11 @@ var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
     dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
     document.getElementById("vra").style.color = cred;
     switch(dhi) {
-    case 0: hn="Surya"; break;    case 1: hn="Sukra"; break;     case 2: hn="Budha"; break;     case 3: hn="Chandra"; break;     case 4: hn="Sani"; break;     case 5: hn="Guru"; break; 
-    case 6: hn="Kuja"; break;    case 7: hn="Surya"; break;     case 8: hn="Sukra"; break;     case 9: hn="Budha"; break;     case 10: hn="Chandra"; break;     case 11: hn="Sani"; break; }
+    case 0: hn="Surya"; break;    case 1: hn="Sukra"; break;     case 2: hn="Budh"; break;     case 3: hn="Chandra"; break;     case 4: hn="Sani"; break;     case 5: hn="Guru"; break; 
+    case 6: hn="Kuja"; break;    case 7: hn="Surya"; break;     case 8: hn="Sukra"; break;     case 9: hn="Budh"; break;     case 10: hn="Chandra"; break;     case 11: hn="Sani"; break; }
     switch(nhi) {
-    case 0: hn="Guru"; break;     case 1: hn="Kuja"; break;     case 2: hn="Surya"; break;     case 3: hn="Sukra"; break;     case 4: hn="Budha"; break;     case 5: hn="Chandra"; break; 
-    case 6: hn="Sani"; break;     case 7: hn="Guru"; break;     case 8: hn="Kuja"; break;     case 9: hn="Surya"; break;     case 10: hn="Sukra"; break;     case 11: hn="Budha"; break; }
+    case 0: hn="Guru"; break;     case 1: hn="Kuja"; break;     case 2: hn="Surya"; break;     case 3: hn="Sukra"; break;     case 4: hn="Budh"; break;     case 5: hn="Chandra"; break; 
+    case 6: hn="Sani"; break;     case 7: hn="Guru"; break;     case 8: hn="Kuja"; break;     case 9: hn="Surya"; break;     case 10: hn="Sukra"; break;     case 11: hn="Budh"; break; }
     break;
   case 1:
     rks = daypart1; rkf = daypart2; ygs = daypart3; ygf = daypart4; gks = daypart5; gkf = daypart6;
@@ -323,10 +324,10 @@ var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
     document.getElementById("vra").style.color = cgre;
     switch(dhi) {
     case 0: hn="Chandra"; break;     case 1: hn="Sani"; break;     case 2: hn="Guru"; break;     case 3: hn="Kuja"; break;     case 4: hn="Surya"; break;     case 5: hn="Sukra"; break; 
-    case 6: hn="Budha"; break;     case 7: hn="Chandra"; break;     case 8: hn="Sani"; break;     case 9: hn="Guru"; break;     case 10: hn="Kuja"; break;     case 11: hn="Surya"; break; }
+    case 6: hn="Budh"; break;     case 7: hn="Chandra"; break;     case 8: hn="Sani"; break;     case 9: hn="Guru"; break;     case 10: hn="Kuja"; break;     case 11: hn="Surya"; break; }
     switch(nhi) {
-    case 0: hn="Sukra"; break;     case 1: hn="Budha"; break;     case 2: hn="Chandra"; break;     case 3: hn="Sani"; break;     case 4: hn="Guru"; break;     case 5: hn="Kuja"; break; 
-    case 6: hn="Surya"; break;    case 7: hn="Sukra"; break;     case 8: hn="Budha"; break;     case 9: hn="Chandra"; break;     case 10: hn="Sani"; break;     case 11: hn="Guru"; break; }
+    case 0: hn="Sukra"; break;     case 1: hn="Budh"; break;     case 2: hn="Chandra"; break;     case 3: hn="Sani"; break;     case 4: hn="Guru"; break;     case 5: hn="Kuja"; break; 
+    case 6: hn="Surya"; break;    case 7: hn="Sukra"; break;     case 8: hn="Budh"; break;     case 9: hn="Chandra"; break;     case 10: hn="Sani"; break;     case 11: hn="Guru"; break; }
     break;
   case 2:
     rks = daypart6; rkf = daypart7; ygs = daypart2; ygf = daypart3; gks = daypart4; gkf = daypart5;
@@ -336,10 +337,10 @@ var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
     dme = new Date(Math.floor(dmb.getTime() + (48 * 60 * 1000)));
     document.getElementById("vra").style.color = cred;
     switch(dhi) {
-    case 0: hn="Kuja"; break;     case 1: hn="Surya"; break;     case 2: hn="Sukra"; break;     case 3: hn="Budha"; break;     case 4: hn="Chandra"; break;     case 5: hn="Sani"; break;
-    case 6: hn="Guru"; break;     case 7: hn="Kuja"; break;     case 8: hn="Surya"; break;     case 9: hn="Sukra"; break;     case 10: hn="Budha"; break;     case 11: hn="Chandra"; break; }
+    case 0: hn="Kuja"; break;     case 1: hn="Surya"; break;     case 2: hn="Sukra"; break;     case 3: hn="Budh"; break;     case 4: hn="Chandra"; break;     case 5: hn="Sani"; break;
+    case 6: hn="Guru"; break;     case 7: hn="Kuja"; break;     case 8: hn="Surya"; break;     case 9: hn="Sukra"; break;     case 10: hn="Budh"; break;     case 11: hn="Chandra"; break; }
     switch(nhi) {
-    case 0: hn="Sani"; break;     case 1: hn="Guru"; break;     case 2: hn="Kuja"; break;     case 3: hn="Surya"; break;     case 4: hn="Sukra"; break;     case 5: hn="Budha"; break; 
+    case 0: hn="Sani"; break;     case 1: hn="Guru"; break;     case 2: hn="Kuja"; break;     case 3: hn="Surya"; break;     case 4: hn="Sukra"; break;     case 5: hn="Budh"; break; 
     case 6: hn="Chandra"; break;     case 7: hn="Sani"; break;     case 8: hn="Guru"; break;     case 9: hn="Kuja"; break;     case 10: hn="Surya"; break;     case 11: hn="Sukra"; break; } 
     break;
   case 3:
@@ -348,11 +349,11 @@ var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
     dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
     document.getElementById("vra").style.color = cgre;
     switch(dhi) {
-    case 0: hn="Budha"; break;     case 1: hn="Chandra"; break;     case 2: hn="Sani"; break;     case 3: hn="Guru"; break;     case 4: hn="Kuja"; break;     case 5: hn="Surya"; break; 
-    case 6: hn="Sukra"; break;     case 7: hn="Budha"; break;     case 8: hn="Chandra"; break;     case 9: hn="Sani"; break;     case 10: hn="Guru"; break;     case 11: hn="Kuja"; break; }
+    case 0: hn="Budh"; break;     case 1: hn="Chandra"; break;     case 2: hn="Sani"; break;     case 3: hn="Guru"; break;     case 4: hn="Kuja"; break;     case 5: hn="Surya"; break; 
+    case 6: hn="Sukra"; break;     case 7: hn="Budh"; break;     case 8: hn="Chandra"; break;     case 9: hn="Sani"; break;     case 10: hn="Guru"; break;     case 11: hn="Kuja"; break; }
     switch(nhi) {
-    case 0: hn="Surya"; break;    case 1: hn="Sukra"; break;     case 2: hn="Budha"; break;     case 3: hn="Chandra"; break;     case 4: hn="Sani"; break;     case 5: hn="Guru"; break; 
-    case 6: hn="Kuja"; break;     case 7: hn="Surya"; break;     case 8: hn="Sukra"; break;     case 9: hn="Budha"; break;     case 10: hn="Chandra"; break;     case 11: hn="Sani"; break; }
+    case 0: hn="Surya"; break;    case 1: hn="Sukra"; break;     case 2: hn="Budh"; break;     case 3: hn="Chandra"; break;     case 4: hn="Sani"; break;     case 5: hn="Guru"; break; 
+    case 6: hn="Kuja"; break;     case 7: hn="Surya"; break;     case 8: hn="Sukra"; break;     case 9: hn="Budh"; break;     case 10: hn="Chandra"; break;     case 11: hn="Sani"; break; }
     break;
   case 4:
     rks = daypart5; rkf = daypart6; ygs = daypart0; ygf = daypart1; gks = daypart2; gkf = daypart3;
@@ -362,11 +363,11 @@ var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
     dme = new Date(Math.floor(dmb.getTime() + (48 * 60 * 1000)));
     document.getElementById("vra").style.color = cgre;
     switch(dhi) {
-    case 0: hn="Guru"; break;     case 1: hn="Kuja"; break;     case 2: hn="Surya"; break;     case 3: hn="Sukra"; break;     case 4: hn="Budha"; break;     case 5: hn="Chandra"; break; 
-    case 6: hn="Sani"; break;     case 7: hn="Guru"; break;     case 8: hn="Kuja"; break;     case 9: hn="Surya"; break;     case 10: hn="Sukra"; break;     case 11: hn="Budha"; break; }
+    case 0: hn="Guru"; break;     case 1: hn="Kuja"; break;     case 2: hn="Surya"; break;     case 3: hn="Sukra"; break;     case 4: hn="Budh"; break;     case 5: hn="Chandra"; break; 
+    case 6: hn="Sani"; break;     case 7: hn="Guru"; break;     case 8: hn="Kuja"; break;     case 9: hn="Surya"; break;     case 10: hn="Sukra"; break;     case 11: hn="Budh"; break; }
     switch(nhi) {
     case 0: hn="Chandra"; break;     case 1: hn="Sani"; break;     case 2: hn="Guru"; break;     case 3: hn="Kuja"; break;     case 4: hn="Surya"; break;     case 5: hn="Sukra"; break; 
-    case 6: hn="Budha"; break;     case 7: hn="Chandra"; break;     case 8: hn="Sani"; break;     case 9: hn="Guru"; break;     case 10: hn="Kuja"; break;     case 11: hn="Surya"; break; }
+    case 6: hn="Budh"; break;     case 7: hn="Chandra"; break;     case 8: hn="Sani"; break;     case 9: hn="Guru"; break;     case 10: hn="Kuja"; break;     case 11: hn="Surya"; break; }
     break;
   case 5:
     rks = daypart3; rkf = daypart4; ygs = daypart6; ygf = daypart7; gks = daypart1; gkf = daypart2;
@@ -376,11 +377,11 @@ var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
     dme = new Date(Math.floor(dmb.getTime() + (48 * 60 * 1000)));
     document.getElementById("vra").style.color = cgre;
     switch(dhi) {
-    case 0: hn="Sukra"; break;     case 1: hn="Budha"; break;     case 2: hn="Chandra"; break;     case 3: hn="Sani"; break;     case 4: hn="Guru"; break;     case 5: hn="Kuja"; break; 
-    case 6: hn="Surya"; break;     case 7: hn="Sukra"; break;     case 8: hn="Budha"; break;     case 9: hn="Chandra"; break;     case 10: hn="Sani"; break;     case 11: hn="Guru"; break; }
+    case 0: hn="Sukra"; break;     case 1: hn="Budh"; break;     case 2: hn="Chandra"; break;     case 3: hn="Sani"; break;     case 4: hn="Guru"; break;     case 5: hn="Kuja"; break; 
+    case 6: hn="Surya"; break;     case 7: hn="Sukra"; break;     case 8: hn="Budh"; break;     case 9: hn="Chandra"; break;     case 10: hn="Sani"; break;     case 11: hn="Guru"; break; }
     switch(nhi) {
-    case 0: hn="Kuja"; break;     case 1: hn="Surya"; break;     case 2: hn="Sukra"; break;     case 3: hn="Budha"; break;     case 4: hn="Chandra"; break;     case 5: hn="Sani"; break; 
-    case 6: hn="Guru"; break;     case 7: hn="Kuja"; break;     case 8: hn="Surya"; break;     case 9: hn="Sukra"; break;     case 10: hn="Budha"; break;     case 11: hn="Chandra"; break; }
+    case 0: hn="Kuja"; break;     case 1: hn="Surya"; break;     case 2: hn="Sukra"; break;     case 3: hn="Budh"; break;     case 4: hn="Chandra"; break;     case 5: hn="Sani"; break; 
+    case 6: hn="Guru"; break;     case 7: hn="Kuja"; break;     case 8: hn="Surya"; break;     case 9: hn="Sukra"; break;     case 10: hn="Budh"; break;     case 11: hn="Chandra"; break; }
     break;
   case 6:
     rks = daypart2; rkf = daypart3; ygs = daypart5; ygf = daypart6; gks = daypart0; gkf = daypart1;
@@ -388,11 +389,11 @@ var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
     dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
     document.getElementById("vra").style.color = cred;
     switch(dhi) {
-    case 0: hn="Sani"; break;     case 1: hn="Guru"; break;     case 2: hn="Kuja"; break;     case 3: hn="Surya"; break;     case 4: hn="Sukra"; break;     case 5: hn="Budha"; break; 
+    case 0: hn="Sani"; break;     case 1: hn="Guru"; break;     case 2: hn="Kuja"; break;     case 3: hn="Surya"; break;     case 4: hn="Sukra"; break;     case 5: hn="Budh"; break; 
     case 6: hn="Chandra"; break;     case 7: hn="Sani"; break;     case 8: hn="Guru"; break;     case 9: hn="Kuja"; break;     case 10: hn="Surya"; break;     case 11: hn="Sukra"; break; } 
     switch(nhi) {
-    case 0: hn="Budha"; break;     case 1: hn="Chandra"; break;     case 2: hn="Sani"; break;     case 3: hn="Guru"; break;     case 4: hn="Kuja"; break;     case 5: hn="Surya"; break; 
-    case 6: hn="Sukra"; break;     case 7: hn="Budha"; break;     case 8: hn="Chandra"; break;     case 9: hn="Sani"; break;     case 10: hn="Guru"; break;     case 11: hn="Kuja"; break; }
+    case 0: hn="Budh"; break;     case 1: hn="Chandra"; break;     case 2: hn="Sani"; break;     case 3: hn="Guru"; break;     case 4: hn="Kuja"; break;     case 5: hn="Surya"; break; 
+    case 6: hn="Sukra"; break;     case 7: hn="Budh"; break;     case 8: hn="Chandra"; break;     case 9: hn="Sani"; break;     case 10: hn="Guru"; break;     case 11: hn="Kuja"; break; }
     break;  }
   document.getElementById("rhk").innerHTML="RahuKaal:";
   if (tm > rks.getTime() && tm < rkf.getTime()) {
@@ -437,7 +438,7 @@ var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
   const good = [];
   if ((tm > hs.getTime() && tm < hf.getTime()) && (hn == "Surya" || hn ==  "Sani" || hn ==  "Kuja"))    {
     document.getElementById("hra").style.color = cred; }
-  if ((tm > hs.getTime() && tm < hf.getTime()) && (hn ==  "Sukra" || hn == "Budha" || hn == "Chandra" || hn == "Guru"))    {
+  if ((tm > hs.getTime() && tm < hf.getTime()) && (hn ==  "Sukra" || hn == "Budh" || hn == "Chandra" || hn == "Guru"))    {
     document.getElementById("hra").style.color = cgre; }
   document.getElementById("hst").innerHTML=hs.toLocaleString("en-IN", options);
   document.getElementById("hft").innerHTML=hf.toLocaleString("en-IN", options);  });
