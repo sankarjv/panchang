@@ -2,7 +2,6 @@
 <html><head>
 <title>Panchangam by Shankar JV</title>
 <link rel="icon" type="image/x-icon" href="favicon.ico">
-
 <meta name="author" content="Shankar JV">
 <meta name="description" content="Panchangam by Shankar JV">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +10,8 @@
 <style>
 .block { overflow:hidden; }
 .trow {  display: table-row; }
+.green { color: green;  }
+.red { color: red; }
 .alignL {  display: table-cell;
            font-weight: bold;
            color: blue; }
@@ -18,9 +19,9 @@
                               padding-left: 11px;  }
 </style>
 </head><body>
-<h3><div class="trow"><div id="pdt" class="alignL" style="color:blue;"></div>
-<div class="alignC1" style="color:blue;"> Panchangam  by</div>
-<div class="alignR" style="color:blue;"><a href="http://astrolog.er.in">Shankar JV</a></div></div></h3>
+<h3><div class="trow"><div id="pdt" class="alignL"></div>
+<div class="alignC1"> Panchangam  by</div>
+<div class="alignR"><a href="http://astrolog.er.in">Shankar JV</a></div></div></h3>
 <script src="panchang.js"></script>
 <div class="trow">
 <div id="tit" class="alignL"></div><div id="tithi" class="alignC1"></div></div>
@@ -69,41 +70,11 @@ var tm=t.getTime();
 document.getElementById("pdt").innerHTML=dt;
 var cred="Red"; var cgre="Green"; var cblu="Blue";
 var vra; var tit; var nkt; var yga; var krn; var vjy; var art;
-var options = {year:"2-digit", month:"2-digit", day:"2-digit", hour12:false, minute:"2-digit" hour:"2-digit"};
+var options = {year:"2-digit", month:"2-digit", day:"2-digit", hour:"2-digit", hour12:false, minute:"2-digit", second:"2-digit"};
 panchang.calculate(t, function() {
   document.getElementById("tit").innerHTML=" Tithi: ";
-  var tit = document.getElementById("tithi").innerHTML=panchang.Tithi.name;
-  switch(tit) {
-   case "S-Padyami":    document.getElementById("tit").style.color = cred;              break;
-   case "S-Vidiya":    document.getElementById("tit").style.color = cgre;              break;
-   case "S-Tadiya":    document.getElementById("tit").style.color = cgre;              break;
-   case "S-Chaviti":    document.getElementById("tit").style.color = cred;              break;
-   case "S-Panchami":    document.getElementById("tit").style.color = cgre;              break;
-   case "S-Shasti":    document.getElementById("tit").style.color = cred;              break;
-   case "S-Saptami":    document.getElementById("tit").style.color = cgre;              break;
-   case "S-Ashtami":    document.getElementById("tit").style.color = cred;              break;
-   case "S-Navami":    document.getElementById("tit").style.color = cred;              break;
-   case "S-Dasami":    document.getElementById("tit").style.color = cgre;              break;
-   case "S-Ekadasi":    document.getElementById("tit").style.color = cgre;              break;
-   case "S-Dwadasi":    document.getElementById("tit").style.color = cred;              break;
-   case "S-Trayodasi":    document.getElementById("tit").style.color = cgre;              break;
-   case "S-Chaturdasi":    document.getElementById("tit").style.color = cred;              break;
-   case "Poornima":    document.getElementById("tit").style.color = cgre;              break;
-   case "B-Padyami":    document.getElementById("tit").style.color = cgre;              break;
-   case "B-Vidiya":    document.getElementById("tit").style.color = cgre;              break;
-   case "B-Tadiya":    document.getElementById("tit").style.color = cgre;              break;
-   case "B-Chaviti":    document.getElementById("tit").style.color = cred;              break;
-   case "B-Panchami":    document.getElementById("tit").style.color = cgre;              break;
-   case "B-Shasti":    document.getElementById("tit").style.color = cred;              break;
-   case "B-Saptami":    document.getElementById("tit").style.color = cgre;              break;
-   case "B-Ashtami":    document.getElementById("tit").style.color = cred;              break;
-   case "B-Navami":    document.getElementById("tit").style.color = cred;              break;
-   case "B-Dasami":    document.getElementById("tit").style.color = cgre;              break;
-   case "B-Ekadasi":    document.getElementById("tit").style.color = cgre;              break;
-   case "B-Dwadasi":    document.getElementById("tit").style.color = cred;              break;
-   case "B-Trayodasi":    document.getElementById("tit").style.color = cgre;              break;
-   case "B-Chaturdasi":    document.getElementById("tit").style.color = cred;              break;
-   case "Amavasya":    document.getElementById("tit").style.color = cred;              break; }  
+  document.getElementById("tit").style.color = cgre;
+  document.getElementById("tithi").innerHTML=panchang.Tithi.name;
   document.getElementById("s_tithi_start").innerHTML=panchang.Tithi.start.toLocaleString("en-IN", options);
   document.getElementById("s_tithi_end").innerHTML=panchang.Tithi.end.toLocaleString("en-IN", options);
   document.getElementById("nkt").innerHTML=" Nakshatra: ";
@@ -125,7 +96,7 @@ panchang.calculate(t, function() {
     case "Hasta":    Va=8.4;    Aa=18;    document.getElementById("nkt").style.color = cgre;            break;
     case "Chitta":    Va=8;    Aa=17.6;    document.getElementById("nkt").style.color = cgre;            break;
     case "Swati":    Va=5.6;    Aa=15.2;    document.getElementById("nkt").style.color = cgre;            break;
-    case "Visakha":    Va=5.6;    Aa=15.2;    document.getElementById("nkt").style.color = cgre;            break;
+    case "Visakha":    Va=5.6;    Aa=15.2;    document.getElementById("nkt").style.color = cred;            break;
     case "Anuradha":    Va=4;    Aa=13.6;    document.getElementById("nkt").style.color = cgre;            break;
     case "Jyesta":    Va=5.6;    Aa=15.2;    document.getElementById("nkt").style.color = cred;            break;
     case "Moola":    Va=8.4;    Aa=17.6;    document.getElementById("nkt").style.color = cred;            break;
@@ -145,13 +116,11 @@ panchang.calculate(t, function() {
   var amrs = new Date(Math.floor((nakb.getTime() + ((Aa * naklen)/24))));
   var amrf = new Date(Math.floor(amrs.getTime() + ((1.6 * naklen)/24)));
   document.getElementById("vjy").innerHTML=" Varjyam: ";
-  if (tm > varb.getTime() && tm < vare.getTime()) {
-    document.getElementById("").style.color = cred; }
+//  document.getElementById("vjy").style.color = cvjy;
   document.getElementById("varbt").innerHTML=varb.toLocaleString("en-IN", options);
   document.getElementById("varet").innerHTML=vare.toLocaleString("en-IN", options);
   document.getElementById("art").innerHTML=" Amruta: ";
-  if (tm > amrs.getTime() && tm < amrf.getTime()) {
-    document.getElementById("art").style.color = cgre; }
+//  document.getElementById("art").style.color = cart;
   document.getElementById("amrst").innerHTML=amrs.toLocaleString("en-IN", options);
   document.getElementById("amrft").innerHTML=amrf.toLocaleString("en-IN", options);
   document.getElementById("krn").innerHTML=" Karana: ";
@@ -277,8 +246,6 @@ var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
     document.getElementById("abj").style.color = cgre; }
   var bhs = new Date(Math.floor(sset.getTime() + (13 * nmuh)));
   var bhf = new Date(Math.floor(sset.getTime() + (14 * nmuh))); 
-  if (tm > bhs.getTime() && tm < bhf.getTime()) {
-    document.getElementById("bhm").style.color = cgre; }
   if (tm < sstm) {
     var dhora = Math.floor(daylen / 12);
     var dtd = tm - srtm;
@@ -431,15 +398,12 @@ var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
   document.getElementById("ajst").innerHTML=ajs.toLocaleString("en-IN", options);
   document.getElementById("ajft").innerHTML=ajf.toLocaleString("en-IN", options);
   document.getElementById("bhm").innerHTML=" Brahma: ";
+//  document.getElementById("bhm").style.color = cbhm;
   document.getElementById("bhst").innerHTML=bhs.toLocaleString("en-IN", options);
   document.getElementById("bhft").innerHTML=bhf.toLocaleString("en-IN", options);
   document.getElementById("hra").innerHTML=" Hora: ";
+//  document.getElementById("hra").style.color = chra;
   document.getElementById("hnm").innerHTML=hn;
-  const good = [];
-  if ((tm > hs.getTime() && tm < hf.getTime()) && (hn == "Surya" || hn ==  "Sani" || hn ==  "Kuja"))    {
-    document.getElementById("hra").style.color = cred; }
-  if ((tm > hs.getTime() && tm < hf.getTime()) && (hn ==  "Sukra" || hn == "Budh" || hn == "Chandra" || hn == "Guru"))    {
-    document.getElementById("hra").style.color = cgre; }
   document.getElementById("hst").innerHTML=hs.toLocaleString("en-IN", options);
   document.getElementById("hft").innerHTML=hf.toLocaleString("en-IN", options);  });
 </script></body></html>
