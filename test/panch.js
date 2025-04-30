@@ -4,10 +4,10 @@
 d2r = Math.PI/180;
 r2d = 180/Math.PI;
 var zn = ["Mesha","Vrushabha","Mithuna","Karkataka","Simha","Kanya","Tula","Vrushchika","Dhanu","Makara","Kumbha","Meena"];
-var wd = ["Aadi","Soma","Mangal","Budh","Guru","Sukra","Sani"];
+var wd = ["Ravi","Soma","Mangal","Budha","Guru","Sukra","Sani"];
 var range = [1,31,0,0,-3000,4000,0,23,0,59,-12,12,0,59];
 var naks = ["Aswini","Bharani","Krittika","Rohini","Mrigasira","Aardra","Punarvasu","Pushyami","Aslesha","Makha","Pubha","Uttara","Hasta","Chitta","Swati","Visakha","Anuradha","Jyesta","Moola","PurvAshada","UttarAshada","Sravanam","Dhanista","Satabhisha","PurvaBhadra","UttaraBhadra","Revati"];
-var tith =["S-Padyami","S-Vidiya","S-Tadiya","S-Chaviti","S-Panchami","S-Shasti","S-Saptami","S-Ashtami","S-Navami","S-Dasami","S-Ekadasi","S-Dwadasi","S-Trayodasi","S-Chaturdasi","S-Poornima","B-Padyami","B-Vidiya","B-Tadiya","B-Chaviti","B-Panchami","B-Shasti","B-Saptami","B-Ashtami","B-Navami","B-Dasami","B-Ekadasi","B-Dwadasi","B-Trayodasi","B-Chaturdasi","B-Amavasya"];
+var tith =["S-Padyami","S-Vidiya","S-Tadiya","S-Chaviti","S-Panchami","S-Shasti","S-Saptami","S-Ashtami","S-Navami","S-Dasami","S-Ekadasi","S-Dwadasi","S-Trayodasi","S-Chaturdasi","Poornima","B-Padyami","B-Vidiya","B-Tadiya","B-Chaviti","B-Panchami","B-Shasti","B-Saptami","B-Ashtami","B-Navami","B-Dasami","B-Ekadasi","B-Dwadasi","B-Trayodasi","B-Chaturdasi","Amavasya"];
 var kar = [ "Bava", "Balava", "Kaulava", "Taitula", "Garaja", "Vanija", "Vishti", "Sakuna", "Chatushpada", "Nagava", "Kimstughna"];
 var yog = ["Vishkambha","Preeti","Ayushman","Saubhagya","Sobhana","Atiganda","Sukarman","Dhriti","Shoola","Ganda","Vridhi","Dhruva","Vyaghata","Harshana","Vajra","Siddhi","Vyatipata","Variyan","Parigha","Shiva","Siddha","Sadhya","Subha","Sukla","Brahma","Indra","Vaidhruti"];
 var tipnaks = [2,5,6,0,1,4,3,2,4,5,5,0,2,1,3,6,1,4,4,5,0,3,3,3,5,0,1];
@@ -398,7 +398,6 @@ function tithi(jd, n1, tzone, len)
 var s_t = {};
 var flag;
 jdt = jd;
-
 knv = Math.floor(((jd - 2415020) / 365.25) * 12.3685);
 
 for (itit = n1; itit < (n1 + 2); ++itit) {
@@ -421,11 +420,7 @@ if (Math.abs(asp1) > 0.001) {jdt += (asp1 / (skor - 1)); flag = 0;}
 if (itit == n1) s_t.start = calData(jdt + (tzone - dt)/24);
 if (itit == (n1 + 1)) s_t.end=calData(jdt + (tzone - dt)/24);
 }
-console.log("ijd "+jd+"jdt "+jdt);
-console.log(" n1 "+n1+" len "+len+" knv "+knv+" itit "+itit);
-console.log("st "+s_t.start+" se "+s_t.end);
-console.log("a "+a+" asp1 "+asp1," skor "+skor+" aspect "+aspect);
- return s_t;
+return s_t;
 }
 
 
@@ -667,14 +662,11 @@ e = floor((b - d)/30.6001);
 days = b - d - floor(30.6001*e) + f;
 kday = floor(days);
 
-//if(e < 13.5)kmon = e - 1;
-if(e < 14)kmon = e - 1;
+if(e < 13.5)kmon = e - 1;
 else kmon = e - 13;
 
-//if(kmon > 2.5)kyear = c - 4716;
-//if(kmon < 2.5)kyear = c - 4715;
-if(kmon > 2)kyear = c - 4716;
-else kyear = c - 4715;
+if(kmon > 2.5)kyear = c - 4716;
+if(kmon < 2.5)kyear = c - 4715;
 
 hh1 = (days - kday)*24;
 khr = floor(hh1);
@@ -683,8 +675,6 @@ ksek = kmin*60;
 kmin = floor(ksek);
 ksek = floor((ksek - kmin)*60);
 s = new Date(kyear,kmon-1,kday,khr,kmin,ksek,0);
-console.log(" s "+s+" jd "+jd+" km "+kmon+" kd "+kday+" days "+days);
-console.log(" a "+a+" b "+b+" c "+c+" d "+d+" e "+e+" f "+f+" alf "+alf);
 }
 return s;
 }
