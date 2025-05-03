@@ -70,8 +70,7 @@ var tm=t.getTime();
 var wkday = t.getDay();
 setInterval(showTime, 1000);
 function showTime() {
-var dt = new Date();
-document.getElementById("pdt").innerHTML=dt.toLocaleString("en-IN", options); }
+document.getElementById("pdt").innerHTML=t.toLocaleString("en-IN", options); }
 showTime();
 var cred="Red"; var cgre="Green"; var cblu="Blue";
 var vra; var tit; var nkt; var yga; var krn; var vjy; var art;
