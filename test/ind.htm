@@ -68,10 +68,10 @@ var options = {year:"2-digit", month:"2-digit", day:"2-digit", hour:"2-digit", h
 setInterval(showTime, 1000);
 function showTime() {
 var t= new Date();
-var tm=t.getTime();
-var wkday = t.getDay();
 document.getElementById("pdt").innerHTML=t.toLocaleString("en-IN", options); }
 showTime();
+var tm=t.getTime();
+var wkday = t.getDay();
 var cred="Red"; var cgre="Green"; var cblu="Blue";
 var vra; var tit; var nkt; var yga; var krn; var vjy; var art;
 panchang.calculate(t, function() {
