@@ -18,9 +18,9 @@
                               padding-left: 11px;  }
 </style>
 </head><body>
-<h3><div class="trow"><div id="pdt" class="alignL" style="color:blue;"></div>
-<div class="alignC1" style="color:blue;"> Panchang by </div>
-<div class="alignR" style="color:blue;"><a href="http://astrolog.er.in">Shankar JV</a></div></div></h3>
+<h3><div class="trow"><div id="pdt" class="alignC1" style="color:blue;"></div>
+<div class="alignR" style="color:blue;"> Panchang </div>
+<div class="alignL" style="color:blue;"><a href="http://astrolog.er.in">Shankar JV</a></div></div></h3>
 <script src="panchang.js"></script>
 <div class="trow">
 <div id="tit" class="alignL"></div><div id="tithi" class="alignC1"></div></div>
@@ -64,7 +64,7 @@
 <div id = "vra" class="alignL" ></div><div id="day" class="alignC1"></div></div>
 <script>
 var t= new Date();
-var dt=t.toLocaleString("en-IN", { dateStyle: "short" });
+var dt=t.toLocaleString("en-IN", options);
 var tm=t.getTime();
 var wkday = t.getDay();
 document.getElementById("pdt").innerHTML=dt;
