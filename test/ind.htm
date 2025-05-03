@@ -66,6 +66,7 @@
 var t= new Date();
 var dt=t.toLocaleString("en-IN", { dateStyle: "short" });
 var tm=t.getTime();
+var wkday = t.getDay();
 document.getElementById("pdt").innerHTML=dt;
 var cred="Red"; var cgre="Green"; var cblu="Blue";
 var vra; var tit; var nkt; var yga; var krn; var vjy; var art;
@@ -146,7 +147,7 @@ panchang.calculate(t, function() {
   var amrf = new Date(Math.floor(amrs.getTime() + ((1.6 * naklen)/24)));
   document.getElementById("vjy").innerHTML="Varjyam:";
   if (tm > varb.getTime() && tm < vare.getTime()) {
-    document.getElementById("").style.color = cred; }
+    document.getElementById("vjy").style.color = cred; }
   document.getElementById("varbt").innerHTML=varb.toLocaleString("en-IN", options);
   document.getElementById("varet").innerHTML=vare.toLocaleString("en-IN", options);
   document.getElementById("art").innerHTML="Amruta:";
@@ -203,7 +204,6 @@ panchang.calculate(t, function() {
   document.getElementById("s_yoga_end").innerHTML=panchang.Yoga.end.toLocaleString("en-IN", options);
   document.getElementById("vra").innerHTML=" Vaara: ";
   document.getElementById("day").innerHTML=panchang.Day.name;    
-  document.getElementById("nakshtra").innerHTML=panchang.Nakshatra.name;
   document.getElementById("s_nakshtra_start").innerHTML=panchang.Nakshatra.start.toLocaleString("en-IN", options);
   document.getElementById("s_nakshtra_end").innerHTML=panchang.Nakshatra.end.toLocaleString("en-IN", options);           });
 </script>
@@ -299,7 +299,6 @@ var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
   var daypart7 = new Date(Math.floor((daypart6.getTime() + daypart)));
   var daypart8 = new Date(Math.floor((daypart7.getTime() + daypart)));
   var rks=0;  var rkf=0;  var ygs=0;  var ygf=0;  var gks=0;  var gkf=0;  var dms;  var dmf;  var dmb;  var dme;  var hn;
-  var wkday = new Date().getDay();
   switch(wkday) {
   case 0:
     rks = daypart7; rkf = daypart8; ygs = daypart4; ygf = daypart5; gks = daypart6; gkf = daypart7;
@@ -316,9 +315,9 @@ var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
   case 1:
     rks = daypart1; rkf = daypart2; ygs = daypart3; ygf = daypart4; gks = daypart5; gkf = daypart6;
     dms = new Date(Math.floor(srise.getTime() + ((daylen * 6.4) / 12)));
-    dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
+    dmf = new Date(Math.floor(dms.getTime() + (daylen / 15)));
     dmb = new Date(Math.floor(srise.getTime() + ((daylen * 8.8) / 12)));
-    dme = new Date(Math.floor(dmb.getTime() + (48 * 60 * 1000)));
+    dme = new Date(Math.floor(dmb.getTime() + (daylen / 15)));
     document.getElementById("vra").style.color = cgre;
     switch(dhi) {
     case 0: hn="Chandra"; break;     case 1: hn="Sani"; break;     case 2: hn="Guru"; break;     case 3: hn="Kuja"; break;     case 4: hn="Surya"; break;     case 5: hn="Sukra"; break; 
@@ -330,9 +329,9 @@ var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
   case 2:
     rks = daypart6; rkf = daypart7; ygs = daypart2; ygf = daypart3; gks = daypart4; gkf = daypart5;
     dms = new Date(Math.floor(srise.getTime() + ((daylen * 2.4) / 12)));
-    dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
+    dmf = new Date(Math.floor(dms.getTime() + (daylen / 15)));
     dmb = new Date(Math.floor(sset.getTime() + ((niglen * 4.8) / 12)));
-    dme = new Date(Math.floor(dmb.getTime() + (48 * 60 * 1000)));
+    dme = new Date(Math.floor(dmb.getTime() + (niglen / 15)));
     document.getElementById("vra").style.color = cred;
     switch(dhi) {
     case 0: hn="Kuja"; break;     case 1: hn="Surya"; break;     case 2: hn="Sukra"; break;     case 3: hn="Budha"; break;     case 4: hn="Chandra"; break;     case 5: hn="Sani"; break;
@@ -344,7 +343,7 @@ var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
   case 3:
     rks = daypart4; rkf = daypart5; ygs = daypart1; ygf = daypart2; gks = daypart3; gkf = daypart4;
     dms = new Date(Math.floor(srise.getTime() + ((daylen * 5.6) / 12)));
-    dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
+    dmf = new Date(Math.floor(dms.getTime() + (daylen / 15)));
     document.getElementById("vra").style.color = cgre;
     switch(dhi) {
     case 0: hn="Budha"; break;     case 1: hn="Chandra"; break;     case 2: hn="Sani"; break;     case 3: hn="Guru"; break;     case 4: hn="Kuja"; break;     case 5: hn="Surya"; break; 
@@ -356,9 +355,9 @@ var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
   case 4:
     rks = daypart5; rkf = daypart6; ygs = daypart0; ygf = daypart1; gks = daypart2; gkf = daypart3;
     dms = new Date(Math.floor(srise.getTime() + ((daylen * 4) / 12)));
-    dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
+    dmf = new Date(Math.floor(dms.getTime() + (daylen / 15)));
     dmb = new Date(Math.floor(srise.getTime() + ((daylen * 8.8) / 12)));
-    dme = new Date(Math.floor(dmb.getTime() + (48 * 60 * 1000)));
+    dme = new Date(Math.floor(dmb.getTime() + (daylen / 15)));
     document.getElementById("vra").style.color = cgre;
     switch(dhi) {
     case 0: hn="Guru"; break;     case 1: hn="Kuja"; break;     case 2: hn="Surya"; break;     case 3: hn="Sukra"; break;     case 4: hn="Budha"; break;     case 5: hn="Chandra"; break; 
@@ -370,9 +369,9 @@ var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
   case 5:
     rks = daypart3; rkf = daypart4; ygs = daypart6; ygf = daypart7; gks = daypart1; gkf = daypart2;
     dms = new Date(Math.floor(srise.getTime() + ((daylen * 2.4) / 12)));
-    dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
+    dmf = new Date(Math.floor(dms.getTime() + (daylen / 15)));
     dmb = new Date(Math.floor(srise.getTime() + ((daylen * 6.4) / 12)));
-    dme = new Date(Math.floor(dmb.getTime() + (48 * 60 * 1000)));
+    dme = new Date(Math.floor(dmb.getTime() + (daylen / 15)));
     document.getElementById("vra").style.color = cgre;
     switch(dhi) {
     case 0: hn="Sukra"; break;     case 1: hn="Budha"; break;     case 2: hn="Chandra"; break;     case 3: hn="Sani"; break;     case 4: hn="Guru"; break;     case 5: hn="Kuja"; break; 
@@ -384,7 +383,7 @@ var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
   case 6:
     rks = daypart2; rkf = daypart3; ygs = daypart5; ygf = daypart6; gks = daypart0; gkf = daypart1;
     dms = new Date(Math.floor(srise.getTime() + ((daylen * 1.6) / 12)));
-    dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
+    dmf = new Date(Math.floor(dms.getTime() + (daylen / 15)));
     document.getElementById("vra").style.color = cred;
     switch(dhi) {
     case 0: hn="Sani"; break;     case 1: hn="Guru"; break;     case 2: hn="Kuja"; break;     case 3: hn="Surya"; break;     case 4: hn="Sukra"; break;     case 5: hn="Budha"; break; 
@@ -411,12 +410,13 @@ var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
   document.getElementById("dmt").innerHTML="DurMuhurt:";
   if (tm > dms.getTime() && tm < dmf.getTime()) {
     document.getElementById("dmt").style.color = cred; }
-//  if (tm > dmb.getTime() && tm < dme.getTime()) {
-//    document.getElementById("dmt").style.color = cred; }
   document.getElementById("dmst").innerHTML=dms.toLocaleString("en-IN", options);
   document.getElementById("dmft").innerHTML=dmf.toLocaleString("en-IN", options);
-//  document.getElementById("dmbt").innerHTML=dmb.toLocaleString("en-IN", options);
-//  document.getElementById("dmet").innerHTML=dme.toLocaleString("en-IN", options); 
+  if (wkday == 01 || wkday == 02 || wkday == 04 || wkday == 05) {
+    if (tm > dmb.getTime() && tm < dme.getTime()) {
+      document.getElementById("dmt").style.color = cred; }
+    document.getElementById("dmbt").innerHTML=dmb.toLocaleString("en-IN", options);
+    document.getElementById("dmet").innerHTML=dme.toLocaleString("en-IN", options); }
   document.getElementById("rise").innerHTML=srise.toLocaleString("en-IN", options);
   document.getElementById("rise1").innerHTML=srise1.toLocaleString("en-IN", options);
   document.getElementById("riz").innerHTML=srise.toLocaleString("en-IN", options);
