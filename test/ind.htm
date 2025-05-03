@@ -2,7 +2,6 @@
 <html><head>
 <title>Panchang by Shankar JV</title>
 <link rel="icon" type="image/x-icon" href="favicon.ico">
-<meta http-equiv="refresh" content="60">
 <meta name="author" content="Shankar JV">
 <meta name="description" content="Panchang by Shankar JV">
 <meta name="viewport" content="width=device-width, initial-scale=0.85">
@@ -67,10 +66,13 @@
 <script>
 var options = {year:"2-digit", month:"2-digit", day:"2-digit", hour:"2-digit", hour12:false, minute:"2-digit"};
 var t= new Date();
-var dt=t.toLocaleString("en-IN", options);
 var tm=t.getTime();
 var wkday = t.getDay();
-document.getElementById("pdt").innerHTML=dt;
+setInterval(showTime, 1000);
+function showTime() {
+var dt=t.toLocaleString("en-IN", options);
+document.getElementById("pdt").innerHTML=dt; }
+showTime();
 var cred="Red"; var cgre="Green"; var cblu="Blue";
 var vra; var tit; var nkt; var yga; var krn; var vjy; var art;
 panchang.calculate(t, function() {
