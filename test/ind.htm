@@ -443,11 +443,10 @@ var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
       document.getElementById("hra").style.color = cred; }  
     hl = hn;
              console.log("hn "+hn+" hl "+hl);
-        window.location.reload();
-//window.onload = function() {
-//    if (!window.location.hash) {
-//        window.location = window.location + '#loaded';
-//        window.location.reload(); } }    
+window.onload = function() {
+    if (!window.location.hash) {
+        window.location = window.location + '#loaded';
+        window.location.reload(); } }    
             } });
 //    location.reload(); }  });
 //  if ((tm > hs.getTime() && tm < hf.getTime()) && (hn == "Surya" || hn ==  "Sani" || hn ==  "Kuja"))    {
