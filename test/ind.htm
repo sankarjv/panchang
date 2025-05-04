@@ -71,7 +71,9 @@ var wkday = t.getDay();
 var cred="Red"; var cgre="Green"; var cblu="Blue";
 setInterval(showTime, 1000);
 function showTime() {
-var dt= new Date();
+document.getElementById("pdt").innerHTML=t.toLocaleString("en-IN", options); }
+showTime();
+//var dt= new Date();
 var vra; var tit; var nkt; var yga; var krn; var vjy; var art;
 panchang.calculate(t, function() {
   document.getElementById("tit").innerHTML="Tithi:";
@@ -208,8 +210,6 @@ panchang.calculate(t, function() {
   document.getElementById("day").innerHTML=panchang.Day.name;    
   document.getElementById("s_nakshtra_start").innerHTML=panchang.Nakshatra.start.toLocaleString("en-IN", options);
   document.getElementById("s_nakshtra_end").innerHTML=panchang.Nakshatra.end.toLocaleString("en-IN", options);           });
-document.getElementById("pdt").innerHTML=dt.toLocaleString("en-IN", options); }
-showTime();
 </script>
 <script src="sun.js"></script>
 <div class="trow">
