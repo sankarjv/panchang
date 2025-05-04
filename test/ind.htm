@@ -71,8 +71,8 @@ var wkday = t.getDay();
 var cred="Red"; var cgre="Green"; var cblu="Blue";
 setInterval(showTime, 1000);
 function showTime() {
-var dt= new Date(); }
-document.getElementById("pdt").innerHTML=dt.toLocaleString("en-IN", options); 
+var dt= new Date(); 
+document.getElementById("pdt").innerHTML=dt.toLocaleString("en-IN", options); }
 showTime();
 var vra; var tit; var nkt; var yga; var krn; var vjy; var art; 
 panchang.calculate(t, function() {
@@ -442,7 +442,7 @@ var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
     if (hn == "Surya" || hn ==  "Sani" || hn ==  "Kuja")    {
       document.getElementById("hra").style.color = cred; }  
     hl = hn;
-             console.log("hn "+hn+" hl "+hl);
+             console.log("hni "+hn+" hl "+hl);
 window.onload = function() {
     if (!window.location.hash) {
         window.location = window.location + '#loaded';
