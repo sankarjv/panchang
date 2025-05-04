@@ -435,15 +435,14 @@ var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
   document.getElementById("hnm").innerHTML=hn;
   document.getElementById("hst").innerHTML=hs.toLocaleString("en-IN", options);
   document.getElementById("hft").innerHTML=hf.toLocaleString("en-IN", options);
-  var hl="";
   if ((hn != hl)  && (hn ==  "Sukra" || hn == "Budha" || hn == "Chandra" || hn == "Guru"))    {
     document.getElementById("hra").style.color = cgre;
     document.location.reload();
-    hl = hn; }
+    var hl = hn; }
   if ((hn != hl) && (hn == "Surya" || hn ==  "Sani" || hn ==  "Kuja"))    {
     document.getElementById("hra").style.color = cred; 
     document.location.reload();
-    hl = hn; }  });
+    var hl = hn; }  });
 //  if ((tm > hs.getTime() && tm < hf.getTime()) && (hn == "Surya" || hn ==  "Sani" || hn ==  "Kuja"))    {
 //    document.getElementById("hra").style.color = cred; }
 //  if ((tm > hs.getTime() && tm < hf.getTime()) && (hn ==  "Sukra" || hn == "Budha" || hn == "Chandra" || hn == "Guru"))    {
