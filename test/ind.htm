@@ -435,8 +435,14 @@ var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
   document.getElementById("hnm").innerHTML=hn;
   document.getElementById("hst").innerHTML=hs.toLocaleString("en-IN", options);
   document.getElementById("hft").innerHTML=hf.toLocaleString("en-IN", options);
-  if ((tm > hs.getTime() && tm < hf.getTime()) && (hn == "Surya" || hn ==  "Sani" || hn ==  "Kuja"))    {
-    document.getElementById("hra").style.color = cred; }
-  if ((tm > hs.getTime() && tm < hf.getTime()) && (hn ==  "Sukra" || hn == "Budha" || hn == "Chandra" || hn == "Guru"))    {
-    document.getElementById("hra").style.color = cgre; }  });
+  var hl = hf;
+    if (hs.getTime() == hl.getTime()    {
+    document.getElementById("hra").style.color = cgre;
+    document.location.reload(); }
+//  if ((tm > hs.getTime() && tm < hf.getTime()) && (hn ==  "Sukra" || hn == "Budha" || hn == "Chandra" || hn == "Guru"))    {
+//    document.getElementById("hra").style.color = cgre; }  });
+//  if ((tm > hs.getTime() && tm < hf.getTime()) && (hn == "Surya" || hn ==  "Sani" || hn ==  "Kuja"))    {
+//    document.getElementById("hra").style.color = cred; }
+//  if ((tm > hs.getTime() && tm < hf.getTime()) && (hn ==  "Sukra" || hn == "Budha" || hn == "Chandra" || hn == "Guru"))    {
+//    document.getElementById("hra").style.color = cgre; }  });
 </script></body></html>
