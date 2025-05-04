@@ -442,7 +442,12 @@ var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
     if (hn == "Surya" || hn ==  "Sani" || hn ==  "Kuja")    {
       document.getElementById("hra").style.color = cred; }  
     hl = hn;
-    console.log("hn "+hn+" hl "+hl); } });
+window.onload = function() {
+    if (!window.location.hash) {
+        window.location = window.location + '#loaded';
+        window.location.reload();
+    }
+}    console.log("hn "+hn+" hl "+hl); } });
 //    location.reload(); }  });
 //  if ((tm > hs.getTime() && tm < hf.getTime()) && (hn == "Surya" || hn ==  "Sani" || hn ==  "Kuja"))    {
 //    document.getElementById("hra").style.color = cred; }
