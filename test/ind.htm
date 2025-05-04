@@ -64,7 +64,7 @@
 <div class="trow">
 <div id = "vra" class="alignL" ></div><div id="day" class="alignC1"></div></div>
 <script>
-var options = {year:"2-digit", month:"2-digit", day:"2-digit", hour:"2-digit", hour12:false, minute:"2-digit", second:"2-digit"};
+const mutationObserver = new MutationObserver(callback);var options = {year:"2-digit", month:"2-digit", day:"2-digit", hour:"2-digit", hour12:false, minute:"2-digit", second:"2-digit"};
 var t= new Date();
 var tm=t.getTime();
 var wkday = t.getDay();
@@ -433,6 +433,11 @@ var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
   document.getElementById("bhft").innerHTML=bhf.toLocaleString("en-IN", options);
   document.getElementById("hra").innerHTML="Hora:";
   document.getElementById("hnm").innerHTML=hn;
+function callback(mutationsList, observer) {
+  console.log("Mutations:", mutationsList);
+  console.log("Observer:", observer);
+}
+mutationObserver.observe(document.getElementById("hra"), { attributes: true });       
   if ((tm > hs.getTime() && tm < hf.getTime()) && (hn == "Surya" || hn ==  "Sani" || hn ==  "Kuja"))    {
     document.getElementById("hra").style.color = cred; }
   if ((tm > hs.getTime() && tm < hf.getTime()) && (hn ==  "Sukra" || hn == "Budha" || hn == "Chandra" || hn == "Guru"))    {
