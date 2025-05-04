@@ -74,7 +74,7 @@ function showTime() {
 var dt= new Date();
 document.getElementById("pdt").innerHTML=dt.toLocaleString("en-IN", options); }
 showTime();
-var vra; var tit; var nkt; var yga; var krn; var vjy; var art; var hl;
+var vra; var tit; var nkt; var yga; var krn; var vjy; var art; 
 panchang.calculate(t, function() {
   document.getElementById("tit").innerHTML="Tithi:";
   var tit = document.getElementById("tithi").innerHTML=panchang.Tithi.name;
@@ -302,7 +302,7 @@ var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
   var daypart6 = new Date(Math.floor((daypart5.getTime() + daypart)));
   var daypart7 = new Date(Math.floor((daypart6.getTime() + daypart)));
   var daypart8 = new Date(Math.floor((daypart7.getTime() + daypart)));
-  var rks=0;  var rkf=0;  var ygs=0;  var ygf=0;  var gks=0;  var gkf=0;  var dms;  var dmf;  var dmb;  var dme;  var hn;  
+  var rks=0;  var rkf=0;  var ygs=0;  var ygf=0;  var gks=0;  var gkf=0;  var dms;  var dmf;  var dmb;  var dme;  var hn;  var hl;
   switch(wkday) {
   case 0:
     rks = daypart7; rkf = daypart8; ygs = daypart4; ygf = daypart5; gks = daypart6; gkf = daypart7;
@@ -435,11 +435,11 @@ var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
   document.getElementById("hnm").innerHTML=hn;
   document.getElementById("hst").innerHTML=hs.toLocaleString("en-IN", options);
   document.getElementById("hft").innerHTML=hf.toLocaleString("en-IN", options);
-  if ((hn != hl)  && (hn ==  "Sukra" || hn == "Budha" || hn == "Chandra" || hn == "Guru"))    {
+  if ((hn !== hl) && (hn ==  "Sukra" || hn == "Budha" || hn == "Chandra" || hn == "Guru"))    {
     document.getElementById("hra").style.color = cgre;
     document.location.reload();
     hl = hn; }
-  if ((hn != hl) && (hn == "Surya" || hn ==  "Sani" || hn ==  "Kuja"))    {
+  if ((hn !== hl) && (hn == "Surya" || hn ==  "Sani" || hn ==  "Kuja"))    {
     document.getElementById("hra").style.color = cred; 
     document.location.reload();
     hl = hn; }  });
