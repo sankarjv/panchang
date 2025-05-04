@@ -433,11 +433,13 @@ var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
   document.getElementById("bhft").innerHTML=bhf.toLocaleString("en-IN", options);
   document.getElementById("hra").innerHTML="Hora:";
   document.getElementById("hnm").innerHTML=hn;
-function callback(mutationsList, observer) {
-  console.log("Mutations:", mutationsList);
-  console.log("Observer:", observer);
-}
-mutationObserver.observe(document.getElementById("hra"), { attributes: true });       
+var mutationObserver = new MutationObserver(function(mutations) {
+  mutations.forEach(function(mutation) {
+    console.log(mutation);
+    console.log(mutation.oldValue);
+  });
+});
+mutationObserver.observe(document.getElementById('ygd'));
   if ((tm > hs.getTime() && tm < hf.getTime()) && (hn == "Surya" || hn ==  "Sani" || hn ==  "Kuja"))    {
     document.getElementById("hra").style.color = cred; }
   if ((tm > hs.getTime() && tm < hf.getTime()) && (hn ==  "Sukra" || hn == "Budha" || hn == "Chandra" || hn == "Guru"))    {
