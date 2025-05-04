@@ -71,9 +71,9 @@ var wkday = t.getDay();
 var cred="Red"; var cgre="Green"; var cblu="Blue";
 setInterval(showTime, 1000);
 function showTime() {
-document.getElementById("pdt").innerHTML=t.toLocaleString("en-IN", options); }
+var dt= new Date();
+document.getElementById("pdt").innerHTML=dt.toLocaleString("en-IN", options); }
 showTime();
-//var dt= new Date();
 var vra; var tit; var nkt; var yga; var krn; var vjy; var art;
 panchang.calculate(t, function() {
   document.getElementById("tit").innerHTML="Tithi:";
