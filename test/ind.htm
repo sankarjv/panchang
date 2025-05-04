@@ -75,9 +75,23 @@ var dt= new Date();
 document.getElementById("pdt").innerHTML=dt.toLocaleString("en-IN", options); }
 showTime();
 var vra; var tit; var nkt; var yga; var krn; var vjy; var art;
+var mutationObserver = new MutationObserver(function(mutations) {
+  mutations.forEach(function(mutation) {
+    console.log(mutation);
+    console.log(mutation.oldValue);
+  });
+});
 panchang.calculate(t, function() {
   document.getElementById("tit").innerHTML="Tithi:";
   var tit = document.getElementById("tithi").innerHTML=panchang.Tithi.name;
+mutationObserver.observe(document.getElementById('tithi'), {
+  attributes: true,
+  characterData: true,
+  childList: true,
+  subtree: true,
+  attributeOldValue: true,
+  characterDataOldValue: true
+});
   switch(tit) {
    case "S-Padyami":    document.getElementById("tit").style.color = cred;              break;
    case "S-Vidiya":    document.getElementById("tit").style.color = cgre;              break;
@@ -433,20 +447,6 @@ var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
   document.getElementById("bhft").innerHTML=bhf.toLocaleString("en-IN", options);
   document.getElementById("hra").innerHTML="Hora:";
   document.getElementById("hnm").innerHTML=hn;
-var mutationObserver = new MutationObserver(function(mutations) {
-  mutations.forEach(function(mutation) {
-    console.log(mutation);
-    console.log(mutation.oldValue);
-  });
-});
-mutationObserver.observe(document.getElementById('ygst'), {
-  attributes: true,
-  characterData: true,
-  childList: true,
-  subtree: true,
-  attributeOldValue: true,
-  characterDataOldValue: true
-});
   if ((tm > hs.getTime() && tm < hf.getTime()) && (hn == "Surya" || hn ==  "Sani" || hn ==  "Kuja"))    {
     document.getElementById("hra").style.color = cred; }
   if ((tm > hs.getTime() && tm < hf.getTime()) && (hn ==  "Sukra" || hn == "Budha" || hn == "Chandra" || hn == "Guru"))    {
