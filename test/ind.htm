@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=0.80">
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta name="keywords" content="Panchangam, Panchang, VidyaSankar, Jagarlapudi, Telugu, Hyderabad, Telangana, Andhra, India, Tithi, Vaara, Nakshatra, Yoga, Karana, RahuKaal, Gulika, YamaGand, DurMuhurt, Varjyam, Amruta, Hora, SunRise, SunSet, Day, Star">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <style>
 .block { overflow:hidden; }
 .trow {  display: table-row; }
@@ -73,6 +74,7 @@ var cred="Red"; var cgre="Green"; var cblu="Blue";
 //function showTime() {
 var dt= new Date(); 
 document.getElementById("pdt").innerHTML=dt.toLocaleString("en-IN", options); 
+$("pdt").load(location.href + " pdt");
 //showTime();
 var vra; var tit; var nkt; var yga; var krn; var vjy; var art; 
 panchang.calculate(t, function() {
