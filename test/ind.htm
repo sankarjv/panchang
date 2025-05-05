@@ -73,8 +73,20 @@ var cred="Red"; var cgre="Green"; var cblu="Blue";
 //setInterval(showTime, 1000);
 //function showTime() {
 var dt= new Date(); 
+var myElement = document.getElementById('pdt');
+if(window.addEventListener) {
+   // Normal browsers
+   myElement.addEventListener('DOMSubtreeModified', contentChanged, false);
+} else
+   if(window.attachEvent) {
+      // IE
+      myElement.attachEvent('DOMSubtreeModified', contentChanged);
+   }
+
+function contentChanged() {
+   // this function will run each time the content of the DIV changes
 document.getElementById("pdt").innerHTML=dt.toLocaleString("en-IN", options); 
-$("#pdt").load(location.href + " #pdt");
+}
 //showTime();
 var vra; var tit; var nkt; var yga; var krn; var vjy; var art; 
 panchang.calculate(t, function() {
