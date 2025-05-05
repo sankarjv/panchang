@@ -73,7 +73,8 @@ var cred="Red"; var cgre="Green"; var cblu="Blue";
 //setInterval(showTime, 1000);
 //function showTime() {
 var dt= new Date(); 
-document.getElementById("pdt").innerHTML=dt.toLocaleString("en-IN", options); 
+//document.getElementById("pdt").innerHTML=dt.toLocaleString("en-IN", options); 
+$("#pdt").load("window.location.href #pdt");
 //showTime();
 var vra; var tit; var nkt; var yga; var krn; var vjy; var art; 
 panchang.calculate(t, function() {
