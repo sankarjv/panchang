@@ -6,8 +6,8 @@
 <meta name="description" content="VidyaSankar Panchangam">
 <meta name="viewport" content="width=device-width, initial-scale=0.80">
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="refresh" content="60">
 <meta name="keywords" content="Panchangam, Panchang, VidyaSankar, Jagarlapudi, Telugu, Hyderabad, Telangana, Andhra, India, Tithi, Vaara, Nakshatra, Yoga, Karana, RahuKaal, Gulika, YamaGand, DurMuhurt, Varjyam, Amruta, Hora, SunRise, SunSet, Day, Star">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <style>
 .block { overflow:hidden; }
 .trow {  display: table-row; }
@@ -70,12 +70,8 @@ var t= new Date();
 var tm=t.getTime();
 var wkday = t.getDay();
 var cred="Red"; var cgre="Green"; var cblu="Blue";
-//setInterval(showTime, 1000);
-//function showTime() {
 var dt= new Date(); 
-//document.getElementById("pdt").innerHTML=dt.toLocaleString("en-IN", options); 
-$("#pdt").load("https://panchang.am.in/test/ind.htm #pdt");
-//showTime();
+document.getElementById("pdt").innerHTML=dt.toLocaleString("en-IN", options); 
 var vra; var tit; var nkt; var yga; var krn; var vjy; var art; 
 panchang.calculate(t, function() {
   document.getElementById("tit").innerHTML="Tithi:";
@@ -435,26 +431,10 @@ var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
   document.getElementById("bhft").innerHTML=bhf.toLocaleString("en-IN", options);
   document.getElementById("hra").innerHTML="Hora:";
   document.getElementById("hnm").innerHTML=hn;
+  if ((tm > hs.getTime() && tm < hf.getTime()) && (hn == "Surya" || hn ==  "Sani" || hn ==  "Kuja"))    {
+    document.getElementById("hra").style.color = cred; }
+  if ((tm > hs.getTime() && tm < hf.getTime()) && (hn ==  "Sukra" || hn == "Budha" || hn == "Chandra" || hn == "Guru"))    {
+    document.getElementById("hra").style.color = cgre; }
   document.getElementById("hst").innerHTML=hs.toLocaleString("en-IN", options);
-  document.getElementById("hft").innerHTML=hf.toLocaleString("en-IN", options);
-  console.log("hno "+hn+" hl "+hl);
-  if (hn !== hl)  {
-    if (hn ==  "Sukra" || hn == "Budha" || hn == "Chandra" || hn == "Guru")    {
-      document.getElementById("hra").style.color = cgre; }
-    if (hn == "Surya" || hn ==  "Sani" || hn ==  "Kuja")    {
-      document.getElementById("hra").style.color = cred; }  
-    hl = hn;
-             console.log("hni "+hn+" hl "+hl);
-//             location.refresh(true);
-//window.onload = function() {
-//    if (!window.location.hash) {
-//        window.location = window.location + '#';
-//        window.location.reload(); } 
-//           else { location.replace(location.href); } }    
-//            } });
-     }  });
-//  if ((tm > hs.getTime() && tm < hf.getTime()) && (hn == "Surya" || hn ==  "Sani" || hn ==  "Kuja"))    {
-//    document.getElementById("hra").style.color = cred; }
-//  if ((tm > hs.getTime() && tm < hf.getTime()) && (hn ==  "Sukra" || hn == "Budha" || hn == "Chandra" || hn == "Guru"))    {
-//    document.getElementById("hra").style.color = cgre; }  });
+  document.getElementById("hft").innerHTML=hf.toLocaleString("en-IN", options);  });
 </script></body></html>
