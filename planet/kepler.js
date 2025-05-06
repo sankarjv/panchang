@@ -139,3 +139,34 @@ function SolveKepler(M,e,E){
     return dE;
 
 }
+//Greg Miller (gmiller@gregmiller.net) 2022
+//Released as public domain
+        
+//Angles must be in radians
+//Polar cooridnates:
+//Theta is vertical pi/2 to -pi/2 (usually lattitude or declination)
+//Phi is horizontal 0 to 2pi, or -pi to pi (usually longitude or Right Ascension)
+//R is the radius in any units
+//
+//Rectangular:
+//x is left/right, y is forward/backward, z is up/down
+function polarToRect(theta,phi,r){
+    theta=Math.PI/2-theta; //Convert range to 0deg to 180deg
+    x=r*Math.sin(theta)*Math.cos(phi);
+    y=r*Math.sin(theta)*Math.sin(phi);
+    z=r*Math.cos(theta);
+
+    return [x,y,z];
+}
+
+//Angles returned in radians
+function rectToPolar(x,y,z){
+    const r = Math.sqrt(x * x + y * y + z * z);
+    let lon = Math.atan2(y, x);
+    let lat = Math.acos(z / r);
+
+    //Make sure lon is positive, and lat is in range +/-90deg
+    if (lon < 0) { lon += 2 * Math.PI; }
+    lat = .5 * Math.PI - lat;
+    return [lat, lon, r];
+}
