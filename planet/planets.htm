@@ -1,0 +1,1234 @@
+<html>
+<head>
+<title>Planet orbits</title>
+<link rel="stylesheet" type="text/css" href="http://abecedarical.com/standard.css" >
+<SCRIPT language=JavaScript SRC="http://abecedarical.com/feedback.js" ></SCRIPT>
+
+<script language=JavaScript>
+<!-- hide
+// test
+function test()
+{
+    // Boston, MA US  42°21' N, 71°04' W
+
+    // Latitude        
+    calc.lat_degrees.value = "42";
+    calc.lat_minutes.value = "21";
+
+    // Longitude       
+    calc.lon_degrees.value = "71";
+    calc.lon_minutes.value = "04";
+}
+
+var CName = "planetorbits";
+
+var DEGS = 180/Math.PI;                  // convert radians to degrees
+var RADS = Math.PI/180;                  // convert degrees to radians
+var EPS  = 1.0e-12;                      // machine error constant
+
+// right ascension, declination coordinate structure
+function coord()
+{
+    ra   = parseFloat("0");              // right ascension [deg]
+    dec  = parseFloat("0");              // declination [deg]
+    rvec = parseFloat("0");              // distance [AU]
+}
+
+// altitude, azimuth coordinate structure
+function horizon()
+{
+    alt = parseFloat("0");               // altitude [deg]
+    az  = parseFloat("0");               // azimuth [deg]
+}
+
+// orbital element structure
+function elem()
+{
+    a = parseFloat("0");                 // semi-major axis [AU]
+    e = parseFloat("0");                 // eccentricity of orbit
+    i = parseFloat("0");                 // inclination of orbit [deg]
+    O = parseFloat("0");                 // longitude of the ascending node [deg]
+    w = parseFloat("0");                 // longitude of perihelion [deg]
+    L = parseFloat("0");                 // mean longitude [deg]
+}
+
+var pname = new Array("Mercury", "Venus  ", "Sun    ", 
+                      "Mars   ", "Jupiter", "Saturn ", 
+                      "Uranus ", "Neptune", "Pluto  ");
+
+// compute ...
+function compute()
+{
+    var lat_degrees = parseInt(calc.lat_degrees.value, 10);
+    var lat_minutes = parseInt(calc.lat_minutes.value, 10);
+    var lon_degrees = parseInt(calc.lon_degrees.value, 10);
+    var lon_minutes = parseInt(calc.lon_minutes.value, 10);
+
+    var year  = parseInt(calc.year.value, 10);
+    var month = parseInt(calc.month.value, 10) - 1;
+    var day   = parseInt(calc.day.value, 10);
+    var hour  = parseInt(calc.hour.value, 10);
+    var mins  = parseInt(calc.minute.value, 10);
+    var secs  = parseInt(calc.second.value, 10);
+
+    if (isNaN(lat_degrees)||(lat_degrees < 0)||(lat_degrees >=  90)||
+        isNaN(lat_minutes)||(lat_minutes < 0)||(lat_minutes >=  60)||
+        isNaN(lon_degrees)||(lon_degrees < 0)||(lon_degrees >= 180)||
+        isNaN(lon_minutes)||(lon_minutes < 0)||(lon_minutes >=  60))
+    {
+        window.alert("Invalid input!");
+        return;
+    }
+
+    save_latlon();
+    var lat = dms2real(lat_degrees, lat_minutes, 0);
+    var lon = dms2real(lon_degrees, lon_minutes, 0);
+    if (calc.south.checked == true) lat = -lat;
+    if (calc.west.checked  == true) lon = -lon;  
+
+    var now   = new Date(year, month, day, hour, mins, secs);
+    year  = now.getUTCFullYear();
+    month = now.getUTCMonth() + 1;
+    day   = now.getUTCDate();
+    hour  = now.getUTCHours();
+    mins  = now.getUTCMinutes();
+    secs  = now.getUTCSeconds();
+
+    // compute day number for date/time
+    var dn = day_number( year, month, day, hour, mins );
+
+    open_window("planets");
+   
+    msgWindow.document.writeln("UTC: " + month + "/" + day + "/" + year + "  " + d2(hour) + ":" + d2(mins) + ":" + d2(secs));
+    msgWindow.document.writeln("  days since J2000: " + frealstr(dn, 12, 6));
+    msgWindow.document.writeln("Obs: " + lat2str(lat) + "  " + lon2str(lon));
+    msgWindow.document.writeln("");
+    msgWindow.document.writeln("Object    RA         DEC         ALT         AZ          Distance ");
+    msgWindow.document.writeln("------------------------------------------------------------------");
+
+    var p;
+    var obj = new coord();
+    var h = new horizon();
+
+    // compute location of objects
+    for (p = 0; p < 9; p++)  
+    {
+        get_coord(obj, p, dn);   
+        coord_to_horizon(now, obj.ra, obj.dec, lat, lon, h);
+
+        msgWindow.document.write(pname[p] + "  ");
+        msgWindow.document.write(ha2str(obj.ra) + "  ");
+        msgWindow.document.write(dec2str(obj.dec) + "  ");
+        msgWindow.document.write(dec2str(h.alt) + "  ");
+        msgWindow.document.write(degr2str(h.az) + "  ");
+        msgWindow.document.write(frealstr(obj.rvec, 9, 6));
+        msgWindow.document.writeln("");
+    }
+
+    close_window();
+}
+
+// day number to/from J2000 (Jan 1.5, 2000)
+function day_number( y, m, d, hour, mins )
+{
+    var h = hour + mins/60;
+    var rv = 367*y 
+           - Math.floor(7*(y + Math.floor((m + 9)/12))/4) 
+           + Math.floor(275*m/9) + d - 730531.5 + h/24;
+    return rv;
+}
+
+// compute RA, DEC, and distance of planet-p for day number-d
+// result returned in structure obj in degrees and astronomical units
+function get_coord( obj, p, d )
+{
+    var planet = new elem();
+    mean_elements(planet, p, d);
+    var ap = planet.a;
+    var ep = planet.e;
+    var ip = planet.i;
+    var op = planet.O;
+    var pp = planet.w;
+    var lp = planet.L;
+
+    var earth = new elem();
+    mean_elements(earth, 2, d);
+    var ae = earth.a;
+    var ee = earth.e;
+    var ie = earth.i;
+    var oe = earth.O;
+    var pe = earth.w;
+    var le = earth.L; 
+    
+    // position of Earth in its orbit
+    var me = mod2pi(le - pe);
+    var ve = true_anomaly(me, ee);
+    var re = ae*(1 - ee*ee)/(1 + ee*Math.cos(ve));
+    
+    // heliocentric rectangular coordinates of Earth
+    var xe = re*Math.cos(ve + pe);
+    var ye = re*Math.sin(ve + pe);
+    var ze = 0.0;
+    
+    // position of planet in its orbit
+    var mp = mod2pi(lp - pp);
+    var vp = true_anomaly(mp, planet.e);
+    var rp = ap*(1 - ep*ep)/(1 + ep*Math.cos(vp));
+    
+    // heliocentric rectangular coordinates of planet
+    var xh = rp*(Math.cos(op)*Math.cos(vp + pp - op) - Math.sin(op)*Math.sin(vp + pp - op)*Math.cos(ip));
+    var yh = rp*(Math.sin(op)*Math.cos(vp + pp - op) + Math.cos(op)*Math.sin(vp + pp - op)*Math.cos(ip));
+    var zh = rp*(Math.sin(vp + pp - op)*Math.sin(ip));
+
+    if (p == 2)                          // earth --> compute sun
+    {
+        xh = 0;
+        yh = 0;
+        zh = 0;
+    }
+    
+    // convert to geocentric rectangular coordinates
+    var xg = xh - xe;
+    var yg = yh - ye;
+    var zg = zh - ze;
+    
+    // rotate around x axis from ecliptic to equatorial coords
+    var ecl = 23.439281*RADS;            //value for J2000.0 frame
+    var xeq = xg;
+    var yeq = yg*Math.cos(ecl) - zg*Math.sin(ecl);
+    var zeq = yg*Math.sin(ecl) + zg*Math.cos(ecl);
+    
+    // find the RA and DEC from the rectangular equatorial coords
+    obj.ra   = mod2pi(Math.atan2(yeq, xeq))*DEGS; 
+    obj.dec  = Math.atan(zeq/Math.sqrt(xeq*xeq + yeq*yeq))*DEGS;
+    obj.rvec = Math.sqrt(xeq*xeq + yeq*yeq + zeq*zeq);
+}
+
+// Compute the elements of the orbit for planet-i at day number-d
+// result is returned in structure p
+function mean_elements( p, i, d )
+{
+    var cy = d/36525;                    // centuries since J2000
+
+    switch (i)
+    {
+    case 0: // Mercury
+        p.a = 0.38709893 + 0.00000066*cy;
+        p.e = 0.20563069 + 0.00002527*cy;
+        p.i = ( 7.00487  -  23.51*cy/3600)*RADS;
+        p.O = (48.33167  - 446.30*cy/3600)*RADS;
+        p.w = (77.45645  + 573.57*cy/3600)*RADS;
+        p.L = mod2pi((252.25084 + 538101628.29*cy/3600)*RADS);
+        break;
+    case 1: // Venus
+        p.a = 0.72333199 + 0.00000092*cy;
+        p.e = 0.00677323 - 0.00004938*cy;
+        p.i = (  3.39471 -   2.86*cy/3600)*RADS;
+        p.O = ( 76.68069 - 996.89*cy/3600)*RADS;
+        p.w = (131.53298 - 108.80*cy/3600)*RADS;
+        p.L = mod2pi((181.97973 + 210664136.06*cy/3600)*RADS);
+        break;
+    case 2: // Earth/Sun
+        p.a = 1.00000011 - 0.00000005*cy;
+        p.e = 0.01671022 - 0.00003804*cy;
+        p.i = (  0.00005 -    46.94*cy/3600)*RADS;
+        p.O = (-11.26064 - 18228.25*cy/3600)*RADS;
+        p.w = (102.94719 +  1198.28*cy/3600)*RADS;
+        p.L = mod2pi((100.46435 + 129597740.63*cy/3600)*RADS);
+        break;
+    case 3: // Mars
+        p.a = 1.52366231 - 0.00007221*cy;
+        p.e = 0.09341233 + 0.00011902*cy;
+        p.i = (  1.85061 -   25.47*cy/3600)*RADS;
+        p.O = ( 49.57854 - 1020.19*cy/3600)*RADS;
+        p.w = (336.04084 + 1560.78*cy/3600)*RADS;
+        p.L = mod2pi((355.45332 + 68905103.78*cy/3600)*RADS);
+        break;
+    case 4: // Jupiter
+        p.a = 5.20336301 + 0.00060737*cy;
+        p.e = 0.04839266 - 0.00012880*cy;
+        p.i = (  1.30530 -    4.15*cy/3600)*RADS;
+        p.O = (100.55615 + 1217.17*cy/3600)*RADS;
+        p.w = ( 14.75385 +  839.93*cy/3600)*RADS;
+        p.L = mod2pi((34.40438 + 10925078.35*cy/3600)*RADS);
+        break;
+    case 5: // Saturn
+        p.a = 9.53707032 - 0.00301530*cy;
+        p.e = 0.05415060 - 0.00036762*cy;
+        p.i = (  2.48446 +    6.11*cy/3600)*RADS;
+        p.O = (113.71504 - 1591.05*cy/3600)*RADS;
+        p.w = ( 92.43194 - 1948.89*cy/3600)*RADS;
+        p.L = mod2pi((49.94432 + 4401052.95*cy/3600)*RADS);
+        break;
+    case 6: // Uranus
+        p.a = 19.19126393 + 0.00152025*cy;
+        p.e =  0.04716771 - 0.00019150*cy;
+        p.i = (  0.76986  -    2.09*cy/3600)*RADS;
+        p.O = ( 74.22988  - 1681.40*cy/3600)*RADS;
+        p.w = (170.96424  + 1312.56*cy/3600)*RADS;
+        p.L = mod2pi((313.23218 + 1542547.79*cy/3600)*RADS);
+        break;
+    case 7: // Neptune
+        p.a = 30.06896348 - 0.00125196*cy;
+        p.e =  0.00858587 + 0.00002510*cy;
+        p.i = (  1.76917  -   3.64*cy/3600)*RADS;
+        p.O = (131.72169  - 151.25*cy/3600)*RADS;
+        p.w = ( 44.97135  - 844.43*cy/3600)*RADS;
+        p.L = mod2pi((304.88003 + 786449.21*cy/3600)*RADS);
+        break;
+    case 8: // Pluto
+        p.a = 39.48168677 - 0.00076912*cy;
+        p.e =  0.24880766 + 0.00006465*cy;
+        p.i = ( 17.14175  +  11.07*cy/3600)*RADS;
+        p.O = (110.30347  -  37.33*cy/3600)*RADS;
+        p.w = (224.06676  - 132.25*cy/3600)*RADS;
+        p.L = mod2pi((238.92881 + 522747.90*cy/3600)*RADS);
+        break;
+    default:
+        window.alert("function mean_elements() failed!");
+    }
+}
+
+// compute the true anomaly from mean anomaly using iteration
+//  M - mean anomaly in radians
+//  e - orbit eccentricity
+function true_anomaly( M, e )
+{
+    var V, E1;
+
+    // initial approximation of eccentric anomaly
+    var E = M + e*Math.sin(M)*(1.0 + e*Math.cos(M));
+
+    do                                   // iterate to improve accuracy
+    {
+        E1 = E;
+        E = E1 - (E1 - e*Math.sin(E1) - M)/(1 - e*Math.cos(E1));
+    }
+    while (Math.abs( E - E1 ) > EPS);
+
+    // convert eccentric anomaly to true anomaly
+    V = 2*Math.atan(Math.sqrt((1 + e)/(1 - e))*Math.tan(0.5*E));
+
+    if (V < 0) V = V + (2*Math.PI);      // modulo 2pi
+    
+    return V;
+}
+
+// converts hour angle in degrees into hour angle string
+function ha2str( x )
+{
+    if ((x < 0)||(360 < x)) window.alert("function ha2str() range error!");
+    
+    var ra = x/15;                       // degrees to hours
+    var h = Math.floor(ra);
+    var m = 60*(ra - h);
+    return cintstr(h, 3) + "h " + frealstr( m, 4, 1 ) + "m";
+}
+
+// converts declination angle in degrees into string
+function dec2str( x )
+{
+    if ((x < -90)||(+90 < x)) window.alert("function dec2str() range error!");
+    
+    var dec = Math.abs(x);
+    var sgn = (x < 0) ? "-" : " ";
+    var d = Math.floor(dec);
+    var m = 60*(dec - d);
+    return sgn + cintstr(d, 2) + "° " + frealstr(m, 4, 1) + "'";
+}
+
+// return the integer part of a number
+function abs_floor( x )
+{
+    var r;
+    if (x >= 0.0) r = Math.floor(x);
+    else          r = Math.ceil(x);
+    return r;
+}
+
+// return an angle in the range 0 to 2pi radians
+function mod2pi( x )
+{
+    var b = x/(2*Math.PI);
+    var a = (2*Math.PI)*(b - abs_floor(b));  
+    if (a < 0) a = (2*Math.PI) + a;
+    return a;
+}
+
+//
+// compute horizon coordinates from ra, dec, lat, lon, and utc
+// ra, dec, lat, lon in  degrees
+// utc is a time number in seconds
+//
+// results returned in h : horizon record structure
+//
+function coord_to_horizon( utc, ra, dec, lat, lon, h )
+{
+    var lmst, ha, sin_alt, cos_az, alt, az;
+
+    // compute hour angle in degrees
+    ha = mean_sidereal_time(utc, lon) - ra;
+    if (ha < 0) ha = ha + 360;
+
+    // convert degrees to radians
+    ha  = ha*RADS;
+    dec = dec*RADS;
+    lat = lat*RADS;
+
+    // compute altitude in radians
+    sin_alt = Math.sin(dec)*Math.sin(lat) + Math.cos(dec)*Math.cos(lat)*Math.cos(ha);
+    alt     = Math.asin(sin_alt);
+    
+    // compute azimuth in radians
+    // divide by zero error at poles or if alt = 90 deg
+    cos_az = (Math.sin(dec) - Math.sin(alt)*Math.sin(lat))/(Math.cos(alt)*Math.cos(lat));
+    az     = Math.acos(cos_az);
+
+    // convert radians to degrees
+    h.alt = alt*DEGS;
+    h.az  = az*DEGS;
+
+    // choose hemisphere
+    if (Math.sin(ha) > 0) h.az  = 360 - h.az;
+}
+
+//
+// "mean_sidereal_time" returns the Mean Sidereal Time in units of degrees. 
+// Use lon = 0 to get the Greenwich MST. 
+// East longitudes are positive; West longitudes are negative
+//
+// returns: time in degrees
+//
+function mean_sidereal_time( d, lon )
+{
+    var year   = d.getUTCFullYear();
+    var month  = d.getUTCMonth() + 1;
+    var day    = d.getUTCDate(); 
+    var hour   = d.getUTCHours(); 
+    var minute = d.getUTCMinutes();
+    var second = d.getUTCSeconds();    
+
+    if ((month == 1)||(month == 2))
+    {
+        year  = year - 1;
+        month = month + 12;
+    }
+
+    var a = Math.floor(year/100);
+    var b = 2 - a + Math.floor(a/4);
+    var c = Math.floor(365.25*year);
+    var d = Math.floor(30.6001*(month + 1));
+
+    // days since J2000.0   
+    var jd = b + c + d - 730550.5 + day 
+           + (hour + minute/60.0 + second/3600.0)/24.0;
+    
+    // julian centuries since J2000.0
+    var jt = jd/36525.0;
+
+    // mean sidereal time
+    var mst = 280.46061837 + 360.98564736629*jd 
+            + 0.000387933*jt*jt - jt*jt*jt/38710000 + lon;
+
+    if (mst > 0.0)
+    {
+        while (mst > 360.0)
+            mst = mst - 360.0;
+    }
+    else
+    {
+        while (mst < 0.0)
+            mst = mst + 360.0;
+    }
+        
+    return mst;
+}
+
+// convert angle (deg, min, sec) to degrees as real
+function dms2real( deg, min, sec )
+{
+    var rv;
+    if (deg < 0) rv = deg - min/60 - sec/3600;
+    else         rv = deg + min/60 + sec/3600;
+    return rv;
+}
+
+// converts angle in degrees into string
+function degr2str( x )
+{   
+    var dec = Math.abs(x);
+    var sgn = (x < 0) ? "-" : " ";
+    var d = Math.floor(dec);
+    var m = 60*(dec - d);
+    return sgn + cintstr(d, 3) + "° " + frealstr(m, 4, 1) + "'";
+}
+
+// converts latitude in signed degrees into string
+function lat2str( x )
+{   
+    var dec = Math.abs(x);
+    var sgn = (x < 0) ? " S" : " N";
+    var d = Math.floor(dec);
+    var m = 60*(dec - d);
+    return cintstr(d, 3) + "° " + frealstr(m, 4, 1) + "'" + sgn;
+}
+
+// converts longitude in signed degrees into string
+function lon2str( x )
+{   
+    var dec = Math.abs(x);
+    var sgn = (x < 0) ? " W" : " E";
+    var d = Math.floor(dec);
+    var m = 60*(dec - d);
+    return cintstr(d, 3) + "° " + frealstr(m, 4, 1) + "'" + sgn;
+}
+
+// format two digits with leading zero if needed
+function d2( n )
+{
+    if ((n < 0)||(99 < n)) return "xx";
+    return (n < 10) ? ("0" + n) : n;
+}
+
+// UTILITY FUNCTIONS
+
+// initialize date
+function initdate()
+{
+    Now = new Date();
+    showdate(Now);
+    initdatetimegroup(Now);
+    load_latlon();
+}
+
+// display the date 
+function showdate(d)
+{
+    var winter = new Date(2001, 11, 30); // for northern hemisphere
+    var summer = new Date(2001,  5, 30);
+
+    var summer_tz = summer.getTimezoneOffset();
+    var winter_tz = winter.getTimezoneOffset();
+
+    var local_dst = (summer_tz == winter_tz) ? false : true;
+
+    if (summer_tz > winter_tz)           // in southern hemisphere
+    {
+        var tz = summer_tz;              // swap
+        summer_tz = winter_tz;
+        winter_tz = tz;
+    }
+
+    var thisday = (d.getMonth() + 1) + "/";
+    thisday    += d.getDate() + "/";
+    thisday    += d.getFullYear();
+
+    if ((local_dst == true)&&(summer_tz == d.getTimezoneOffset()))
+        thisday += " [DST]";
+
+    calc.thisday.value = thisday;
+}
+
+// initialize date, time on form
+function initdatetimegroup(d)
+{
+    calc.month.value  = d2(d.getMonth() + 1);
+    calc.day.value    = d2(d.getDate());
+    calc.year.value   = d.getFullYear();
+
+    calc.hour.value   = d2(d.getHours());
+    calc.minute.value = d2(d.getMinutes());
+    calc.second.value = d2(d.getSeconds());
+}
+
+// change N/S flags
+function north_lat()
+{
+    if (calc.south.checked == true) 
+        calc.south.checked = false;
+}
+
+// change N/S flags
+function south_lat()
+{
+    if (calc.north.checked == true) 
+        calc.north.checked = false;
+}
+
+// change E/W flags
+function east_lon()
+{
+    if (calc.west.checked == true) 
+        calc.west.checked = false;
+}
+
+// change E/W flags
+function west_lon()
+{
+    if (calc.east.checked == true) 
+        calc.east.checked = false;
+}
+
+// save to cookie after checking for valid data
+function save_latlon()
+{
+    var lat_deg = parseInt(calc.lat_degrees.value);
+    var lat_min = parseInt(calc.lat_minutes.value);
+    var lon_deg = parseInt(calc.lon_degrees.value);
+    var lon_min = parseInt(calc.lon_minutes.value);
+
+    if (isNaN(lat_deg)||(lat_deg < 0)||(lat_deg >=  90)||
+        isNaN(lat_min)||(lat_min < 0)||(lat_min >=  60)||
+        isNaN(lon_deg)||(lon_deg < 0)||(lon_deg >= 180)||
+        isNaN(lon_min)||(lon_min < 0)||(lon_min >=  60))
+    {
+        return;
+    }
+
+    if (calc.south.checked == true) lat_deg = -lat_deg;
+    if (calc.west.checked  == true) lon_deg = -lon_deg;  
+    var latlon = cintstr(lat_deg, 8) + cintstr(lat_min, 8) 
+               + cintstr(lon_deg, 8) + cintstr(lon_min, 8);
+
+    setCookie(CName, latlon, 365);
+}
+
+function load_latlon()
+{
+    var latlon = getCookie(CName);
+
+    if (!latlon) return;                 // no cookie
+       
+    s = latlon.substr( 0, 8);
+    lat_deg = parseInt(s);
+
+    s = latlon.substr( 8, 8);
+    lat_min = parseInt(s);
+
+    s = latlon.substr(16, 8);
+    lon_deg = parseInt(s);
+
+    s = latlon.substr(24, 8);
+    lon_min = parseInt(s);
+
+    if (lat_deg < 0)                     // south
+    {
+        calc.south.checked = true;
+        calc.north.checked = false;
+        lat_deg = -lat_deg;
+    }
+    else
+    {
+        calc.south.checked = false;
+        calc.north.checked = true;
+    }
+ 
+    if (lon_deg < 0)                     // west
+    {
+        calc.west.checked = true;
+        calc.east.checked = false;
+        lon_deg = -lon_deg;
+    }
+    else
+    {
+        calc.west.checked = false;
+        calc.east.checked = true;
+    }
+ 
+    calc.lat_degrees.value = lat_deg;
+    calc.lat_minutes.value = lat_min;
+    calc.lon_degrees.value = lon_deg;
+    calc.lon_minutes.value = lon_min;
+}
+
+// format an integer
+function cintstr( num, width )
+{
+    var str = num.toString(10);
+    var len = str.length;
+    var intgr = "";
+    var i;
+
+    for (i = 0; i < width - len; i++)    // append leading spaces
+        intgr += ' ';
+
+    for (i = 0; i < len; i++)            // append digits
+        intgr += str.charAt(i);
+
+    return intgr;
+}
+
+function frealstr( num, width, fract )
+{
+    var str = num.toFixed(fract);
+    var len = str.length;
+    var real = "";
+    var i;
+
+    for (i = 0; i < width - len; i++)    // append leading spaces
+        real += ' ';
+
+    for (i = 0; i < len; i++)            // append digits
+        real += str.charAt(i);
+
+    return real;
+}
+
+// opens a separate browser window
+function open_window( name )
+{
+    msgWindow = window.open("","msgWindow","toolbar=no,status=no,menubar=yes,scrollbars=yes,width=550,height=400,resizable=yes");
+    msgWindow.document.open();
+    msgWindow.document.writeln("<html><head><title>" + name + "</title></head>");
+    msgWindow.document.writeln("<body>");
+    msgWindow.document.writeln("<pre>");
+}
+
+// closes a separate browser window
+function close_window()
+{
+    msgWindow.document.writeln("<p>");
+    msgWindow.document.writeln("All done!");
+    msgWindow.document.writeln("</pre>");
+
+//--><!--/LiveInternet-->
+<!--/noindex--></center></body></html>");
+    msgWindow.document.close();
+}
+
+function getCookie( cname )
+{
+    if (document.cookie.length > 0) 
+    { 
+        begin = document.cookie.indexOf(cname+"="); 
+        if (begin != -1)
+        { 
+            begin += cname.length + 1; 
+            end = document.cookie.indexOf(";", begin);
+            if (end == -1) end = document.cookie.length;
+            return unescape(document.cookie.substring(begin, end)); 
+        } 
+    }
+    return null; 
+}
+
+function setCookie( cname, value, days ) 
+{
+    var d = new Date();
+    d.setTime(d.getTime() + (days*24*3600*1000));
+
+    document.cookie = cname 
+                    + "=" + escape(value) 
+                    + ((days == null) ? "" : "; expires=" + d.toGMTString());
+}
+
+function delCookie( cname ) 
+{
+    if (getCookie(cname)) 
+    {
+        document.cookie = cname + "=" + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+    }
+}
+
+// unhide -->
+</script>
+</head>
+<body onLoad="initdate();">
+
+<!--[TOP]-->
+<center>
+<!-- google -->
+<script type="text/javascript"><!--
+google_ad_client = "pub-8195248024094868";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+//--></script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js" >
+</script>
+<!-- google -->
+</center>
+<!--[END]-->
+
+<hr>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- abecedarical.com_728_90 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-3632733797738400"
+     data-ad-slot="9283370188"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script><div class="addthis_toolbox addthis_default_style">
+<a href="https://www.addthis.com/bookmark.php?v=250&username=xa-4c2dcb235d3d5f6f" class="addthis_button_compact" rel="nofollow">Share</a>
+|<a href="http://abecedarical.com/index.html" > home </a>
+|<a href="http://abecedarical.com/javascript/scriptindex.html" > contents </a>
+|<a href="#top" onClick=feedback()> send comment </a>
+|<a href="#top" onClick=send_to()> send link </a>
+|<a href="#top" onClick=bookmark()> add bookmark </a>|
+</div>
+<script type="text/javascript" src="https://s7.addthis.com/js/250/addthis_widget.js#username=xa-4c2dcb235d3d5f6f" ></script>
+<hr>
+
+<h2>Planet position calculation using mean orbital elements</h2><center><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- abecedarical.com_336_280 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:336px;height:280px"
+     data-ad-client="ca-pub-3632733797738400"
+     data-ad-slot="4853170588"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></center>
+
+<h4><I>by Stephen R. Schmitt</I></h4>
+
+<center>
+<form name=calc>
+<table border=1 cellspacing=0 bordercolor=darkblue frame=border rules=rows>
+<caption>Enter your location:</caption>
+<tr><td>latitude
+ <td><INPUT size=10 maxLength=20 name=lat_degrees>
+ <td align=left><b>&deg; </b></td>
+ <td><INPUT size=10 maxLength=20 name=lat_minutes>
+ <td align=left><b>' </b></td>
+ <td><input type="radio" name ="north" onClick="north_lat();" checked>North
+ <td><input type="radio" name ="south" onClick="south_lat();">South
+<tr><td>longitude
+ <td><INPUT size=10 maxLength=20 name=lon_degrees>
+ <td align=left><b>&deg; </b></td>
+ <td><INPUT size=10 maxLength=20 name=lon_minutes>
+ <td align=left><b>' </b></td>
+ <td><input type="radio" name ="east" onClick="east_lon();">East
+ <td><input type="radio" name ="west" onClick="west_lon();" checked>West
+</table>
+<p>
+<b>today:</b> <INPUT size=20 maxLength=20 name=thisday>
+<p>
+<table border=1 cellspacing=0 bordercolor=darkblue frame=border rules=rows>
+<caption>Enter the date and time:<br> <tt>mm/dd/yyyy hr:min:sec</tt></caption>
+<tr><td><INPUT size=2 maxLength=10 name=month><td><b> / </b></td>
+ <td><INPUT size=2 maxLength=10 name=day><td><b> / </b></td>
+ <td><INPUT size=5 maxLength=10 name=year><td><b>&nbsp;&nbsp;&nbsp;&nbsp;</b></td>
+ <td><INPUT size=2 maxLength=10 name=hour><td><b> : </b></td>
+ <td><INPUT size=2 maxLength=10 name=minute><td><b> : </b></td>
+ <td><INPUT size=2 maxLength=10 name=second>
+</table>
+</form>
+<p><INPUT onclick=compute(); type=button STYLE="font-family:Courier" value="Compute">
+<!-- <p><INPUT onclick=test(); type=button STYLE="font-family:Courier" value=" Test "> -->
+</center>
+
+<hr>
+
+<h3><A name=contents>Contents</A></h3>
+<ol>
+<li><A href="#about">About</A>
+<li><A href="#the source code">The source code</A>
+<li><A href="#discussion">Discussion</A>
+</ol>
+
+<hr>
+
+<h4>1. <A name=about>About</A></h4>
+
+<p>This Java Script calculator computes the right ascension and declination of the sun and the planets. It transforms these coordinates into the horizon coordinates of altitude and azimuth at your location. To operate the calculator, enter the latitude and longitude of the observing site and the local date and time. The program assumes that your computer's time and zone is set correctly. Press the <B>Compute</B> button to obtain the solution. On invalid entries, a popup window will display an error message. 
+
+<p>Return to <A href="#contents">Contents</A> 
+
+<hr>
+
+<h4>2. <A name="the source code">The source code</A></h4>
+
+<p>The Java Script source code for this program can be viewed by using the <b>View|Source</b> command of your web browser. 
+
+<p>You may use or modify this source code in any way you find useful, provided that you agree that the author has no warranty, obligations or liability. You must determine the suitability of this source code for your use. 
+
+<p>Return to <A href="#contents">Contents</A> 
+
+<hr>
+
+<h4>3. <A name=discussion>Discussion</A></h4>
+
+<p><b>Mean orbital elements</b>
+
+<p>The orbits of the major planets can be modeled as ellipses with the Sun at one focus. The effect of gravitational interactions between the planets perturbs these orbits so that an ellipse is not a exact match with a true orbit. Six numbers, the mean orbital elements, specify an elliptical orbit. Mean orbital elements average the effects of gravitational forces between planets. Calculation of a planets position based on these mean elements can be inaccurate by a few minutes of arc. 
+
+<p>The position of a planet (the word originally meant wandering star) varies with time. The daily motion changes the mean longitude by the average number of degrees the planet moves in one (mean solar) day. The other elements change slowly with time. They are modeled using power series expansions of centuries from some fundamental epoch. Here, we use the elements with their linear rates of change from the epoch J2000 (12:00 UT, Jan 1, 2000). 
+
+<p>Planet positions are computed in the Equatorial coordinate system as right ascension (RA) and declination (DEC). These give the coordinates of the planet with respect to the fixed stars. The origin for RA is the vernal equinox. Because the orientation of the Earth's axis is changing slowly with time, celestial coordinates must always be referred to an epoch, or date. By using orbital elements referred to epoch J2000, the orbits of the planets are described in a coordinate system that is based on the position the vernal equinox will have at J2000. The effect of nutation (the Earth's axis is nodding) is ignored since positions are relative to the mean ecliptic of J2000. The aberration effect caused by the finite speed of light is also ignored. 
+
+<h3>Computation steps</h3>
+
+<p> The main steps in calculating the RA and DEC of a planet from the mean elements are: 
+
+<ol>
+<li>Find the day number or time since the date of the elements 
+<li>Find the average (or mean) orbital elements of the planet
+<li>Find the true anomaly, the angle to the planet from perihelion<br>(helio means Sun) 
+<li>Find the heliocentric radius, distance to planet from sun
+<li>Find the heliocentric ecliptic rectangular coordinates of the planet 
+<li>Find the heliocentric ecliptic rectangular coordinates of the Earth 
+<li>Transform the heliocentric coordinates to geocentric coordinates<br>(geo means Earth)
+<li>Transform the geocentric ecliptic coordinates to equatorial coordinates 
+<li>Calculate the RA and DEC and the distance to the planet from Earth 
+</ol>
+
+<h4>Notation</h4>
+
+<p><u>Elements</u>
+
+<p><table cellpadding="4" cellspacing="0">
+<tr><td nowrap="nowrap" valign="top"><i>i</i> <td valign="top">- <td>inclination (degrees), angle between the plane of the ecliptic (the plane of Earth's orbit about the Sun) and the plane of the planets orbit
+<tr><td nowrap="nowrap" valign="top"><i>O</i> <td valign="top">- <td>longitude of ascending node (degrees), the position in the orbit where the elliptical path of the planet passes through the plane of the ecliptic, from below the plane to above the plane 
+<tr><td nowrap="nowrap" valign="top"><i>w</i> <td valign="top">- <td>longitude of perihelion (degrees), the position in the orbit where the planet is closest to the Sun 
+<tr><td nowrap="nowrap" valign="top"><i>a</i> <td valign="top">- <td>mean distance (AU), the value of the semi-major axis of the orbit (AU - Astronomical Unit - average Sun to Earth distance)
+<tr><td nowrap="nowrap" valign="top"><i>e</i> <td valign="top">- <td>eccentricity of the ellipse which describes the orbit (dimensionless)
+<tr><td nowrap="nowrap" valign="top"><i>L</i> <td valign="top">- <td>mean longitude (degrees), the position of the planet in the orbit
+</table>
+
+<p><u>Calculated quantities</u>
+
+<p><table cellpadding="4" cellspacing="0">
+<tr><td nowrap="nowrap" valign="top"><i>M</i> <td>- <td>mean anomaly (degrees)
+<tr><td nowrap="nowrap" valign="top"><i>V</i> <td>- <td>true anomaly (degrees)
+<tr><td nowrap="nowrap" valign="top"><i>R</i> <td>- <td>heliocentric radius (AU)
+<tr><td nowrap="nowrap" valign="top"><i>X,Y,Z</i> <td>- <td>rectangular coordinates (AU)
+<tr><td nowrap="nowrap" valign="top"><i>RA</i> <td>- <td>right ascension (hour angle) 
+<tr><td nowrap="nowrap" valign="top"><i>DEC</i> <td>- <td>declination (degrees)
+</table>
+
+<h4>Position of the planet in its orbit</h4>
+
+<p><u>The day number</u>
+
+<p>The day number is used to compute values of all time varying quantities. It is a measure of the number of days, hours, minutes, and seconds since epoch J2000. This can be calculated from the date using:
+
+<p><table cellpadding="4" cellspacing="0">
+<tr>
+ <td nowrap="nowrap"><i>h</i> 
+ <td nowrap="nowrap">= 
+ <td nowrap="nowrap"><i>hour</i> + <i>minute</i> <b>&divide;</b> 60 + <i>second</i> <b>&divide;</b> 3600
+<tr>
+ <td nowrap="nowrap"><i>D</i> 
+ <td nowrap="nowrap">= 
+ <td nowrap="nowrap">367 &times; <i>year</i> &minus; 7 &times; (<i>year</i> + (<i>month</i> + 9) div 12) div 4 + 275 &times; <i>month</i> div 9 + <i>day</i> &minus; 730531.5 + <i>h</i> <b>&divide;</b> 24
+</table>
+
+<p>where &nbsp;div&nbsp; denotes integer division (for example, &nbsp;17 div 4 = 4).
+
+<p><u>The average (or mean) orbital elements of the planet</u>
+
+<p>Each of the orbital elements varies with time. The most rapidly changing element is the mean longitude, which changes due to the planets orbital motion about the Sun. The other elements change slowly. Gravitational forces between the planets cause these slow changes. For example, the orbital elements of the planet Mars are computed from:
+
+<p><table cellpadding="4" cellspacing="0">
+<tr align="right"><td nowrap="nowrap"><i>a</i> 
+ <td nowrap="nowrap">= 
+ <td nowrap="nowrap">1.52366231 
+ <td nowrap="nowrap">&minus; 
+ <td nowrap="nowrap">0.00007221 &times; <i>cy</i>
+<tr align="right"><td nowrap="nowrap"><i>e</i> 
+ <td nowrap="nowrap">= 
+ <td nowrap="nowrap">0.09341233 
+ <td nowrap="nowrap">+ 
+ <td nowrap="nowrap">0.00011902 &times; <i>cy</i>
+<tr align="right"><td nowrap="nowrap"><i>i</i> 
+ <td nowrap="nowrap">= 
+ <td nowrap="nowrap">1.85061 
+ <td nowrap="nowrap">&minus; 
+ <td nowrap="nowrap">25.47 &times; <i>cy</i> <b>&divide;</b> 3600
+<tr align="right"><td nowrap="nowrap"><i>O</i> 
+ <td nowrap="nowrap">= 
+ <td nowrap="nowrap">49.57854 
+ <td nowrap="nowrap">&minus; 
+ <td nowrap="nowrap">1020.19 &times; <i>cy</i> <b>&divide;</b> 3600
+<tr align="right"><td nowrap="nowrap"><i>w</i> 
+ <td nowrap="nowrap">= 
+ <td nowrap="nowrap">336.04084 
+ <td nowrap="nowrap">+ 
+ <td nowrap="nowrap">1560.78 &times; <i>cy</i> <b>&divide;</b> 3600
+<tr align="right"><td nowrap="nowrap"><i>L</i> 
+ <td nowrap="nowrap">= 
+ <td nowrap="nowrap">355.45332 
+ <td nowrap="nowrap">+ 
+ <td nowrap="nowrap">68905103.78 &times; <i>cy</i> <b>&divide;</b> 3600
+</table>
+
+<p>where <i>cy</i> is the number of centuries since J2000 and is computed using:
+
+<p><table align="center" cellpadding="0" cellspacing="0">
+<tr align="center">
+ <td rowspan="2" nowrap="nowrap"><i>cy</i> =&nbsp;</td>
+ <td nowrap="nowrap"><i>D</i></td>
+ <td rowspan="2" nowrap="nowrap">&nbsp;&middot;</td>
+</tr>
+<tr align="center">
+ <td style="border-top:solid 1px black;" nowrap="nowrap">36525.0</td>
+</tr>
+</table>
+
+<p><u>The mean anomaly of the planet</u>
+
+<p>The mean anomaly gives the planet's angular position for a circular orbit with radius equal to the semi major axis. It is computed directly from the elements using: 
+
+<p><table align="center" cellpadding="0" cellspacing="0">
+<tr align="center">
+ <td nowrap="nowrap"><i>M</i> = <i>L</i> &minus; <i>w</i></td>
+</tr>
+</table>
+
+<p>To give more precise computer calculations, the value of <i>M</i> should be in the range &nbsp;0 . . . 360&deg;. 
+
+<p><u>The true anomaly of the planet</u>
+
+<p>Kepler's second law states that the radius vector of a planet sweeps out equal areas in equal times. The planet must speed up and slow down in its orbit. The true anomaly gives the planets actual angular position in its orbit. It is the angle (at the Sun) between perihelion of the orbit and the current location of the planet. To obtain its value, first compute the eccentric anomaly, <i>E</i>, from <i>M</i>, and the eccentricity, <i>e</i>. As a first approximation:
+
+<p><table align="center" cellpadding="0" cellspacing="0">
+<tr align="center">
+ <td nowrap="nowrap"><i>E</i> = <i>M</i> + <i>e</i>&middot;sin(<i>M</i>)&middot;(1.0 + <i>e</i>&middot;cos(<i>M</i>))</td>
+</tr>
+</table>
+
+<p>Then iterate using:
+
+<p><table align="center" cellpadding="0" cellspacing="0">
+<tr><td nowrap="nowrap"><i>E'</i> =&nbsp;</td><td><i>E</i></td></tr>
+<tr align="center"><td>&nbsp;</td></tr>
+<tr align="center">
+ <td rowspan="2" nowrap="nowrap"><i>E</i> =&nbsp;</td>
+ <td nowrap="nowrap">&nbsp;<i>E'</i> &minus; <i>e</i>&middot;sin(<i>E'</i>) &minus; <i>M</i>&nbsp;</td>
+</tr>
+<tr align="center">
+ <td style="border-top:solid 1px black;" nowrap="nowrap">&nbsp;1 &minus; <i>e</i>&middot;cos(<i>E'</i>)&nbsp;</td>
+</tr>
+</table>
+
+<p>until the magnitude of <i>E</i> &minus; <i>E'</i> is sufficiently close to zero. Finally, convert the eccentric anomaly to the true anomaly using:
+
+<p><table align="center" cellpadding="0" cellspacing="0">
+<tr>
+ <td rowspan="2" nowrap="nowrap" align="right"><i>V</i> = 2 arctan&nbsp;</td>
+ <td rowspan="2" style="line-height: 100%;"><font face=symbol>&#xE6;<br>&#xE7;<br>&#xE8;</font></td>
+ <td rowspan="2" nowrap="nowrap" align="right"><span style="font-size: 300%;">&radic;</span></td>
+ <td style="border-top:solid 1px black;" nowrap="nowrap" align="center">1 + <i>e</i></td>
+ <td rowspan="2" nowrap="nowrap">&nbsp; tan(0.5 <i>E</i>)<td></tr>
+ <td rowspan="2" style="line-height: 100%;"><font face=symbol>&#xF6;<br>&#xF7;<br>&#xF8;</font></td>
+<tr>
+ <td style="border-top:solid 1px black;" nowrap="nowrap" align="center">1 &minus; <i>e</i></td>
+</tr>
+</table>
+
+<p>and ensure that the result is in the range &nbsp;0 . . . 360&deg;.
+
+<p><u>The heliocentric radius of the planet</u>
+
+<p>The heliocentric radius is the distance from the focus of the ellipse (i.e. the Sun) to the planet. It is given by a formula based on the geometry of an ellipse:
+
+<p><table align="center" cellpadding="0" cellspacing="0">
+<tr align="center">
+ <td rowspan="2" nowrap="nowrap"><i>R</i> =<sup>&nbsp;</sup></td>
+ <td nowrap="nowrap"><i>a</i> (1 &minus; <i>e</i><sup>2</sup>)</td>
+ <td rowspan="2" nowrap="nowrap"><sup>&nbsp;</sup>&middot;</td>
+</tr>
+<tr align="center">
+ <td style="border-top:solid 1px black;" nowrap="nowrap">&nbsp;1 + <i>e</i> cos(<i>V</i>)&nbsp;</td>
+</tr>
+</table>
+
+<p><u>The heliocentric coordinates of the planet</u>
+
+<p>By using the true anomaly, the heliocentric radius, and some of the orbital elements, the formulas below compute the heliocentric coordinates in the plane of the ecliptic. 
+
+<p><table align="center" cellpadding="4" cellspacing="4">
+<tr><td nowrap="nowrap"><i>X<sub>H</sub></i> = <i>R</i> [cos(<i>O</i>) cos(<i>V</i> + <i>w</i> &minus; <i>O</i>) &minus; sin(<i>O</i>) sin(<i>V</i> + <i>w</i> &minus; <i>O</i>) cos(<i>i</i>)]
+<tr><td nowrap="nowrap"><i>Y<sub>H</sub></i> = <i>R</i> [sin(<i>O</i>) cos(<i>V</i> + <i>w</i> &minus; <i>O</i>) + cos(<i>O</i>) sin(<i>V</i> + <i>w</i> &minus; <i>O</i>) cos(<i>i</i>)]
+<tr><td nowrap="nowrap"><i>Z<sub>H</sub></i> = <i>R</i> [sin(<i>V</i> + <i>w</i> &minus; <i>O</i>) sin(<i>i</i>)]
+</table>
+
+<p><u>The heliocentric coordinates of Earth</u>
+
+<p>These are computed using the same method as above and are denoted as: <i>X<sub>E</sub> Y<sub>E</sub> Z<sub>E</sub></i>.
+
+<p><u>Geocentric ecliptic coordinates of the planet</u>
+
+<p>The origin of the coordinate system is changed from the Sun to the Earth by subtracting the Earth's heliocentric coordinates from those of the planet: 
+
+<p><table align="center" cellpadding="4" cellspacing="4">
+<tr><td nowrap="nowrap"><i>X<sub>G</sub></i> = <i>X<sub>H</sub></i> &minus; <i>X<sub>E</sub></i>
+<tr><td nowrap="nowrap"><i>Y<sub>G</sub></i> = <i>Y<sub>H</sub></i> &minus; <i>Y<sub>E</sub></i>
+<tr><td nowrap="nowrap"><i>Z<sub>G</sub></i> = <i>Z<sub>H</sub></i> &minus; <i>Z<sub>E</sub></i> 
+</table>
+
+<p><u>The geocentric equatorial coordinates of the planet</u>
+
+<p>To change the coordinate system from geocentric ecliptic to geocentric equatorial, rotate around the <i>X</i>-axis by an angle equal to the obliquity of the ecliptic, 
+
+<p><table align="center" cellpadding="0" cellspacing="0">
+<tr><td nowrap="nowrap"><i>ecl</i> = 23.439281</i> 
+</table>
+
+<p>the value of the obliquity of the ecliptic for J2000.
+
+<p>The <i>X</i>-axis points towards the vernal equinox, where the Sun crosses the celestial equator in the spring. 
+
+<p><table align="center" cellpadding="4" cellspacing="4">
+<tr><td nowrap="nowrap"><i>X<sub>EQ</sub></i> = <i>X<sub>G</sub></i>
+<tr><td nowrap="nowrap"><i>Y<sub>EQ</sub></i> = <i>Y<sub>G</sub></i> cos(<i>ecl</i>) &minus; <i>Z<sub>G</sub></i> sin(<i>ecl</i>)
+<tr><td nowrap="nowrap"><i>Z<sub>EQ</sub></i> = <i>Y<sub>G</sub></i> sin(<i>ecl</i>) + <i>Z<sub>G</sub></i> cos(<i>ecl</i>)
+</table>
+
+<p><u>The <i>RA</i> and <i>DEC</i> and the distance</u>
+
+<p>The geocentric equatorial coordinates are transformed into right ascension (<i>RA</i>) and declination (<i>DEC</i>) using the formulas:
+
+<p><table align="center">
+ <tr><td><table cellpadding="1" cellspacing="0">
+ <tr>
+ <td rowspan="3" nowrap="nowrap"><i>RA</i> =&nbsp;</td>
+ <td rowspan="3" style="line-height: 100%;"><font face=symbol>&#xEC;<br>&#xED;<br>&#xEE;</font></td>
+ <td nowrap="nowrap">arctan(<i>Y<sub>EQ</sub></i> <b>&divide;</b> <i>X<sub>EQ</sub></i>)</td></tr>
+ <tr><td nowrap="nowrap">arctan(<i>Y<sub>EQ</sub></i> <b>&divide;</b> <i>X<sub>EQ</sub></i>) + 180° <i>if</i> (<i>X<sub>EQ</sub></i> < 0)</i></td></tr>
+ <tr><td nowrap="nowrap">arctan(<i>Y<sub>EQ</sub></i> <b>&divide;</b> <i>X<sub>EQ</sub></i>) + 360° <i>if</i> (<i>X<sub>EQ</sub></i> > 0) <i>and</i> (<i>Y<sub>EQ</sub></i> < 0)</i></td></tr>
+ </table></td></tr>
+ <tr><td>&nbsp;</td></tr>
+ <tr><td><table cellpadding="0" cellspacing="0">
+ <tr align="center">
+ <td rowspan="2" nowrap="nowrap"><i>DEC</i> = arctan&nbsp;</td>
+ <td nowrap="nowrap"><i>Z<sub>EQ</sub></i></td>
+ </tr>
+ <tr align="center">
+ <td style="border-top:solid 1px black;" nowrap="nowrap"><table cellpadding="0" cellspacing="1">
+ <tr>
+ <td nowrap="nowrap" align="right"><span style="font-size: 150%;">&radic;</span></td>
+ <td style="border-top:solid 1px black;" nowrap="nowrap">&nbsp;<i>X<sub>EQ</sub></i><sup>2</sup> + <i>Y<sub>EQ</sub></i><sup>2</sup></td>
+ </tr>
+ </table></td>
+</tr>
+</table></td></tr>
+</table>
+
+<p><i>RA</i> can be converted from degrees into hour angle by dividing by 15.
+
+<p>The distance from the planet to Earth is computed using:
+
+<p><table align="center" cellpadding="0" cellspacing="0">
+<tr>
+ <td nowrap="nowrap" align="right"><i>Distance</i> =&nbsp;</td>
+ <td nowrap="nowrap" align="right"><span style="font-size: 150%;">&radic;</span></td>
+ <td style="border-top:solid 1px black;" nowrap="nowrap">&nbsp;<i>X<sub>EQ</sub></i><sup>2</sup> + <i>Y<sub>EQ</sub></i><sup>2</sup> + <i>Z<sub>EQ</sub></i><sup>2</sup></td>
+</tr>
+</table>
+
+<p><b>Equatorial coordinates</b>
+
+<p>By extending the lines of latitude and longitude outward from the Earth and onto the inside of the celestial sphere we get the equatorial coordinate system. The coordinates of stars, planets, and other celestial objects corresponding to latitude and longitude are declination (DEC) and right ascension (RA). 
+
+<p>The declination of an object is its angle in degrees, minutes, and seconds of arc above or below the celestial equator. The right ascension is the angle between an object and the location of the vernal equinox (First Point in Aries) measured eastward along the celestial equator in hours, minutes, and seconds of sidereal time. Since the location of the vernal equinox changes due to the precession of the Earth's axis of rotation, coordinates must be given with reference to a date or epoch.
+
+<p>Right ascension is given in time units. One hour corresponds to <sup>1</sup>&frasl;<sub>24</sub> of a circle, or 15° of arc. As the Earth rotates, the sky moves to the West by about 1 hour of right ascension during each hour of clock time or exactly one hour of sidereal time. The Earth makes one full revolution in about 23 hours and 56 minutes of clock time or 24 hours of sidereal time. Sidereal time corresponds to the right ascension of the zenith, the point in the sky directly overhead. 
+
+<p>For example, the coordinates of the star Regulus (Leo &alpha;) for epoch J2000 are:
+
+<p><table align="center" cellpadding="4" cellspacing="4">
+<tr><td>RA: <td>&nbsp;&nbsp;10h <td>08m <td>22.3s
+<tr><td>DEC: <td>+11° <td>58' <td>02"
+</table>
+
+<p>When the local sidereal time is 10h 08m 22.3s, it would be on the local meridian.
+
+<p><b>Horizon coordinates: azimuth and altitude</b>
+
+<p>This is a local coordinate system to use for locating objects in the night sky as seen from a point on the Earth's surface. Azimuth is the angle of a celestial object around the sky from north. It is measure along the horizon in from North 0° through East 90°, South 180°, West 270° and back to North. Altitude is the complement of the zenith angle, which is the angle from the local meridian to the hour circle of object being observed. An object directly overhead would have an altitude of 90°. An object with a calculated altitude of 0° may not appear exactly on the horizon due to the refraction of light through the atmosphere.
+
+<p><b>Coordinate transformation</b>
+
+<p>The azimuth (AZ) and altitude (ALT) of an object in the sky can be calculated easily using the date, universal time (UT), and the latitude (LAT) and longitude (LON) of the observing site and the right ascension (RA) and declination (DEC) of the object. All coordinates are expressed in degrees in the range 0° to 360°, so that trigonometric functions can be used for coordinate conversion.
+
+<p><u>Local Mean Sidereal Time</u>
+
+<p>The mean sidereal time (MST) is calculated from a polynomial function of UT since epoch J2000. This formula gives MST, the sidereal time at the Greenwich meridian (at longitude 0°) in degrees. To get local mean sidereal time (LMST), add longitude if East or subtract longitude if West. 
+
+<p><table align="center" cellpadding="4" cellspacing="4">
+<tr><td>MST <td nowrap="nowrap">= &nbsp;<i>f</i> (UT)
+<tr><td>LMST <td nowrap="nowrap">= MST + LON 
+</table>
+
+<p><u>Hour Angle</u>
+
+<p>The hour angle is the angle between an observer's meridian projected onto the celestial sphere and the right ascension of a celestial body. It is used in coordinate conversion. 
+
+<p><table align="center" cellpadding="4" cellspacing="4">
+<tr><td nowrap="nowrap">HA = LMST &minus; RA
+</table>
+
+<p><u>HA and DEC to ALT and AZ</u>
+
+<p>Using the RA, DEC and HA for the object, and the Latitude (LAT) of the observing site, the following formulas give the ALT and AZ of the object at the time and longitude that was used to calculate HA. 
+
+<p><table align="center" cellpadding="0" cellspacing="0">
+<tr><td><table cellpadding="0" cellspacing="0">
+ <tr>
+ <td nowrap="nowrap">sin(ALT) = sin(DEC) sin(LAT) + cos(DEC) cos(LAT) cos(HA)</td>
+ </tr>
+ </table>
+<tr><td>&nbsp;
+<p><table cellpadding="0" cellspacing="0">
+ <tr align="center">
+ <td rowspan="2" nowrap="nowrap">cos(A) &nbsp;&nbsp; = &nbsp;</td>
+ <td nowrap="nowrap">&nbsp;sin(DEC) &minus; sin(ALT) sin(LAT)&nbsp;</td>
+ </tr>
+ <tr align="center">
+ <td style="border-top:solid 1px black;" nowrap="nowrap">cos(ALT) cos(LAT)</td>
+ </tr>
+ </table>
+</table>
+
+<p>If &nbsp;sin(HA)&nbsp; is negative, then &nbsp;AZ = A,&nbsp; otherwise &nbsp;AZ = 360 &minus; A.
+
+<p><b>References</b>
+<ol>
+<li>US Naval Observatory, <i>Explanatory Supplement to the Astronomical Almanac</i>, 1992
+</ol>
+
+<p>Return to <A href="#contents">Contents</A> 
+
+<hr>
+<center><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- abecedarical.com_336_280 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:336px;height:280px"
+     data-ad-client="ca-pub-3632733797738400"
+     data-ad-slot="4853170588"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></center><div class="addthis_toolbox addthis_default_style">
+<a href="https://www.addthis.com/bookmark.php?v=250&username=xa-4c2dcb235d3d5f6f" class="addthis_button_compact" rel="nofollow">Share</a>
+|<a href="http://abecedarical.com/index.html" > home </a>
+|<a href="http://abecedarical.com/javascript/scriptindex.html" > contents </a>
+|<a href="#top" onClick=feedback()> send comment </a>
+|<a href="#top" onClick=send_to()> send link </a>
+|<a href="#top" onClick=bookmark()> add bookmark </a>|
+</div>
+<hr>
+
+<!--[BOTTOM]-->
+<center>
+<!-- google -->
+<script type="text/javascript"><!--
+google_ad_client = "pub-8195248024094868";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+//--></script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js" >
+</script>
+<!-- google -->
+</center>
+<!--[END]-->
+
+<hr>
+Copyright &copy; 2004, Stephen R. Schmitt
+</body>
+</html>
+
