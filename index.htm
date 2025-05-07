@@ -121,7 +121,7 @@ panchang.calculate(t, function() {
     case "Pushyami":    Va=8;    Aa=17.6;    document.getElementById("nkt").style.color = cgre;            break;
     case "Aslesha":    Va=12.8;    Aa=22.4;    document.getElementById("nkt").style.color = cred;            break;
     case "Makha":    Va=12;    Aa=21.6;    document.getElementById("nkt").style.color = cred;            break;
-    case "Pubha":    Va=8;    Aa=17.6;    document.getElementById("nkt").style.color = cred;            break;
+    case "Pubba":    Va=8;    Aa=17.6;    document.getElementById("nkt").style.color = cred;            break;
     case "Uttara":    Va=7.2;    Aa=16.8;    document.getElementById("nkt").style.color = cgre;            break;
     case "Hasta":    Va=8.4;    Aa=18;    document.getElementById("nkt").style.color = cgre;            break;
     case "Chitta":    Va=8;    Aa=17.6;    document.getElementById("nkt").style.color = cgre;            break;
@@ -141,7 +141,6 @@ panchang.calculate(t, function() {
   var nakb = document.getElementById("s_nakshtra_start").innerHTML=panchang.Nakshatra.start;
   var nake = document.getElementById("s_nakshtra_end").innerHTML=panchang.Nakshatra.end;
   var naklen = Math.floor(Date.parse(nake) - Date.parse(nakb));
-           console.log("nl "+naklen+" Va "+Va+" Aa "+Aa);
   var varb = new Date(Math.floor((nakb.getTime() + ((Va * naklen)/24))));
   var vare = new Date(Math.floor(varb.getTime() + ((1.6 * naklen)/24)));
   var amrs = new Date(Math.floor((nakb.getTime() + ((Aa * naklen)/24))));
