@@ -271,8 +271,9 @@ panchang.calculate(t, function() {
 <script>
 navigator.geolocation.getCurrentPosition(function(position) {
 var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt; 
-  var srise = new Date().sunrise(position.coords.latitude, position.coords.longitude);
-  var sset = new Date().sunset(position.coords.latitude, position.coords.longitude);
+var sdt = new Date("2025-05-09T06:30:00+05:30");
+  var srise = sdt.sunrise(position.coords.latitude, position.coords.longitude);
+  var sset = sdt.sunset(position.coords.latitude, position.coords.longitude);
   var srise1 = new Date(srise.getTime() + (24 * 60 * 60 * 1000)).sunrise(position.coords.latitude, position.coords.longitude);
   var daylen = Math.floor(Date.parse(sset) - Date.parse(srise));
   var daypart = Math.floor(daylen / 8);
