@@ -1,5 +1,4 @@
-// Panchang code
-// globals
+// Panchang code globals
 d2r = Math.PI/180;
 r2d = 180/Math.PI;
 var zn = ["Mesha","Vrushabha","Mithuna","Karkataka","Simha","Kanya","Tula","Vrushchika","Dhanu","Makara","Kumbha","Meena"];
@@ -12,9 +11,7 @@ var yog = ["Vishkambha","Preeti","Ayushman","Saubhagya","Sobhana","Atiganda","Su
 var tipnaks = [2,5,6,0,1,4,3,2,4,5,5,0,2,1,3,6,1,4,4,5,0,3,3,3,5,0,1];
 var Lmoon, Lsun, skor, LmoonYoga, LsunYoga, dt;
 var ayanamsa = 0;
-//---------------------------------------------------------------------------
 // Data on the Moon outrage in length.
-//---------------------------------------------------------------------------
 function corr(mlcor, mscor, fcor, dcor, lcor)
 {
 this.mlcor = mlcor;
@@ -165,11 +162,7 @@ var g_days = new Array(31,28,31,30,31,30,31,31,30,31,30,31);
 if (((y % 4 == 0) && (y % 100 != 0)) || (y % 400 == 0)) g_days[1] = 29;
 return g_days[m];
 }
-
-//-----------------------------------------------------------------------------------
-// Calculating geotsent p avoid longitude Moon and angular sector p News.
-// (2 sec accuracy. longitude)
-//-----------------------------------------------------------------------------------
+// Calculating geotsent p avoid longitude Moon and angular sector p News.(2 sec accuracy. longitude)
 function moon(jd)
 {
 // days from 1900
@@ -242,7 +235,6 @@ arg = corrMoon2[i].ml * ml + corrMoon2[i].ms * ms + corrMoon2[i].f * f + corrMoo
 sinarg = sin(arg);
 lk1 += corrMoon2[i].l * sinarg;
 }
-
 // resentments of the planets
 dlid = 0.822 * sin(r2rad * (0.32480 - 0.0017125594 * tdays));
 dlid += 0.307 * sin(r2rad * (0.14905 - 0.0034251187 * tdays));
@@ -296,12 +288,7 @@ skor = vl;
 //if(l < 0.0)l += 360.0;
 return l;
 }
-
-
-//----------------------------------------------------------------------
-// Calculating geotsent p avoid longitude Sun.
-// (the acuracy of 1 sec . longitude)
-//----------------------------------------------------------------------
+// Calculating geotsent p avoid longitude Sun. (the acuracy of 1 sec . longitude)
 function sun(jd)
 {
 // days frm 1900:
@@ -312,12 +299,10 @@ t2 =t*t;
 t3 = t*t*t;
 
 // the avg len sun
-
 ls = 279.696678 + 0.9856473354*tdays + 1.089*t2/3600;
 // perigee sun
 pes = 101.220833 + 6189.03*t/3600 + 1.63*t2/3600 + 0.012*t3/3600;
 // avg anomoly sun
-
 ms = fix360(ls - pes + 180);
 g = ms + (0.266 * Math.sin((31.8 + 119.0*t)*d2r) + 6.40 * Math.sin((231.19 + 20.2*t)*d2r) + (1.882-0.016*t) * Math.sin((57.24 + 150.27*t)*d2r)) / 3600.0;
 // Rising sun node len
@@ -377,10 +362,7 @@ ls = fix360(ls);
 }
 return ls;
 }
-
-//----------------------------------------------------------------------------
 // cal start and end of tithi (len = 12)and karana (len = 6)
-//----------------------------------------------------------------------------
 function tithi(jd, n1, tzone, len)
 {
 var s_t = {};
@@ -410,11 +392,7 @@ if (itit == (n1 + 1)) s_t.end=calData(jdt + (tzone - dt)/24);
 }
 return s_t;
 }
-
-
-//----------------------------------------------------------------------------
 // cal entry and exit moon in nakshatra
-//----------------------------------------------------------------------------
 function nakshatra(jd, n_naksh, tzone)
 {
 var s_t = {};
@@ -437,11 +415,7 @@ if (inak == (n_naksh + 1)) s_t.end = calData(jdt + (tzone - dt)/24);
 }
 return s_t;
 }
-
-
-//----------------------------------------------------------------------------
 // cal begin and end of yoga
-//----------------------------------------------------------------------------
 function yoga(jd, zyoga, tzone)
 {
 var s_t = {};
@@ -470,14 +444,9 @@ if (iyog == 1) s_t.end=  calData(jdt + (tzone - dt)/24);
 }
 return s_t;
 }
-
-
-//-----------------------------------------------------------------------------
 //cal time in the near past novoluna (err less then 2 min)
-//-----------------------------------------------------------------------------
 function novolun (jd, knv)
 {
-
 t = (jd - 2415020) / 36525;
 t2 =t*t;
 t3 = t*t*t;
@@ -511,9 +480,7 @@ jdnv += djd;
 return jdnv;
 }
 
-//-----------------------------------------------------
 // decision equation kepler (in rad)
-//-----------------------------------------------------
 function kepler(m, ex, err)
 {
 //val u0, delta;
@@ -529,9 +496,7 @@ u0 += delta;
 return u0;
 }
 
-//-----------------------------------------------------
 // cal nutation in len
-//-----------------------------------------------------
 function nutation(jd)
 {
 
@@ -572,9 +537,7 @@ nut = nut/3600.0;
 return nut;
 }
 
-//-----------------------------------------------------
 // Calculation ayanamsa (degrees)
-//-----------------------------------------------------
 function calcayan(jd)
 {
 t = (jd - 2415020)/36525;
@@ -588,9 +551,7 @@ aya = (aya - 80861.27)/3600.0; // 84038.27 = Fagan-Bradley, 80861.27 = Lahiri
 return aya;
 }
 
-//------------------------------------------------------------------------------------------
 // cal date by number of date mon and year
-//------------------------------------------------------------------------------------------
 function mdy2julian(m,d,y){
 with(Math){
 im = 12 * (y + 4800) + m - 3;
@@ -626,9 +587,7 @@ dt /= 3600;
 return dt;
 }
 
-//------------------------------------------------------------------------------------------
 // cal date on calendar date
-//------------------------------------------------------------------------------------------
 function calData(jd)
 {
 with(Math){
@@ -667,9 +626,7 @@ s = new Date(kyear,kmon-1,kday,khr,kmin,ksek,0);
 return s;
 }
 
-//------------------------------------------------------------------------------------------
 // transalation deg logitudinal in degrees,min and sec
-//------------------------------------------------------------------------------------------
 function lon2dmsz(x)
 {
 with(Math){
@@ -686,10 +643,7 @@ str = d + " " + m + "'" + s + "\" ";
 return str;
 }
 
-
-//------------------------------------------------------------------------------------------
 // translation degrees in deg, min and sec
-//------------------------------------------------------------------------------------------
 function lon2dms(x)
 {
 with(Math){
@@ -704,9 +658,7 @@ str = d + " " + m + "'" + s + "\"";
 return str;
 }
 
-//------------------------------------------------------------------------------------------
 // fixing the angle within 360 degrees
-//------------------------------------------------------------------------------------------
 function fix360(v)
 {
 while(v < 0.0)v += 360.0;
@@ -714,9 +666,7 @@ while(v > 360.0)v -= 360.0;
 return v;
 }
 
-//------------------------------------------------------------------------------------------
 // Day of the Week
-//------------------------------------------------------------------------------------------
 function weekDay(jd)
 {
 // Julian date for the begin of the day
@@ -726,7 +676,6 @@ if (jd < jd0)jd0 -= 1;
 // day
 jdn = jd0 + 1.5;
 dn1 = Math.floor(jdn/7)*7;
-
 
 wday = Math.floor(jdn - dn1);
 
@@ -755,7 +704,6 @@ panchang = {
     }
     inpmin = Math.floor(d.getMinutes());
     if (inpmin < 10)inpmin = "0" + inpmin;
-
 
 // Julian date in local p. LT:
     dayhr = day + hr/24;
