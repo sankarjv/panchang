@@ -1,4 +1,3 @@
-/* This is the copy of pcal panchangJS*/
 // Panchang code
 // globals
 d2r = Math.PI/180;
