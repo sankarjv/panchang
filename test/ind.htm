@@ -394,9 +394,9 @@ var dt = new Date("2025-05-10T06:30:00+05:30");
     break;
   case 6:
     rks = daypart2; rkf = daypart3; ygs = daypart5; ygf = daypart6; gks = daypart0; gkf = daypart1;
-    dms = new Date(Math.floor(srise.getTime() + ((daylen * 1.6) / 12)));
+    dms = new Date(Math.floor(srise.getTime() ));
     dmf = new Date(Math.floor(dms.getTime() + (daylen / 15)));
-    dmb = new Date(Math.floor(srise.getTime() + ((daylen * 6.4) / 12)));
+    dmb = new Date(Math.floor(srise.getTime() + ((daylen * 1.6) / 12)));
     dme = new Date(Math.floor(dmb.getTime() + (daylen / 15)));
     document.getElementById("vra").style.color = cred;
     switch(dhi) {
