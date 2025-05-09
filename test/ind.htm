@@ -396,6 +396,8 @@ var dt = new Date("2025-05-10T06:30:00+05:30");
     rks = daypart2; rkf = daypart3; ygs = daypart5; ygf = daypart6; gks = daypart0; gkf = daypart1;
     dms = new Date(Math.floor(srise.getTime() + ((daylen * 1.6) / 12)));
     dmf = new Date(Math.floor(dms.getTime() + (daylen / 15)));
+    dmb = new Date(Math.floor(srise.getTime() + ((daylen * 6.4) / 12)));
+    dme = new Date(Math.floor(dmb.getTime() + (daylen / 15)));
     document.getElementById("vra").style.color = cred;
     switch(dhi) {
     case 0: hn="Sani"; break;     case 1: hn="Guru"; break;     case 2: hn="Kuja"; break;     case 3: hn="Surya"; break;     case 4: hn="Sukra"; break;     case 5: hn="Budha"; break; 
@@ -424,7 +426,7 @@ var dt = new Date("2025-05-10T06:30:00+05:30");
     document.getElementById("dmt").style.color = cred; }
   document.getElementById("dmst").innerHTML=dms.toLocaleString("en-IN", options);
   document.getElementById("dmft").innerHTML=dmf.toLocaleString("en-IN", options);
-  if (wkday == 01 || wkday == 02 || wkday == 04 || wkday == 05) {
+  if (wkday == 01 || wkday == 02 || wkday == 04 || wkday == 05 || wkday == 06) {
     if (tm > dmb.getTime() && tm < dme.getTime()) {
       document.getElementById("dmt").style.color = cred; }
     document.getElementById("dmbt").innerHTML=dmb.toLocaleString("en-IN", options);
