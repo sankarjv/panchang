@@ -76,11 +76,10 @@
 <div id = "vra" class="alignL" ></div><div id="day" class="alignC1"></div></div>
 <script>
 var options = {year:"2-digit", month:"2-digit", day:"2-digit", hour:"2-digit", hour12:false, minute:"2-digit"};
-var t= new Date("2025-05-09T06:30:00+05:30");
+var t= new Date("2025-05-10T06:30:00+05:30");
 var tm=t.getTime();
 var wkday = t.getDay();
 var cred="Red"; var cgre="Green"; var cblu="Blue";
-//var dt= new Date("2025-05-09T06:30:00+05:30"); 
 document.getElementById("pdt").innerHTML=t.toLocaleString("en-IN", options); 
 var vra; var tit; var nkt; var yga; var krn; var vjy; var art; 
 panchang.calculate(t, function() {
@@ -271,9 +270,9 @@ panchang.calculate(t, function() {
 <script>
 navigator.geolocation.getCurrentPosition(function(position) {
 var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt; 
-//var sdt = new Date("2025-05-09T06:30:00+05:30");
-  var srise = t.sunrise(position.coords.latitude, position.coords.longitude);
-  var sset = t.sunset(position.coords.latitude, position.coords.longitude);
+var dt = new Date("2025-05-10T06:30:00+05:30");
+  var srise = dt.sunrise(position.coords.latitude, position.coords.longitude);
+  var sset = dt.sunset(position.coords.latitude, position.coords.longitude);
   var srise1 = new Date(srise.getTime() + (24 * 60 * 60 * 1000)).sunrise(position.coords.latitude, position.coords.longitude);
   var daylen = Math.floor(Date.parse(sset) - Date.parse(srise));
   var daypart = Math.floor(daylen / 8);
