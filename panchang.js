@@ -12,8 +12,6 @@ var yog = ["Vishkambha","Preeti","Ayushman","Saubhagya","Sobhana","Atiganda","Su
 var tipnaks = [2,5,6,0,1,4,3,2,4,5,5,0,2,1,3,6,1,4,4,5,0,3,3,3,5,0,1];
 var Lmoon, Lsun, skor, LmoonYoga, LsunYoga, dt;
 var ayanamsa = 0;
-
-
 //---------------------------------------------------------------------------
 // Data on the Moon outrage in length.
 //---------------------------------------------------------------------------
@@ -25,7 +23,6 @@ this.fcor = fcor;
 this.dcor = dcor;
 this.lcor = lcor;
 }
-
 function corr2(l, ml, ms, f, d)
 {
 this.l = l;
@@ -34,7 +31,6 @@ this.ms = ms;
 this.f = f;
 this.d = d;
 }
-
 var corrMoon = new Array(); // main
 i = 0;
 // ml, ms, f, d, l
@@ -133,7 +129,6 @@ corrMoon[i++] = new corr( 1, -1, -2, 2, -0.372);
 corrMoon[i++] = new corr( 0, 0, 4, 0, 0.418);
 corrMoon[i++] = new corr( 2, -1, 0, -1, -0.352);
 
-
 var corrMoon2 = new Array(); // additional
 i = 0;
 // l, ml, ms, f, d
@@ -165,14 +160,11 @@ corrMoon2[i++] = new corr2( 0.130, 3, 0, 0, -1);
 corrMoon2[i++] = new corr2( 0.113, 5, 0, 0, 0);
 corrMoon2[i++] = new corr2( 0.092, 3, 0, 2, -2);
 
-
-
 function daysInMonth(m,y) {
 var g_days = new Array(31,28,31,30,31,30,31,31,30,31,30,31);
 if (((y % 4 == 0) && (y % 100 != 0)) || (y % 400 == 0)) g_days[1] = 29;
 return g_days[m];
 }
-
 
 //-----------------------------------------------------------------------------------
 // Calculating geotsent p avoid longitude Moon and angular sector p News.
@@ -185,7 +177,6 @@ tdays = jd - 2415020;
 t = tdays/36525;
 t2 =t*t;
 t3 = t*t*t;
-
 // slope travels to the equator
 ob = 23.452294 - 0.0130125 * t - 0.00000164*t2 + 0.000000503*t3;
 // the average length moon
@@ -202,9 +193,7 @@ ml = fix360(l - pe);
 // Rising length node orbit the moon:
 om = 259.183275 - 6962911.23*t/3600 + 7.48*t2/3600 + 0.008*t3/3600;
 // the average length Moon, measured from the bottom up hub orbit:
-
 f = fix360(l - om);
-
 with(Math){
 // periodic revisions
 r2rad = 360.0 * d2r;
