@@ -81,7 +81,7 @@ var tm=t.getTime();
 var wkday = t.getDay();
 var cred="Red"; var cgre="Green"; var cblu="Blue";
 var dt= new Date("2025-05-09T06:30:00+05:30"); 
-document.getElementById("pdt").innerHTML=dt.toLocaleString("en-IN", options); 
+document.getElementById("pdt").innerHTML=t.toLocaleString("en-IN", options); 
 var vra; var tit; var nkt; var yga; var krn; var vjy; var art; 
 panchang.calculate(t, function() {
   document.getElementById("tit").innerHTML="Tithi:";
