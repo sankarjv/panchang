@@ -1,21 +1,11 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-P62TEHTSGT"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-P62TEHTSGT');
-</script>
 <title>VidyaSankar Panchangam</title>
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <meta name="author" content="VidyaSankar Jagarlapudi">
 <meta name="description" content="VidyaSankar Panchangam">
 <meta name="viewport" content="width=device-width, initial-scale=0.80">
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<meta http-equiv="refresh" content="600">
 <meta name="keywords" content="Panchangam, Panchang, VidyaSankar, Jagarlapudi, Telugu, Hyderabad, Telangana, Andhra, India, Tithi, Vaara, Nakshatra, Yoga, Karana, RahuKaal, Gulika, YamaGand, DurMuhurt, Varjyam, Amruta, Hora, SunRise, SunSet, Day, Star">
 <style>
 .block { overflow:hidden; }
@@ -31,7 +21,7 @@
 <h3><div class="trow">
 <div class="alignL" style="color:blue;"><a href="http://astrolog.er.in">VidyaSankar</a></div>
 <div class="alignC1" style="color:blue;">Panchangam</div>
-<div id="pdt" class="alignC2" style="color:blue;"></div>
+<div input id="date" type="text" onchange='t("year").value=new Date(t("date").value).getFullYear();'></div>
 </div></h3>
 <script src="panchang.js"></script>
 <div class="trow">
