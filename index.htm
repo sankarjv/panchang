@@ -297,7 +297,12 @@ panchang.calculate(t, function() {
 <div class="alignC2">to</div><div id="dmft" class="alignR"></div></div>
 <div class="trow">
 <div class="alignL"></div><div id="dmbt" class="alignC1"></div>
-<div class="alignC2">-</div><div id="dmet" class="alignR"></div></div>
+<div class="alignC2"></div><div id="dmet" class="alignR"></div></div>
+<div class="trow">
+<div class="alignL">&nbsp;</div></div>
+<div class="trow">
+<div class="alignL">GoodTime:</div><div class="alignC1">All Green/Good</div>
+<div class="alignC2">or</div><div class="alignR">Blue no Red/Bad</div></div>
 <script>
 navigator.geolocation.getCurrentPosition(function(position) {
 var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt; 
@@ -424,8 +429,10 @@ var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
     break;
   case 6:
     rks = daypart2; rkf = daypart3; ygs = daypart5; ygf = daypart6; gks = daypart0; gkf = daypart1;
-    dms = new Date(Math.floor(srise.getTime() + ((daylen * 1.6) / 12)));
+    dms = new Date(Math.floor(srise.getTime() ));
     dmf = new Date(Math.floor(dms.getTime() + (daylen / 15)));
+    dmb = new Date(Math.floor(srise.getTime() + ((daylen * 0.8) / 12)));
+    dme = new Date(Math.floor(dmb.getTime() + (daylen / 15)));
     document.getElementById("vra").style.color = cred;
     switch(dhi) {
     case 0: hn="Sani"; break;     case 1: hn="Guru"; break;     case 2: hn="Kuja"; break;     case 3: hn="Surya"; break;     case 4: hn="Sukra"; break;     case 5: hn="Budha"; break; 
@@ -454,7 +461,7 @@ var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
     document.getElementById("dmt").style.color = cred; }
   document.getElementById("dmst").innerHTML=dms.toLocaleString("en-IN", options);
   document.getElementById("dmft").innerHTML=dmf.toLocaleString("en-IN", options);
-  if (wkday == 01 || wkday == 02 || wkday == 04 || wkday == 05) {
+  if (wkday == 01 || wkday == 02 || wkday == 04 || wkday == 05 || wkday == 06) {
     if (tm > dmb.getTime() && tm < dme.getTime()) {
       document.getElementById("dmt").style.color = cred; }
     document.getElementById("dmbt").innerHTML=dmb.toLocaleString("en-IN", options);
