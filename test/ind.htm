@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en"><head>
 <title>VidyaSankar Panchangam</title>
@@ -6,6 +7,7 @@
 <meta name="description" content="VidyaSankar Panchangam">
 <meta name="viewport" content="width=device-width, initial-scale=0.80">
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="refresh" content="600">
 <meta name="keywords" content="Panchangam, Panchang, VidyaSankar, Jagarlapudi, Telugu, Hyderabad, Telangana, Andhra, India, Tithi, Vaara, Nakshatra, Yoga, Karana, RahuKaal, Gulika, YamaGand, DurMuhurt, Varjyam, Amruta, Hora, SunRise, SunSet, Day, Star">
 <style>
 .block { overflow:hidden; }
@@ -21,7 +23,7 @@
 <h3><div class="trow">
 <div class="alignL" style="color:blue;"><a href="http://astrolog.er.in">VidyaSankar</a></div>
 <div class="alignC1" style="color:blue;">Panchangam</div>
-<div input id="date" type="text"></div>
+<div id="pdt" class="alignC2" style="color:blue;"></div>
 </div></h3>
 <script src="panchang.js"></script>
 <div class="trow">
@@ -66,7 +68,7 @@
 <div id = "vra" class="alignL" ></div><div id="day" class="alignC1"></div></div>
 <script>
 var options = {year:"2-digit", month:"2-digit", day:"2-digit", hour:"2-digit", hour12:false, minute:"2-digit"};
-var t= new Date(input.value);
+var t= new Date("2025-05-11T06:30:00+05:30");
 var tm=t.getTime();
 var wkday = t.getDay();
 var cred="Red"; var cgre="Green"; var cblu="Blue";
@@ -265,7 +267,7 @@ panchang.calculate(t, function() {
 <script>
 navigator.geolocation.getCurrentPosition(function(position) {
 var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt; 
-var dt = new Date("2025-05-10T06:30:00+05:30");
+var dt = new Date("2025-05-11T06:30:00+05:30");
   var srise = dt.sunrise(position.coords.latitude, position.coords.longitude);
   var sset = dt.sunset(position.coords.latitude, position.coords.longitude);
   var srise1 = new Date(srise.getTime() + (24 * 60 * 60 * 1000)).sunrise(position.coords.latitude, position.coords.longitude);
