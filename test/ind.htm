@@ -21,7 +21,7 @@
 <h3><div class="trow">
 <div class="alignL" style="color:blue;"><a href="http://astrolog.er.in">VidyaSankar</a></div>
 <div class="alignC1" style="color:blue;">Panchangam</div>
-<div input id="date" type="text" onchange='t("year").value=new Date(t("date").value).getFullYear();'></div>
+<div input id="date" type="text"></div>
 </div></h3>
 <script src="panchang.js"></script>
 <div class="trow">
@@ -66,7 +66,7 @@
 <div id = "vra" class="alignL" ></div><div id="day" class="alignC1"></div></div>
 <script>
 var options = {year:"2-digit", month:"2-digit", day:"2-digit", hour:"2-digit", hour12:false, minute:"2-digit"};
-var t= new Date("2025-05-10T06:30:00+05:30");
+var t= new Date(input.value);
 var tm=t.getTime();
 var wkday = t.getDay();
 var cred="Red"; var cgre="Green"; var cblu="Blue";
