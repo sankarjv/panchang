@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en"><head>
 <title>VidyaSankar Panchangam</title>
@@ -21,7 +22,7 @@
 <h3><div class="trow">
 <div class="alignL" style="color:blue;"><a href="http://astrolog.er.in">VidyaSankar</a></div>
 <div class="alignC1" style="color:blue;">Panchangam</div>
-<div class="alignC2" style="color:blue;"><input type="datetime-local" id="idt" name="idt"/></div>
+<div id="pdt" class="alignC2" style="color:blue;"></div>
 </div></h3>
 <script src="panchang.js"></script>
 <div class="trow">
@@ -65,17 +66,13 @@
 <div class="trow">
 <div id = "vra" class="alignL" ></div><div id="day" class="alignC1"></div></div>
 <script>
+var options = {year:"2-digit", month:"2-digit", day:"2-digit", hour:"2-digit", hour12:false, minute:"2-digit"};
 var t= new Date("2025-05-12T06:00:00+05:30");
-var idtt = document.getElementById("idt").value = t.toISOString().slice(0, 16);
-console.log(idt); 
-console.log(idtt); 
-//t= new Date(idtt);
-console.log(t); 
 var tm=t.getTime();
 var wkday = t.getDay();
 var cred="Red"; var cgre="Green"; var cblu="Blue";
+document.getElementById("pdt").innerHTML=t.toLocaleString("en-IN", options); 
 var vra; var tit; var nkt; var yga; var krn; var vjy; var art; 
-var options = {year:"2-digit", month:"2-digit", day:"2-digit", hour:"2-digit", hour12:false, minute:"2-digit"};
 panchang.calculate(t, function() {
   document.getElementById("tit").innerHTML="Tithi:";
   var tit = document.getElementById("tithi").innerHTML=panchang.Tithi.name;
