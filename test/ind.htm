@@ -65,10 +65,10 @@
 <div class="trow">
 <div id = "vra" class="alignL" ></div><div id="day" class="alignC1"></div></div>
 <script>
-var idtt = document.getElementById("idt").value = t.toISOString().slice(0, 16);
+var idtt = document.getElementById("idt").value;
 console.log(idt); 
 console.log(idtt); 
-var t= new Date(idtt);
+var t= new Date(idtt.toISOString().slice(0, 16));
 //t= new Date(idtt);
 console.log(t); 
 var tm=t.getTime();
