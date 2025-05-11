@@ -65,10 +65,10 @@
 <div class="trow">
 <div id = "vra" class="alignL" ></div><div id="day" class="alignC1"></div></div>
 <script>
-var idtt = document.getElementById("idt").value;
+var t= new Date("2025-05-12T06:00:00+05:30");
+var idtt = document.getElementById("idt").value = t.toISOString().slice(0, 16);
 console.log(idt); 
 console.log(idtt); 
-var t= new Date(idtt.toISOString().slice(0, 16));
 //t= new Date(idtt);
 console.log(t); 
 var tm=t.getTime();
@@ -269,7 +269,7 @@ panchang.calculate(t, function() {
 <script>
 navigator.geolocation.getCurrentPosition(function(position) {
 var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt; 
-var dt = new Date("2025-05-11T06:30:00+05:30");
+var dt = new Date("2025-05-12T06:00:00+05:30");
   var srise = dt.sunrise(position.coords.latitude, position.coords.longitude);
   var sset = dt.sunset(position.coords.latitude, position.coords.longitude);
   var srise1 = new Date(srise.getTime() + (24 * 60 * 60 * 1000)).sunrise(position.coords.latitude, position.coords.longitude);
