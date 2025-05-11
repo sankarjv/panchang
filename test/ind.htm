@@ -21,8 +21,8 @@
 <h3>
 <lable class="alignL" style="color:blue;"><a href="http://astrolog.er.in">VidyaSankar</a></label>
 <lable class="alignC1" style="color:blue;">Panchangam</lable>
-<input type="datetime-local" id="idt" name="idate">
 </h3>
+<input type="datetime-local" id="idt" name="idt">
 <script src="panchang.js"></script>
 <div class="trow">
 <div id="tit" class="alignL"></div><div id="tithi" class="alignC1"></div></div>
@@ -65,10 +65,10 @@
 <div class="trow">
 <div id = "vra" class="alignL" ></div><div id="day" class="alignC1"></div></div>
 <script>
-var idtt = document.getElementById('idt');
+var idtt = document.getElementById("idt");
 console.log(idt); 
-var idttm = idtt.value;
 console.log(idtt); 
+var idttm = idtt.value;
 console.log(idttm); 
 var options = {year:"2-digit", month:"2-digit", day:"2-digit", hour:"2-digit", hour12:false, minute:"2-digit"};
 var t= new Date(idttm);
