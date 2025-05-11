@@ -18,14 +18,10 @@
 </style>
 </head>
 <body>
-<label>Date: </label>
-<input type="datetime-local" id="idt" name="idate">
-<script>
-</script>
 <h3><div class="trow">
 <div class="alignL" style="color:blue;"><a href="http://astrolog.er.in">VidyaSankar</a></div>
 <div class="alignC1" style="color:blue;">Panchangam</div>
-<div id="pdt" class="alignC2" style="color:blue;"></div>
+<div input id="idt" class="alignC2" style="color:blue;"></div>
 </div></h3>
 <script src="panchang.js"></script>
 <div class="trow">
@@ -73,8 +69,8 @@ const idtt = document.getElementById('idt');
 const pdt = idtt.value;
 console.log(pdt); 
 var options = {year:"2-digit", month:"2-digit", day:"2-digit", hour:"2-digit", hour12:false, minute:"2-digit"};
-var t= new Date("2025-05-11T06:30:00+05:30");
-var tm=t.getTime();
+var t= new Date(pdt);
+var tm=pdt.getTime();
 var wkday = t.getDay();
 var cred="Red"; var cgre="Green"; var cblu="Blue";
 //document.getElementById("pdt").innerHTML=t.toLocaleString("en-IN", options); 
