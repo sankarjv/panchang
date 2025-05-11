@@ -65,11 +65,11 @@
 <div class="trow">
 <div id = "vra" class="alignL" ></div><div id="day" class="alignC1"></div></div>
 <script>
-var t= new Date();
 var idtt = document.getElementById("idt").value = t.toISOString().slice(0, 16);
 console.log(idt); 
 console.log(idtt); 
-t= new Date(idtt);
+var t= new Date(idtt);
+//t= new Date(idtt);
 console.log(t); 
 var tm=t.getTime();
 var wkday = t.getDay();
