@@ -66,7 +66,7 @@
 <div id = "vra" class="alignL" ></div><div id="day" class="alignC1"></div></div>
 <script>
 var options = {year:"2-digit", month:"2-digit", day:"2-digit", hour:"2-digit", hour12:false, minute:"2-digit"};
-var t= new Date("2025-05-16T06:00:00+05:30");
+var t= new Date("2025-05-17T06:00:00+05:30");
 var tm=t.getTime();
 var wkday = t.getDay();
 var cred="Red"; var cgre="Green"; var cblu="Blue";
@@ -260,12 +260,12 @@ panchang.calculate(t, function() {
 <div class="trow">
 <div class="alignL">&nbsp;</div></div>
 <div class="trow">
-<div class="alignL">GoodTime:</div><div class="alignC1">All Green/Good</div>
-<div class="alignC2">or</div><div class="alignR">Blue no Red/Bad</div></div>
+<div class="alignL">GoodTime:</div><div class="alignC1">All Green/Blue</div>
+<div class="alignC2">is</div><div class="alignR">Good no Red/Bad</div></div>
 <script>
 navigator.geolocation.getCurrentPosition(function(position) {
 var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt; 
-var dt = new Date("2025-05-16T06:00:00+05:30");
+var dt = new Date("2025-05-17T06:00:00+05:30");
   var srise = dt.sunrise(position.coords.latitude, position.coords.longitude);
   var sset = dt.sunset(position.coords.latitude, position.coords.longitude);
   var srise1 = new Date(srise.getTime() + (24 * 60 * 60 * 1000)).sunrise(position.coords.latitude, position.coords.longitude);
