@@ -305,7 +305,7 @@ panchang.calculate(t, function() {
 <div class="alignC2">is</div><div class="alignR">Good no Red/Bad</div></div>
 <script>
 navigator.geolocation.getCurrentPosition(function(position) {
-var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt; 
+var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt; var hn;
   var srise = new Date().sunrise(position.coords.latitude, position.coords.longitude);
   var sset = new Date().sunset(position.coords.latitude, position.coords.longitude);
   var srise1 = new Date(srise.getTime() + (24 * 60 * 60 * 1000)).sunrise(position.coords.latitude, position.coords.longitude);
@@ -345,7 +345,7 @@ var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
   var daypart6 = new Date(Math.floor((daypart5.getTime() + daypart)));
   var daypart7 = new Date(Math.floor((daypart6.getTime() + daypart)));
   var daypart8 = new Date(Math.floor((daypart7.getTime() + daypart)));
-  var rks=0;  var rkf=0;  var ygs=0;  var ygf=0;  var gks=0;  var gkf=0;  var dms;  var dmf;  var dmb;  var dme;  var hn;
+  var rks=0;  var rkf=0;  var ygs=0;  var ygf=0;  var gks=0;  var gkf=0;  var dms;  var dmf;  var dmb;  var dme;  
   switch(wkday) {
   case 0:
     rks = daypart7; rkf = daypart8; ygs = daypart4; ygf = daypart5; gks = daypart6; gkf = daypart7;
