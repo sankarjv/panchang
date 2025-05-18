@@ -110,6 +110,7 @@ var vra; var tit; var nkt; var yga; var krn; var vjy; var art;
 panchang.calculate(t, function() {
   document.getElementById("tit").innerHTML="Tithi:";
   var tit = document.getElementById("tithi").innerHTML=panchang.Tithi.name;
+  document.getElementById("tithi").style.fontWeight = "bold" ;
   switch(tit) {
    case "S-Padyami":    document.getElementById("tit").style.color = cred;              break;
    case "S-Vidiya":    document.getElementById("tit").style.color = cgre;              break;
@@ -145,6 +146,7 @@ panchang.calculate(t, function() {
   document.getElementById("s_tithi_end").innerHTML=panchang.Tithi.end.toLocaleString("en-IN", options);
   document.getElementById("nkt").innerHTML="Nakshatra:";
   var nak = document.getElementById("nakshtra").innerHTML=panchang.Nakshatra.name;
+  document.getElementById("nakshtra").style.fontWeight = "bold" ;
   var Va=0;  var Aa=0;
   switch(nak) {
     case "Aswini":    Va=20;    Aa=16.8;    document.getElementById("nkt").style.color = cgre;              break;
@@ -193,6 +195,7 @@ panchang.calculate(t, function() {
   document.getElementById("amrft").innerHTML=amrf.toLocaleString("en-IN", options);
   document.getElementById("krn").innerHTML="Karana:";
   var kar = document.getElementById("karna").innerHTML=panchang.Karna.name;
+  document.getElementById("karna").style.fontWeight = "bold" ;
   switch(kar) {
     case "Bava":    document.getElementById("krn").style.color = cgre;              break;
     case "Balava":    document.getElementById("krn").style.color = cgre;              break;
@@ -209,6 +212,7 @@ panchang.calculate(t, function() {
   document.getElementById("s_karna_end").innerHTML=panchang.Karna.end.toLocaleString("en-IN", options);
   document.getElementById("yga").innerHTML=" Yoga: ";
   var yog = document.getElementById("yoga").innerHTML=panchang.Yoga.name;
+  document.getElementById("yoga").style.fontWeight = "bold" ;
   switch(yog) {
     case "Vishkambha":    document.getElementById("yga").style.color = cred;              break;
     case "Ayushman":    document.getElementById("yga").style.color = cgre;              break; 
@@ -240,6 +244,7 @@ panchang.calculate(t, function() {
   document.getElementById("s_yoga_end").innerHTML=panchang.Yoga.end.toLocaleString("en-IN", options);
   document.getElementById("vra").innerHTML=" Vaara: ";
   document.getElementById("day").innerHTML=panchang.Day.name;    
+  document.getElementById("day").style.fontWeight = "bold" ;
   document.getElementById("s_nakshtra_start").innerHTML=panchang.Nakshatra.start.toLocaleString("en-IN", options);
   document.getElementById("s_nakshtra_end").innerHTML=panchang.Nakshatra.end.toLocaleString("en-IN", options);           });
 </script>
@@ -453,7 +458,7 @@ navigator.geolocation.getCurrentPosition(function(position) {
     document.getElementById("dmt").style.color = cred; }
   document.getElementById("dmst").innerHTML=dms.toLocaleString("en-IN", options);
   document.getElementById("dmft").innerHTML=dmf.toLocaleString("en-IN", options);
-  if (wkday == 01 || wkday == 02 || wkday == 04 || wkday == 05 || wkday == 06) {
+  if (wkday == 1 || wkday == 2 || wkday == 4 || wkday == 5 || wkday == 6) {
     if (tm > dmb.getTime() && tm < dme.getTime()) {
       document.getElementById("dmt").style.color = cred; }
     document.getElementById("dmbt").innerHTML=dmb.toLocaleString("en-IN", options);
@@ -470,6 +475,7 @@ navigator.geolocation.getCurrentPosition(function(position) {
   document.getElementById("bhft").innerHTML=bhf.toLocaleString("en-IN", options);
   document.getElementById("hra").innerHTML="Hora:";
   document.getElementById("hnm").innerHTML=hn;
+  document.getElementById("hnm").style.fontWeight = "bold" ;
   if ((tm > hs.getTime() && tm < hf.getTime()) && (hn == "Surya" || hn ==  "Sani" || hn ==  "Kuja"))    {
     document.getElementById("hra").style.color = cred; }
   if ((tm > hs.getTime() && tm < hf.getTime()) && (hn ==  "Sukra" || hn == "Budha" || hn == "Chandra" || hn == "Guru"))    {
