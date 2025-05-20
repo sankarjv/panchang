@@ -166,13 +166,13 @@ function getGeolocation() {
 }
 getGeolocation()
   .then((coords) => {
-    latitude = coords.latitude;
-    longitude = coords.longitude;
-    console.log("Latitude:", latitude, "Longitude:", longitude);
+    lat = coords.latitude;
+    lon = coords.longitude;
   })
   .catch((err) => {
     console.error("Error getting location:", err);
   });
+    console.log("Latitude:", lat, "Longitude:", lon);
   srise = t.sunrise(latitude, longitude);
   sset = t.sunset(latitude, longitude);
   srise1 = new Date(srise.getTime() + (24 * 60 * 60 * 1000)).sunrise(latitude, longitude); 
