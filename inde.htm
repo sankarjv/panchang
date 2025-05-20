@@ -55,6 +55,7 @@ navigator.geolocation.getCurrentPosition(function(position) {
   srise = dt.sunrise(position.coords.latitude, position.coords.longitude);
   sset = dt.sunset(position.coords.latitude, position.coords.longitude);
   srise1 = new Date(srise.getTime() + (24 * 60 * 60 * 1000)).sunrise(position.coords.latitude, position.coords.longitude); });
+  dt= new Date(); 
   document.getElementById("pdt").innerHTML=dt.toLocaleString("en-IN", options); 
   var daylen = Math.floor(Date.parse(sset) - Date.parse(srise));
   var daypart = Math.floor(daylen / 8);
