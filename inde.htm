@@ -155,9 +155,6 @@ panchang.calculate(t, function() {
   kar = document.getElementById("karna").innerHTML=panchang.Karna.name;
   yog = document.getElementById("yoga").innerHTML=panchang.Yoga.name;
   wkday = document.getElementById("day").innerHTML=panchang.Day.name;    });
-  srise = new Date().sunrise(lat, lon);
-  sset = new Date().sunset(lat, lon);
-  srise1 = new Date(srise.getTime() + (24 * 60 * 60 * 1000)).sunrise(lat, lon); 
   var daylen = Math.floor(Date.parse(sset) - Date.parse(srise));
   var daypart = Math.floor(daylen / 8);
   var niglen = Math.floor(Date.parse(srise1) - Date.parse(sset));
