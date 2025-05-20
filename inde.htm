@@ -79,16 +79,6 @@ var dt; var srise; var sset; var srise1; var lat; var lon;
 <div class="trow">
 <div class="alignL">&nbsp;</div></div>
 <div class="trow">
-<div id = "art" class="alignL"></div><div id="amrst" class="alignC1"></div>
-<div class="alignC2">to</div><div id="amrft" class="alignR"></div></div>
-<div class="trow">
-<div class="alignL">&nbsp;</div></div>
-<div class="trow">
-<div id = "vjy" class="alignL"></div><div id="varbt" class="alignC1"></div>
-<div class="alignC2">to</div><div id="varet" class="alignR"></div></div>
-<div class="trow">
-<div class="alignL">&nbsp;</div></div>
-<div class="trow">
 <div id = "vra" class="alignL" ></div><div id="day" class="alignC1"></div></div>
 <div class="trow">
 <div class="alignL">&nbsp;</div><div id="rise" class="alignC1"></div>
@@ -115,6 +105,16 @@ var dt; var srise; var sset; var srise1; var lat; var lon;
 <div class="trow">
 <div id = "bhm" class="alignL"></div><div id="bhst" class="alignC1"></div>
 <div class="alignC2">to</div><div id="bhft" class="alignR"></div></div>
+<div class="trow">
+<div class="alignL">&nbsp;</div></div>
+<div class="trow">
+<div id = "art" class="alignL"></div><div id="amrst" class="alignC1"></div>
+<div class="alignC2">to</div><div id="amrft" class="alignR"></div></div>
+<div class="trow">
+<div class="alignL">&nbsp;</div></div>
+<div class="trow">
+<div id = "vjy" class="alignL"></div><div id="varbt" class="alignC1"></div>
+<div class="alignC2">to</div><div id="varet" class="alignR"></div></div>
 <div class="trow">
 <div class="alignL">&nbsp;</div></div>
 <div class="trow">
@@ -152,8 +152,8 @@ panchang.calculate(t, function() {
   var kar = document.getElementById("karna").innerHTML=panchang.Karna.name;
   var yog = document.getElementById("yoga").innerHTML=panchang.Yoga.name;
   var wkday = document.getElementById("day").innerHTML=panchang.Day.name;    });
-  srise = dt.sunrise(lat, lon);
-  sset = dt.sunset(lat, lon);
+  srise = t.sunrise(lat, lon);
+  sset = t.sunset(lat, lon);
   srise1 = new Date(srise.getTime() + (24 * 60 * 60 * 1000)).sunrise(lat, lon); 
 //  dt= new Date(); 
   document.getElementById("pdt").innerHTML=dt.toLocaleString("en-IN", options); 
