@@ -143,14 +143,20 @@ var srise; var sset; var srise1; var lat; var lon; var nav;
 <span style="color:blue;"><b>Good Time:</b>  Green is Good, Blue is Ok, Red is Bad</span>
 <script>
 document.getElementById("pdt").innerHTML=t.toLocaleString("en-IN", options); 
-nav = navigator.geolocation.getCurrentPosition(function(position) {
+navigator.geolocation.getCurrentPosition(function(position) {
   srise = new Date().sunrise(position.coords.latitude, position.coords.longitude);
   sset = new Date().sunset(position.coords.latitude, position.coords.longitude);
   srise1 = new Date(srise.getTime() + (24 * 60 * 60 * 1000)).sunrise(position.coords.latitude, position.coords.longitude); 
   lat = position.coords.latitude;
   lon = position.coords.longitude;
+  setloc();
   console.log("rise:"+srise+" set:"+sset+"lat:"+lat+" lon:"+lon); }); 
-  console.log("rise:"+srise+" set:"+sset+"lat:"+lat+" lon:"+lon+"nav:"+nav); 
+  function setloc() {
+  srise = new Date().sunrise(position.coords.latitude, position.coords.longitude);
+  sset = new Date().sunset(position.coords.latitude, position.coords.longitude);
+  lat = position.coords.latitude;
+  lon = position.coords.longitude; }
+  console.log("rise:"+srise+" set:"+sset+"lat:"+lat+" lon:"+lon); 
 panchang.calculate(t, function() {
   tit = document.getElementById("tithi").innerHTML=panchang.Tithi.name;
   nak = document.getElementById("nakshtra").innerHTML=panchang.Nakshatra.name;
