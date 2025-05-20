@@ -33,7 +33,6 @@ var t= new Date();
 var tm=t.getTime();
 var wkday = t.getDay();
 var cred="Red"; var cgre="Green"; var cblu="Blue";
-document.getElementById("pdt").innerHTML=t.toLocaleString("en-IN", options); 
 var vra; var tit; var nkt; var yga; var krn; var vjy; var art; 
 var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
 var rks=0;  var rkf=0;  var ygs=0;  var ygf=0;  var gks=0;  var gkf=0;  
@@ -73,6 +72,7 @@ var dms;  var dmf;  var dmb;  var dme;  var hn;
 <script>
 navigator.geolocation.getCurrentPosition(function(position) {
 //  var dt= new Date(); 
+document.getElementById("pdt").innerHTML=t.toLocaleString("en-IN", options); 
   var srise = t.sunrise(position.coords.latitude, position.coords.longitude);
   var sset = t.sunset(position.coords.latitude, position.coords.longitude);
   var srise1 = new Date(srise.getTime() + (24 * 60 * 60 * 1000)).sunrise(position.coords.latitude, position.coords.longitude);
