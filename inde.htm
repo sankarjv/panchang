@@ -30,7 +30,7 @@
 <script>
 var options = {year:"2-digit", month:"2-digit", day:"2-digit", hour:"2-digit", hour12:false, minute:"2-digit"};
 var dt= new Date();
-var tm=t.getTime();
+var tm=dt.getTime();
 //var wkday = t.getDay();
 var cred="Red"; var cgre="Green"; var cblu="Blue";
 var vra; var tit; var nkt; var yga; var krn; var vjy; var art; 
@@ -51,11 +51,11 @@ var dt; var srise; var sset; var srise1; var lat; var lon;
 <script src="sun.js"></script>
 <script src="panchang.js"></script>
 <script>
-//dt= new Date(); 
+t= new Date(); 
 navigator.geolocation.getCurrentPosition(function(position) {
   lat = position.coords.latitude;
   lon = position.coords.longitude; }); 
-panchang.calculate(dt, function() {
+panchang.calculate(t, function() {
   var tit = document.getElementById("tithi").innerHTML=panchang.Tithi.name;
   var nak = document.getElementById("nakshtra").innerHTML=panchang.Nakshatra.name;
   var kar = document.getElementById("karna").innerHTML=panchang.Karna.name;
