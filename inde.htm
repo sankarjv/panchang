@@ -152,8 +152,8 @@ panchang.calculate(t, function() {
   var kar = document.getElementById("karna").innerHTML=panchang.Karna.name;
   var yog = document.getElementById("yoga").innerHTML=panchang.Yoga.name;
   var wkday = document.getElementById("day").innerHTML=panchang.Day.name;    });
-  srise = t.sunrise(lat, lon);
-  sset = t.sunset(lat, lon);
+  srise = new Date().sunrise(lat, lon);
+  sset = new Date().sunset(lat, lon);
   srise1 = new Date(srise.getTime() + (24 * 60 * 60 * 1000)).sunrise(lat, lon); 
 //  dt= new Date(); 
   document.getElementById("pdt").innerHTML=dt.toLocaleString("en-IN", options); 
