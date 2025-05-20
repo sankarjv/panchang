@@ -144,22 +144,39 @@ var srise2; var sset2; var lati; var long;
 <span style="color:blue;"><b>Good Time:</b>  Green is Good, Blue is Ok, Red is Bad</span>
 <script>
 document.getElementById("pdt").innerHTML=t.toLocaleString("en-IN", options); 
-  function getloc() {
-  navigator.geolocation.getCurrentPosition(function(position) {
-  srise = new Date().sunrise(position.coords.latitude, position.coords.longitude);
-  sset = new Date().sunset(position.coords.latitude, position.coords.longitude);
-  srise1 = new Date(srise.getTime() + (24 * 60 * 60 * 1000)).sunrise(position.coords.latitude, position.coords.longitude); 
-  lat = position.coords.latitude;
-  lon = position.coords.longitude;
-  setloc();
+let latitude, longitude;
+function getGeolocation() {
+  return new Promise((resolve, reject) => {
+    if (!navigator.geolocation) {
+      reject(new Error("Geolocation is not supported by your browser"));
+    } else {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          resolve({
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude
+          });
+        },
+        (error) => {
+          reject(error);
+        }
+      );
+    }
+  });
+}
+getGeolocation()
+  .then((coords) => {
+    latitude = coords.latitude;
+    longitude = coords.longitude;
+    console.log("Latitude:", latitude, "Longitude:", longitude);
+  })
+  .catch((err) => {
+    console.error("Error getting location:", err);
+  });
+  srise = new Date().sunrise(latitude, longitude);
+  sset = new Date().sunset(latitude, longitude);
+  srise1 = new Date(srise.getTime() + (24 * 60 * 60 * 1000)).sunrise(latitude, longitude); 
   console.log("rise:"+srise+" set:"+sset+"lat:"+lat+" lon:"+lon); }); }
-  function setloc() {
-  srise2 = srise;
-  sset2 = sset;
-  lati = lat;
-  long = lon; }
-  console.log("rise:"+srise2+" set:"+sset2+"lat:"+lati+" lon:"+long); 
-  getloc();
 panchang.calculate(t, function() {
   tit = document.getElementById("tithi").innerHTML=panchang.Tithi.name;
   nak = document.getElementById("nakshtra").innerHTML=panchang.Nakshatra.name;
