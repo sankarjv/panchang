@@ -176,7 +176,7 @@ getGeolocation()
   srise = new Date().sunrise(latitude, longitude);
   sset = new Date().sunset(latitude, longitude);
   srise1 = new Date(srise.getTime() + (24 * 60 * 60 * 1000)).sunrise(latitude, longitude); 
-  console.log("rise:"+srise+" set:"+sset+"lat:"+lat+" lon:"+lon); }); }
+  console.log("rise:"+srise+" set:"+sset+"lat:"+lat+" lon:"+lon);
 panchang.calculate(t, function() {
   tit = document.getElementById("tithi").innerHTML=panchang.Tithi.name;
   nak = document.getElementById("nakshtra").innerHTML=panchang.Nakshatra.name;
