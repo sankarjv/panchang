@@ -255,13 +255,13 @@ panchang.calculate(t, function() {
     case "PurvaBhadra":    Va=6.4;    Aa=16;    document.getElementById("nkt").style.color = cred;            break;
     case "UttaraBhadra":    Va=9.6;    Aa=19.2;    document.getElementById("nkt").style.color = cgre;            break;
     case "Revati":    Va=12;    Aa=21.6;    document.getElementById("nkt").style.color = cred;            break;  }
+  var nakb = document.getElementById("s_nakshtra_start").innerHTML=panchang.Nakshatra.start;
+  var nake = document.getElementById("s_nakshtra_end").innerHTML=panchang.Nakshatra.end;
+  var naklen = Math.floor(Date.parse(nake) - Date.parse(nakb));
   var varb = new Date(Math.floor((nakb.getTime() + ((Va * naklen)/24))));
   var vare = new Date(Math.floor(varb.getTime() + ((1.6 * naklen)/24)));
   var amrs = new Date(Math.floor((nakb.getTime() + ((Aa * naklen)/24))));
   var amrf = new Date(Math.floor(amrs.getTime() + ((1.6 * naklen)/24)));
-  var nakb = document.getElementById("s_nakshtra_start").innerHTML=panchang.Nakshatra.start;
-  var nake = document.getElementById("s_nakshtra_end").innerHTML=panchang.Nakshatra.end;
-  var naklen = Math.floor(Date.parse(nake) - Date.parse(nakb));
   document.getElementById("vjy").innerHTML="Varjyam:";
   if (tm > varb.getTime() && tm < vare.getTime()) {
     document.getElementById("vjy").style.color = cred; }
