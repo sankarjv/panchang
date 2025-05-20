@@ -29,9 +29,9 @@
 </style>
 <script>
 var options = {year:"2-digit", month:"2-digit", day:"2-digit", hour:"2-digit", hour12:false, minute:"2-digit"};
-var t= new Date();
+var dt= new Date();
 var tm=t.getTime();
-var wkday = t.getDay();
+//var wkday = t.getDay();
 var cred="Red"; var cgre="Green"; var cblu="Blue";
 var vra; var tit; var nkt; var yga; var krn; var vjy; var art; 
 var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
@@ -41,24 +41,30 @@ var dt; var srise; var sset; var srise1; var lat; var lon;
 </script>
 </head>
 <body>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8987226937562645"
-     crossorigin="anonymous"></script>
 <h3>
   <span style="color:blue;"><a target="_blank" href="https://astrolog.er.in">VidyaSankar</a></span>
   <span style="color:blue;"> Panchangam </span>
   <span id="pdt" style="color:blue;"></span>
 </h3>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8987226937562645"
+     crossorigin="anonymous"></script>
 <script src="sun.js"></script>
 <script src="panchang.js"></script>
 <script>
+//dt= new Date(); 
 navigator.geolocation.getCurrentPosition(function(position) {
   lat = position.coords.latitude;
   lon = position.coords.longitude; }); 
-  dt= new Date(); 
+panchang.calculate(dt, function() {
+  var tit = document.getElementById("tithi").innerHTML=panchang.Tithi.name;
+  var nak = document.getElementById("nakshtra").innerHTML=panchang.Nakshatra.name;
+  var kar = document.getElementById("karna").innerHTML=panchang.Karna.name;
+  var yog = document.getElementById("yoga").innerHTML=panchang.Yoga.name;
+  var wkday = document.getElementById("day").innerHTML=panchang.Day.name;    });
   srise = dt.sunrise(lat, lon);
   sset = dt.sunset(lat, lon);
   srise1 = new Date(srise.getTime() + (24 * 60 * 60 * 1000)).sunrise(lat, lon); 
-  dt= new Date(); 
+//  dt= new Date(); 
   document.getElementById("pdt").innerHTML=dt.toLocaleString("en-IN", options); 
   var daylen = Math.floor(Date.parse(sset) - Date.parse(srise));
   var daypart = Math.floor(daylen / 8);
@@ -96,8 +102,10 @@ navigator.geolocation.getCurrentPosition(function(position) {
   var daypart6 = new Date(Math.floor((daypart5.getTime() + daypart)));
   var daypart7 = new Date(Math.floor((daypart6.getTime() + daypart)));
   var daypart8 = new Date(Math.floor((daypart7.getTime() + daypart)));
+  document.getElementById("vra").innerHTML=" Vaara: ";
+  document.getElementById("day").style.fontWeight = "bold" ;
   switch(wkday) {
-  case 0:
+  case "Ravi":
     rks = daypart7; rkf = daypart8; ygs = daypart4; ygf = daypart5; gks = daypart6; gkf = daypart7;
     dms = new Date(Math.floor(srise.getTime() + ((daylen * 10.4) / 12)));
     dmf = new Date(Math.floor(dms.getTime() + (48 * 60 * 1000)));
@@ -109,7 +117,7 @@ navigator.geolocation.getCurrentPosition(function(position) {
     case 0: hn="Guru"; break;     case 1: hn="Kuja"; break;     case 2: hn="Surya"; break;     case 3: hn="Sukra"; break;     case 4: hn="Budha"; break;     case 5: hn="Chandra"; break; 
     case 6: hn="Sani"; break;     case 7: hn="Guru"; break;     case 8: hn="Kuja"; break;     case 9: hn="Surya"; break;     case 10: hn="Sukra"; break;     case 11: hn="Budha"; break; }
     break;
-  case 1:
+  case "Soma":
     rks = daypart1; rkf = daypart2; ygs = daypart3; ygf = daypart4; gks = daypart5; gkf = daypart6;
     dms = new Date(Math.floor(srise.getTime() + ((daylen * 6.4) / 12)));
     dmf = new Date(Math.floor(dms.getTime() + (daylen / 15)));
@@ -123,7 +131,7 @@ navigator.geolocation.getCurrentPosition(function(position) {
     case 0: hn="Sukra"; break;     case 1: hn="Budha"; break;     case 2: hn="Chandra"; break;     case 3: hn="Sani"; break;     case 4: hn="Guru"; break;     case 5: hn="Kuja"; break; 
     case 6: hn="Surya"; break;    case 7: hn="Sukra"; break;     case 8: hn="Budha"; break;     case 9: hn="Chandra"; break;     case 10: hn="Sani"; break;     case 11: hn="Guru"; break; }
     break;
-  case 2:
+  case "Mangal":
     rks = daypart6; rkf = daypart7; ygs = daypart2; ygf = daypart3; gks = daypart4; gkf = daypart5;
     dms = new Date(Math.floor(srise.getTime() + ((daylen * 2.4) / 12)));
     dmf = new Date(Math.floor(dms.getTime() + (daylen / 15)));
@@ -137,7 +145,7 @@ navigator.geolocation.getCurrentPosition(function(position) {
     case 0: hn="Sani"; break;     case 1: hn="Guru"; break;     case 2: hn="Kuja"; break;     case 3: hn="Surya"; break;     case 4: hn="Sukra"; break;     case 5: hn="Budha"; break; 
     case 6: hn="Chandra"; break;     case 7: hn="Sani"; break;     case 8: hn="Guru"; break;     case 9: hn="Kuja"; break;     case 10: hn="Surya"; break;     case 11: hn="Sukra"; break; } 
     break;
-  case 3:
+  case "Budha":
     rks = daypart4; rkf = daypart5; ygs = daypart1; ygf = daypart2; gks = daypart3; gkf = daypart4;
     dms = new Date(Math.floor(srise.getTime() + ((daylen * 5.6) / 12)));
     dmf = new Date(Math.floor(dms.getTime() + (daylen / 15)));
@@ -149,7 +157,7 @@ navigator.geolocation.getCurrentPosition(function(position) {
     case 0: hn="Surya"; break;    case 1: hn="Sukra"; break;     case 2: hn="Budha"; break;     case 3: hn="Chandra"; break;     case 4: hn="Sani"; break;     case 5: hn="Guru"; break; 
     case 6: hn="Kuja"; break;     case 7: hn="Surya"; break;     case 8: hn="Sukra"; break;     case 9: hn="Budha"; break;     case 10: hn="Chandra"; break;     case 11: hn="Sani"; break; }
     break;
-  case 4:
+  case "Guru":
     rks = daypart5; rkf = daypart6; ygs = daypart0; ygf = daypart1; gks = daypart2; gkf = daypart3;
     dms = new Date(Math.floor(srise.getTime() + ((daylen * 4) / 12)));
     dmf = new Date(Math.floor(dms.getTime() + (daylen / 15)));
@@ -163,7 +171,7 @@ navigator.geolocation.getCurrentPosition(function(position) {
     case 0: hn="Chandra"; break;     case 1: hn="Sani"; break;     case 2: hn="Guru"; break;     case 3: hn="Kuja"; break;     case 4: hn="Surya"; break;     case 5: hn="Sukra"; break; 
     case 6: hn="Budha"; break;     case 7: hn="Chandra"; break;     case 8: hn="Sani"; break;     case 9: hn="Guru"; break;     case 10: hn="Kuja"; break;     case 11: hn="Surya"; break; }
     break;
-  case 5:
+  case "Sukra":
     rks = daypart3; rkf = daypart4; ygs = daypart6; ygf = daypart7; gks = daypart1; gkf = daypart2;
     dms = new Date(Math.floor(srise.getTime() + ((daylen * 2.4) / 12)));
     dmf = new Date(Math.floor(dms.getTime() + (daylen / 15)));
@@ -177,7 +185,7 @@ navigator.geolocation.getCurrentPosition(function(position) {
     case 0: hn="Kuja"; break;     case 1: hn="Surya"; break;     case 2: hn="Sukra"; break;     case 3: hn="Budha"; break;     case 4: hn="Chandra"; break;     case 5: hn="Sani"; break; 
     case 6: hn="Guru"; break;     case 7: hn="Kuja"; break;     case 8: hn="Surya"; break;     case 9: hn="Sukra"; break;     case 10: hn="Budha"; break;     case 11: hn="Chandra"; break; }
     break;
-  case 6:
+  case "Sani":
     rks = daypart2; rkf = daypart3; ygs = daypart5; ygf = daypart6; gks = daypart0; gkf = daypart1;
     dms = new Date(Math.floor(srise.getTime() ));
     dmf = new Date(Math.floor(dms.getTime() + (daylen / 15)));
@@ -211,7 +219,7 @@ navigator.geolocation.getCurrentPosition(function(position) {
     document.getElementById("dmt").style.color = cred; }
   document.getElementById("dmst").innerHTML=dms.toLocaleString("en-IN", options);
   document.getElementById("dmft").innerHTML=dmf.toLocaleString("en-IN", options);
-  if (wkday == 1 || wkday == 2 || wkday == 4 || wkday == 5 || wkday == 6) {
+  if (wkday == "Soma" || wkday == "Mangal" || wkday == "Guru" || wkday == "Sukra" || wkday == "Sani") {
     if (tm > dmb.getTime() && tm < dme.getTime()) {
       document.getElementById("dmt").style.color = cred; }
     document.getElementById("dmbt").innerHTML=dmb.toLocaleString("en-IN", options);
@@ -235,9 +243,7 @@ navigator.geolocation.getCurrentPosition(function(position) {
     document.getElementById("hra").style.color = cgre; }
   document.getElementById("hst").innerHTML=hs.toLocaleString("en-IN", options);
   document.getElementById("hft").innerHTML=hf.toLocaleString("en-IN", options);  
-panchang.calculate(t, function() {
   document.getElementById("tit").innerHTML="Tithi:";
-  var tit = document.getElementById("tithi").innerHTML=panchang.Tithi.name;
   document.getElementById("tithi").style.fontWeight = "bold" ;
   switch(tit) {
    case "S-Padyami":    document.getElementById("tit").style.color = cred;              break;
@@ -273,7 +279,6 @@ panchang.calculate(t, function() {
   document.getElementById("s_tithi_start").innerHTML=panchang.Tithi.start.toLocaleString("en-IN", options);
   document.getElementById("s_tithi_end").innerHTML=panchang.Tithi.end.toLocaleString("en-IN", options);
   document.getElementById("nkt").innerHTML="Nakshatra:";
-  var nak = document.getElementById("nakshtra").innerHTML=panchang.Nakshatra.name;
   document.getElementById("nakshtra").style.fontWeight = "bold" ;
   var Va=0;  var Aa=0;
   switch(nak) {
@@ -322,7 +327,6 @@ panchang.calculate(t, function() {
   document.getElementById("amrst").innerHTML=amrs.toLocaleString("en-IN", options);
   document.getElementById("amrft").innerHTML=amrf.toLocaleString("en-IN", options);
   document.getElementById("krn").innerHTML="Karana:";
-  var kar = document.getElementById("karna").innerHTML=panchang.Karna.name;
   document.getElementById("karna").style.fontWeight = "bold" ;
   switch(kar) {
     case "Bava":    document.getElementById("krn").style.color = cgre;              break;
@@ -339,7 +343,6 @@ panchang.calculate(t, function() {
   document.getElementById("s_karna_start").innerHTML=panchang.Karna.start.toLocaleString("en-IN", options);
   document.getElementById("s_karna_end").innerHTML=panchang.Karna.end.toLocaleString("en-IN", options);
   document.getElementById("yga").innerHTML=" Yoga: ";
-  var yog = document.getElementById("yoga").innerHTML=panchang.Yoga.name;
   document.getElementById("yoga").style.fontWeight = "bold" ;
   switch(yog) {
     case "Vishkambha":    document.getElementById("yga").style.color = cred;              break;
@@ -370,11 +373,8 @@ panchang.calculate(t, function() {
     case "Vaidhruti":    document.getElementById("yga").style.color = cred;              break; }
   document.getElementById("s_yoga_start").innerHTML=panchang.Yoga.start.toLocaleString("en-IN", options);
   document.getElementById("s_yoga_end").innerHTML=panchang.Yoga.end.toLocaleString("en-IN", options);
-  document.getElementById("vra").innerHTML=" Vaara: ";
-  document.getElementById("day").innerHTML=panchang.Day.name;    
-  document.getElementById("day").style.fontWeight = "bold" ;
   document.getElementById("s_nakshtra_start").innerHTML=panchang.Nakshatra.start.toLocaleString("en-IN", options);
-  document.getElementById("s_nakshtra_end").innerHTML=panchang.Nakshatra.end.toLocaleString("en-IN", options);           });
+  document.getElementById("s_nakshtra_end").innerHTML=panchang.Nakshatra.end.toLocaleString("en-IN", options);
 </script>
 <div class="trow">
 <div id="tit" class="alignL"></div><div id="tithi" class="alignC1"></div></div>
