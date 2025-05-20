@@ -144,8 +144,10 @@ var t= new Date();
 var tm=t.getTime();
 document.getElementById("pdt").innerHTML=t.toLocaleString("en-IN", options); 
 navigator.geolocation.getCurrentPosition(function(position) {
-  lat = position.coords.latitude;
-  lon = position.coords.longitude; }); 
+  srise = new Date().sunrise(position.coords.latitude, position.coords.longitude);
+  sset = new Date().sunset(position.coords.latitude, position.coords.longitude);
+  srise1 = new Date(srise.getTime() + (24 * 60 * 60 * 1000)).sunrise(position.coords.latitude, position.coords.longitude); }); 
+  console.log("rise:"+srise+" set:"+sset);
 panchang.calculate(t, function() {
   tit = document.getElementById("tithi").innerHTML=panchang.Tithi.name;
   nak = document.getElementById("nakshtra").innerHTML=panchang.Nakshatra.name;
@@ -224,8 +226,6 @@ panchang.calculate(t, function() {
   document.getElementById("s_tithi_end").innerHTML=panchang.Tithi.end.toLocaleString("en-IN", options);
   document.getElementById("nkt").innerHTML="Nakshatra:";
   document.getElementById("nakshtra").style.fontWeight = "bold" ;
-  document.getElementById("s_nakshtra_start").innerHTML=panchang.Nakshatra.start.toLocaleString("en-IN", options);
-  document.getElementById("s_nakshtra_end").innerHTML=panchang.Nakshatra.end.toLocaleString("en-IN", options);
   var Va=0;  var Aa=0;
   switch(nak) {
     case "Aswini":    Va=20;    Aa=16.8;    document.getElementById("nkt").style.color = cgre;              break;
@@ -257,6 +257,8 @@ panchang.calculate(t, function() {
     case "Revati":    Va=12;    Aa=21.6;    document.getElementById("nkt").style.color = cred;            break;  }
   var nakb = document.getElementById("s_nakshtra_start").innerHTML=panchang.Nakshatra.start;
   var nake = document.getElementById("s_nakshtra_end").innerHTML=panchang.Nakshatra.end;
+  document.getElementById("s_nakshtra_start").innerHTML=panchang.Nakshatra.start.toLocaleString("en-IN", options);
+  document.getElementById("s_nakshtra_end").innerHTML=panchang.Nakshatra.end.toLocaleString("en-IN", options);
   var naklen = Math.floor(Date.parse(nake) - Date.parse(nakb));
   var varb = new Date(Math.floor((nakb.getTime() + ((Va * naklen)/24))));
   var vare = new Date(Math.floor(varb.getTime() + ((1.6 * naklen)/24)));
