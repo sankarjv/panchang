@@ -49,6 +49,7 @@ var dt; var srise; var sset; var srise1; var lat; var lon;
   <span id="pdt" style="color:blue;"></span>
 </h3>
 <script src="sun.js"></script>
+<script src="panchang.js"></script>
 <script>
 navigator.geolocation.getCurrentPosition(function(position) {
   lat = position.coords.latitude;
@@ -234,49 +235,6 @@ navigator.geolocation.getCurrentPosition(function(position) {
     document.getElementById("hra").style.color = cgre; }
   document.getElementById("hst").innerHTML=hs.toLocaleString("en-IN", options);
   document.getElementById("hft").innerHTML=hf.toLocaleString("en-IN", options);  
-</script>
-<script src="panchang.js"></script>
-<div class="trow">
-<div id="tit" class="alignL"></div><div id="tithi" class="alignC1"></div></div>
-<div class="trow">
-<div class="alignL">&nbsp;</div><div id="s_tithi_start" class="alignC1"></div>
-<div class="alignC2">to</div><div id="s_tithi_end" class="alignR"></div></div>
-<div class="trow">
-<div class="alignL">&nbsp;</div></div>
-<div class="trow">
-<div id = "nkt" class="alignL"></div><div id="nakshtra" class="alignC1"></div></div>
-<div class="trow">
-<div class="alignL">&nbsp;</div><div id="s_nakshtra_start" class="alignC1"></div>
-<div class="alignC2">to</div><div id="s_nakshtra_end" class="alignR"></div></div>
-<div class="trow">
-<div class="alignL">&nbsp;</div></div>
-<div class="trow">
-<div id = "yga" class="alignL"></div><div id="yoga" class="alignC1"></div></div>
-<div class="trow">
-<div class="alignL">&nbsp;</div><div id="s_yoga_start" class="alignC1"></div>
-<div class="alignC2">to</div><div id="s_yoga_end" class="alignR"></div></div>
-<div class="trow">
-<div class="alignL">&nbsp;</div></div>
-<div class="trow">
-<div id = "krn" class="alignL"></div><div id="karna" class="alignC1"></div></div>
-<div class="trow">
-<div class="alignL">&nbsp;</div><div id="s_karna_start" class="alignC1"></div>
-<div class="alignC2">to</div><div id="s_karna_end" class="alignR"></div></div>
-<div class="trow">
-<div class="alignL">&nbsp;</div></div>
-<div class="trow">
-<div id = "art" class="alignL"></div><div id="amrst" class="alignC1"></div>
-<div class="alignC2">to</div><div id="amrft" class="alignR"></div></div>
-<div class="trow">
-<div class="alignL">&nbsp;</div></div>
-<div class="trow">
-<div id = "vjy" class="alignL"></div><div id="varbt" class="alignC1"></div>
-<div class="alignC2">to</div><div id="varet" class="alignR"></div></div>
-<div class="trow">
-<div class="alignL">&nbsp;</div></div>
-<div class="trow">
-<div id = "vra" class="alignL" ></div><div id="day" class="alignC1"></div></div>
-<script>
 panchang.calculate(t, function() {
   document.getElementById("tit").innerHTML="Tithi:";
   var tit = document.getElementById("tithi").innerHTML=panchang.Tithi.name;
@@ -418,6 +376,46 @@ panchang.calculate(t, function() {
   document.getElementById("s_nakshtra_start").innerHTML=panchang.Nakshatra.start.toLocaleString("en-IN", options);
   document.getElementById("s_nakshtra_end").innerHTML=panchang.Nakshatra.end.toLocaleString("en-IN", options);           });
 </script>
+<div class="trow">
+<div id="tit" class="alignL"></div><div id="tithi" class="alignC1"></div></div>
+<div class="trow">
+<div class="alignL">&nbsp;</div><div id="s_tithi_start" class="alignC1"></div>
+<div class="alignC2">to</div><div id="s_tithi_end" class="alignR"></div></div>
+<div class="trow">
+<div class="alignL">&nbsp;</div></div>
+<div class="trow">
+<div id = "nkt" class="alignL"></div><div id="nakshtra" class="alignC1"></div></div>
+<div class="trow">
+<div class="alignL">&nbsp;</div><div id="s_nakshtra_start" class="alignC1"></div>
+<div class="alignC2">to</div><div id="s_nakshtra_end" class="alignR"></div></div>
+<div class="trow">
+<div class="alignL">&nbsp;</div></div>
+<div class="trow">
+<div id = "yga" class="alignL"></div><div id="yoga" class="alignC1"></div></div>
+<div class="trow">
+<div class="alignL">&nbsp;</div><div id="s_yoga_start" class="alignC1"></div>
+<div class="alignC2">to</div><div id="s_yoga_end" class="alignR"></div></div>
+<div class="trow">
+<div class="alignL">&nbsp;</div></div>
+<div class="trow">
+<div id = "krn" class="alignL"></div><div id="karna" class="alignC1"></div></div>
+<div class="trow">
+<div class="alignL">&nbsp;</div><div id="s_karna_start" class="alignC1"></div>
+<div class="alignC2">to</div><div id="s_karna_end" class="alignR"></div></div>
+<div class="trow">
+<div class="alignL">&nbsp;</div></div>
+<div class="trow">
+<div id = "art" class="alignL"></div><div id="amrst" class="alignC1"></div>
+<div class="alignC2">to</div><div id="amrft" class="alignR"></div></div>
+<div class="trow">
+<div class="alignL">&nbsp;</div></div>
+<div class="trow">
+<div id = "vjy" class="alignL"></div><div id="varbt" class="alignC1"></div>
+<div class="alignC2">to</div><div id="varet" class="alignR"></div></div>
+<div class="trow">
+<div class="alignL">&nbsp;</div></div>
+<div class="trow">
+<div id = "vra" class="alignL" ></div><div id="day" class="alignC1"></div></div>
 <div class="trow">
 <div class="alignL">&nbsp;</div><div id="rise" class="alignC1"></div>
 <div class="alignC2">to</div><div id="rise1" class="alignR"></div></div>
