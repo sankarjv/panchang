@@ -147,11 +147,11 @@ navigator.geolocation.getCurrentPosition(function(position) {
   lon = position.coords.longitude; }); 
 var t= new Date(); 
 panchang.calculate(t, function() {
-  var tit = document.getElementById("tithi").innerHTML=panchang.Tithi.name;
-  var nak = document.getElementById("nakshtra").innerHTML=panchang.Nakshatra.name;
-  var kar = document.getElementById("karna").innerHTML=panchang.Karna.name;
-  var yog = document.getElementById("yoga").innerHTML=panchang.Yoga.name;
-  var wkday = document.getElementById("day").innerHTML=panchang.Day.name;    });
+  tit = document.getElementById("tithi").innerHTML=panchang.Tithi.name;
+  nak = document.getElementById("nakshtra").innerHTML=panchang.Nakshatra.name;
+  kar = document.getElementById("karna").innerHTML=panchang.Karna.name;
+  yog = document.getElementById("yoga").innerHTML=panchang.Yoga.name;
+  wkday = document.getElementById("day").innerHTML=panchang.Day.name;    });
   srise = new Date().sunrise(lat, lon);
   sset = new Date().sunset(lat, lon);
   srise1 = new Date(srise.getTime() + (24 * 60 * 60 * 1000)).sunrise(lat, lon); 
