@@ -42,27 +42,6 @@ var dms;  var dmf;  var dmb;  var dme;  var hn;
 <body>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8987226937562645"
      crossorigin="anonymous"></script>
-<!-- auv -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-8987226937562645"
-     data-ad-slot="5525614212"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-<amp-auto-ads type="adsense"
-        data-ad-client="ca-pub-8987226937562645">
-</amp-auto-ads>
-<amp-ad width="100vw" height="320"
-     type="adsense"
-     data-ad-client="ca-pub-8987226937562645"
-     data-ad-slot="8343349248"
-     data-auto-format="rspv"
-     data-full-width="">
-  <div overflow=""></div>
-</amp-ad>
 <h3>
   <span style="color:blue;"><a target="_blank" href="https://astrolog.er.in">VidyaSankar</a></span>
   <span style="color:blue;"> Panchangam </span>
@@ -72,10 +51,10 @@ var dms;  var dmf;  var dmb;  var dme;  var hn;
 <script>
 navigator.geolocation.getCurrentPosition(function(position) {
   var dt= new Date(); 
-  document.getElementById("pdt").innerHTML=dt.toLocaleString("en-IN", options); 
   var srise = dt.sunrise(position.coords.latitude, position.coords.longitude);
   var sset = dt.sunset(position.coords.latitude, position.coords.longitude);
-  var srise1 = new Date(srise.getTime() + (24 * 60 * 60 * 1000)).sunrise(position.coords.latitude, position.coords.longitude);
+  var srise1 = new Date(srise.getTime() + (24 * 60 * 60 * 1000)).sunrise(position.coords.latitude, position.coords.longitude); });
+  document.getElementById("pdt").innerHTML=dt.toLocaleString("en-IN", options); 
   var daylen = Math.floor(Date.parse(sset) - Date.parse(srise));
   var daypart = Math.floor(daylen / 8);
   var niglen = Math.floor(Date.parse(srise1) - Date.parse(sset));
@@ -250,7 +229,7 @@ navigator.geolocation.getCurrentPosition(function(position) {
   if ((tm > hs.getTime() && tm < hf.getTime()) && (hn ==  "Sukra" || hn == "Budha" || hn == "Chandra" || hn == "Guru"))    {
     document.getElementById("hra").style.color = cgre; }
   document.getElementById("hst").innerHTML=hs.toLocaleString("en-IN", options);
-  document.getElementById("hft").innerHTML=hf.toLocaleString("en-IN", options);  });
+  document.getElementById("hft").innerHTML=hf.toLocaleString("en-IN", options);  
 </script>
 <script src="panchang.js"></script>
 <div class="trow">
