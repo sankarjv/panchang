@@ -141,9 +141,9 @@ var dms;  var dmf;  var dmb;  var dme;  var hn; var wkday;
 <div class="alignL">&nbsp;</div></div>
 <span style="color:blue;"><b>Good Time:</b>  Green is Good, Blue is Ok, Red is Bad</span>
 <script>
-var srise; var sset; var srise1; var lat; var lon;
 document.getElementById("pdt").innerHTML=t.toLocaleString("en-IN", options); 
 navigator.geolocation.getCurrentPosition(function(position) {
+var srise; var sset; var srise1; var lat; var lon;
   srise = new Date().sunrise(position.coords.latitude, position.coords.longitude);
   sset = new Date().sunset(position.coords.latitude, position.coords.longitude);
   srise1 = new Date(srise.getTime() + (24 * 60 * 60 * 1000)).sunrise(position.coords.latitude, position.coords.longitude); 
