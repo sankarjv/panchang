@@ -30,8 +30,6 @@
 <script>
 var options = {year:"2-digit", month:"2-digit", day:"2-digit", hour:"2-digit", hour12:false, minute:"2-digit"};
 var dt= new Date();
-var tm=dt.getTime();
-//var wkday = t.getDay();
 var cred="Red"; var cgre="Green"; var cblu="Blue";
 var vra; var tit; var nkt; var yga; var krn; var vjy; var art; 
 var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
@@ -142,10 +140,12 @@ var dt; var srise; var sset; var srise1; var lat; var lon;
 <div class="alignL">&nbsp;</div></div>
 <span style="color:blue;"><b>Good Time:</b>  Green is Good, Blue is Ok, Red is Bad</span>
 <script>
+var t= new Date(); 
+var tm=t.getTime();
+document.getElementById("pdt").innerHTML=t.toLocaleString("en-IN", options); 
 navigator.geolocation.getCurrentPosition(function(position) {
   lat = position.coords.latitude;
   lon = position.coords.longitude; }); 
-var t= new Date(); 
 panchang.calculate(t, function() {
   tit = document.getElementById("tithi").innerHTML=panchang.Tithi.name;
   nak = document.getElementById("nakshtra").innerHTML=panchang.Nakshatra.name;
@@ -155,8 +155,6 @@ panchang.calculate(t, function() {
   srise = new Date().sunrise(lat, lon);
   sset = new Date().sunset(lat, lon);
   srise1 = new Date(srise.getTime() + (24 * 60 * 60 * 1000)).sunrise(lat, lon); 
-//  dt= new Date(); 
-  document.getElementById("pdt").innerHTML=t.toLocaleString("en-IN", options); 
   var daylen = Math.floor(Date.parse(sset) - Date.parse(srise));
   var daypart = Math.floor(daylen / 8);
   var niglen = Math.floor(Date.parse(srise1) - Date.parse(sset));
@@ -165,8 +163,7 @@ panchang.calculate(t, function() {
   var dmuh = Math.floor(daylen / 15);
   var nmuh = Math.floor(niglen / 15);
   var ajs = new Date(Math.floor(srise.getTime() + (7 * dmuh)));
-  var ajf = new Date(Math.floor(srise.getTime() + (8 * dmuh))); 
-  if (tm > ajs.getTime() && tm < ajf.getTime()) {
+  var ajf = new Date(Math.floor(srise.getTime() + (8 * dmuh)));   if (tm > ajs.getTime() && tm < ajf.getTime()) {
     document.getElementById("abj").style.color = cgre; }
   var bhs = new Date(Math.floor(sset.getTime() + (13 * nmuh)));
   var bhf = new Date(Math.floor(sset.getTime() + (14 * nmuh))); 
