@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en"><head>
 <title>VidyaSankar Panchangam</title>
@@ -28,29 +29,22 @@
                               padding-left: 11px;  }
 </style>
 <script>
-var options = {year:"2-digit", month:"2-digit", day:"2-digit", hour:"2-digit", hour12:false, minute:"2-digit"};
-var dt= new Date();
-var t= new Date();
-var tm=t.getTime();
 var cred="Red"; var cgre="Green"; var cblu="Blue";
-var vra; var tit; var nkt; var yga; var krn; var vjy; var art; 
-var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
-var rks=0;  var rkf=0;  var ygs=0;  var ygf=0;  var gks=0;  var gkf=0;  
-var dms;  var dmf;  var dmb;  var dme;  var hn; var wkday;
-var srise; var sset; var srise1; var lat; var lon; var nav;
-var srise2; var sset2; var lati; var long; 
+var wkday; var vra; var tit; var nkt; var yga; var krn; var vjy; var art; var Va=0; var Aa=0;
+var options = {year:"2-digit", month:"2-digit", day:"2-digit", hour:"2-digit", hour12:false, minute:"2-digit"};
 </script>
 </head>
 <body>
-<h3>
-  <span style="color:blue;"><a target="_blank" href="https://astrolog.er.in">VidyaSankar</a></span>
-  <span style="color:blue;"> Panchangam </span>
-  <span id="pdt" style="color:blue;"></span>
-</h3>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8987226937562645"
      crossorigin="anonymous"></script>
 <script src="sun.js"></script>
 <script src="panchang.js"></script>
+<<div class="trow">
+<div class="alignL" style="color:blue;"><a href="http://astrolog.er.in">VidyaSankar</a></div>
+<div class="alignC1" style="color:blue;">Panchangam</div>
+<div id="pdt" class="alignC2" style="color:blue;"></div></div>
+<div class="trow">
+<div class="alignL">&nbsp;</div></div>
 <div class="trow">
 <div id="tit" class="alignL"></div><div id="tithi" class="alignC1"></div></div>
 <div class="trow">
@@ -141,80 +135,17 @@ var srise2; var sset2; var lati; var long;
 <div class="alignC2"></div><div id="dmet" class="alignR"></div></div>
 <div class="trow">
 <div class="alignL">&nbsp;</div></div>
-<span style="color:blue;"><b>Good Time:</b>  Green is Good, Blue is Ok, Red is Bad</span>
+<div style="color:blue;"><b>Good Time:</b>  Green is Good, Blue is Ok, Red is Bad</div>
 <script>
+var t= new Date();
+var tm=t.getTime();
 document.getElementById("pdt").innerHTML=t.toLocaleString("en-IN", options); 
-var latitude, longitude;
-function getGeolocation() {
-  return new Promise((resolve, reject) => {
-    if (!navigator.geolocation) {
-      reject(new Error("Geolocation is not supported by your browser"));
-    } else {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          resolve({
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude
-          });
-        },
-        (error) => {
-          reject(error);
-        }
-      );
-    }
-  });
-}
-getGeolocation()
-  .then((coords) => {
-    lat = coords.latitude;
-    lon = coords.longitude;
-  })
-  .catch((err) => {
-    console.error("Error getting location:", err);
-  });
-    console.log("Latitude:", lat, "Longitude:", lon);
-  srise = t.sunrise(latitude, longitude);
-  sset = t.sunset(latitude, longitude);
-  srise1 = new Date(srise.getTime() + (24 * 60 * 60 * 1000)).sunrise(latitude, longitude); 
-  console.log("rise:"+srise1+" set:"+sset+"lat:"+latitude+" lon:"+longitude);
 panchang.calculate(t, function() {
   tit = document.getElementById("tithi").innerHTML=panchang.Tithi.name;
   nak = document.getElementById("nakshtra").innerHTML=panchang.Nakshatra.name;
   kar = document.getElementById("karna").innerHTML=panchang.Karna.name;
   yog = document.getElementById("yoga").innerHTML=panchang.Yoga.name;
   wkday = document.getElementById("day").innerHTML=panchang.Day.name;    });
-  var daylen = Math.floor(Date.parse(sset) - Date.parse(srise));
-  var daypart = Math.floor(daylen / 8);
-  var niglen = Math.floor(Date.parse(srise1) - Date.parse(sset));
-  var srtm = srise.getTime();
-  var sstm = sset.getTime();
-  var dmuh = Math.floor(daylen / 15);
-  var nmuh = Math.floor(niglen / 15);
-  var ajs = new Date(Math.floor(srise.getTime() + (7 * dmuh)));
-  var ajf = new Date(Math.floor(srise.getTime() + (8 * dmuh)));   
-  var bhs = new Date(Math.floor(sset.getTime() + (13 * nmuh)));
-  var bhf = new Date(Math.floor(sset.getTime() + (14 * nmuh))); 
-  if (tm < sstm) {
-    var dhora = Math.floor(daylen / 12);
-    var dtd = tm - srtm;
-    var dhi = Math.floor(dtd / dhora);
-    var hs = new Date(Math.floor(srise.getTime() + ((dhi) * dhora)));
-    var hf = new Date(Math.floor(srise.getTime() + ((dhi+1) * dhora))); }
-  if (tm > sstm) {
-    var nhora = Math.floor(niglen / 12);
-    var ntd = tm - sstm;
-    var nhi = Math.floor(ntd / nhora);
-    var hs = new Date(Math.floor(sset.getTime() + ((nhi) * nhora)));
-    var hf = new Date(Math.floor(sset.getTime() + ((nhi+1) * nhora))); }
-  var daypart0 = srise;
-  var daypart1 = new Date(Math.floor((srise.getTime() + daypart)));
-  var daypart2 = new Date(Math.floor((daypart1.getTime() + daypart)));
-  var daypart3 = new Date(Math.floor((daypart2.getTime() + daypart)));
-  var daypart4 = new Date(Math.floor((daypart3.getTime() + daypart)));
-  var daypart5 = new Date(Math.floor((daypart4.getTime() + daypart)));
-  var daypart6 = new Date(Math.floor((daypart5.getTime() + daypart)));
-  var daypart7 = new Date(Math.floor((daypart6.getTime() + daypart)));
-  var daypart8 = new Date(Math.floor((daypart7.getTime() + daypart)));
   document.getElementById("tit").innerHTML="Tithi:";
   document.getElementById("tithi").style.fontWeight = "bold" ;
   switch(tit) {
@@ -252,7 +183,6 @@ panchang.calculate(t, function() {
   document.getElementById("s_tithi_end").innerHTML=panchang.Tithi.end.toLocaleString("en-IN", options);
   document.getElementById("nkt").innerHTML="Nakshatra:";
   document.getElementById("nakshtra").style.fontWeight = "bold" ;
-  var Va=0;  var Aa=0;
   switch(nak) {
     case "Aswini":    Va=20;    Aa=16.8;    document.getElementById("nkt").style.color = cgre;              break;
     case "Bharani":    Va=9.6;    Aa=19.2;    document.getElementById("nkt").style.color = cred;              break;
@@ -349,6 +279,49 @@ panchang.calculate(t, function() {
   document.getElementById("s_yoga_end").innerHTML=panchang.Yoga.end.toLocaleString("en-IN", options);
   document.getElementById("vra").innerHTML=" Vaara: ";
   document.getElementById("day").style.fontWeight = "bold" ;
+  navigator.geolocation.getCurrentPosition(function(position) {
+  var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
+  var dt= new Date(); 
+  var srise = dt.sunrise(position.coords.latitude, position.coords.longitude);
+  var sset = dt.sunset(position.coords.latitude, position.coords.longitude);
+  var srise1 = new Date(srise.getTime() + (24 * 60 * 60 * 1000)).sunrise(position.coords.latitude, position.coords.longitude);
+  var daylen = Math.floor(Date.parse(sset) - Date.parse(srise));
+  var daypart = Math.floor(daylen / 8);
+  var niglen = Math.floor(Date.parse(srise1) - Date.parse(sset));
+  var srtm = srise.getTime();
+  var sstm = sset.getTime();
+  var dmuh = Math.floor(daylen / 15);
+  var nmuh = Math.floor(niglen / 15);
+  var ajs = new Date(Math.floor(srise.getTime() + (7 * dmuh)));
+  var ajf = new Date(Math.floor(srise.getTime() + (8 * dmuh))); 
+  if (tm > ajs.getTime() && tm < ajf.getTime()) {
+    document.getElementById("abj").style.color = cgre; }
+  var bhs = new Date(Math.floor(sset.getTime() + (13 * nmuh)));
+  var bhf = new Date(Math.floor(sset.getTime() + (14 * nmuh))); 
+  if (tm > bhs.getTime() && tm < bhf.getTime()) {
+    document.getElementById("bhm").style.color = cgre; }
+  if (tm < sstm) {
+    var dhora = Math.floor(daylen / 12);
+    var dtd = tm - srtm;
+    var dhi = Math.floor(dtd / dhora);
+    var hs = new Date(Math.floor(srise.getTime() + ((dhi) * dhora)));
+    var hf = new Date(Math.floor(srise.getTime() + ((dhi+1) * dhora))); }
+  if (tm > sstm) {
+    var nhora = Math.floor(niglen / 12);
+    var ntd = tm - sstm;
+    var nhi = Math.floor(ntd / nhora);
+    var hs = new Date(Math.floor(sset.getTime() + ((nhi) * nhora)));
+    var hf = new Date(Math.floor(sset.getTime() + ((nhi+1) * nhora))); }
+  var daypart0 = srise;
+  var daypart1 = new Date(Math.floor((srise.getTime() + daypart)));
+  var daypart2 = new Date(Math.floor((daypart1.getTime() + daypart)));
+  var daypart3 = new Date(Math.floor((daypart2.getTime() + daypart)));
+  var daypart4 = new Date(Math.floor((daypart3.getTime() + daypart)));
+  var daypart5 = new Date(Math.floor((daypart4.getTime() + daypart)));
+  var daypart6 = new Date(Math.floor((daypart5.getTime() + daypart)));
+  var daypart7 = new Date(Math.floor((daypart6.getTime() + daypart)));
+  var daypart8 = new Date(Math.floor((daypart7.getTime() + daypart)));
+  var rks=0;  var rkf=0;  var ygs=0;  var ygf=0;  var gks=0;  var gkf=0;  var dms;  var dmf;  var dmb;  var dme;  var hn;
   switch(wkday) {
   case "Ravi":
     rks = daypart7; rkf = daypart8; ygs = daypart4; ygf = daypart5; gks = daypart6; gkf = daypart7;
@@ -491,6 +464,5 @@ panchang.calculate(t, function() {
     if (tm > dmb.getTime() && tm < dme.getTime()) {
       document.getElementById("dmt").style.color = cred; }
     document.getElementById("dmbt").innerHTML=dmb.toLocaleString("en-IN", options);
-    document.getElementById("dmet").innerHTML=dme.toLocaleString("en-IN", options); }
-</script>
-</body></html>
+    document.getElementById("dmet").innerHTML=dme.toLocaleString("en-IN", options); }  });
+</script></body></html>
