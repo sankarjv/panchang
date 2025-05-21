@@ -27,7 +27,7 @@ var options = {year:"2-digit", month:"2-digit", day:"2-digit", hour:"2-digit", h
 <script src="panchang.js"></script>
 <div class="trow">
 <div class="alignL">VidyaSankar</div><div class="alignC1">Panchangam</div>
-<div class="alignC2" id="srise1"></div></div>
+<div class="alignC2" id="pdt"></div></div>
 <div class="trow">
 <div class="alignL">&nbsp;</div></div>
 <div class="trow">
@@ -140,7 +140,7 @@ panchang.calculate(srise, function() {
   kar = document.getElementById("karna").innerHTML=panchang.Karna.name;
   yog = document.getElementById("yoga").innerHTML=panchang.Yoga.name;
   wkday = document.getElementById("day").innerHTML=panchang.Day.name;    });
-  document.getElementById("srise").innerHTML=dt.toLocaleString("en-IN", options); 
+  document.getElementById("pdt").innerHTML=srise.toLocaleString("en-IN", options); 
   var daylen = Math.floor(Date.parse(sset) - Date.parse(srise));
   var daypart = Math.floor(daylen / 8);
   var niglen = Math.floor(Date.parse(srise1) - Date.parse(sset));
