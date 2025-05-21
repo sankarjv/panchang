@@ -149,11 +149,11 @@ panchang.calculate(srise, function() {
   var nmuh = Math.floor(niglen / 15);
   var ajs = new Date(Math.floor(srise.getTime() + (7 * dmuh)));
   var ajf = new Date(Math.floor(srise.getTime() + (8 * dmuh))); 
-  if (tm > ajs.getTime() && tm < ajf.getTime()) {
+  if (tm >= ajs.getTime() && tm < ajf.getTime()) {
     document.getElementById("abj").style.color = cgre; }
   var bhs = new Date(Math.floor(sset.getTime() + (13 * nmuh)));
   var bhf = new Date(Math.floor(sset.getTime() + (14 * nmuh))); 
-  if (tm > bhs.getTime() && tm < bhf.getTime()) {
+  if (tm >= bhs.getTime() && tm < bhf.getTime()) {
     document.getElementById("bhm").style.color = cgre; }
   if (tm < sstm) {
     var dhora = Math.floor(daylen / 12);
@@ -347,12 +347,12 @@ panchang.calculate(srise, function() {
   var amrs = new Date(Math.floor((nakb.getTime() + ((Aa * naklen)/24))));
   var amrf = new Date(Math.floor(amrs.getTime() + ((1.6 * naklen)/24)));
   document.getElementById("vjy").innerHTML="Varjyam:";
-  if (tm > varb.getTime() && tm < vare.getTime()) {
+  if (tm >= varb.getTime() && tm < vare.getTime()) {
     document.getElementById("vjy").style.color = cred; }
   document.getElementById("varbt").innerHTML=varb.toLocaleString("en-IN", options);
   document.getElementById("varet").innerHTML=vare.toLocaleString("en-IN", options);
   document.getElementById("art").innerHTML="Amruta:";
-  if (tm > amrs.getTime() && tm < amrf.getTime()) {
+  if (tm >= amrs.getTime() && tm < amrf.getTime()) {
     document.getElementById("art").style.color = cgre; }
   document.getElementById("amrst").innerHTML=amrs.toLocaleString("en-IN", options);
   document.getElementById("amrft").innerHTML=amrf.toLocaleString("en-IN", options);
@@ -411,46 +411,46 @@ panchang.calculate(srise, function() {
   document.getElementById("riz").innerHTML=srise.toLocaleString("en-IN", options);
   document.getElementById("set").innerHTML=sset.toLocaleString("en-IN", options);
   document.getElementById("abj").innerHTML="Abhijit:";
-  if (tm > ajs.getTime() && tm < ajf.getTime()) {
+  if (tm >= ajs.getTime() && tm < ajf.getTime()) {
     document.getElementById("abj").style.color = cgre; }
   document.getElementById("ajst").innerHTML=ajs.toLocaleString("en-IN", options);
   document.getElementById("ajft").innerHTML=ajf.toLocaleString("en-IN", options);
   document.getElementById("bhm").innerHTML="Brahma:";
-  if (tm > bhs.getTime() && tm < bhf.getTime()) {
+  if (tm >= bhs.getTime() && tm < bhf.getTime()) {
     document.getElementById("bhm").style.color = cgre; }
   document.getElementById("bhst").innerHTML=bhs.toLocaleString("en-IN", options);
   document.getElementById("bhft").innerHTML=bhf.toLocaleString("en-IN", options);
   document.getElementById("hra").innerHTML="Hora:";
   document.getElementById("hnm").innerHTML=hn;
   document.getElementById("hnm").style.fontWeight = "bold" ;
-  if ((tm > hs.getTime() && tm < hf.getTime()) && (hn == "Surya" || hn ==  "Sani" || hn ==  "Kuja"))    {
+  if ((tm >= hs.getTime() && tm < hf.getTime()) && (hn == "Surya" || hn ==  "Sani" || hn ==  "Kuja"))    {
     document.getElementById("hra").style.color = cred; }
-  if ((tm > hs.getTime() && tm < hf.getTime()) && (hn ==  "Sukra" || hn == "Budha" || hn == "Chandra" || hn == "Guru"))    {
+  if ((tm >= hs.getTime() && tm < hf.getTime()) && (hn ==  "Sukra" || hn == "Budha" || hn == "Chandra" || hn == "Guru"))    {
     document.getElementById("hra").style.color = cgre; }
   document.getElementById("hst").innerHTML=hs.toLocaleString("en-IN", options);
   document.getElementById("hft").innerHTML=hf.toLocaleString("en-IN", options);  
   document.getElementById("rhk").innerHTML="RahuKaal:";
-  if (tm > rks.getTime() && tm < rkf.getTime()) {
+  if (tm >= rks.getTime() && tm < rkf.getTime()) {
     document.getElementById("rhk").style.color = cred; }
   document.getElementById("rkst").innerHTML=rks.toLocaleString("en-IN", options);
   document.getElementById("rkft").innerHTML=rkf.toLocaleString("en-IN", options);
   document.getElementById("ygd").innerHTML="YamaGand:";
-  if (tm > ygs.getTime() && tm < ygf.getTime()) {
+  if (tm >= ygs.getTime() && tm < ygf.getTime()) {
     document.getElementById("ygd").style.color = cred; }
   document.getElementById("ygst").innerHTML=ygs.toLocaleString("en-IN", options);
   document.getElementById("ygft").innerHTML=ygf.toLocaleString("en-IN", options);
   document.getElementById("glk").innerHTML="Gulika:";
-  if (tm > gks.getTime() && tm < gkf.getTime()) {
+  if (tm >= gks.getTime() && tm < gkf.getTime()) {
     document.getElementById("glk").style.color = cred; }
   document.getElementById("gkst").innerHTML=gks.toLocaleString("en-IN", options);
   document.getElementById("gkft").innerHTML=gkf.toLocaleString("en-IN", options);
   document.getElementById("dmt").innerHTML="DurMuhurt:";
-  if (tm > dms.getTime() && tm < dmf.getTime()) {
+  if (tm >= dms.getTime() && tm < dmf.getTime()) {
     document.getElementById("dmt").style.color = cred; }
   document.getElementById("dmst").innerHTML=dms.toLocaleString("en-IN", options);
   document.getElementById("dmft").innerHTML=dmf.toLocaleString("en-IN", options);
   if (wkday == "Soma" || wkday == "Mangal" || wkday == "Guru" || wkday == "Sukra" || wkday == "Sani") {
-    if (tm > dmb.getTime() && tm < dme.getTime()) {
+    if (tm >= dmb.getTime() && tm < dme.getTime()) {
       document.getElementById("dmt").style.color = cred; }
     document.getElementById("dmbt").innerHTML=dmb.toLocaleString("en-IN", options);
     document.getElementById("dmet").innerHTML=dme.toLocaleString("en-IN", options); }  });
