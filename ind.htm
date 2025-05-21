@@ -27,7 +27,7 @@ var options = {year:"2-digit", month:"2-digit", day:"2-digit", hour:"2-digit", h
 <script src="panchang.js"></script>
 <div class="trow">
 <div class="alignL">VidyaSankar</div><div class="alignC1">Panchangam</div>
-<div class="alignC2">srise1</div></div>
+<div class="alignC2" id="srise1"></div></div>
 <div class="trow">
 <div class="alignL">&nbsp;</div></div>
 <div class="trow">
@@ -124,6 +124,10 @@ var options = {year:"2-digit", month:"2-digit", day:"2-digit", hour:"2-digit", h
 <script>
   navigator.geolocation.getCurrentPosition(function(position) {
   var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
+  var dt= new Date(); 
+  var srise = dt.sunrise(position.coords.latitude, position.coords.longitude);
+  var sset = dt.sunset(position.coords.latitude, position.coords.longitude);
+  var srise1 = new Date(srise.getTime() + (24 * 60 * 60 * 1000)).sunrise(position.coords.latitude, position.coords.longitude);
   var dt= new Date(srise1); 
   var srise = dt.sunrise(position.coords.latitude, position.coords.longitude);
   var sset = dt.sunset(position.coords.latitude, position.coords.longitude);
