@@ -132,6 +132,15 @@ var options = {year:"2-digit", month:"2-digit", day:"2-digit", hour:"2-digit", h
   var srise = dt.sunrise(position.coords.latitude, position.coords.longitude);
   var sset = dt.sunset(position.coords.latitude, position.coords.longitude);
   var srise1 = new Date(srise.getTime() + (24 * 60 * 60 * 1000)).sunrise(position.coords.latitude, position.coords.longitude);
+//var t= new Date();
+var tm=srise.getTime();
+panchang.calculate(srise, function() {
+  tit = document.getElementById("tithi").innerHTML=panchang.Tithi.name;
+  nak = document.getElementById("nakshtra").innerHTML=panchang.Nakshatra.name;
+  kar = document.getElementById("karna").innerHTML=panchang.Karna.name;
+  yog = document.getElementById("yoga").innerHTML=panchang.Yoga.name;
+  wkday = document.getElementById("day").innerHTML=panchang.Day.name;    });
+  document.getElementById("srise").innerHTML=dt.toLocaleString("en-IN", options); 
   var daylen = Math.floor(Date.parse(sset) - Date.parse(srise));
   var daypart = Math.floor(daylen / 8);
   var niglen = Math.floor(Date.parse(srise1) - Date.parse(sset));
@@ -264,14 +273,6 @@ var options = {year:"2-digit", month:"2-digit", day:"2-digit", hour:"2-digit", h
     case 0: hn="Budha"; break;     case 1: hn="Chandra"; break;     case 2: hn="Sani"; break;     case 3: hn="Guru"; break;     case 4: hn="Kuja"; break;     case 5: hn="Surya"; break; 
     case 6: hn="Sukra"; break;     case 7: hn="Budha"; break;     case 8: hn="Chandra"; break;     case 9: hn="Sani"; break;     case 10: hn="Guru"; break;     case 11: hn="Kuja"; break; }
     break;  }
-//var t= new Date();
-var tm=srise1.getTime();
-panchang.calculate(srise1, function() {
-  tit = document.getElementById("tithi").innerHTML=panchang.Tithi.name;
-  nak = document.getElementById("nakshtra").innerHTML=panchang.Nakshatra.name;
-  kar = document.getElementById("karna").innerHTML=panchang.Karna.name;
-  yog = document.getElementById("yoga").innerHTML=panchang.Yoga.name;
-  wkday = document.getElementById("day").innerHTML=panchang.Day.name;    });
   document.getElementById("tit").innerHTML="Tithi:";
   document.getElementById("tithi").style.fontWeight = "bold" ;
   switch(tit) {
