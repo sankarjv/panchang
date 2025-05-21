@@ -35,9 +35,9 @@ var options = {year:"2-digit", month:"2-digit", day:"2-digit", hour:"2-digit", h
 </head>
 <body>
 <h3>
-  <span style="color:blue;"><a target="_blank" href="https://astrolog.er.in">VidyaSankar</a></span>
-  <span style="color:blue;"> Panchangam </span>
-  <span id="pdt" style="color:blue;"></span>
+  <div style="color:blue;"><a target="_blank" href="https://astrolog.er.in">VidyaSankar</a></div>
+  <div style="color:blue;"> Panchangam </div>
+  <div id="pdt" style="color:blue;"></div>
 </h3>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8987226937562645"
      crossorigin="anonymous"></script>
@@ -133,7 +133,7 @@ var options = {year:"2-digit", month:"2-digit", day:"2-digit", hour:"2-digit", h
 <div class="alignC2"></div><div id="dmet" class="alignR"></div></div>
 <div class="trow">
 <div class="alignL">&nbsp;</div></div>
-<span style="color:blue;"><b>Good Time:</b>  Green is Good, Blue is Ok, Red is Bad</span>
+<div style="color:blue;"><b>Good Time:</b>  Green is Good, Blue is Ok, Red is Bad</div>
 <script>
 var t= new Date();
 var tm=t.getTime();
@@ -277,7 +277,7 @@ panchang.calculate(t, function() {
   document.getElementById("s_yoga_end").innerHTML=panchang.Yoga.end.toLocaleString("en-IN", options);
   document.getElementById("vra").innerHTML=" Vaara: ";
   document.getElementById("day").style.fontWeight = "bold" ;
-navigator.geolocation.getCurrentPosition(function(position) {
+  navigator.geolocation.getCurrentPosition(function(position) {
   var hra; var abj; var bhm; var rhk; var glk; var ygd; var dmt;
   var dt= new Date(); 
   var srise = dt.sunrise(position.coords.latitude, position.coords.longitude);
@@ -320,7 +320,7 @@ navigator.geolocation.getCurrentPosition(function(position) {
   var daypart7 = new Date(Math.floor((daypart6.getTime() + daypart)));
   var daypart8 = new Date(Math.floor((daypart7.getTime() + daypart)));
   var rks=0;  var rkf=0;  var ygs=0;  var ygf=0;  var gks=0;  var gkf=0;  var dms;  var dmf;  var dmb;  var dme;  var hn;
- switch(wkday) {
+  switch(wkday) {
   case "Ravi":
     rks = daypart7; rkf = daypart8; ygs = daypart4; ygf = daypart5; gks = daypart6; gkf = daypart7;
     dms = new Date(Math.floor(srise.getTime() + ((daylen * 10.4) / 12)));
@@ -463,5 +463,4 @@ navigator.geolocation.getCurrentPosition(function(position) {
       document.getElementById("dmt").style.color = cred; }
     document.getElementById("dmbt").innerHTML=dmb.toLocaleString("en-IN", options);
     document.getElementById("dmet").innerHTML=dme.toLocaleString("en-IN", options); }  });
-</script>
-</body></html>
+</script></body></html>
