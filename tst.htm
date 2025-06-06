@@ -1,103 +1,34 @@
-Skip to content
- 
-Search Gists
-Search...
-All gists
-Back to GitHub
-@magkopian
-magkopian/clock_view.php
-Last active 3 years ago • Report abuse
-Code
-Revisions
-7
-Stars
-1
-Forks
-1
-Clone this repository at &lt;script src=&quot;https://gist.github.com/magkopian/7a97ff98c3cafe14972e.js&quot;&gt;&lt;/script&gt;
-<script src="https://gist.github.com/magkopian/7a97ff98c3cafe14972e.js"></script>
-A simple JavaScript clock that automaticly syncs time using AJAX - Client (Server: https://gist.github.com/magkopian/f0724fa7faa629d302db)
-clock_view.php
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<title>Simple Ajax Clock</title>
-		<style type="text/css">
-			body {
-				margin: 0;
-				padding: 0;
-			}
-			
-			#wrapper {
-				width: 100%;
-			}
-			
-			#clock {
-				width: 50%;
-				min-height: 100px;
-				margin: 50px auto;
-				text-align: center;
-				font-size: 85px;
-			}
-		</style>
-		<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-		<script type="text/javascript">
-			var start_time;
-			var current_time;
-			
-			//gets current server time
-			var get_time = function () {
-				$.ajax({
-					type: 'GET',
-					url: 'clock.php',
-					data: ({ action : 'get_time' }),
-					success: (function (data) {
-						start_time = new Date(
-							data.year, 
-							data.month, 
-							data.day, 
-							data.hour, 
-							data.minute, 
-							data.second
-						);
-						$('#clock').html(current_time.toLocaleTimeString());
-					}),
-					dataType: 'json'
-				});
-			}
-			
-			//counts 0.25s
-			var cnt_time = function () {
-				current_time = new Date(start_time.getTime() + 250);
-				$('#clock').html(current_time.toLocaleTimeString());
-				start_time = current_time;
-			}
-			
-			setInterval(cnt_time, 250); //add 250ms to current time every 250ms
-			setInterval(get_time, 30250); //sync with server every 30,25 second
-			get_time();
-		</script>
-	</head>
-	<body>
-		<div id="wrapper">
-			<div id="clock"></div>
-		</div>
-	</body>
-</html>
-@sankarjv
-Comment
- 
-Leave a comment
- 
-Footer
-© 2025 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
-Security
-Status
-Docs
-Contact
-Manage cookies
-Do not share my personal information
+<head>
+<script src="vs1.js" defer></script>
+<script src="su.js" defer></script>
+<script src="pa.js" defer></script>
+<title>VidyaSankar Panchangam</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<meta name="author" content="VidyaSankar Jagarlapudi">
+<meta name="description" content="VidyaSankar Panchangam">
+<meta name="viewport" content="width=device-width, initial-scale=0.80">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style>
+.block { overflow:hidden; }
+.trow {  display: table-row; }
+.alignL {  display: table-cell;
+           font-weight: bold;
+           color: blue; }
+.alignC1, .alignC2, .alignR {  display: table-cell;
+                              padding-left: 11px;  }
+</style>
+</head>
+<body>
+<script>
+setInterval(showTime, 1000);
+function showTime() {
+var dt= new Date(); 
+var options = {year:"2-digit", month:"2-digit", day:"2-digit", hour:"2-digit", hour12:false, minute:"2-digit"};
+document.getElementById("pdt").innerHTML=dt.toLocaleString("en-IN", options); }
+</script>
+<h3><div class="trow" style="color:blue;">
+<div class="alignL"><a target="_blank" href="https://astrolog.er.in">VidyaSankar</a></div>
+<div class="alignC1">Panchangam</div><div id="pdt" class="alignR"></div></div></h3>
+</body></html>
