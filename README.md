@@ -1,2 +1,2 @@
-# panchang
-Panchangam
+# panchang.am.in
+VidyaSankar Panchangam
